@@ -1,0 +1,42 @@
+{
+  "id": "299f6390-d882-4372-a74a-0e507cbae71f",
+  "name": "CZR_AD_Create_Calculate_displayName",
+  "type": "static",
+  "attributes": {
+    "shortLastName": {
+      "type": "split",
+      "attributes": {
+        "input": {
+          "type": "identityAttribute",
+          "attributes": {
+            "name": "lastName"
+          }
+        },
+        "delimiter": " ",
+        "index": 0,
+        "throws": false
+      }
+    },
+    "displayNameBase": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "PreferredName"
+            }
+          },
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "firstName"
+            }
+          }
+        ]
+      }
+    },
+    "value": "$displayNameBase $shortLastName"
+  },
+  "internal": false
+}

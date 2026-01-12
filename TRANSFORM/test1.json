@@ -1,0 +1,204 @@
+{
+  "id": "c87499c1-07f7-4c24-b240-20b9056df6f9",
+  "name": "test1",
+  "type": "static",
+  "attributes": {
+    "assignmentStatusType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice - Dev",
+            "attributeName": "AssignmentStatusType"
+          }
+        }
+      }
+    },
+    "workerType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice - Dev",
+            "attributeName": "WorkerType"
+          }
+        }
+      }
+    },
+    "primaryAssignment": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice - Dev",
+            "attributeName": "PrimaryAssignment"
+          }
+        }
+      }
+    },
+    "primaryWorkRelationship": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice - Dev",
+            "attributeName": "PrimaryWorkRelationship"
+          }
+        }
+      }
+    },
+    "completeTermination": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice - Dev",
+            "attributeName": "CompleteTermination"
+          }
+        }
+      }
+    },
+    "excludedLocationFlag": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_ExclLocFlag"
+      }
+    },
+    "managementLevelFlag": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_MgntLvlFlag"
+      }
+    },
+    "mappedADDomain": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_MappedADDomain"
+      }
+    },
+    "canCreateAD": {
+      "type": "conditional",
+      "attributes": {
+        "empType": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "WorkerType"
+                    }
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "assignmentStartDate": {
+          "type": "static",
+          "attributes": {
+            "assStDt": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AsgStartDate"
+                    }
+                  },
+                  {
+                    "type": "static",
+                    "attributes": {
+                      "value": "none"
+                    }
+                  }
+                ]
+              }
+            },
+            "proStDt": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "ProjectedStartDate"
+                    }
+                  },
+                  {
+                    "type": "static",
+                    "attributes": {
+                      "value": "none"
+                    }
+                  }
+                ]
+              }
+            },
+            "value": "#if($empType==\"E\")$assStDt#{else}$proStDt#end"
+          }
+        },
+        "expression": "$assignmentStartDate eq none",
+        "positiveCondition": "false",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "-21d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "attributes": {
+                    "requiresPeriodicRefresh": true,
+                    "input": {
+                      "type": "firstValid",
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "value": "#if($assignmentStartDate == \"none\")2999-12-31#{else}$assignmentStartDate#end"
+                            },
+                            "type": "static"
+                          },
+                          "2999-12-31"
+                        ]
+                      }
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gt",
+            "positiveCondition": "PENDING",
+            "negativeCondition": "YES"
+          }
+        }
+      }
+    },
+    "value": "#if($assignmentStatusType == \"ACTIVE\" && (($workerType == \"E\" && $primaryAssignment == \"Y\" && $primaryWorkRelationship == \"Y\") || ($workerType == \"P\" && $primaryAssignment == \"Y\")) && $completeTermination == \"N\" && $excludedLocationFlag == \"false\" && $managementLevelFlag == \"true\")#if($canCreateAD == \"YES\")#if($mappedADDomain == \"CZR-Application-ActiveDirectory-Harrahs\")H#{else}I#end#elseif($canCreateAD == \"PENDING\")Y-PENDING#{else}N#end#elseif($managementLevelFlag == \"false\" && $canCreateAD == \"PENDING\")Y-PENDING#{else}N#end"
+  },
+  "internal": false
+}

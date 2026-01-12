@@ -1,0 +1,67 @@
+{
+  "id": "533f14af-cd3f-461a-9d2f-885bc1650f3e",
+  "name": "Caesars_Identity_Profile_Con_ActiveLocationCode",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWEmployeeConversion",
+          "attributeName": "EmpActiveLocCode",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      },
+      {
+        "attributes": {
+          "expression": "$assignmentStatusType eq Active",
+          "positiveCondition": "$locationCode",
+          "negativeCondition": "none",
+          "assignmentStatusType": {
+            "attributes": {
+              "values": [
+                {
+                  "attributes": {
+                    "sourceName": "CZR-Application-ContractorFlatFile",
+                    "attributeName": "AssignmentStatusType"
+                  },
+                  "type": "accountAttribute"
+                },
+                {
+                  "attributes": {
+                    "value": "none"
+                  },
+                  "type": "static"
+                }
+              ]
+            },
+            "type": "firstValid"
+          },
+          "locationCode": {
+            "attributes": {
+              "values": [
+                {
+                  "attributes": {
+                    "sourceName": "CZR-Application-ContractorFlatFile",
+                    "attributeName": "LocationCode"
+                  },
+                  "type": "accountAttribute"
+                },
+                {
+                  "attributes": {
+                    "value": "none"
+                  },
+                  "type": "static"
+                }
+              ]
+            },
+            "type": "firstValid"
+          }
+        },
+        "type": "conditional"
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

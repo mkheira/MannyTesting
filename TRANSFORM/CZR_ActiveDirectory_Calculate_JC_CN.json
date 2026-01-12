@@ -1,0 +1,18 @@
+{
+  "id": "1566da6d-6d59-43f8-ba77-f3097885fe8b",
+  "name": "CZR_ActiveDirectory_Calculate_JC_CN",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      "JC-",
+      {
+        "attributes": {
+          "attributeName": "cn",
+          "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+        },
+        "type": "accountAttribute"
+      }
+    ]
+  },
+  "internal": false
+}

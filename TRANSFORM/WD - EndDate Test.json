@@ -1,0 +1,17 @@
+{
+  "id": "07e4bca6-2fc2-4b1b-a531-79227446b384",
+  "name": "WD - EndDate Test",
+  "type": "dateFormat",
+  "attributes": {
+    "input": {
+      "attributes": {
+        "attributeName": "contractorTerminationDate",
+        "sourceName": "CZR-TerminationDate"
+      },
+      "type": "accountAttribute"
+    },
+    "inputFormat": "MM/dd/yyyy",
+    "outputFormat": "EPOCH_TIME_WIN32"
+  },
+  "internal": false
+}

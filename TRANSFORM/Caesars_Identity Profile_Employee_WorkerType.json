@@ -1,0 +1,9 @@
+{
+  "id": "cd40ee1f-be77-474e-b831-dfd827d03e27",
+  "name": "Caesars_Identity Profile_Employee_WorkerType",
+  "type": "static",
+  "attributes": {
+    "value": "Employee"
+  },
+  "internal": false
+}

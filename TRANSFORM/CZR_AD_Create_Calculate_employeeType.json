@@ -1,0 +1,15 @@
+{
+  "id": "b232e2d2-5f68-4495-bf95-479aa1503914",
+  "name": "CZR_AD_Create_Calculate_employeeType",
+  "type": "static",
+  "attributes": {
+    "empType": {
+      "type": "identityAttribute",
+      "attributes": {
+        "name": "employeeType"
+      }
+    },
+    "value": "#if($empType == \"E\" || $empType == \"P\")Employee#{else}$empType#end"
+  },
+  "internal": false
+}

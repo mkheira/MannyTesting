@@ -1,0 +1,37 @@
+{
+  "id": "82f30a82-d629-49a6-8a77-2da4df1b9bd4",
+  "name": "Caesars_Identity Profile_Employee_Manager",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "ManagerPersonNumber"
+        }
+      },
+      {
+        "type": "firstValid",
+        "attributes": {
+          "values": [
+            {
+              "type": "static",
+              "attributes": {
+                "value": "$oldValue"
+              }
+            },
+            {
+              "type": "static",
+              "attributes": {
+                "value": ""
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "79b63b77-6f0f-4eae-80e0-4bfd962ec0b3",
+  "name": "testConcat",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ActiveDirectory-Dev.lab.local",
+          "attributeName": "displayName"
+        }
+      },
+      " - ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ActiveDirectory-Dev.lab.local",
+          "attributeName": "employeeID"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

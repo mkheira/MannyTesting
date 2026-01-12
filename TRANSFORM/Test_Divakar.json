@@ -1,0 +1,632 @@
+{
+  "id": "3cd59891-d8bf-4555-a68f-9900000c0864",
+  "name": "Test_Divakar",
+  "type": "static",
+  "attributes": {
+    "lifecycleState": {
+      "attributes": {
+        "name": "userstatus"
+      },
+      "type": "identityAttribute"
+    },
+    "employeeType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "WorkerType"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "assignmentStatusType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "AssignmentStatusType"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "assignmentStatusTypeImmTerm": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "AssignmentStatusType"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "identityAssStDt": {
+      "type": "conditional",
+      "attributes": {
+        "empType": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "WorkerType"
+                    }
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "assignmentStartDate": {
+          "type": "static",
+          "attributes": {
+            "assStDt": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AsgStartDate"
+                    }
+                  },
+                  {
+                    "type": "static",
+                    "attributes": {
+                      "value": "none"
+                    }
+                  }
+                ]
+              }
+            },
+            "proStDt": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "ProjectedStartDate"
+                    }
+                  },
+                  {
+                    "type": "static",
+                    "attributes": {
+                      "value": "none"
+                    }
+                  }
+                ]
+              }
+            },
+            "value": "#if($empType==\"E\")$assStDt#{else}$proStDt#end"
+          }
+        },
+        "expression": "$assignmentStartDate eq none",
+        "positiveCondition": "none",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "-1d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "attributes": {
+                    "requiresPeriodicRefresh": true,
+                    "input": {
+                      "type": "firstValid",
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "value": "#if($assignmentStartDate == \"none\")2999-12-31#{else}$assignmentStartDate#end"
+                            },
+                            "type": "static"
+                          },
+                          "2999-12-31"
+                        ]
+                      }
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gt",
+            "positiveCondition": "future",
+            "negativeCondition": "past"
+          }
+        }
+      }
+    },
+    "completeTermination": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "CompleteTermination"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "completeTerminationImmTerm": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "CompleteTermination"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "identityTermDt": {
+      "type": "conditional",
+      "attributes": {
+        "idnTermDate": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "TerminationDate"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          },
+          "type": "firstValid"
+        },
+        "expression": "$idnTermDate eq none",
+        "positiveCondition": "none",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "+1d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "attributes": {
+                    "requiresPeriodicRefresh": true,
+                    "input": {
+                      "type": "firstValid",
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "sourceName": "CZR-Application-OICWebservice - Dev",
+                              "attributeName": "TerminationDate"
+                            },
+                            "type": "accountAttribute"
+                          },
+                          "2999-12-31"
+                        ]
+                      }
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gt",
+            "positiveCondition": "future",
+            "negativeCondition": "past"
+          }
+        }
+      }
+    },
+    "identityTermDtImmTerm": {
+      "type": "conditional",
+      "attributes": {
+        "idnTermDateImmTerm": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        },
+        "expression": "$idnTermDateImmTerm eq none",
+        "positiveCondition": "none",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "+1d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "type": "dateFormat",
+                  "attributes": {
+                    "inputFormat": "PEOPLE_SOFT",
+                    "outputFormat": "ISO8601",
+                    "input": {
+                      "attributes": {
+                        "requiresPeriodicRefresh": true,
+                        "input": {
+                          "type": "firstValid",
+                          "attributes": {
+                            "values": [
+                              {
+                                "type": "accountAttribute",
+                                "attributeName": "TerminationDate",
+                                "sourceName": "CZR-Application-EditIdentity"
+                              },
+                              "12/31/2999 00:00:00"
+                            ]
+                          }
+                        },
+                        "inputFormat": "MM/dd/yyyy HH:mm:ss",
+                        "outputFormat": "PEOPLE_SOFT"
+                      },
+                      "type": "dateFormat"
+                    }
+                  }
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gte",
+            "positiveCondition": "today",
+            "negativeCondition": "not today"
+          }
+        }
+      }
+    },
+    "isLSALC": {
+      "type": "indexOf",
+      "attributes": {
+        "substring": "LSALC",
+        "input": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AsgCategoryCode"
+                    },
+                    "type": "accountAttribute"
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "isLBBDC": {
+      "type": "indexOf",
+      "attributes": {
+        "substring": "LBBDC",
+        "input": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AsgCategoryCode"
+                    },
+                    "type": "accountAttribute"
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "isSEVERANCE": {
+      "type": "indexOf",
+      "attributes": {
+        "substring": "SEVERANCE",
+        "input": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AssignmentStatusTypeCode"
+                    },
+                    "type": "accountAttribute"
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "isDEFERRED": {
+      "type": "indexOf",
+      "attributes": {
+        "substring": "DEFERRED",
+        "input": {
+          "type": "upper",
+          "attributes": {
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "attributes": {
+                      "sourceName": "CZR-Application-OICWebservice - Dev",
+                      "attributeName": "AssignmentStatusTypeCode"
+                    },
+                    "type": "accountAttribute"
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "assStatusTypeCode": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "AssignmentStatusTypeCode"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "identityOICTermDtImmTerm": {
+      "type": "conditional",
+      "attributes": {
+        "idnTermDate": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice - Dev",
+                  "attributeName": "TerminationDate"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          },
+          "type": "firstValid"
+        },
+        "expression": "$idnTermDate eq none",
+        "positiveCondition": "none",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "+1d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "attributes": {
+                    "requiresPeriodicRefresh": true,
+                    "input": {
+                      "type": "firstValid",
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "sourceName": "CZR-Application-OICWebservice - Dev",
+                              "attributeName": "TerminationDate"
+                            },
+                            "type": "accountAttribute"
+                          },
+                          "2999-12-31"
+                        ]
+                      }
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gte",
+            "positiveCondition": "today",
+            "negativeCondition": "not today"
+          }
+        }
+      }
+    },
+    "termDate": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-OICWebservice - Dev",
+              "attributeName": "TerminationDate"
+            }
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      }
+    },
+    "value": "#if($employeeType==\"E\" && $completeTermination==\"Y\" && $assignmentStatusType==\"INACTIVE\" && $identityOICTermDtImmTerm==\"today\" && $lifecycleState != \"inactive\")inactiveImmediateTerm#elseif($employeeType==\"E\" && $completeTerminationImmTerm==\"Y\" && $assignmentStatusTypeImmTerm==\"INACTIVE\" && $identityTermDtImmTerm==\"today\" && $lifecycleState != \"inactive\")inactiveImmediateTerm#elseif($employeeType==\"E\" && $completeTerminationImmTerm!=\"Y\" && $completeTermination==\"Y\" && $assignmentStatusType==\"INACTIVE\" && $identityTermDt==\"past\")inactive#elseif($employeeType==\"P\" && $completeTerminationImmTerm!=\"Y\" && $completeTermination==\"Y\")inactive#elseif($assignmentStatusType==\"ACTIVE\" && ($isLSALC!=-1 || $isLBBDC!=-1 || $isSEVERANCE!=-1 || $isDEFERRED!=-1))lsalclbbdc#elseif($assignmentStatusType==\"ACTIVE\" && $assStatusTypeCode!=\"ACTIVE_PROCESS\" && $assStatusTypeCode!=\"CWK\" && $isSEVERANCE==-1 && $isDEFERRED==-1 && $termDate==\"none\")leaveOfAbsence#elseif($assignmentStatusType!=\"ACTIVE\" && $assignmentStatusType!=\"INACTIVE\" && $assStatusTypeCode!=\"ACTIVE_PROCESS\" && $assStatusTypeCode!=\"CWK\" && $isSEVERANCE==-1 && $isDEFERRED==-1 && $termDate==\"none\")leaveOfAbsence#elseif($employeeType==\"E\" && $assignmentStatusType==\"ACTIVE\" && $identityAssStDt==\"past\")active#elseif($employeeType==\"E\" && $assignmentStatusType==\"ACTIVE\" && $identityAssStDt==\"future\")prehire#elseif($employeeType==\"P\" && $assignmentStatusType==\"ACTIVE\")prehire#{else}$lifecycleState#end"
+  },
+  "internal": false
+}

@@ -1,0 +1,17 @@
+{
+  "id": "c7c4b2eb-c1e8-4269-85a2-0b182f24d108",
+  "name": "CZR-Contractor Termination Date into LDAP",
+  "type": "dateFormat",
+  "attributes": {
+    "input": {
+      "attributes": {
+        "attributeName": "contractorTerminationDate",
+        "sourceName": "CZR-TerminationDate"
+      },
+      "type": "accountAttribute"
+    },
+    "inputFormat": "MM/dd/yyyy",
+    "outputFormat": "EPOCH_TIME_WIN32"
+  },
+  "internal": false
+}

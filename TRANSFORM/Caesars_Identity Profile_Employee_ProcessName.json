@@ -1,0 +1,47 @@
+{
+  "id": "28e2c725-ffb1-41de-bc39-4631b8c4c1e8",
+  "name": "Caesars_Identity Profile_Employee_ProcessName",
+  "type": "static",
+  "attributes": {
+    "newLCS": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "reference",
+            "attributes": {
+              "id": "Caesars_Identity Profile_Employee_LifecycleState"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "oldLCS": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "static",
+            "attributes": {
+              "value": "$oldValue"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "value": "#if($oldLCS == \"none\")$newLCS#elseif($oldLCS == \"rehire\" && $newLCS != \"inactive\")$oldLCS#elseif(($oldLCS == \"inactive\" || $oldLCS == \"lsalclbbdc\") && ($newLCS == \"prehire\" || $newLCS == \"active\"))rehire#{else}$newLCS#end"
+  },
+  "internal": false
+}

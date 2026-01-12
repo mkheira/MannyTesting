@@ -1,0 +1,227 @@
+{
+  "id": "7fc4b8d3-9bfd-4c40-8d70-b3ae3d6726fd",
+  "name": "Caesars_IdentPro_Contractor_LifecycleState_Suspend",
+  "type": "static",
+  "attributes": {
+    "statusType": {
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-Suspend",
+              "attributeName": "Status"
+            }
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    },
+    "suspended": {
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-Suspend",
+              "attributeName": "Suspended"
+            }
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    },
+    "assignmentStatusType": {
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EditIdentity",
+              "attributeName": "AssignmentStatusType"
+            }
+          },
+          {
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "AssignmentStatusType"
+            },
+            "type": "accountAttribute"
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    },
+    "completeTermination": {
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EditIdentity",
+              "attributeName": "CompleteTermination"
+            }
+          },
+          {
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "CompleteTermination"
+            },
+            "type": "accountAttribute"
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    },
+    "compareAssignmentStartDate": {
+      "attributes": {
+        "firstDate": {
+          "attributes": {
+            "inputFormat": "MM/dd/yyyy HH:mm:ss",
+            "outputFormat": "ISO8601",
+            "input": {
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-ContractorFlatFile",
+                      "attributeName": "EnterpriseHireDate"
+                    }
+                  },
+                  {
+                    "attributes": {
+                      "sourceName": "CZR-Application-ContractorFlatFile",
+                      "attributeName": "AsgStartDate"
+                    },
+                    "type": "accountAttribute"
+                  },
+                  {
+                    "attributes": {
+                      "value": "none"
+                    },
+                    "type": "static"
+                  }
+                ]
+              },
+              "type": "firstValid"
+            }
+          },
+          "type": "dateFormat"
+        },
+        "secondDate": "now",
+        "operator": "lte",
+        "positiveCondition": "inPastorToday",
+        "negativeCondition": "inFuture"
+      },
+      "type": "dateCompare"
+    },
+    "identityTermDt": {
+      "type": "conditional",
+      "attributes": {
+        "idnTermDate": {
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "attributes": {
+                  "sourceName": "CZR-Application-ContractorFlatFile",
+                  "attributeName": "TerminationDate"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          },
+          "type": "firstValid"
+        },
+        "expression": "$idnTermDate eq none",
+        "positiveCondition": "none",
+        "negativeCondition": {
+          "type": "dateCompare",
+          "attributes": {
+            "firstDate": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "+1d",
+                "roundUp": true,
+                "requiresPeriodicRefresh": true,
+                "input": {
+                  "attributes": {
+                    "requiresPeriodicRefresh": true,
+                    "input": {
+                      "type": "firstValid",
+                      "attributes": {
+                        "values": [
+                          {
+                            "type": "accountAttribute",
+                            "attributes": {
+                              "sourceName": "CZR-Application-EditIdentity",
+                              "attributeName": "TerminationDate"
+                            }
+                          },
+                          {
+                            "attributes": {
+                              "sourceName": "CZR-Application-ContractorFlatFile",
+                              "attributeName": "TerminationDate"
+                            },
+                            "type": "accountAttribute"
+                          },
+                          "12/31/2999 00:00:00"
+                        ]
+                      }
+                    },
+                    "inputFormat": "MM/dd/yyyy HH:mm:ss",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                }
+              }
+            },
+            "secondDate": "now",
+            "operator": "gt",
+            "positiveCondition": "future",
+            "negativeCondition": "past"
+          }
+        }
+      }
+    },
+    "value": "#if($assignmentStatusType.equalsIgnoreCase(\"Active\") && $compareAssignmentStartDate == 'inPastorToday')active#elseif($assignmentStatusType.equalsIgnoreCase(\"Active\") && $compareAssignmentStartDate == 'inFuture')prehire#elseif($assignmentStatusType.equalsIgnoreCase(\"Inactive\"))inactive#elseif($suspended.equalsIgnoreCase(\"Y\") && $statusType.equalsIgnoreCase(\"inactive\"))suspend#{else}default#end"
+  },
+  "internal": false
+}

@@ -1,0 +1,9 @@
+{
+  "id": "86336a99-940d-493c-8ba6-15e64206cd2e",
+  "name": "Manny-Test",
+  "type": "static",
+  "attributes": {
+    "value": "#if($identity && $identity.lifecycleState)$identity.lifecycleState#{else}NO_LCS#end"
+  },
+  "internal": false
+}

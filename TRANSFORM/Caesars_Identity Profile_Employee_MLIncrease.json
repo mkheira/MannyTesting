@@ -1,0 +1,74 @@
+{
+  "id": "6476e140-769a-4baa-aa61-5ed183f090ce",
+  "name": "Caesars_Identity Profile_Employee_MLIncrease",
+  "type": "static",
+  "attributes": {
+    "adML": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+              "attributeName": "extensionAttribute9"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "identityML": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-OICWebservice",
+              "attributeName": "ManagementLevel"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "not"
+            }
+          }
+        ]
+      }
+    },
+    "newML": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_MgntLvlFlag"
+      }
+    },
+    "oldML": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "static",
+            "attributes": {
+              "value": "$oldValue"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "value": "#if($oldML == \"none\")false#elseif($oldML == \"false\" && $newML == \"true\" && $adML != $identityML)true#elseif($oldML == \"true\" && $newML == \"true\" && $adML != $identityML)true#{else}false#end"
+  },
+  "internal": false
+}

@@ -1,0 +1,83 @@
+{
+  "id": "567eee88-4a4b-44f3-82bd-6d83c83b730a",
+  "name": "CZR_ActiveDirectory_Calculate_Description",
+  "type": "static",
+  "attributes": {
+    "workerType": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "workerType"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "empType": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "employeeType"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "jobTitle": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "jobTitle"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "department": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "department"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "lastFourPersonNumber": {
+      "type": "rule",
+      "attributes": {
+        "name": "Cloud Services Deployment Utility",
+        "operation": "getEndOfString",
+        "numChars": "4",
+        "input": {
+          "type": "identityAttribute",
+          "attributes": {
+            "name": "uid"
+          }
+        }
+      }
+    },
+    "value": "#if($workerType == \"Employee\" && ($empType == \"E\" || $empType == \"P\"))$jobTitle *$lastFourPersonNumber#elseif($workerType == \"Contractor\")#if($empType == \"Special Firms\")Call Center *$lastFourPersonNumber#elseif($empType == \"Regulator\")Contractor *$lastFourPersonNumber#elseif($empType == \"Board of Directors\")Board of Directors *$lastFourPersonNumber#{else}#if($empType==\"none\")$lastFourPersonNumber#{else}$empType *$lastFourPersonNumber#end#end#end"
+  },
+  "internal": false
+}

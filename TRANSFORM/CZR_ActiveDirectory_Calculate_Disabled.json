@@ -1,0 +1,15 @@
+{
+  "id": "272dbd63-61d2-4236-972a-5462eb79a0ce",
+  "name": "CZR_ActiveDirectory_Calculate_Disabled",
+  "type": "static",
+  "attributes": {
+    "lcs": {
+      "type": "identityAttribute",
+      "attributes": {
+        "name": "cloudLifecycleState"
+      }
+    },
+    "value": "#if($lcs==\"active\")false#{else}true#end"
+  },
+  "internal": false
+}

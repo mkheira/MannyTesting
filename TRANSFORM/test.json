@@ -1,0 +1,15 @@
+{
+  "id": "fbbdd43c-ea0d-47b4-86fd-3b1a14d81501",
+  "name": "test",
+  "type": "substring",
+  "attributes": {
+    "input": {
+      "type": "identityAttribute",
+      "attributes": {
+        "name": "workerType"
+      }
+    },
+    "begin": -1
+  },
+  "internal": false
+}

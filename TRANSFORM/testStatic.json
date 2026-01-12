@@ -1,0 +1,9 @@
+{
+  "id": "2c78e656-b51e-4b6b-a531-d65d48793ab8",
+  "name": "testStatic",
+  "type": "static",
+  "attributes": {
+    "value": "123"
+  },
+  "internal": false
+}

@@ -1,0 +1,40 @@
+{
+  "id": "a3de92e4-ed52-452c-820d-6602db7a1bb5",
+  "name": "CZR_ActiveDirectory_Calculate_Mail",
+  "type": "static",
+  "attributes": {
+    "workerType": {
+      "type": "identityAttribute",
+      "attributes": {
+        "attributeName": "workerType"
+      }
+    },
+    "exchangeMailboxRequired": {
+      "type": "identityAttribute",
+      "attributes": {
+        "attributeName": "exchangeMailboxRequired"
+      }
+    },
+    "cnowExchangeMailboxRequired": {
+      "type": "identityAttribute",
+      "attributes": {
+        "attributeName": "cnowExchangeMailboxRequired"
+      }
+    },
+    "managementLevelFlag": {
+      "type": "identityAttribute",
+      "attributes": {
+        "attributeName": "managementLevelFlag"
+      }
+    },
+    "userPrincipalName": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+        "attributeName": "userPrincipalName"
+      }
+    },
+    "value": "#if($workerType == \"Employee\" && $managementLevelFlag == \"true\")$userPrincipalName#elseif($workerType == \"Contractor\" && $exchangeMailboxRequired == \"true\")$userPrincipalName#elseif($workerType == \"Employee\" && $managementLevelFlag == \"false\" && $cnowExchangeMailboxRequired == \"true\")$userPrincipalName#{else}nomail#end"
+  },
+  "internal": false
+}

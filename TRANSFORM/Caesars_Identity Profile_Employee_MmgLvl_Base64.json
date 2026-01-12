@@ -1,0 +1,15 @@
+{
+  "id": "a04e498a-dd3b-4454-bd77-fcca56d1ff13",
+  "name": "Caesars_Identity Profile_Employee_MmgLvl_Base64",
+  "type": "base64Encode",
+  "attributes": {
+    "input": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-OICWebservice",
+        "attributeName": "ManagementLevel"
+      }
+    }
+  },
+  "internal": false
+}

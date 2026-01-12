@@ -1,0 +1,15 @@
+{
+  "id": "a4fff108-af13-4d80-8646-d9ebf991784a",
+  "name": "Contractor_TerminationDate_Epoch_Converter",
+  "type": "static",
+  "attributes": {
+    "terminationDate": {
+      "type": "identityAttribute",
+      "attributes": {
+        "name": "contractorTerminationDate"
+      }
+    },
+    "value": "$terminationDate"
+  },
+  "internal": false
+}

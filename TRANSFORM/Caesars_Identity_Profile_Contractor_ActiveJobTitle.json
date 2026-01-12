@@ -1,0 +1,51 @@
+{
+  "id": "6b34e588-3299-47a6-afd4-246ef95167ba",
+  "name": "Caesars_Identity_Profile_Contractor_ActiveJobTitle",
+  "type": "conditional",
+  "attributes": {
+    "expression": "$assignmentStatusType eq Active",
+    "positiveCondition": "$positionName",
+    "negativeCondition": "none",
+    "assignmentStatusType": {
+      "attributes": {
+        "values": [
+          {
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "AssignmentStatusType"
+            },
+            "type": "accountAttribute"
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    },
+    "positionName": {
+      "attributes": {
+        "values": [
+          {
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "PositionName"
+            },
+            "type": "accountAttribute"
+          },
+          {
+            "attributes": {
+              "value": "none"
+            },
+            "type": "static"
+          }
+        ]
+      },
+      "type": "firstValid"
+    }
+  },
+  "internal": false
+}

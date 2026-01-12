@@ -1,0 +1,113 @@
+{
+  "id": "29e87f66-20e8-4dd4-8b09-02233d1fbc2c",
+  "name": "Caesars_Identity Profile_Employee_isGT21Days",
+  "type": "dateCompare",
+  "attributes": {
+    "empType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "WorkerType"
+                }
+              },
+              {
+                "attributes": {
+                  "value": "none"
+                },
+                "type": "static"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "assignmentStartDate": {
+      "type": "static",
+      "attributes": {
+        "assStDt": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "AsgStartDate"
+                }
+              },
+              {
+                "type": "static",
+                "attributes": {
+                  "value": "none"
+                }
+              }
+            ]
+          }
+        },
+        "proStDt": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "ProjectedStartDate"
+                }
+              },
+              {
+                "type": "static",
+                "attributes": {
+                  "value": "none"
+                }
+              }
+            ]
+          }
+        },
+        "value": "#if($empType==\"E\")$assStDt#{else}$proStDt#end"
+      }
+    },
+    "firstDate": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "-21d",
+        "roundUp": true,
+        "requiresPeriodicRefresh": true,
+        "input": {
+          "attributes": {
+            "requiresPeriodicRefresh": true,
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "attributes": {
+                      "value": "#if($assignmentStartDate == \"none\")2999-12-31#{else}$assignmentStartDate#end"
+                    },
+                    "type": "static"
+                  },
+                  "2999-12-31"
+                ]
+              }
+            },
+            "inputFormat": "yyyy-MM-dd",
+            "outputFormat": "ISO8601"
+          },
+          "type": "dateFormat"
+        }
+      }
+    },
+    "secondDate": "now",
+    "operator": "gt",
+    "positiveCondition": "true",
+    "negativeCondition": "false"
+  },
+  "internal": false
+}

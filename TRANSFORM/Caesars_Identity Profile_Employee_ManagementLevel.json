@@ -1,0 +1,10 @@
+{
+  "id": "277e6624-4750-4c58-8bfe-605552873512",
+  "name": "Caesars_Identity Profile_Employee_ManagementLevel",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-OICWebservice",
+    "attributeName": "ManagementLevel"
+  },
+  "internal": false
+}

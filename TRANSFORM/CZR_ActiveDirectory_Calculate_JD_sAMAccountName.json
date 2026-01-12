@@ -1,0 +1,18 @@
+{
+  "id": "6a101388-da33-4efe-9892-c4db7e3ee57b",
+  "name": "CZR_ActiveDirectory_Calculate_JD_sAMAccountName",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      "JD-",
+      {
+        "attributes": {
+          "attributeName": "sAMAccountName",
+          "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+        },
+        "type": "accountAttribute"
+      }
+    ]
+  },
+  "internal": false
+}
