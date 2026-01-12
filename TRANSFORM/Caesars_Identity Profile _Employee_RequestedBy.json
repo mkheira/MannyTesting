@@ -1,0 +1,11 @@
+{
+  "id": "5cd7ffe3-c1a3-4bbd-adcb-3ac8258ca56e",
+  "name": "Caesars_Identity Profile _Employee_RequestedBy",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+    "attributeName": "RequestedBy",
+    "accountPropertyFilter": "(Status == \"Active\")"
+  },
+  "internal": false
+}

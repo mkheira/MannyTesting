@@ -1,0 +1,11 @@
+{
+  "id": "b2b36004-4855-4bf2-8413-0a5c96b5ee4a",
+  "name": "Caesars_Identity Profile _Emp_CNOWTaskNumber",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+    "attributeName": "TaskNumber",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

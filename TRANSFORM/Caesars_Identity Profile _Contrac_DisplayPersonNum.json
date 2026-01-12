@@ -1,0 +1,25 @@
+{
+  "id": "3e279cc4-89bc-4008-9dc4-8ff3d7aa4c1a",
+  "name": "Caesars_Identity Profile _Contrac_DisplayPersonNum",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "DisplayName"
+        }
+      },
+      " - ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "PersonNumber"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

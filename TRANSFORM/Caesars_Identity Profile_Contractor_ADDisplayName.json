@@ -1,0 +1,38 @@
+{
+  "id": "532d4312-4d2b-4bf5-bbcc-c85c764ef2e7",
+  "name": "Caesars_Identity Profile_Contractor_ADDisplayName",
+  "type": "static",
+  "attributes": {
+    "preferredName": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "KnownAs"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "firstName": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-ContractorFlatFile",
+        "attributeName": "FirstName"
+      }
+    },
+    "lastName": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-ContractorFlatFile",
+        "attributeName": "LastName"
+      }
+    },
+    "value": "#if($preferredName==\"none\")$firstName $lastName#{else}$preferredName $lastName#end"
+  },
+  "internal": false
+}

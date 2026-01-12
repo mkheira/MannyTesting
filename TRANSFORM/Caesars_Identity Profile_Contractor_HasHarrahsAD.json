@@ -1,0 +1,29 @@
+{
+  "id": "5b7051d3-eb46-425a-9471-b803b0515560",
+  "name": "Caesars_Identity Profile_Contractor_HasHarrahsAD",
+  "type": "static",
+  "attributes": {
+    "adSAMAccountName": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+              "attributeName": "sAMAccountName"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "value": "#if($adSAMAccountName == \"none\")false#{else}true#end"
+  },
+  "internal": false
+}

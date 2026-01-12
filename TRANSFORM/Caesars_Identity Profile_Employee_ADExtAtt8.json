@@ -1,0 +1,29 @@
+{
+  "id": "55926609-3469-477a-bb59-aa740429b2f1",
+  "name": "Caesars_Identity Profile_Employee_ADExtAtt8",
+  "type": "static",
+  "attributes": {
+    "workerType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "WorkerType"
+                }
+              },
+              "none"
+            ]
+          }
+        }
+      }
+    },
+    "value": "#if($workerType==\"E\")Employee#elseif($workerType==\"none\")none#{else}$workerType#end"
+  },
+  "internal": false
+}

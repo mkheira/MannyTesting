@@ -1,0 +1,11 @@
+{
+  "id": "fc704eb8-c577-4c7f-9aaf-26f5878b7efc",
+  "name": "Caesars_Identity Profile _Emp_CNOWExchangeMailReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+    "attributeName": "ExchangeMailboxRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

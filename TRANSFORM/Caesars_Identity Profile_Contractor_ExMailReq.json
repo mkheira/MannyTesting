@@ -1,0 +1,11 @@
+{
+  "id": "f45ec6fa-89ed-4f86-b0fa-a7e0f4e125df",
+  "name": "Caesars_Identity Profile_Contractor_ExMailReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+    "attributeName": "ExchangeMailboxRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

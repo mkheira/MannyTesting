@@ -1,0 +1,11 @@
+{
+  "id": "87d3bafd-e024-4c40-9093-ccb24f99a35f",
+  "name": "Caesars_Identity Profile _Emp_CNOWNetworkAccReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+    "attributeName": "NetworkAccessRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

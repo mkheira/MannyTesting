@@ -1,0 +1,79 @@
+{
+  "id": "a467c73e-5b35-4735-b54e-277a7d836b21",
+  "name": "Caesars_Identity Profile_Con_ISO8601_Format",
+  "type": "dateCompare",
+  "attributes": {
+    "firstDate": {
+      "type": "dateFormat",
+      "attributes": {
+        "inputFormat": "MM/dd/yyyy HH:mm:ss",
+        "outputFormat": "ISO8601",
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-ContractorFlatFile",
+                  "attributeName": "TerminationDate"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "secondDate": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "now+1y",
+        "roundUp": true
+      }
+    },
+    "operator": "gt",
+    "positiveCondition": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "now+1y",
+        "roundUp": true
+      }
+    },
+    "negativeCondition": {
+      "type": "dateFormat",
+      "attributes": {
+        "inputFormat": "MM/dd/yyyy HH:mm:ss",
+        "outputFormat": "ISO8601",
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-ContractorFlatFile",
+                  "attributeName": "TerminationDate"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "internal": false
+}

@@ -1,0 +1,25 @@
+{
+  "id": "43a56dbf-2d0e-45ef-b7c4-a4347eac0f64",
+  "name": "Caesars_Identity Profile _Contractor_TermDate",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-EditIdentity",
+          "attributeName": "TerminationDate"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "TerminationDate"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

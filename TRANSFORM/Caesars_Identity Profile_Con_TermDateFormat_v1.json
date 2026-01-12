@@ -1,0 +1,118 @@
+{
+  "id": "e206a8fb-558c-44ce-9622-ee33118bcd47",
+  "name": "Caesars_Identity Profile_Con_TermDateFormat_v1",
+  "type": "conditional",
+  "attributes": {
+    "idnTermDate": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EditIdentity",
+              "attributeName": "TerminationDate"
+            }
+          },
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "TerminationDate"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "expression": "$idnTermDate eq none",
+    "positiveCondition": " ",
+    "negativeCondition": {
+      "type": "dateCompare",
+      "attributes": {
+        "firstDate": {
+          "type": "dateFormat",
+          "attributes": {
+            "inputFormat": "MM/dd/yyyy HH:mm:ss",
+            "outputFormat": "ISO8601",
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-EditIdentity",
+                      "attributeName": "TerminationDate"
+                    }
+                  },
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-ContractorFlatFile",
+                      "attributeName": "TerminationDate"
+                    }
+                  },
+                  "12/31/2999 00:00:00"
+                ]
+              }
+            }
+          }
+        },
+        "secondDate": {
+          "type": "dateMath",
+          "attributes": {
+            "expression": "now+1y",
+            "roundUp": true
+          }
+        },
+        "operator": "gt",
+        "positiveCondition": {
+          "type": "dateFormat",
+          "attributes": {
+            "inputFormat": "yyyy-MM-dd",
+            "outputFormat": "yyyy-MM-dd",
+            "input": {
+              "type": "dateMath",
+              "attributes": {
+                "expression": "now+1y",
+                "roundUp": true
+              }
+            }
+          }
+        },
+        "negativeCondition": {
+          "type": "dateFormat",
+          "attributes": {
+            "inputFormat": "MM/dd/yyyy HH:mm:ss",
+            "outputFormat": "yyyy-MM-dd",
+            "input": {
+              "type": "firstValid",
+              "attributes": {
+                "values": [
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-EditIdentity",
+                      "attributeName": "TerminationDate"
+                    }
+                  },
+                  {
+                    "type": "accountAttribute",
+                    "attributes": {
+                      "sourceName": "CZR-Application-ContractorFlatFile",
+                      "attributeName": "TerminationDate"
+                    }
+                  },
+                  "12/31/2999 00:00:00"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "internal": false
+}

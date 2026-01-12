@@ -1,0 +1,50 @@
+{
+  "id": "5b572ad7-e719-44c8-9041-fc2ad6230003",
+  "name": "Caesars_Identity Profile _Emp_CNOWEmpJAId",
+  "type": "static",
+  "attributes": {
+    "requiresPeriodicRefresh": "true",
+    "harrahsAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "employeeNumber",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "jAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "employeeNumber",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JAccounts"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "value": "#if($harrahsAD != 'NA' && $jAD != 'NA')$jAD#elseif($harrahsAD != 'NA' && $jAD == 'NA')#elseif($harrahsAD == 'NA' && $jAD != 'NA')$jAD#{else}#end"
+  },
+  "internal": false
+}

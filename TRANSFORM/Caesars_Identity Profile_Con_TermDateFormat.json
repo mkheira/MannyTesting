@@ -1,0 +1,86 @@
+{
+  "id": "ff9cd664-3c2d-4065-9d91-3587c97c8dcd",
+  "name": "Caesars_Identity Profile_Con_TermDateFormat",
+  "type": "dateCompare",
+  "attributes": {
+    "firstDate": {
+      "type": "dateFormat",
+      "attributes": {
+        "inputFormat": "MM/dd/yyyy HH:mm:ss",
+        "outputFormat": "ISO8601",
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-ContractorFlatFile",
+                  "attributeName": "TerminationDate"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "secondDate": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "now+1y",
+        "roundUp": true
+      }
+    },
+    "operator": "gt",
+    "positiveCondition": {
+      "type": "dateFormat",
+      "attributes": {
+        "inputFormat": "yyyy-MM-dd",
+        "outputFormat": "yyyy-MM-dd",
+        "input": {
+          "type": "dateMath",
+          "attributes": {
+            "expression": "now+1y",
+            "roundUp": true
+          }
+        }
+      }
+    },
+    "negativeCondition": {
+      "type": "dateFormat",
+      "attributes": {
+        "inputFormat": "MM/dd/yyyy HH:mm:ss",
+        "outputFormat": "yyyy-MM-dd",
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-EditIdentity",
+                  "attributeName": "TerminationDate"
+                }
+              },
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-ContractorFlatFile",
+                  "attributeName": "TerminationDate"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "internal": false
+}

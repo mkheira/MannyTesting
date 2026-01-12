@@ -1,0 +1,9 @@
+{
+  "id": "2303033a-cc69-4ddd-949d-f4b418b4590c",
+  "name": "Caesars_Identity Profile_Employee_ActiveLocCode",
+  "type": "static",
+  "attributes": {
+    "value": "#set($filteredValues = [])#foreach($link in $identity.getLinksByAppIdOrName(\"9f46913b2c9b4da5bc40734abda20886\",null))#set($assList = $link.getAttribute(\"assignments\"))#if($assList && $assList.size() > 0)#foreach($ass in $assList)#set($assArray = $ass.split('##'))#if($assArray.size() > 0)#if($assArray[6] && $assArray[6].equalsIgnoreCase(\"ACTIVE\") && !$filteredValues.contains($assArray[3]))#set($return = $filteredValues.add($assArray[3]))#end#end#end#end#end#if($filteredValues.size() >0)#set($output = $filteredValues.toString().replace('[','').replace(']',''))$output#{else}No Active Locationcodes#end"
+  },
+  "internal": false
+}

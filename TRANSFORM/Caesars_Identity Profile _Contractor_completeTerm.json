@@ -1,0 +1,25 @@
+{
+  "id": "5c96aba9-bf14-41bd-a93b-85b72eb2c8b6",
+  "name": "Caesars_Identity Profile _Contractor_completeTerm",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-EditIdentity",
+          "attributeName": "CompleteTermination"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "CompleteTermination"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

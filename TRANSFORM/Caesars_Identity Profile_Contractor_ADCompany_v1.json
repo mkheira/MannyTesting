@@ -1,0 +1,106 @@
+{
+  "id": "6d7abe7d-bdfc-4d17-af0c-ec91f6b6747c",
+  "name": "Caesars_Identity Profile_Contractor_ADCompany_v1",
+  "type": "static",
+  "attributes": {
+    "employeeType": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "WorkerType"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "propertyCode": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "PropertyCode"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "legalEmployerName": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "LegalEmployerName"
+            }
+          },
+          {
+            "type": "static",
+            "attributes": {
+              "value": "none"
+            }
+          }
+        ]
+      }
+    },
+    "company": {
+      "type": "concat",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "PropertyCode"
+            }
+          },
+          ": ",
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "LegalEmployerName"
+            }
+          }
+        ]
+      }
+    },
+    "companyForRegulator": {
+      "type": "concat",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "PropertyCode"
+            }
+          },
+          ": Regulator"
+        ]
+      }
+    },
+    "value": "#if($employeeType=='Regulator')$companyForRegulator#elseif($propertyCode=='none' || $legalEmployerName=='none')#{else}$company#end"
+  },
+  "internal": false
+}

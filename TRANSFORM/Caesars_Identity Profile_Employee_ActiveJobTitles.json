@@ -1,0 +1,9 @@
+{
+  "id": "57ab324f-3205-40af-974f-4389b27c3ab2",
+  "name": "Caesars_Identity Profile_Employee_ActiveJobTitles",
+  "type": "static",
+  "attributes": {
+    "value": "#set($filteredValues = [])#foreach($link in $identity.getLinksByAppIdOrName(\"9f46913b2c9b4da5bc40734abda20886\",null))#set($assList = $link.getAttribute(\"assignments\"))#if($assList && $assList.size() > 0)#foreach($ass in $assList)#set($assArray = $ass.split('##'))#if($assArray.size() > 0)#if($assArray[6] && $assArray[6].equalsIgnoreCase(\"ACTIVE\") && !$filteredValues.contains($assArray[1]))#set($return = $filteredValues.add($assArray[1]))#end#end#end#end#end#if($filteredValues.size() >0)#set($output = $filteredValues.toString().replace('[','').replace(']',''))$output#{else}No Active Jobtitles#end"
+  },
+  "internal": false
+}

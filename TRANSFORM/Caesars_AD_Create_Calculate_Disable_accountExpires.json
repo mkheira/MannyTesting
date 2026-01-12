@@ -1,0 +1,53 @@
+{
+  "id": "e752c19f-6c6b-405c-9ae6-5bcbee8ea44f",
+  "name": "Caesars_AD_Create_Calculate_Disable_accountExpires",
+  "type": "static",
+  "attributes": {
+    "terminationDate": {
+      "type": "identityAttribute",
+      "attributes": {
+        "name": "terminationDate"
+      }
+    },
+    "terminationDatePlusOne": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "+1d",
+        "roundUp": true,
+        "requiresPeriodicRefresh": true,
+        "input": {
+          "type": "identityAttribute",
+          "attributes": {
+            "name": "terminationDate"
+          }
+        }
+      }
+    },
+    "formattedNow": {
+      "type": "dateFormat",
+      "attributes": {
+        "input": "now",
+        "inputFormat": "ISO8601",
+        "outputFormat": "yyyy-MM-dd"
+      }
+    },
+    "currentDatePlusOne": {
+      "type": "dateMath",
+      "attributes": {
+        "expression": "+1d",
+        "roundUp": true,
+        "requiresPeriodicRefresh": true,
+        "input": {
+          "type": "dateFormat",
+          "attributes": {
+            "input": "now",
+            "inputFormat": "ISO8601",
+            "outputFormat": "yyyy-MM-dd"
+          }
+        }
+      }
+    },
+    "value": "#if($terminationDate && $terminationDate != \"\")$terminationDatePlusOne#{else}$currentDatePlusOne#end"
+  },
+  "internal": false
+}

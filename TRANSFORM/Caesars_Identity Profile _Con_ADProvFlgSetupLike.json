@@ -1,0 +1,72 @@
+{
+  "id": "fd4a6a3b-4187-4f83-9c98-d9374ada6f32",
+  "name": "Caesars_Identity Profile _Con_ADProvFlgSetupLike",
+  "type": "static",
+  "attributes": {
+    "setupLikePersonId": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+              "attributeName": "SetupLikePerson",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "networkAccessRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+              "attributeName": "NetworkAccessRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "exchangeMailboxRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+              "attributeName": "ExchangeMailboxRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "assignmentStatusType": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "AssignmentStatusType"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "value": "#if($assignmentStatusType.equalsIgnoreCase(\"Active\") && $setupLikePersonId != \"none\" && ($networkAccessRequired == \"true\" || $exchangeMailboxRequired == \"true\"))H#{else}N#end"
+  },
+  "internal": false
+}

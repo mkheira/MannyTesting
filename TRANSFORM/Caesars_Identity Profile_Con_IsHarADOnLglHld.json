@@ -1,0 +1,35 @@
+{
+  "id": "3d894f53-0fe1-4f21-ac2a-84ba1340445c",
+  "name": "Caesars_Identity Profile_Con_IsHarADOnLglHld",
+  "type": "static",
+  "attributes": {
+    "legalHold": {
+      "type": "indexOf",
+      "attributes": {
+        "substring": "LEGAL HOLD",
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                  "attributeName": "description"
+                }
+              },
+              {
+                "type": "static",
+                "attributes": {
+                  "value": "none"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "value": "#if($legalHold == -1)false#{else}true#end"
+  },
+  "internal": false
+}

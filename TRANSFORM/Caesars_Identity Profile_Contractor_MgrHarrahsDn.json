@@ -1,0 +1,12 @@
+{
+  "id": "2f98afea-3e7a-42a6-a1ea-a272e7f9993d",
+  "name": "Caesars_Identity Profile_Contractor_MgrHarrahsDn",
+  "type": "rule",
+  "attributes": {
+    "name": "Cloud Services Deployment Utility",
+    "operation": "getReferenceIdentityAttribute",
+    "uid": "manager",
+    "attributeName": "harrahsDn"
+  },
+  "internal": false
+}

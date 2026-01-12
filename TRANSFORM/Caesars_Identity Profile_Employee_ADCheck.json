@@ -1,0 +1,98 @@
+{
+  "id": "f5849b66-2b44-4cc4-81c9-e012aadf2a18",
+  "name": "Caesars_Identity Profile_Employee_ADCheck",
+  "type": "static",
+  "attributes": {
+    "requiresPeriodicRefresh": "true",
+    "harrahsAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "williamHillAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-WilliamHill"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "jAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JAccounts"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JA-Accounts"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JB-Accounts"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JC-Accounts"
+                },
+                "type": "accountAttribute"
+              },
+              {
+                "attributes": {
+                  "attributeName": "sAMAccountName",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JD-Accounts"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "value": "#if($harrahsAD != 'NA' && $williamHillAD != 'NA' && $jAD != 'NA')Harrahs & WilliamHill & JAccount#elseif($harrahsAD != 'NA' && $williamHillAD != 'NA' && $jAD == 'NA')Harrahs & WilliamHill#elseif($harrahsAD != 'NA' && $williamHillAD == 'NA' && $jAD != 'NA')Harrahs & JAccount#elseif($harrahsAD == 'NA' && $williamHillAD != 'NA' && $jAD != 'NA')WilliamHill & JAccount#elseif($harrahsAD != 'NA' && $williamHillAD == 'NA' && $jAD == 'NA')Harrahs#elseif($harrahsAD == 'NA' && $williamHillAD != 'NA' && $jAD == 'NA')WilliamHill#elseif($harrahsAD == 'NA' && $williamHillAD == 'NA' && $jAD != 'NA')JAccount#{else}none#end"
+  },
+  "internal": false
+}

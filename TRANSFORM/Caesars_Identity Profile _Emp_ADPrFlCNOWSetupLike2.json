@@ -1,0 +1,83 @@
+{
+  "id": "79bdda0f-a83f-48fa-a52d-84a430b19c4f",
+  "name": "Caesars_Identity Profile _Emp_ADPrFlCNOWSetupLike2",
+  "type": "static",
+  "attributes": {
+    "setupLikePersonId": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+              "attributeName": "SetupLikePerson",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "networkAccessRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+              "attributeName": "NetworkAccessRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "exchangeMailboxRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+              "attributeName": "ExchangeMailboxRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "excludedLocationFlag": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_ExclLocFlag"
+      }
+    },
+    "assignmentStatusType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "AssignmentStatusType"
+                }
+              },
+              "none"
+            ]
+          }
+        }
+      }
+    },
+    "value": "#if($assignmentStatusType == 'ACTIVE' && (($networkAccessRequired == 'true' && $setupLikePersonId != 'none') || ($exchangeMailboxRequired == 'true' && $networkAccessRequired == 'false')))WH#{else}N#end"
+  },
+  "internal": false
+}

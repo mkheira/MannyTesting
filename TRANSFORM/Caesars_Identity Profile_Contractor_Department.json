@@ -1,0 +1,25 @@
+{
+  "id": "67149d6b-c079-4a81-8eee-c4208351075a",
+  "name": "Caesars_Identity Profile_Contractor_Department",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "LocationCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "DepartmentName"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

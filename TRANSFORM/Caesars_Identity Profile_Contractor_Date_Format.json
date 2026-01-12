@@ -1,0 +1,10 @@
+{
+  "id": "37ab2e16-6a29-48c5-8aa9-6144200a00ca",
+  "name": "Caesars_Identity Profile_Contractor_Date_Format",
+  "type": "dateFormat",
+  "attributes": {
+    "inputFormat": "MM/dd/yyyy HH:mm:ss",
+    "outputFormat": "yyyy-MM-dd"
+  },
+  "internal": false
+}

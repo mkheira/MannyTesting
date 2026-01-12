@@ -1,0 +1,23 @@
+{
+  "id": "2b20dad1-5f9a-4c53-985a-fa8374b83d44",
+  "name": "Caesars_Identity Profile_Contractor_Email",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "attributes": {
+          "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+          "attributeName": "mail"
+        },
+        "type": "accountAttribute"
+      },
+      {
+        "attributes": {
+          "value": "no email"
+        },
+        "type": "static"
+      }
+    ]
+  },
+  "internal": false
+}

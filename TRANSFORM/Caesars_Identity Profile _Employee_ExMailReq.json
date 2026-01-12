@@ -1,0 +1,11 @@
+{
+  "id": "0636a526-031d-4ec6-93dc-1ebc0879e115",
+  "name": "Caesars_Identity Profile _Employee_ExMailReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+    "attributeName": "ExchangeMailboxRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

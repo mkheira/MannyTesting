@@ -1,0 +1,11 @@
+{
+  "id": "9ad0b4eb-26c2-4e93-9962-11ea34d6db2c",
+  "name": "Caesars_Identity Profile _Employee_SetupLikePerId",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+    "attributeName": "SetupLikePerson",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

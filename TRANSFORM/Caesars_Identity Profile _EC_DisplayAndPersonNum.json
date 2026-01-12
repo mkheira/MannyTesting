@@ -1,0 +1,25 @@
+{
+  "id": "b8a05bd1-79a1-4e8d-bd38-5271dd511a08",
+  "name": "Caesars_Identity Profile _EC_DisplayAndPersonNum",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "FullName"
+        }
+      },
+      " - ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "PersonNumber"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "a62bfa5b-4ccc-4a9b-92fa-63693bf87b29",
+  "name": "Caesars_Identity Profile _Emp_CNOWSetupLikePerId",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+    "attributeName": "SetupLikePerson",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

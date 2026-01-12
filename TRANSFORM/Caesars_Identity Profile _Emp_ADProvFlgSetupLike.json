@@ -1,0 +1,89 @@
+{
+  "id": "30d39206-4def-4452-93d0-7e2c24fe9b7e",
+  "name": "Caesars_Identity Profile _Emp_ADProvFlgSetupLike",
+  "type": "static",
+  "attributes": {
+    "setupLikePersonId": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+              "attributeName": "SetupLikePerson",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "networkAccessRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+              "attributeName": "NetworkAccessRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "exchangeMailboxRequired": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+              "attributeName": "ExchangeMailboxRequired",
+              "accountPropertyFilter": "(Status == \"active\")"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "excludedLocationFlag": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_ExclLocFlag"
+      }
+    },
+    "mappedADDomain": {
+      "type": "reference",
+      "attributes": {
+        "id": "Caesars_Identity Profile_Employee_MappedADDomain"
+      }
+    },
+    "assignmentStatusType": {
+      "type": "upper",
+      "attributes": {
+        "input": {
+          "type": "firstValid",
+          "attributes": {
+            "values": [
+              {
+                "type": "accountAttribute",
+                "attributes": {
+                  "sourceName": "CZR-Application-OICWebservice",
+                  "attributeName": "AssignmentStatusType"
+                }
+              },
+              "none"
+            ]
+          }
+        }
+      }
+    },
+    "value": "#if($assignmentStatusType == \"ACTIVE\" && $excludedLocationFlag == \"false\" && $setupLikePersonId != \"none\" && ($networkAccessRequired == \"true\" || $exchangeMailboxRequired == \"true\"))#if($mappedADDomain == \"CZR-Application-ActiveDirectory-Harrahs\")H#{else}I#end#{else}N#end"
+  },
+  "internal": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "4b702420-dfba-41f2-b87a-d2762f3deed9",
+  "name": "Caesars_Identity Profile_Contractor_SetupLikePerId",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+    "attributeName": "SetupLikePerson",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

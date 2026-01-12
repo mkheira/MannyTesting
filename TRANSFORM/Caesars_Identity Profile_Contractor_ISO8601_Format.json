@@ -1,0 +1,10 @@
+{
+  "id": "11bb1fa2-bb82-42a8-b639-f48018f382e6",
+  "name": "Caesars_Identity Profile_Contractor_ISO8601_Format",
+  "type": "dateFormat",
+  "attributes": {
+    "inputFormat": "MM/dd/yyyy HH:mm:ss",
+    "outputFormat": "ISO8601"
+  },
+  "internal": false
+}

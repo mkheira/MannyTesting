@@ -1,0 +1,11 @@
+{
+  "id": "465d64dc-1000-40dd-8e9d-61c77bcbbf0b",
+  "name": "Caesars_Identity Profile _Emp_CNOWTaskSysId_WH",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+    "attributeName": "TaskSysId",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

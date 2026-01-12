@@ -1,0 +1,18 @@
+{
+  "id": "cf48a3d2-7228-4e13-8c7c-0e3016e9a5ea",
+  "name": "Caesars_Identity Profile_Emp_CnowRequestedByEmail",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+          "attributeName": "RequestedByEmail"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

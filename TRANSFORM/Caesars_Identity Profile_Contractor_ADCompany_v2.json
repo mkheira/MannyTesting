@@ -1,0 +1,25 @@
+{
+  "id": "68d2b49c-6351-46e0-935f-014827da9da2",
+  "name": "Caesars_Identity Profile_Contractor_ADCompany_v2",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "PropertyCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "Division"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

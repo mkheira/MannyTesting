@@ -1,0 +1,38 @@
+{
+  "id": "bbe1fb5d-0c68-4e10-8bec-50bac76a19c8",
+  "name": "Caesars_Identity Profile_Employee_ADDisplayName",
+  "type": "static",
+  "attributes": {
+    "preferredName": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-OICWebservice",
+              "attributeName": "KnownAs"
+            }
+          },
+          "none"
+        ]
+      }
+    },
+    "firstName": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-OICWebservice",
+        "attributeName": "FirstName"
+      }
+    },
+    "lastName": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-OICWebservice",
+        "attributeName": "LastName"
+      }
+    },
+    "value": "#if($preferredName==\"none\")$firstName $lastName#{else}$preferredName $lastName#end"
+  },
+  "internal": false
+}

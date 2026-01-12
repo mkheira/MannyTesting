@@ -1,0 +1,25 @@
+{
+  "id": "ffe8b589-7e64-47c7-a886-119dadac09ea",
+  "name": "Caesars_Identity Profile_Contractor_ADCompany",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "PropertyCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "LegalEmployerName"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

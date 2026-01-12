@@ -1,0 +1,25 @@
+{
+  "id": "a679f720-26c7-4647-99e5-f3de55d44bbe",
+  "name": "Caesars_Identity Profile_Employee_ADDepartment",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "LocationCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "DepartmentName"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

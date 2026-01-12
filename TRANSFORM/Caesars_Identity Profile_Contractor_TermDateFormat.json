@@ -1,0 +1,31 @@
+{
+  "id": "9b409f7f-f1bd-4559-a6ed-94f0354661fe",
+  "name": "Caesars_Identity Profile_Contractor_TermDateFormat",
+  "type": "dateFormat",
+  "attributes": {
+    "inputFormat": "MM/dd/yyyy HH:mm:ss",
+    "outputFormat": "yyyy-MM-dd",
+    "input": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-EditIdentity",
+              "attributeName": "TerminationDate"
+            }
+          },
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "TerminationDate"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "internal": false
+}

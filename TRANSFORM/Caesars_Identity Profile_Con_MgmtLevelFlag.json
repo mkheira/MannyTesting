@@ -1,0 +1,11 @@
+{
+  "id": "4affcc49-68d4-4f37-9e52-5444f2782cdc",
+  "name": "Caesars_Identity Profile_Con_MgmtLevelFlag",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-CNOWEmployeeConversion",
+    "attributeName": "EmpMgmtLevelFlag",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

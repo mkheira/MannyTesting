@@ -1,0 +1,25 @@
+{
+  "id": "4dffb0fb-0009-416e-bd33-f812896575bd",
+  "name": "Caesars_Identity Profile_Contractor_AplicationName",
+  "type": "static",
+  "attributes": {
+    "id": {
+      "type": "firstValid",
+      "attributes": {
+        "values": [
+          {
+            "type": "accountAttribute",
+            "attributes": {
+              "sourceName": "CZR-Application-ContractorFlatFile",
+              "attributeName": "PersonNumber"
+            }
+          },
+          "none"
+        ],
+        "ignoreErrors": false
+      }
+    },
+    "value": "#if($id!=\"none\")ContractorApp#end"
+  },
+  "internal": false
+}

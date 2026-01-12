@@ -1,0 +1,24 @@
+{
+  "id": "39001d0d-f3ea-435d-879c-2bd42d134a6f",
+  "name": "Caesars_Identity Profile_Contractor_ADProvFlag",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "Network Access Required"
+        },
+        "type": "accountAttribute"
+      },
+      {
+        "attributes": {
+          "value": "none"
+        },
+        "type": "static"
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

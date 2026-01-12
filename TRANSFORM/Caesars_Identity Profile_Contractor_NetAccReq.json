@@ -1,0 +1,11 @@
+{
+  "id": "c2b0be44-7837-45d9-9bb7-dcf234d09209",
+  "name": "Caesars_Identity Profile_Contractor_NetAccReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-ContractorNetworkAccessRequest",
+    "attributeName": "NetworkAccessRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

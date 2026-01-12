@@ -1,0 +1,91 @@
+{
+  "id": "9cba5aa0-2f76-4653-9ab6-1caa9c75696e",
+  "name": "Caesars_Identity Profile _Emp_CNOWLegalHold",
+  "type": "static",
+  "attributes": {
+    "requiresPeriodicRefresh": "true",
+    "descriptionAD": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "description",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "dummyStatus": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "LegalHoldCalculation",
+                  "sourceName": "CZR-Application-CNOWLegalHoldRequest",
+                  "accountPropertyFilter": "(Status == \"active\")"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "status": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "LegalHoldCalculation",
+                  "sourceName": "CZR-Application-CNOWLegalHoldRequest"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "extAtt": {
+      "attributes": {
+        "input": {
+          "attributes": {
+            "values": [
+              {
+                "attributes": {
+                  "attributeName": "msExchExtensionAttribute41",
+                  "sourceName": "CZR-Application-ActiveDirectory-Harrahs"
+                },
+                "type": "accountAttribute"
+              },
+              "NA"
+            ]
+          },
+          "type": "firstValid"
+        }
+      },
+      "type": "trim"
+    },
+    "value": "#if($status == 'NA' && $dummyStatus == 'NA' && !($descriptionAD.toString().contains(\"LEGAL HOLD\")))#elseif($status == 'NA' && $dummyStatus == 'NA' && ($descriptionAD.toString().contains(\"LEGAL HOLD\")))#elseif($status != 'NA' && $dummyStatus == 'NA' && !($descriptionAD.toString().contains(\"LEGAL HOLD\")) && $extAtt == 'NA')#elseif($status != 'NA' && $dummyStatus == 'NA' && ($descriptionAD.toString().contains(\"LEGAL HOLD\")))L#elseif($status != 'NA' && $dummyStatus != 'NA' && !($descriptionAD.toString().contains(\"LEGAL HOLD\")) && $extAtt == 'NA')L#elseif($status != 'NA' && $dummyStatus != 'NA' && !($descriptionAD.toString().contains(\"LEGAL HOLD\")) && $extAtt != 'NA')L#elseif($status != 'NA' && $dummyStatus == 'NA' && !($descriptionAD.toString().contains(\"LEGAL HOLD\")) && $extAtt != 'NA')L#{else}L#end"
+  },
+  "internal": false
+}

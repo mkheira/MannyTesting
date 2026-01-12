@@ -1,0 +1,25 @@
+{
+  "id": "fd248f3d-ed94-46ed-99da-a0a56de5b7b5",
+  "name": "Amar-Test",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "LocationCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "DepartmentName"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

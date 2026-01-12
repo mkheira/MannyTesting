@@ -1,0 +1,25 @@
+{
+  "id": "474572a1-a2fb-4689-8be8-b5c7b53c6b8c",
+  "name": "Caesars_Identity Profile_Employee_ADCompany",
+  "type": "concat",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "PropertyCode"
+        }
+      },
+      ": ",
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-OICWebservice",
+          "attributeName": "Division"
+        }
+      }
+    ]
+  },
+  "internal": false
+}

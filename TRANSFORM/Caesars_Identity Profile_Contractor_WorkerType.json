@@ -1,0 +1,9 @@
+{
+  "id": "221e5266-c1b9-442d-889d-372a8dd57c6d",
+  "name": "Caesars_Identity Profile_Contractor_WorkerType",
+  "type": "static",
+  "attributes": {
+    "value": "Contractor"
+  },
+  "internal": false
+}

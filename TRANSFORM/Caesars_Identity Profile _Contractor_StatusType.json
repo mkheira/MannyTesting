@@ -1,0 +1,33 @@
+{
+  "id": "71926839-a13b-4501-8e81-4177c9e1ca5c",
+  "name": "Caesars_Identity Profile _Contractor_StatusType",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWEmployeeConversion",
+          "attributeName": "EmpAsgStatusType",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-EditIdentity",
+          "attributeName": "AssignmentStatusType"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-ContractorFlatFile",
+          "attributeName": "AssignmentStatusType"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

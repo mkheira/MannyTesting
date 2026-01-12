@@ -1,0 +1,11 @@
+{
+  "id": "4867f118-6672-4a5e-94ae-e1e4673a775d",
+  "name": "Caesars_Identity Profile _Employee_NetworkAccReq",
+  "type": "accountAttribute",
+  "attributes": {
+    "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+    "attributeName": "NetworkAccessRequired",
+    "accountPropertyFilter": "(Status == \"active\")"
+  },
+  "internal": false
+}

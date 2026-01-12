@@ -1,0 +1,107 @@
+{
+  "id": "44e86889-b5d6-4bf2-a909-12ef8b4ee44f",
+  "name": "Caesars_Identity Profile_Employee_21Days",
+  "type": "static",
+  "attributes": {
+    "requiresPeriodicRefresh": "true",
+    "projStartDateMinus21": {
+      "attributes": {
+        "negativeCondition": "False",
+        "positiveCondition": "True",
+        "firstDate": "now",
+        "operator": "lt",
+        "secondDate": {
+          "attributes": {
+            "input": {
+              "attributes": {
+                "input": {
+                  "attributes": {
+                    "input": {
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "attributeName": "ProjectedStartDate",
+                              "sourceName": "CZR-Application-OICWebservice"
+                            },
+                            "type": "accountAttribute"
+                          },
+                          "2025-01-01"
+                        ]
+                      },
+                      "type": "firstValid"
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                },
+                "expression": "-21d/d",
+                "roundUp": false
+              },
+              "type": "dateMath"
+            },
+            "inputFormat": "yyyy-MM-dd'T'HH:mm",
+            "outputFormat": "ISO8601"
+          },
+          "type": "dateFormat"
+        }
+      },
+      "type": "dateCompare"
+    },
+    "employeeType": {
+      "attributes": {
+        "attributeName": "WorkerType",
+        "sourceName": "CZR-Application-OICWebservice"
+      },
+      "type": "accountAttribute"
+    },
+    "asgStartDateMinus21": {
+      "attributes": {
+        "negativeCondition": "False",
+        "positiveCondition": "True",
+        "firstDate": "now",
+        "operator": "lt",
+        "secondDate": {
+          "attributes": {
+            "input": {
+              "attributes": {
+                "input": {
+                  "attributes": {
+                    "input": {
+                      "attributes": {
+                        "values": [
+                          {
+                            "attributes": {
+                              "attributeName": "AsgStartDate",
+                              "sourceName": "CZR-Application-OICWebservice"
+                            },
+                            "type": "accountAttribute"
+                          },
+                          "2025-01-01"
+                        ]
+                      },
+                      "type": "firstValid"
+                    },
+                    "inputFormat": "yyyy-MM-dd",
+                    "outputFormat": "ISO8601"
+                  },
+                  "type": "dateFormat"
+                },
+                "expression": "-21d/d",
+                "roundUp": false
+              },
+              "type": "dateMath"
+            },
+            "inputFormat": "yyyy-MM-dd'T'HH:mm",
+            "outputFormat": "ISO8601"
+          },
+          "type": "dateFormat"
+        }
+      },
+      "type": "dateCompare"
+    },
+    "value": "#if($employeeType=='P')$projStartDateMinus21#{else}$asgStartDateMinus21#end"
+  },
+  "internal": false
+}
