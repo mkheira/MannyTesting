@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:access-request-post-approval",
+  "workflowConfig": {
+    "workflowId": "831884c9-099d-4e37-866e-97d05bc2ae64"
+  },
+  "triggerName": "Access Request Decision",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "831884c9-099d-4e37-866e-97d05bc2ae64",
+  "name": "CZR-Automatic Role Removal Workflow",
+  "type": "WORKFLOW",
+  "filter": "$.requestedItemsStatus[?(@.type == 'ROLE' && @.operation == 'Add' && @.name == 'CZR-Test Role_Automatic_Removal'&& @.comment != 'Assigning access based on date mentioned in comments.')]"
+}

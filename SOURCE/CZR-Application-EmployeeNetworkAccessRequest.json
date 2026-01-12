@@ -1,0 +1,238 @@
+{
+  "id": "bbc044967c3f469dbf054536ddbfafc8",
+  "name": "CZR-Application-EmployeeNetworkAccessRequest",
+  "type": "DelimitedFile",
+  "connectorClass": "sailpoint.connector.delimitedfile.DelimitedFileConnector",
+  "connectorScriptName": "delimited-file-angularsc",
+  "description": "Source to store employee network access requests submitted using ISC quicklink and CNOW request.",
+  "deleteThreshold": 10,
+  "provisionAsCsv": true,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "DIRECT_PERMISSIONS",
+    "DISCOVER_SCHEMA",
+    "NO_RANDOM_ACCESS"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "User",
+      "identityAttribute": "RequestedForPersonalNumber",
+      "displayAttribute": "RequestedForPersonalNumber",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "RequestedForPersonalNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Requested For Personal Number",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "RequestedBy",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Requested By",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "SetupLikePerson",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Setup Like Person",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "RequestedFor",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Requested For",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ExchangeMailboxRequired",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Exchange Mailbox Required",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "NetworkAccessRequired",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Network Access Required",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Status",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Status",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "24a33be85963434a8aa3d6ee8d6d435c",
+      "name": "account",
+      "created": "2025-02-26T08:02:47.781Z",
+      "modified": "2025-02-26T08:05:21.962Z"
+    }
+  ],
+  "connectorAttributes": {
+    "group.mergeRows": true,
+    "group.delimiter": ",",
+    "mergeRows": false,
+    "group.filetransport": "local",
+    "partitionMode": "disabled",
+    "connectionType": "file",
+    "group.host": "local",
+    "group.indexColumn": "id",
+    "delimiter": ",",
+    "host": "local",
+    "commentCharacter": "#",
+    "group.mergeColumns": [
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "hasHeader": true,
+    "filterEmptyRecords": true,
+    "filetransport": "local",
+    "deleteThresholdPercentage": 10,
+    "group.filterEmptyRecords": true,
+    "group.hasHeader": true,
+    "group.partitionMode": "disabled",
+    "labels": [
+      "standard"
+    ],
+    "group.columnNames": [
+      "id",
+      "name",
+      "displayName",
+      "created",
+      "description",
+      "modified",
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "templateApplication": "DelimitedFile Template",
+    "healthy": true,
+    "cloudDisplayName": "CZR-Application-EmployeeNetworkAccessRequest",
+    "connectorName": "Delimited File",
+    "cloudOriginalApplicationType": "Delimited File",
+    "since": "2025-02-26T11:04:30.328Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {},
+  "correlationConfigDetails": {
+    "attributeAssignments": null,
+    "id": null,
+    "name": null
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [
+    {
+      "name": "Create Policy",
+      "description": "Create Policy",
+      "usageType": "CREATE",
+      "fields": [
+        {
+          "name": "id",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "name",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "givenName",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "familyName",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "e-mail",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "location",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "manager",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "groups",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        }
+      ]
+    }
+  ],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

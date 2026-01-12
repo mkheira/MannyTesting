@@ -1,0 +1,376 @@
+{
+  "id": "8658625170dc4dc69206007cd6fab106",
+  "name": "CZR-Application-Shareworks",
+  "type": "DelimitedFile",
+  "connectorClass": "sailpoint.connector.delimitedfile.DelimitedFileConnector",
+  "connectorScriptName": "delimited-file-angularsc",
+  "description": "delimited file for Shareworks",
+  "deleteThreshold": 10,
+  "provisionAsCsv": true,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "DIRECT_PERMISSIONS",
+    "NO_RANDOM_ACCESS",
+    "DISCOVER_SCHEMA"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "User",
+      "identityAttribute": "Company Email",
+      "displayAttribute": "Company Email",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "Name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Account Number",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Company Email",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Security Groups",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": {
+            "type": "CONNECTOR_SCHEMA",
+            "id": "98b5f9ec76ca418a951d2e9b39984dc3",
+            "name": "group"
+          },
+          "description": "test",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        },
+        {
+          "name": "File Repository Groups",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Matrix Security Groups",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Field Level Security Types",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "field level security types",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Security Added Date",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "End Date",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Last Login Instant",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "f9c4173ab8e64b5e82b2082fb8061411",
+      "name": "account",
+      "created": "2025-11-06T18:20:41.719Z",
+      "modified": "2025-12-19T16:06:47.819Z"
+    },
+    {
+      "nativeObjectType": "Group",
+      "identityAttribute": "id",
+      "displayAttribute": "displayName",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "id",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Unique ID for Group",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The name of the account - typically groupname etc.",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "displayName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The preferred display name for the account",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "created",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Date/Time when the group was created (utime)",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "description",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Multi-purpose field used to capture a description or comments",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "modified",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Date/Time when the group was modified (utime)",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "entitlements",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The access rights, entitlements etc. that the account has access to.",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": false
+        },
+        {
+          "name": "groups",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The groups, roles etc. that reference to account group objects",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "permissions",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The permissions associated with the account",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "98b5f9ec76ca418a951d2e9b39984dc3",
+      "name": "group",
+      "created": "2025-11-06T18:20:41.719Z",
+      "modified": "2025-11-07T18:48:02.163Z"
+    }
+  ],
+  "connectorAttributes": {
+    "mergeColumns": [
+      "Security Groups",
+      "Field Level Security Types"
+    ],
+    "group.mergeRows": true,
+    "group.delimiter": ",",
+    "mergeRows": true,
+    "group.filetransport": "local",
+    "partitionMode": "disabled",
+    "connectionType": "file",
+    "group.host": "local",
+    "group.indexColumn": "id",
+    "recommendationStatus": "ERROR",
+    "delimiter": ",",
+    "host": "local",
+    "indexColumns": [
+      "Company Email"
+    ],
+    "commentCharacter": "#",
+    "entitlementFiles": {
+      "group": {
+        "bucket": "spp-short-use1",
+        "expiry": "2025-11-22T00:00:00Z",
+        "uploadTime": "2025-11-14T04:30:28.327544Z",
+        "key": "gov-entitlement//aggregations/stg08-useast1/caesars-sb/8658625170dc4dc69206007cd6fab106-entitlement-feed.csv"
+      }
+    },
+    "group.mergeColumns": [
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "hasHeader": true,
+    "filterEmptyRecords": true,
+    "filetransport": "local",
+    "deleteThresholdPercentage": 10,
+    "group.filterEmptyRecords": true,
+    "group.hasHeader": true,
+    "group.partitionMode": "disabled",
+    "labels": [
+      "standard"
+    ],
+    "group.columnNames": [
+      "id",
+      "name",
+      "displayName",
+      "created",
+      "description",
+      "modified",
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "templateApplication": "DelimitedFile Template",
+    "indexColumn": "Company Email",
+    "healthy": true,
+    "cloudDisplayName": "CZR-Application-Shareworks",
+    "connectorName": "Delimited File",
+    "buildMapRule": "CZR-Rule-Shareworks-BuildMap",
+    "cloudOriginalApplicationType": "Delimited File",
+    "since": "2025-11-06T18:22:28.103Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {},
+  "correlationConfigDetails": {
+    "attributeAssignments": [
+      {
+        "complex": false,
+        "property": "email",
+        "operation": "EQ",
+        "value": "Company Email",
+        "ignoreCase": false,
+        "matchMode": null,
+        "filterString": null,
+        "sequence": 1
+      }
+    ],
+    "id": "b0b2a7a3d83d4948aacb5d95b55817c3",
+    "name": "8658625170dc4dc69206007cd6fab106 Account Correlation Config"
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [
+    {
+      "name": "Create Policy",
+      "description": "Create Policy",
+      "usageType": "CREATE",
+      "fields": [
+        {
+          "name": "Name",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "displayName"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "Company Email",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "email"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "Security Groups",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        }
+      ]
+    }
+  ],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

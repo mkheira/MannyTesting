@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:post-provisioning",
+  "workflowConfig": {
+    "workflowId": "58093067-21b9-4e5b-8da3-0e76e2c633bd"
+  },
+  "triggerName": "Provisioning Completed",
+  "description": "Managed by Workflows",
+  "id": "58093067-21b9-4e5b-8da3-0e76e2c633bd",
+  "enabled": false,
+  "name": "POC-Teams Access Revoke After Expire-Role",
+  "type": "WORKFLOW",
+  "filter": "$.accountRequests[?(@.accountOperation=='Modify' &&  @.attributeRequests[0].attributeValue=='CN=Teammate ReadOnly,OU=Teammate,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local')]"
+}

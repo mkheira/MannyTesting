@@ -1,0 +1,13 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:source-created",
+  "workflowConfig": {
+    "workflowId": "d08a9703-9ab4-46e3-806d-f02dcae3f85b"
+  },
+  "triggerName": "Source Created",
+  "description": "Managed by Workflows",
+  "id": "d08a9703-9ab4-46e3-806d-f02dcae3f85b",
+  "enabled": true,
+  "name": "CZR-Workflow-Notification-SourceCreated",
+  "type": "WORKFLOW"
+}

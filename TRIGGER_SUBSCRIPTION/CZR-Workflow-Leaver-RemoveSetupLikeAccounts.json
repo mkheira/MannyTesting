@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "ea6c2107-6b2f-450d-b158-9e94bf833e5f"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Identity Attributes Changed",
+  "triggerId": "idn:identity-attributes-changed",
+  "enabled": false,
+  "id": "ea6c2107-6b2f-450d-b158-9e94bf833e5f",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-Leaver-RemoveSetupLikeAccounts",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute == \"cloudLifecycleState\" && @.newValue == \"inactive\")]"
+}

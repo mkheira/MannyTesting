@@ -1,0 +1,14 @@
+{
+  "triggerId": "idn:interactive-process-launched",
+  "responseDeadline": "PT1H",
+  "workflowConfig": {
+    "workflowId": "6f331e64-16dc-4c58-8862-ef133e4dbe37"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "id": "6f331e64-16dc-4c58-8862-ef133e4dbe37",
+  "enabled": false,
+  "name": "Edit Identity",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '6f331e64-16dc-4c58-8862-ef133e4dbe37')]"
+}

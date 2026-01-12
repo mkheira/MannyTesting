@@ -1,0 +1,980 @@
+{
+  "id": "9f46913b2c9b4da5bc40734abda20886",
+  "name": "CZR-Application-OICWebservice",
+  "type": "Web Services",
+  "connectorClass": "sailpoint.connector.webservices.WebServicesConnector",
+  "connectorScriptName": "web-services-angularsc",
+  "description": "Migrated app - CZR-Application-OICWebservice (original ID: 44g2m2gkapmn2kx5in0lekge70tnkt8y)",
+  "deleteThreshold": 25,
+  "provisionAsCsv": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "AUTHENTICATE",
+    "ENABLE",
+    "PASSWORD",
+    "UNLOCK",
+    "PROVISIONING"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "user",
+      "identityAttribute": "PersonNumber",
+      "displayAttribute": "PersonNumber",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "PersonNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "FullName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "LastName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "FirstName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "MiddleName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Suffix",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "KnownAs",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "WorkerType",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "LegalEmployerName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "LocationCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "LocationName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "PositionCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "PositionName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Region",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "BusinessUnitName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Division",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "DepartmentName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ManagementLevel",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ManagerPersonNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ManagerFullName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EnterpriseHireDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AsgStartDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AsgEndDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "TerminationDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AssignmentStatusType",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AsgCategoryCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AssignmentStatusTypeCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AsgStatusMeaning",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AsgCategoryMeaning",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "AssignmentNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "PrimaryAssignment",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "CompleteTermination",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "assignments",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "PropertyCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ChangeEmplyeesCount",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ProjectedStartDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "LOAStartDate",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "PrimaryWorkRelationship",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "6827786dda104e238b808a782b66e6e5",
+      "name": "account",
+      "created": "2025-01-21T21:59:46.789Z",
+      "modified": "2025-08-10T04:13:03.272Z"
+    },
+    {
+      "nativeObjectType": "group",
+      "identityAttribute": "",
+      "displayAttribute": "",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [],
+      "id": "05c75b4a8ad445699c1c32ea34589b80",
+      "name": "group",
+      "created": "2025-01-21T21:59:46.789Z",
+      "modified": "2025-08-10T04:13:03.272Z"
+    }
+  ],
+  "connectorAttributes": {
+    "healthCheckTimeout": 30,
+    "supportsDeltaAgg": "true",
+    "deltaAggregationEnabled": true,
+    "nativeChangeDetectionAttributeScope": "entitlements",
+    "throwProvBeforeRuleException": false,
+    "checkDeletedDisabled": true,
+    "connectionType": "direct",
+    "enableHasMore": true,
+    "isGetObjectRequiredForPTA": true,
+    "oicSourceId": "9f46913b2c9b4da5bc40734abda20886",
+    "timeoutInSeconds": "480",
+    "numPartitionThreads": "4",
+    "genericWebServiceBaseUrl": "https://oicdev-caesarsucc-ia.integration.ocp.oraclecloud.com",
+    "enableProvisioningFeature": true,
+    "appTemplateData": "{\"whiteListedAttributes\":[\"authenticationMethod\",\"grant_type\",\"saml_headers_to_exclude\",\"oauth_headers_to_exclude\",\"oauth_body_attrs_to_exclude\",\"deltaAggregationEnabled\",\"deleteStatus\",\"timeoutInSeconds\",\"enableStatus\",\"lockStatus\",\"enableHasMore\",\"partitionAggregationEnabled\",\"numPartitionThreads\",\"createAccountWithEntReq\",\"throwBeforeAfterRuleException\",\"throwProvAfterRuleException\",\"throwProvBeforeRuleException\",\"updateAttrWithChangePassword\",\"isGetObjectRequiredForPTA\",\"possibleHttpErrors\",\"objectNotFoundErrorMsg\",\"authenticationFailedErrorMsg\",\"expiredPasswordErrorMsg\",\"disableCookies\",\"fixedPlanMultivaluedAttribute\",\"httpCookieSpecsStandard\",\"supportsDeltaAgg\",\"isDevelopmentMode\",\"throttleEnabled\",\"skipEncodingDecodingUrl\",\"skipGetObjectInCreate\",\"propagateCookieForRule\",\"deltaAggregation\",\"addRemoveEntInSingleReq\",\"trustAllCerts\",\"allowAllHosts\",\"encrypted\",\"ServerTimeZone\",\"dateEvalFormat\",\"lastAggregationDate_account\",\"retryableErrors\",\"enableProvisioningFeature\"]}",
+    "connectionParameters": [
+      {
+        "resMappingObj": {},
+        "httpMethodType": "POST",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Custom Authentication",
+        "curlEnabled": false,
+        "header": {
+          "Authorization": "Basic MjUyZTE2M2NmMmUxNGRjMGIyMWI5NmI5MjRmZWIzOWQ6ZGJiMTFhZmQtMmRmNC00MzA2LWJkOWEtNWE3ZGFmOGRjZThk",
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "operationType": "Custom Authentication",
+        "body": {
+          "bodyFormData": {
+            "grant_type": "client_credentials",
+            "scope": "https://76CCA8F3ABA045AB836D8BEBFD2DFD73.integration.ocp.oraclecloud.com:443urn:opc:resource:consumer::all"
+          },
+          "bodyFormat": "formData"
+        },
+        "customAuthUrl": "https://idcs-0520003107fc4ab8b21a5154cfad3208.identity.oraclecloud.com/oauth2/v1/token",
+        "responseCode": [
+          "2**"
+        ]
+      },
+      {
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHANGES_ONLY/1.0/Employee_Assignment_Changes/?LastUpdateDate=2028-05-17T16:30:14&StartRow=1&EndRow=5",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "OIC Test Connection",
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Test Connection",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Change Employee Count",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperationGetCount",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHNG_ONLY_COUNT/1.0/Employee_Assignment_Changes/?LastUpdateDate=changeDate",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Account Delta Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation-Delta"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "4",
+        "uniqueNameForEndPoint": "Change Account Aggregation",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Delta",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHANGES_ONLY/1.0/Employee_Assignment_Changes/?LastUpdateDate=changeDate&StartRow=1&EndRow=5000",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Account Delta Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation-Delta"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "5",
+        "uniqueNameForEndPoint": "OIC Account Partitions",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Full",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_FULL_PROFILE/1.0/EmpInfo?StartRow=$partition.StartRow$&EndRow=$partition.EndRow$",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Partitioned Account Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "7",
+        "uniqueNameForEndPoint": "Single Account Aggregation",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Single",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_SINGLE_EMP/1.0/EmpInfo/?PersonNumber=$getobject.nativeIdentity$",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Get Object",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation"
+      }
+    ],
+    "recommendationStatus": "ERROR",
+    "partitionAggregationEnabled": true,
+    "throwBeforeAfterRuleException": false,
+    "hasFullAggregationCompleted": true,
+    "cloudIdentityProfileName": "Employees",
+    "partitions": [
+      {
+        "name": "Partition 1",
+        "size": 0,
+        "attributes": {
+          "EndRow": "5000",
+          "StartRow": "1"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 2",
+        "size": 0,
+        "attributes": {
+          "EndRow": "10000",
+          "StartRow": "5001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 3",
+        "size": 0,
+        "attributes": {
+          "EndRow": "15000",
+          "StartRow": "10001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 4",
+        "size": 0,
+        "attributes": {
+          "EndRow": "20000",
+          "StartRow": "15001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 5",
+        "size": 0,
+        "attributes": {
+          "EndRow": "25000",
+          "StartRow": "20001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 6",
+        "size": 0,
+        "attributes": {
+          "EndRow": "30000",
+          "StartRow": "25001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 7",
+        "size": 0,
+        "attributes": {
+          "EndRow": "35000",
+          "StartRow": "30001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 8",
+        "size": 0,
+        "attributes": {
+          "EndRow": "40000",
+          "StartRow": "35001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 9",
+        "size": 0,
+        "attributes": {
+          "EndRow": "45000",
+          "StartRow": "40001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 10",
+        "size": 0,
+        "attributes": {
+          "EndRow": "50000",
+          "StartRow": "45001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 11",
+        "size": 0,
+        "attributes": {
+          "EndRow": "55000",
+          "StartRow": "50001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 12",
+        "size": 0,
+        "attributes": {
+          "EndRow": "60000",
+          "StartRow": "55001"
+        },
+        "originalXml": null
+      },
+      {
+        "name": "Partition 13",
+        "size": 0,
+        "attributes": {
+          "EndRow": "65000",
+          "StartRow": "60001"
+        },
+        "originalXml": null
+      }
+    ],
+    "possibleHttpErrors": {},
+    "sourceConnected": true,
+    "createAccountWithEntReq": "false",
+    "throwProvAfterRuleException": true,
+    "nativeChangeDetectionEnabled": "false",
+    "disableCookies": false,
+    "lastAggregationDate_account": "2025-08-28T21:27:41Z",
+    "deleteThresholdPercentage": 25,
+    "fixedPlanMultivaluedAttribute": "true",
+    "version": "v2",
+    "cloudAuthoritativeSourcePrecedence": 10,
+    "cloudCacheUpdate": 1767124191358,
+    "templateApplication": "Web Services",
+    "changeEndpointPreviousHitTime": "2025-08-20T23:05:12",
+    "iscBaseUrl": "https://caesars-sb.api.identitynow.com",
+    "encrypted": "customaccesstoken,refresh_token,oauth_token_info,client_secret,private_key,private_key_password,clientCertificate,clientKeySpec,resourceOwnerPassword,custom_auth_token_info,iscClientId_CA,iscClientSecret_CA",
+    "authenticationMethod": "No Auth",
+    "httpCookieSpecsStandard": "true",
+    "clientCertAuthEnabled": "false",
+    "healthy": true,
+    "changeEndpointNextHitTime": "2025-08-28T21:27:40",
+    "cloudDisplayName": "CZR-Application-OICWebservice",
+    "connectorName": "Web Services",
+    "updateAttrWithChangePassword": false,
+    "since": "2025-12-30T10:54:53.877Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {
+    "connectionParameters": [
+      {
+        "resMappingObj": {},
+        "httpMethodType": "POST",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Custom Authentication",
+        "curlEnabled": false,
+        "header": {
+          "Authorization": "Basic MjUyZTE2M2NmMmUxNGRjMGIyMWI5NmI5MjRmZWIzOWQ6ZGJiMTFhZmQtMmRmNC00MzA2LWJkOWEtNWE3ZGFmOGRjZThk",
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        "operationType": "Custom Authentication",
+        "body": {
+          "bodyFormData": {
+            "grant_type": "client_credentials",
+            "scope": "https://76CCA8F3ABA045AB836D8BEBFD2DFD73.integration.ocp.oraclecloud.com:443urn:opc:resource:consumer::all"
+          },
+          "bodyFormat": "formData"
+        },
+        "customAuthUrl": "https://idcs-0520003107fc4ab8b21a5154cfad3208.identity.oraclecloud.com/oauth2/v1/token",
+        "responseCode": [
+          "2**"
+        ]
+      },
+      {
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHANGES_ONLY/1.0/Employee_Assignment_Changes/?LastUpdateDate=2028-05-17T16:30:14&StartRow=1&EndRow=5",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "OIC Test Connection",
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Test Connection",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Change Employee Count",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperationGetCount",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHNG_ONLY_COUNT/1.0/Employee_Assignment_Changes/?LastUpdateDate=changeDate",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Account Delta Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation-Delta"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "4",
+        "uniqueNameForEndPoint": "Change Account Aggregation",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Delta",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_CHANGES_ONLY/1.0/Employee_Assignment_Changes/?LastUpdateDate=changeDate&StartRow=1&EndRow=5000",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Account Delta Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation-Delta"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "5",
+        "uniqueNameForEndPoint": "OIC Account Partitions",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Full",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_FULL_PROFILE/1.0/EmpInfo?StartRow=$partition.StartRow$&EndRow=$partition.EndRow$",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Partitioned Account Aggregation",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation"
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "7",
+        "uniqueNameForEndPoint": "Single Account Aggregation",
+        "afterRule": "CZR-Rule-OICWebservice-AfterOperation-Single",
+        "rootPath": "$.items",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "2**"
+        ],
+        "resMappingObj": {
+          "PersonNumber": "PersonNumber",
+          "EnterpriseHireDate": "EnterpriseHireDate",
+          "Suffix": "Suffix",
+          "assignments": "assignments",
+          "PersonId": "PersonId",
+          "FirstName": "FirstName",
+          "FullName": "FullName",
+          "CompleteTermination": "CompleteTermination",
+          "KnownAs": "KnownAs",
+          "WorkEmailAddress": "WorkEmailAddress",
+          "LastName": "LastName",
+          "MiddleName": "MiddleName"
+        },
+        "contextUrl": "/ic/api/integration/v1/flows/rest/IN_591_SAILPOINT_SINGLE_EMP/1.0/EmpInfo/?PersonNumber=$getobject.nativeIdentity$",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "header": {
+          "authorization": "Bearer $application.customaccesstoken$"
+        },
+        "operationType": "Get Object",
+        "beforeRule": "CZR-Rule-OICWebservice-BeforeOperation"
+      }
+    ]
+  },
+  "correlationConfigDetails": {
+    "attributeAssignments": [
+      {
+        "complex": false,
+        "property": "identificationNumber",
+        "operation": "EQ",
+        "value": "PersonNumber",
+        "ignoreCase": false,
+        "matchMode": null,
+        "filterString": null,
+        "sequence": 1
+      }
+    ],
+    "id": "4afa03a677f449388b3399f3484162f6",
+    "name": "CZR-Application-OICWebservice [source] Account Correlation"
+  },
+  "managerCorrelationMapping": {
+    "identityAttributeName": "identificationNumber",
+    "accountAttributeName": "ManagerPersonNumber"
+  },
+  "provisioningPolicies": [],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:interactive-process-launched",
+  "workflowConfig": {
+    "workflowId": "8e46ede7-8245-4c0c-a619-ae052a9c6ff0"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "8e46ede7-8245-4c0c-a619-ae052a9c6ff0",
+  "name": "CZR-Workflow-Contractor Onboarding",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '8e46ede7-8245-4c0c-a619-ae052a9c6ff0')]"
+}

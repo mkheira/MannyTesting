@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:interactive-process-launched",
+  "workflowConfig": {
+    "workflowId": "0e62ef74-6dcc-46e2-affd-7f467a1c6554"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "0e62ef74-6dcc-46e2-affd-7f467a1c6554",
+  "name": "CZR-Workflow-Suspend-Worker-Account-(SOX)",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '0e62ef74-6dcc-46e2-affd-7f467a1c6554')]"
+}

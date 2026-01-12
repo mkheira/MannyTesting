@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "7d8d9cf9-8602-43c0-8191-ea435cfbb07b"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Interactive Trigger",
+  "triggerId": "idn:interactive-process-launched",
+  "enabled": true,
+  "id": "7d8d9cf9-8602-43c0-8191-ea435cfbb07b",
+  "description": "Managed by Workflows",
+  "name": "CZR - William Hill Employee Account Creation",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '7d8d9cf9-8602-43c0-8191-ea435cfbb07b')]"
+}

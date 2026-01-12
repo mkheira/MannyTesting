@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:identity-attributes-changed",
+  "workflowConfig": {
+    "workflowId": "332a2efd-d980-4bbf-a5a8-27f08408d0ea"
+  },
+  "triggerName": "Identity Attributes Changed",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "332a2efd-d980-4bbf-a5a8-27f08408d0ea",
+  "name": "CZR-Workflow-Leaver Revoke Requested Roles",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute == \"cloudLifecycleState\" && (@.newValue == \"inactive\" || @.newValue == \"inactiveImmediateTerm\"))]"
+}

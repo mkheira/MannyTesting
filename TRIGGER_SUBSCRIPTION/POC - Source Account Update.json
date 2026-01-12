@@ -1,0 +1,13 @@
+{
+  "workflowConfig": {
+    "workflowId": "45d4fb37-b0b3-475e-9628-0d223f06fb98"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Source Updated",
+  "triggerId": "idn:source-updated",
+  "enabled": false,
+  "id": "45d4fb37-b0b3-475e-9628-0d223f06fb98",
+  "description": "Managed by Workflows",
+  "name": "POC - Source Account Update",
+  "type": "WORKFLOW"
+}

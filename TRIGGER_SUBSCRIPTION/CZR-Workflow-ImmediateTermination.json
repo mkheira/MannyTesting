@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:identity-attributes-changed",
+  "workflowConfig": {
+    "workflowId": "4e591e20-4b3c-4c69-aa33-cbfc5c322a5e"
+  },
+  "triggerName": "Identity Attributes Changed",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "4e591e20-4b3c-4c69-aa33-cbfc5c322a5e",
+  "name": "CZR-Workflow-ImmediateTermination",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute == 'cloudLifecycleState' && @.newValue == 'inactiveImmediateTerm')]"
+}

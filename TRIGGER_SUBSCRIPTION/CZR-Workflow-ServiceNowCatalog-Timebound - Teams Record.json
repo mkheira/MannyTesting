@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "1e74fe29-55b2-4c73-9d6a-1fcf5eefd286"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Provisioning Completed",
+  "triggerId": "idn:post-provisioning",
+  "enabled": true,
+  "id": "1e74fe29-55b2-4c73-9d6a-1fcf5eefd286",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-ServiceNowCatalog-Timebound - Teams Record",
+  "type": "WORKFLOW",
+  "filter": "$.accountRequests[?( @.accountOperation == 'Modify' && @.provisioningResult == 'committed')].attributeRequests[?(@.operation == \"Add\" && ( @.attributeValue == \"CN=Teams Recording 30 day access,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\"))]"
+}

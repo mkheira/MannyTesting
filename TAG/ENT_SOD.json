@@ -1,0 +1,13 @@
+{
+  "taggedObjects": [
+    {
+      "type": "SOD_POLICY",
+      "id": "3d7abceb-85e9-4bf1-82f6-6de9d623f53b",
+      "name": "Entitlement SOD Policy"
+    }
+  ],
+  "id": "bdab4f17-9f81-49fb-bc98-16c01a302015",
+  "name": "ENT_SOD",
+  "created": null,
+  "modified": null
+}

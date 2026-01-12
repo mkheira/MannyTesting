@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:interactive-process-launched",
+  "workflowConfig": {
+    "workflowId": "1288f476-5c73-4fc5-8c4e-3b0240ca7e3b"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "1288f476-5c73-4fc5-8c4e-3b0240ca7e3b",
+  "name": "CZR-Workflow-HBV-Employee-Onboarding",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '1288f476-5c73-4fc5-8c4e-3b0240ca7e3b')]"
+}

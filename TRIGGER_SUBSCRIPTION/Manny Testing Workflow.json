@@ -1,0 +1,14 @@
+{
+  "triggerId": "idn:identity-attributes-changed",
+  "responseDeadline": "PT1H",
+  "workflowConfig": {
+    "workflowId": "7d33723e-9231-440f-9fd2-fd08734af925"
+  },
+  "triggerName": "Identity Attributes Changed",
+  "description": "Managed by Workflows",
+  "id": "7d33723e-9231-440f-9fd2-fd08734af925",
+  "enabled": false,
+  "name": "Manny Testing Workflow",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute == \"managementLevelFlag\")]"
+}

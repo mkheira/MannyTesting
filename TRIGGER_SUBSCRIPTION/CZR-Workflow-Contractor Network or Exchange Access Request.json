@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:interactive-process-launched",
+  "workflowConfig": {
+    "workflowId": "717d696a-54ff-4e27-97e4-6a209ddf8311"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "717d696a-54ff-4e27-97e4-6a209ddf8311",
+  "name": "CZR-Workflow-Contractor Network or Exchange Access Request",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '717d696a-54ff-4e27-97e4-6a209ddf8311')]"
+}

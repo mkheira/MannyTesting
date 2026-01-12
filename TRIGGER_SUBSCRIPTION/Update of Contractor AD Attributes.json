@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "10d4aefa-d85c-4ed1-b91d-43749a310f4d"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Interactive Trigger",
+  "triggerId": "idn:interactive-process-launched",
+  "enabled": true,
+  "id": "10d4aefa-d85c-4ed1-b91d-43749a310f4d",
+  "description": "Managed by Workflows",
+  "name": "Update of Contractor AD Attributes",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '10d4aefa-d85c-4ed1-b91d-43749a310f4d')]"
+}

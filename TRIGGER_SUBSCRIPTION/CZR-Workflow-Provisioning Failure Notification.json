@@ -1,0 +1,13 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:post-provisioning",
+  "workflowConfig": {
+    "workflowId": "5c0a6f3e-275b-4fdf-8c16-88fd245ff04b"
+  },
+  "triggerName": "Provisioning Completed",
+  "description": "Managed by Workflows",
+  "id": "5c0a6f3e-275b-4fdf-8c16-88fd245ff04b",
+  "enabled": false,
+  "name": "CZR-Workflow-Provisioning Failure Notification",
+  "type": "WORKFLOW"
+}

@@ -1,0 +1,13 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:account-aggregation-completed",
+  "workflowConfig": {
+    "workflowId": "875b5e30-bfe5-4de6-837a-7c89ebb23b1f"
+  },
+  "triggerName": "Account Aggregation Completed",
+  "description": "Managed by Workflows",
+  "id": "875b5e30-bfe5-4de6-837a-7c89ebb23b1f",
+  "enabled": false,
+  "name": "CZR-Workflow-Notify Failed Account Aggregations",
+  "type": "WORKFLOW"
+}

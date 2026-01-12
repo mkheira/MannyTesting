@@ -1,0 +1,604 @@
+{
+  "id": "bf99ad6113474c6388079237321d12ae",
+  "name": "CZR-Application-Snowflake-Test",
+  "type": "Snowflake",
+  "connectorClass": "sailpoint.connector.OpenConnectorAdapter",
+  "connectorScriptName": "snowflake-angularsc",
+  "description": "testing connection",
+  "deleteThreshold": 10,
+  "provisionAsCsv": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "ENABLE",
+    "PASSWORD",
+    "UNLOCK",
+    "SYNC_PROVISIONING",
+    "PROVISIONING"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "account",
+      "identityAttribute": "name",
+      "displayAttribute": "display_name",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Name of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "login_name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Login name of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "display_name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Display name of the associated object",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "first_name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "First name of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "last_name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Last name of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "email",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Email address of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "days_to_expiry",
+          "nativeName": null,
+          "type": "INT",
+          "schema": null,
+          "description": "User record will be treated as expired after specified\n            number of days",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "comment",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "User comment associated to an object in the dictionary",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "disabled",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "Whether the user is disabled",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "must_change_password",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "User must change the password",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "snowflake_lock",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "Whether the user or account is locked by Snowflake",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "default_warehouse",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Default warehouse for this user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "default_namespace",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Default database namespace prefix for this user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "default_role",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Primary principal of user session will be set to this\n            role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "default_secondary_roles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The secondary roles will be set to all roles provided\n            here.",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "owner",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The owner of the user",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "roles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": {
+            "type": "CONNECTOR_SCHEMA",
+            "id": "fba8765e8996456ea4cf476f69e150fc",
+            "name": "role"
+          },
+          "description": "All directly assigned roles of user",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        },
+        {
+          "name": "databaseRoles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": {
+            "type": "CONNECTOR_SCHEMA",
+            "id": "7e88be5698c146c4a4210d0ba3f61bd1",
+            "name": "databaseRole"
+          },
+          "description": "All database roles directly assigned to the User",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        }
+      ],
+      "id": "b17bfab7ec4a46c6a7338c9f34618b88",
+      "name": "account",
+      "created": "2025-11-06T20:04:06.230Z",
+      "modified": "2025-11-06T20:04:06.230Z"
+    },
+    {
+      "nativeObjectType": "role",
+      "identityAttribute": "name",
+      "displayAttribute": "name",
+      "hierarchyAttribute": "roles",
+      "includePermissions": false,
+      "features": [],
+      "configuration": {
+        "childHierarchy": "true"
+      },
+      "attributes": [
+        {
+          "name": "name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Name of the role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_default",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "Whether the role is default",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_current",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "Whether the role is current role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_inherited",
+          "nativeName": null,
+          "type": "BOOLEAN",
+          "schema": null,
+          "description": "Whether the role is inherited by other role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "owner",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Owner of the role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "comment",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Comments for the role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "roles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The list of inherited roles",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        },
+        {
+          "name": "privileges",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Direct or indirect privileges assigned to role ",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "databaseRoles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": {
+            "type": "CONNECTOR_SCHEMA",
+            "id": "7e88be5698c146c4a4210d0ba3f61bd1",
+            "name": "databaseRole"
+          },
+          "description": "All database roles directly assigned to the Role",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        }
+      ],
+      "id": "fba8765e8996456ea4cf476f69e150fc",
+      "name": "role",
+      "created": "2025-11-06T20:04:06.230Z",
+      "modified": "2025-11-06T20:04:06.230Z"
+    },
+    {
+      "nativeObjectType": "databaseRole",
+      "identityAttribute": "name",
+      "displayAttribute": "name",
+      "hierarchyAttribute": "databaseRoles",
+      "includePermissions": false,
+      "features": [],
+      "configuration": {
+        "childHierarchy": "true"
+      },
+      "attributes": [
+        {
+          "name": "name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Database Role name",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_default",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Indicates if the database role is a default database role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_current",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Indicates if the database role is a current role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "is_inherited",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Indicates if the database role is inherited by another database role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "owner",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Owner of the database role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "comment",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Comment related to the database role",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "databaseRoles",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "List of child database roles assigned to the database role",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": true
+        },
+        {
+          "name": "privileges",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Direct privileges assigned to the database role",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "7e88be5698c146c4a4210d0ba3f61bd1",
+      "name": "databaseRole",
+      "created": "2025-11-06T20:04:06.230Z",
+      "modified": "2025-11-06T20:04:06.230Z"
+    }
+  ],
+  "connectorAttributes": {
+    "deleteThresholdPercentage": 10,
+    "connectionType": "direct",
+    "connectorClass": "openconnector.connector.snowflake.SnowflakeConnector",
+    "url": "https://czr-UEA97229.snowflakecomputing.com",
+    "authtype": "KeyPairAuthentication",
+    "enableProvisioningFeature": true,
+    "cloudCacheUpdate": 1765309991861,
+    "templateApplication": "Snowflake",
+    "appTemplateData": "{\"whiteListedAttributes\":[\"enableProvisioningFeature\"]}",
+    "encrypted": "privateKey,passphrase",
+    "healthy": false,
+    "organization": "CZR",
+    "cloudDisplayName": "CZR-Application-Snowflake-Test",
+    "connectorName": "Snowflake",
+    "account": "UEA97229",
+    "since": "2025-11-06T20:05:27.403Z",
+    "status": "SOURCE_STATE_UNCHECKED_SOURCE_NO_ACCOUNTS",
+    "username": "SAILPOINT_CONNECTOR"
+  },
+  "crossTenantConnectorAttributes": {},
+  "correlationConfigDetails": {
+    "attributeAssignments": null,
+    "id": null,
+    "name": null
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [
+    {
+      "name": "account",
+      "description": null,
+      "usageType": "CREATE",
+      "fields": [
+        {
+          "name": "name",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "uid"
+            }
+          },
+          "attributes": {
+            "cloudRequired": "true"
+          },
+          "isRequired": true,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "password",
+          "transform": {
+            "type": "rule",
+            "attributes": {
+              "name": "Create Password"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "secret",
+          "isMultiValued": false
+        },
+        {
+          "name": "first_name",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "firstname"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "last_name",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "lastname"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "email",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "email"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "display_name",
+          "transform": {
+            "type": "identityAttribute",
+            "attributes": {
+              "name": "displayName"
+            }
+          },
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "must_change_password",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "boolean",
+          "isMultiValued": false
+        },
+        {
+          "name": "login_name",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "disabled",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "boolean",
+          "isMultiValued": false
+        },
+        {
+          "name": "default_warehouse",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "default_role",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        },
+        {
+          "name": "default_secondary_roles",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": "string",
+          "isMultiValued": false
+        }
+      ]
+    }
+  ],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

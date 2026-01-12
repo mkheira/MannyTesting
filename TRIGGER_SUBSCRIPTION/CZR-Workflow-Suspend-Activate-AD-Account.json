@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "8f8cf9f2-fab8-4d20-9400-92adba12db1a"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Interactive Trigger",
+  "triggerId": "idn:interactive-process-launched",
+  "enabled": true,
+  "id": "8f8cf9f2-fab8-4d20-9400-92adba12db1a",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-Suspend-Activate-AD-Account",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '8f8cf9f2-fab8-4d20-9400-92adba12db1a')]"
+}

@@ -1,0 +1,262 @@
+{
+  "id": "890a3982c4b5421181123b2224dcfd7a",
+  "name": "CZR-Application-GenerateEmployeeHBVId",
+  "type": "Web Services",
+  "connectorClass": "sailpoint.connector.webservices.WebServicesConnector",
+  "connectorScriptName": "web-services-angularsc",
+  "description": "Application to maintain metadata for HBV employee onboarding",
+  "deleteThreshold": 10,
+  "provisionAsCsv": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "PROVISIONING",
+    "DELETE",
+    "ENABLE",
+    "UNLOCK",
+    "PASSWORD",
+    "AUTHENTICATE"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "user",
+      "identityAttribute": "action",
+      "displayAttribute": "action",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "lastCreatedHBVEmployeeId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Last used ID for a HBV Employee",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "newHBVEmployeeId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Next available ID for a HBV Employee",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "action",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Application source for HBV Id",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "928e46aec60b46418f1b7ba48f5bb316",
+      "name": "account",
+      "created": "2025-10-24T18:22:43.967Z",
+      "modified": "2025-10-24T18:53:55.498Z"
+    },
+    {
+      "nativeObjectType": "group",
+      "identityAttribute": "",
+      "displayAttribute": "",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [],
+      "id": "9e2553b9c07547c199cee18f21fffacb",
+      "name": "group",
+      "created": "2025-10-24T18:22:43.967Z",
+      "modified": "2025-10-24T18:22:43.967Z"
+    }
+  ],
+  "connectorAttributes": {
+    "healthCheckTimeout": 30,
+    "supportsDeltaAgg": "true",
+    "deltaAggregationEnabled": false,
+    "throwProvBeforeRuleException": true,
+    "connectionType": "direct",
+    "enableHasMore": false,
+    "client_id": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+    "isGetObjectRequiredForPTA": true,
+    "timeoutInSeconds": "60",
+    "genericWebServiceBaseUrl": "https://caesars-sb.api.identitynow.com/v2025",
+    "enableProvisioningFeature": true,
+    "appTemplateData": "{\"whiteListedAttributes\":[\"enableProvisioningFeature\"]}",
+    "connectionParameters": [
+      {
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Test Connection",
+        "curlEnabled": false,
+        "operationType": "Test Connection",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "resMappingObj": {
+          "newHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "lastCreatedHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "action": "name"
+        },
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "Account Aggregation",
+        "curlEnabled": false,
+        "operationType": "Account Aggregation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Get Object",
+        "afterRule": "CZR-Rule-GenerateHBVEmployeeId-Aggregation-AfterOperation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ],
+        "resMappingObj": {
+          "newHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "lastCreatedHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "action": "name"
+        },
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "operationType": "Get Object"
+      }
+    ],
+    "grant_type": "CLIENT_CREDENTIALS",
+    "partitionAggregationEnabled": false,
+    "hasFullAggregationCompleted": true,
+    "token_url": "https://caesars-sb.api.identitynow.com/oauth/token",
+    "possibleHttpErrors": {},
+    "sourceConnected": true,
+    "throwProvAfterRuleException": true,
+    "lastAggregationDate_account": "2025-10-28T12:38:18Z",
+    "deleteThresholdPercentage": 10,
+    "fixedPlanMultivaluedAttribute": "true",
+    "version": "v2",
+    "labels": [
+      "standard"
+    ],
+    "cloudCacheUpdate": 1765401406627,
+    "templateApplication": "Web Services Template",
+    "encrypted": "accesstoken,refresh_token,oauth_token_info,client_secret,private_key,private_key_password,clientCertificate,clientKeySpec,resourceOwnerPassword,custom_auth_token_info",
+    "authenticationMethod": "OAuth2Login",
+    "httpCookieSpecsStandard": "true",
+    "healthy": true,
+    "cloudDisplayName": "CZR-Application-GenerateEmployeeHBVId",
+    "connectorName": "Web Services",
+    "since": "2025-10-24T18:53:06.529Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {
+    "connectionParameters": [
+      {
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Test Connection",
+        "curlEnabled": false,
+        "operationType": "Test Connection",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "resMappingObj": {
+          "newHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "lastCreatedHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "action": "name"
+        },
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "Account Aggregation",
+        "curlEnabled": false,
+        "operationType": "Account Aggregation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Get Object",
+        "afterRule": "CZR-Rule-GenerateHBVEmployeeId-Aggregation-AfterOperation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ],
+        "resMappingObj": {
+          "newHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "lastCreatedHBVEmployeeId": "connectorAttributes.lastCreateHBVEmployeeId",
+          "action": "name"
+        },
+        "contextUrl": "/sources/5bcb54289d5649149b01379de2d98800",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "operationType": "Get Object"
+      }
+    ]
+  },
+  "correlationConfigDetails": {
+    "attributeAssignments": null,
+    "id": null,
+    "name": null
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

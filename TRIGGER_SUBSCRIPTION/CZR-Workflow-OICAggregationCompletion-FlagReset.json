@@ -1,0 +1,13 @@
+{
+  "workflowConfig": {
+    "workflowId": "05cc3d37-818f-4540-949d-ce0070d9fa20"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Account Aggregation Completed",
+  "triggerId": "idn:account-aggregation-completed",
+  "enabled": false,
+  "id": "05cc3d37-818f-4540-949d-ce0070d9fa20",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-OICAggregationCompletion-FlagReset",
+  "type": "WORKFLOW"
+}

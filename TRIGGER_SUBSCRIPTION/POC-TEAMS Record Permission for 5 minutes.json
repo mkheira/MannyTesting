@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:post-provisioning",
+  "workflowConfig": {
+    "workflowId": "60b4d1ee-c657-45c1-85b5-d19e50806dc0"
+  },
+  "triggerName": "Provisioning Completed",
+  "description": "Managed by Workflows",
+  "id": "60b4d1ee-c657-45c1-85b5-d19e50806dc0",
+  "enabled": false,
+  "name": "POC-TEAMS Record Permission for 5 minutes",
+  "type": "WORKFLOW",
+  "filter": "$.accountRequests[?(@.accountOperation=='Modify' &&  @.attributeRequests[0].attributeValue=='CN=TEAMS Record Permission for 5 minutes,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local')]"
+}

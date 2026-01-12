@@ -1,0 +1,13 @@
+{
+  "triggerId": "idn:post-provisioning",
+  "responseDeadline": "PT1H",
+  "workflowConfig": {
+    "workflowId": "b418bc51-9366-4ffb-9ac1-7a6d4d50b3d5"
+  },
+  "triggerName": "Provisioning Completed",
+  "description": "Managed by Workflows",
+  "id": "b418bc51-9366-4ffb-9ac1-7a6d4d50b3d5",
+  "enabled": false,
+  "name": "CZR-Workflow-Notify IAM Ops Team on AD Provisioning Failures",
+  "type": "WORKFLOW"
+}

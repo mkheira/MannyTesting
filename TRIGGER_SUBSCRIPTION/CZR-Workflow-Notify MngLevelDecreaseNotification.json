@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:identity-attributes-changed",
+  "workflowConfig": {
+    "workflowId": "52f7d105-c027-46af-9d0d-824d11e0afee"
+  },
+  "triggerName": "Identity Attributes Changed",
+  "description": "Managed by Workflows",
+  "id": "52f7d105-c027-46af-9d0d-824d11e0afee",
+  "enabled": false,
+  "name": "CZR-Workflow-Notify MngLevelDecreaseNotification",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute==\"managementLevelFlag\" && @.oldValue==\"true\" && @.newValue==\"false\")]"
+}

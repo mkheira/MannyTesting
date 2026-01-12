@@ -1,0 +1,414 @@
+{
+  "id": "4a75188f9b054e90ac2757f307fae3bf",
+  "name": "CZR-Application-CNOWEmployeeConversion",
+  "type": "DelimitedFile",
+  "connectorClass": "sailpoint.connector.delimitedfile.DelimitedFileConnector",
+  "connectorScriptName": "delimited-file-angularsc",
+  "description": "CNOW Contractor to Employee Conversion",
+  "deleteThreshold": 100,
+  "provisionAsCsv": true,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "NO_RANDOM_ACCESS",
+    "DIRECT_PERMISSIONS",
+    "DISCOVER_SCHEMA"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "User",
+      "identityAttribute": "RequestedForPersonalNumber",
+      "displayAttribute": "RequestedForPersonalNumber",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "RequestedForPersonalNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "RequestedBy",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "RequestedFor",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "Status",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "TaskNumber",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "TaskSysId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "ContractorId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": null,
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmployeeBrFlag",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Birthright Flag",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpType",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Type",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpLocCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Location code",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpTitle",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Title",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpActiveLocCode",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Active Location Code",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpAsgStatusType",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Assignment Status Type",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "EmpMgmtLevelFlag",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Employee Management Level Flag",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "259dc71d37214bfe8b4de73c63cde38d",
+      "name": "account",
+      "created": "2025-09-23T14:08:25.864Z",
+      "modified": "2025-10-08T13:24:52.076Z"
+    },
+    {
+      "nativeObjectType": "Group",
+      "identityAttribute": "id",
+      "displayAttribute": "displayName",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "id",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Unique ID for Group",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "name",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The name of the account - typically groupname etc.",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "displayName",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The preferred display name for the account",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "created",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Date/Time when the group was created (utime)",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "description",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Multi-purpose field used to capture a description or comments",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "modified",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Date/Time when the group was modified (utime)",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "entitlements",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The access rights, entitlements etc. that the account has access to.",
+          "isMulti": true,
+          "isEntitlement": true,
+          "isGroup": false
+        },
+        {
+          "name": "groups",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The groups, roles etc. that reference to account group objects",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "permissions",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "The permissions associated with the account",
+          "isMulti": true,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "9b44e7a832964dd98c6e434df6e8d48f",
+      "name": "group",
+      "created": "2025-09-23T14:08:25.864Z",
+      "modified": "2025-09-23T14:08:25.864Z"
+    }
+  ],
+  "connectorAttributes": {
+    "group.mergeRows": true,
+    "group.delimiter": ",",
+    "mergeRows": false,
+    "group.filetransport": "local",
+    "partitionMode": "disabled",
+    "checkDeletedDisabled": false,
+    "connectionType": "file",
+    "group.host": "local",
+    "group.indexColumn": "id",
+    "delimiter": ",",
+    "host": "local",
+    "commentCharacter": "#",
+    "group.mergeColumns": [
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "hasHeader": true,
+    "filterEmptyRecords": true,
+    "filetransport": "local",
+    "deleteThresholdPercentage": 100,
+    "group.filterEmptyRecords": true,
+    "group.hasHeader": true,
+    "group.partitionMode": "disabled",
+    "labels": [
+      "standard"
+    ],
+    "group.columnNames": [
+      "id",
+      "name",
+      "displayName",
+      "created",
+      "description",
+      "modified",
+      "entitlements",
+      "groups",
+      "permissions"
+    ],
+    "templateApplication": "DelimitedFile Template",
+    "healthy": true,
+    "cloudDisplayName": "CZR-Application-CNOWEmployeeConversion",
+    "connectorName": "Delimited File",
+    "cloudOriginalApplicationType": "Delimited File",
+    "since": "2025-09-26T16:19:21.046Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {},
+  "correlationConfigDetails": {
+    "attributeAssignments": null,
+    "id": null,
+    "name": null
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [
+    {
+      "name": "Create Policy",
+      "description": "Create Policy",
+      "usageType": "CREATE",
+      "fields": [
+        {
+          "name": "id",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "name",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "givenName",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "familyName",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "e-mail",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "location",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "manager",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        },
+        {
+          "name": "groups",
+          "transform": null,
+          "attributes": {},
+          "isRequired": false,
+          "type": null,
+          "isMultiValued": false
+        }
+      ]
+    }
+  ],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

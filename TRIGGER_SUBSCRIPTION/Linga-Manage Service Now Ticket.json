@@ -1,0 +1,13 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:identity-created",
+  "workflowConfig": {
+    "workflowId": "8344aad2-533e-4c1a-bb43-1e2e5098cf23"
+  },
+  "triggerName": "Identity Created",
+  "description": "Managed by Workflows",
+  "id": "8344aad2-533e-4c1a-bb43-1e2e5098cf23",
+  "enabled": false,
+  "name": "Linga-Manage Service Now Ticket",
+  "type": "WORKFLOW"
+}

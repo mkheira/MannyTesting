@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "dbbf4bed-cea7-42ea-a49c-00864c76ee19"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Identity Attributes Changed",
+  "triggerId": "idn:identity-attributes-changed",
+  "enabled": true,
+  "id": "dbbf4bed-cea7-42ea-a49c-00864c76ee19",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-Access Change",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute == \"department\" || @.attribute == \"jobCode\" || @.attribute == \"jobTitle\" || @.attribute == \"locationCode\" || @.attribute == \"locationDesc\" || @.attribute == \"managementLevelFlag\" || @.attribute == \"manager\")]"
+}

@@ -1,0 +1,265 @@
+{
+  "id": "31aef198496e47a9918ba26907d351b9",
+  "name": "CZR-Application-GenerateContractorId",
+  "type": "Web Services",
+  "connectorClass": "sailpoint.connector.webservices.WebServicesConnector",
+  "connectorScriptName": "web-services-angularsc",
+  "description": "Source used to generate new Contractor Id",
+  "deleteThreshold": 10,
+  "provisionAsCsv": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "accountCorrelationRule": null,
+  "managerCorrelationRule": null,
+  "beforeProvisioningRule": null,
+  "features": [
+    "PROVISIONING",
+    "ENABLE",
+    "UNLOCK",
+    "PASSWORD",
+    "AUTHENTICATE"
+  ],
+  "schemas": [
+    {
+      "nativeObjectType": "user",
+      "identityAttribute": "action",
+      "displayAttribute": "action",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [
+        {
+          "name": "action",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "action",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "lastCreatedContractorId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "Last Created Contractor Id",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        },
+        {
+          "name": "newContractorId",
+          "nativeName": null,
+          "type": "STRING",
+          "schema": null,
+          "description": "New Contractor Id",
+          "isMulti": false,
+          "isEntitlement": false,
+          "isGroup": false
+        }
+      ],
+      "id": "164f9950d126418da8b38cf0807b2b04",
+      "name": "account",
+      "created": "2025-02-24T15:14:21.209Z",
+      "modified": "2025-02-25T06:04:00.794Z"
+    },
+    {
+      "nativeObjectType": "group",
+      "identityAttribute": "",
+      "displayAttribute": "",
+      "hierarchyAttribute": null,
+      "includePermissions": false,
+      "features": [],
+      "configuration": {},
+      "attributes": [],
+      "id": "da613ecffdf94e04bf4c5fdef691ae69",
+      "name": "group",
+      "created": "2025-02-24T15:14:21.209Z",
+      "modified": "2025-02-25T06:04:00.794Z"
+    }
+  ],
+  "connectorAttributes": {
+    "healthCheckTimeout": 30,
+    "supportsDeltaAgg": "true",
+    "deltaAggregationEnabled": false,
+    "throwProvBeforeRuleException": true,
+    "connectionType": "direct",
+    "enableHasMore": false,
+    "client_id": "4847cf012c464e949ad9af210f65fadb",
+    "isGetObjectRequiredForPTA": true,
+    "timeoutInSeconds": "60",
+    "genericWebServiceBaseUrl": "https://caesars-sb.api.identitynow.com",
+    "enableProvisioningFeature": true,
+    "appTemplateData": "{\"whiteListedAttributes\":[\"enableProvisioningFeature\"]}",
+    "connectionParameters": [
+      {
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Test Connection",
+        "curlEnabled": false,
+        "operationType": "Test Connection",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "resMappingObj": {
+          "newContractorId": "connectorAttributes.lastCreatedContractorId",
+          "action": "name",
+          "lastCreatedContractorId": "connectorAttributes.lastCreatedContractorId"
+        },
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "Account Aggregation",
+        "curlEnabled": false,
+        "operationType": "Account Aggregation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Get Account",
+        "afterRule": "CZR-Rule-GenerateContrctorId-AfterOperation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ],
+        "resMappingObj": {
+          "newContractorId": "connectorAttributes.lastCreatedContractorId ",
+          "action": "name",
+          "lastCreatedContractorId": "connectorAttributes.lastCreatedContractorId"
+        },
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "operationType": "Get Object"
+      }
+    ],
+    "grant_type": "CLIENT_CREDENTIALS",
+    "partitionAggregationEnabled": false,
+    "throwBeforeAfterRuleException": true,
+    "hasFullAggregationCompleted": true,
+    "token_url": "https://caesars-sb.api.identitynow.com/oauth/token",
+    "possibleHttpErrors": {},
+    "sourceConnected": true,
+    "createAccountWithEntReq": false,
+    "throwProvAfterRuleException": true,
+    "disableCookies": false,
+    "lastAggregationDate_account": "2025-02-25T06:08:02Z",
+    "deleteThresholdPercentage": 10,
+    "fixedPlanMultivaluedAttribute": "true",
+    "version": "v2",
+    "labels": [
+      "standard"
+    ],
+    "cloudCacheUpdate": 1766159345404,
+    "templateApplication": "Web Services Template",
+    "encrypted": "accesstoken,refresh_token,oauth_token_info,client_secret,private_key,private_key_password,clientCertificate,clientKeySpec,resourceOwnerPassword,custom_auth_token_info",
+    "authenticationMethod": "OAuth2Login",
+    "httpCookieSpecsStandard": "true",
+    "healthy": true,
+    "cloudDisplayName": "CZR-Application-GenerateContractorId",
+    "connectorName": "Web Services",
+    "updateAttrWithChangePassword": false,
+    "since": "2025-12-19T15:49:05.393Z",
+    "status": "SOURCE_STATE_HEALTHY"
+  },
+  "crossTenantConnectorAttributes": {
+    "connectionParameters": [
+      {
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "1",
+        "uniqueNameForEndPoint": "Test Connection",
+        "curlEnabled": false,
+        "operationType": "Test Connection",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "resMappingObj": {
+          "newContractorId": "connectorAttributes.lastCreatedContractorId",
+          "action": "name",
+          "lastCreatedContractorId": "connectorAttributes.lastCreatedContractorId"
+        },
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "pagingSize": 50,
+        "sequenceNumberForEndpoint": "2",
+        "uniqueNameForEndPoint": "Account Aggregation",
+        "curlEnabled": false,
+        "operationType": "Account Aggregation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ]
+      },
+      {
+        "httpMethodType": "GET",
+        "pagingInitialOffset": 0,
+        "sequenceNumberForEndpoint": "3",
+        "uniqueNameForEndPoint": "Get Account",
+        "afterRule": "CZR-Rule-GenerateContrctorId-AfterOperation",
+        "rootPath": "$",
+        "body": {
+          "bodyFormat": "raw"
+        },
+        "responseCode": [
+          "200"
+        ],
+        "resMappingObj": {
+          "newContractorId": "connectorAttributes.lastCreatedContractorId ",
+          "action": "name",
+          "lastCreatedContractorId": "connectorAttributes.lastCreatedContractorId"
+        },
+        "contextUrl": "/v3/sources/5bcb54289d5649149b01379de2d98800",
+        "pagingSize": 50,
+        "curlEnabled": false,
+        "operationType": "Get Object"
+      }
+    ]
+  },
+  "correlationConfigDetails": {
+    "attributeAssignments": null,
+    "id": null,
+    "name": null
+  },
+  "managerCorrelationMapping": null,
+  "provisioningPolicies": [],
+  "managementWorkgroup": null,
+  "passwordPolicies": null
+}

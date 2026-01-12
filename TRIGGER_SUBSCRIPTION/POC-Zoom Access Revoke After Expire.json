@@ -1,0 +1,14 @@
+{
+  "triggerId": "idn:post-provisioning",
+  "responseDeadline": "PT1H",
+  "workflowConfig": {
+    "workflowId": "83ae57e3-0c2c-42a0-bcd2-9d266deba758"
+  },
+  "triggerName": "Provisioning Completed",
+  "description": "Managed by Workflows",
+  "id": "83ae57e3-0c2c-42a0-bcd2-9d266deba758",
+  "enabled": false,
+  "name": "POC-Zoom Access Revoke After Expire",
+  "type": "WORKFLOW",
+  "filter": "$.accountRequests[?(@.accountOperation=='Modify' &&  @.attributeRequests[0].attributeValue=='CN=ZoomCom,OU=Groups,OU=HQL,OU=SailPointUsers,DC=dev,DC=lab,DC=local')]"
+}

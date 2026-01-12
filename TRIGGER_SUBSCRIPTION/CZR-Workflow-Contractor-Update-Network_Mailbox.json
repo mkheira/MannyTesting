@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "c62775b9-d01c-487a-906c-4ac40589e0c9"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Interactive Trigger",
+  "triggerId": "idn:interactive-process-launched",
+  "enabled": true,
+  "id": "c62775b9-d01c-487a-906c-4ac40589e0c9",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-Contractor-Update-Network_Mailbox",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == 'c62775b9-d01c-487a-906c-4ac40589e0c9')]"
+}

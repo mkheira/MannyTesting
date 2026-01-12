@@ -1,0 +1,14 @@
+{
+  "workflowConfig": {
+    "workflowId": "3274bb95-812a-45a2-b628-ebbdff398a19"
+  },
+  "responseDeadline": "PT1H",
+  "triggerName": "Identity Attributes Changed",
+  "triggerId": "idn:identity-attributes-changed",
+  "enabled": false,
+  "id": "3274bb95-812a-45a2-b628-ebbdff398a19",
+  "description": "Managed by Workflows",
+  "name": "CZR-Workflow-Notify UpdateAccount Notification",
+  "type": "WORKFLOW",
+  "filter": "$.changes[?(@.attribute in [\"adDepartment\",\"jobTitle\",\"locationCode\",\"firstname\",\"lastname\",\"middleName\"])]"
+}

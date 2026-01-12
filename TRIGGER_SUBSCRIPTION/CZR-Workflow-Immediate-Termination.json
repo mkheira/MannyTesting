@@ -1,0 +1,14 @@
+{
+  "responseDeadline": "PT1H",
+  "triggerId": "idn:interactive-process-launched",
+  "workflowConfig": {
+    "workflowId": "203a0242-1286-49e4-baf8-801144130f8f"
+  },
+  "triggerName": "Interactive Trigger",
+  "description": "Managed by Workflows",
+  "enabled": true,
+  "id": "203a0242-1286-49e4-baf8-801144130f8f",
+  "name": "CZR-Workflow-Immediate-Termination",
+  "type": "WORKFLOW",
+  "filter": "$[?(@.workflowId == '203a0242-1286-49e4-baf8-801144130f8f')]"
+}

@@ -1,0 +1,13 @@
+{
+  "triggerId": "idn:identity-attributes-changed",
+  "responseDeadline": "PT1H",
+  "workflowConfig": {
+    "workflowId": "7fae7e40-05b8-4f71-9656-975579387be5"
+  },
+  "triggerName": "Identity Attributes Changed",
+  "description": "Managed by Workflows",
+  "id": "7fae7e40-05b8-4f71-9656-975579387be5",
+  "enabled": false,
+  "name": "POC-Create CNow Ticket for Manual Provisioning",
+  "type": "WORKFLOW"
+}
