@@ -1,0 +1,52 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "91ace1cac2be41e8a02676ac348a42a9",
+    "name": "Contractors"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [
+    {
+      "action": "ENABLE",
+      "allSources": false,
+      "sourceIdsRefs": [
+        {
+          "type": "SOURCE",
+          "id": "1a17d4b93c164592be143c63886e6660",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-Contractor"
+        }
+      ],
+      "excludeSourceIdsRefs": []
+    }
+  ],
+  "enabled": true,
+  "technicalName": "active",
+  "description": null,
+  "identityCount": 374,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [
+    {
+      "action": "ENABLE",
+      "sourceIds": [
+        "1a17d4b93c164592be143c63886e6660"
+      ],
+      "excludeSourceIds": null,
+      "allSources": false
+    }
+  ],
+  "accessProfileIds": [],
+  "identityState": "ACTIVE",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "2f74171cc05041e382212607384ac935",
+  "name": "Active",
+  "created": "2025-02-11T21:44:13.424Z",
+  "modified": "2025-10-28T12:30:56.854Z"
+}

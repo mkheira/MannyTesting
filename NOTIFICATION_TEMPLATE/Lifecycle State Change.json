@@ -1,0 +1,18 @@
+{
+  "id": "63cc2d26aab14209a4839a8b827962c7",
+  "created": "2024-12-20T22:16:15Z",
+  "modified": "2025-12-23T18:39:03Z",
+  "medium": "EMAIL",
+  "key": "cloud_lifecycle_state_change",
+  "name": "Lifecycle State Change",
+  "description": "Sent to selected users when an identity's lifecycle state changes.",
+  "locale": "en",
+  "subject": "Lifecycle state change for ${identityName}",
+  "header": null,
+  "body": "#if ($newState == \"Pending Worker Expired\")<p>Since the Pending Worker ${identityName} has exceeded the 30-day projected start date, the associated Active Directory account has been deleted.</p>#else<p>The user ${identityName}'s status has changed to ${newState}.</p>#end<p>Thanks,<br>The ${PRODUCT_NAME} Team</p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

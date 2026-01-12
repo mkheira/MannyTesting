@@ -1,0 +1,19 @@
+{
+  "description": "Correlates secondary accounts to identities based on employee number",
+  "type": "Correlation",
+  "signature": {
+    "input": [],
+    "output": null
+  },
+  "sourceCode": {
+    "version": "2025-04-30 18:57:56",
+    "script": "\n\nString employeeNumber = account.getStringAttribute(\"employeeNumber\");\nString trimmedEmployeeNumber = \"\";\nif (employeeNumber != null && !employeeNumber.isEmpty()) {\n    int length = employeeNumber.length();\n    int i;\n    // Start from the last character and move backwards\n    for (i = length - 1; i >= 0; i--) {\n        if (!(employeeNumber.charAt(i) >= 'A' && employeeNumber.charAt(i) <= 'Z')) {\n            break;\n        }\n    }\n    trimmedEmployeeNumber = employeeNumber.substring(0, i + 1);\n}\n \nMap returnMap = new HashMap();\nreturnMap.put(\"identityAttributeName\", \"identificationNumber\");\nreturnMap.put(\"identityAttributeValue\", trimmedEmployeeNumber);\n \nreturn returnMap;\n\n  "
+  },
+  "attributes": {
+    "sourceVersion": "2025-04-30 18:57:56"
+  },
+  "id": "9173d6f03a5f475891eafba138f33cf7",
+  "name": "CZR_SecondaryAccountsActiveDirectory_Correlation",
+  "created": "2025-04-30T18:57:57.156Z",
+  "modified": "2025-04-30T18:57:57.156Z"
+}

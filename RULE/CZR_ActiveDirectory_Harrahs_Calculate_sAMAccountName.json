@@ -1,0 +1,19 @@
+{
+  "description": "Calculate the SamAccountName of the user and validate uniqueness against Active directory.",
+  "type": "AttributeGenerator",
+  "signature": {
+    "input": [],
+    "output": null
+  },
+  "sourceCode": {
+    "version": "2025-03-10 22:38:49",
+    "script": "        \n\timport java.util.ArrayList;\n\timport sailpoint.tools.GeneralException;\n\timport org.apache.commons.lang.StringUtils;\n\timport java.util.List;\n\timport java.util.Arrays;\n\timport sailpoint.server.IdnRuleUtil;\n\n\tpublic boolean checkUnique(String samAccName) throws GeneralException {\n\t  boolean isSamAccNameUnique = false;\n\t  boolean isUPNUnique = false;\n\t  boolean isMailUnique = false;\n\t  \n\t  String op = \"StartsWith\";\n\t  String searchableUserID = \"searchableUserID\";\n\t  String searchableUPN = \"searchableUPN\";\n\t  String searchableMail = \"searchableMail\";\n\t  \n\t  String harrahsADSourceId = idn.getSourceAttributeBySourceName(application.getName(), \"harrahsADSourceId\");\n\t  String whADSourceId = idn.getSourceAttributeBySourceName(application.getName(), \"whADSourceId\");\n\t  String devADSourceId = idn.getSourceAttributeBySourceName(application.getName(), \"devADSourceId\");\n\n\t  List SOURCE_IDS = new ArrayList(Arrays.asList(new String[] {\n\t\tharrahsADSourceId,\n\t\twhADSourceId,\n\t\tdevADSourceId\n\t  }));\n\t  List SEARCH_VALUES = new ArrayList(Arrays.asList(new String[] {\n\t\tsamAccName\n\t  }));\n\n\t  isSamAccNameUnique = idn.attrSearchCountAccounts(SOURCE_IDS, searchableUserID, op, SEARCH_VALUES) == 0 ? true : false;\n\t  if(isSamAccNameUnique) {\n\t\tisUPNUnique = idn.attrSearchCountAccounts(SOURCE_IDS, searchableUPN, op, SEARCH_VALUES) == 0 ? true : false;\n\t\tif(isUPNUnique) {\n\t\t\tisMailUnique = idn.attrSearchCountAccounts(SOURCE_IDS, searchableMail, op, SEARCH_VALUES) == 0 ? true : false;\n\t\t}\n\t  }\n\t  \n\t  if(isSamAccNameUnique && isUPNUnique && isMailUnique)\n\t\treturn true;\n\t  else\n\t\treturn false;\n\t}\n\n\tpublic String cleanData(String inputString) {\n\t  if (inputString != null) {\n\t\tinputString = inputString.replaceAll(\"[^A-Za-z0-9]\", \"\");\n\t\tinputString = StringUtils.trimToNull(inputString);\n\t\tif (inputString != null) {\n\t\t  inputString = inputString.replaceAll(\"[\\\\s\\\\-()]\", \"\");\n\t\t  inputString = inputString.replaceAll(\"'\", \"\");\n\t\t  inputString = inputString.toLowerCase();\n\t\t}\n\t  }\n\t  return inputString;\n\t}\n\n\tpublic String getSamAccName() {\n\t  boolean isUnique = false;\n\n\t  String firstName = identity.getFirstname();\n\t  String lastName = identity.getLastname();\n\t  String samAccName = \"\";\n\n\t  if (null != firstName && firstName != \"\")\n\t\tfirstName = cleanData(firstName);\n\t  if (null != lastName && lastName != \"\")\n\t\tlastName = cleanData(lastName);\n\t  if (null == firstName || null == lastName || firstName == \"\" || lastName == \"\") {\n\t\treturn samAccName;\n\t  }\n\n\t  if (firstName.length() > 1) {\n\t\tsamAccName = samAccName + firstName.substring(0, 1) + lastName.split(\" \")[0];\n\t  } else {\n\t\tsamAccName = samAccName + firstName + lastName.split(\" \")[0];\n\t  }\n\n\t  String tempsamAccName = samAccName.trim();\n\n\t  for (int count = 1; count < 1000; count++) {\n\t\tisUnique = checkUnique(tempsamAccName);\n\t\tif (isUnique) {\n\t\t  samAccName = tempsamAccName;\n\t\t  break;\n\t\t}\n\t\ttempsamAccName = samAccName + count;\n\t  }\n\t  return samAccName;\n\t}\n\treturn getSamAccName();           \t\t\n  "
+  },
+  "attributes": {
+    "sourceVersion": "2025-03-10 22:38:49"
+  },
+  "id": "6e6b8e8ff46e4906b9f772bbd270c3fa",
+  "name": "CZR_ActiveDirectory_Harrahs_Calculate_sAMAccountName",
+  "created": "2025-03-10T22:38:49.940Z",
+  "modified": "2025-03-10T22:38:49.940Z"
+}

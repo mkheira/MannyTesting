@@ -1,0 +1,118 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "715dd0fedd1a4907aa349f71717d4d27",
+    "name": "Employees"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [
+    {
+      "action": "ENABLE",
+      "allSources": false,
+      "sourceIdsRefs": [
+        {
+          "type": "SOURCE",
+          "id": "4f4839d8993144e3b1c0b1af7a2fd110",
+          "name": "CZR-Application-ActiveDirectory-WilliamHill"
+        },
+        {
+          "type": "SOURCE",
+          "id": "c478eb84d64143d79d7782f913177b4c",
+          "name": "CZR-Application-MRI"
+        },
+        {
+          "type": "SOURCE",
+          "id": "fbcdc5d1ab24407ca93009f0c88c18b9",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-JB-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "d9b99fcd94444ab5bdae7b3eb3816f7a",
+          "name": "CZR-Application-ActiveDirectory-SDSProd-JA-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "a6996bd6dc864715bbd6d35d63b4e3cb",
+          "name": "CZR-Application-ActiveDirectory-SDSProd-JD-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "466f5b31d8f1487d9a8ac2b65d90b376",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-JC-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "8658625170dc4dc69206007cd6fab106",
+          "name": "CZR-Application-Shareworks"
+        },
+        {
+          "type": "SOURCE",
+          "id": "aded3f5608dc476ba7ab67b19314c7ef",
+          "name": "CZR-Application-ActiveDirectory-SDSProd-JB-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "a105733122404926bf0733641c9d4b75",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-JA-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "1a03b763589d4a00b37d9412b602675d",
+          "name": "CZR-Application-ActiveDirectory-SDSProd-JC-Accounts"
+        },
+        {
+          "type": "SOURCE",
+          "id": "e30d0436a20b45b79517a08f0380b1b1",
+          "name": "CZR-Application-ActiveDirectory-Harrahs"
+        },
+        {
+          "type": "SOURCE",
+          "id": "8e16ff65adaa44f2b5cdf671ef505d5c",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-JD-Accounts"
+        }
+      ],
+      "excludeSourceIdsRefs": []
+    }
+  ],
+  "enabled": true,
+  "technicalName": "active",
+  "description": null,
+  "identityCount": 504,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [
+    {
+      "action": "ENABLE",
+      "sourceIds": [
+        "4f4839d8993144e3b1c0b1af7a2fd110",
+        "c478eb84d64143d79d7782f913177b4c",
+        "fbcdc5d1ab24407ca93009f0c88c18b9",
+        "d9b99fcd94444ab5bdae7b3eb3816f7a",
+        "a6996bd6dc864715bbd6d35d63b4e3cb",
+        "466f5b31d8f1487d9a8ac2b65d90b376",
+        "8658625170dc4dc69206007cd6fab106",
+        "aded3f5608dc476ba7ab67b19314c7ef",
+        "a105733122404926bf0733641c9d4b75",
+        "1a03b763589d4a00b37d9412b602675d",
+        "e30d0436a20b45b79517a08f0380b1b1",
+        "8e16ff65adaa44f2b5cdf671ef505d5c"
+      ],
+      "excludeSourceIds": null,
+      "allSources": false
+    }
+  ],
+  "accessProfileIds": [],
+  "identityState": "ACTIVE",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "6775052ed88b44e3b24e0d6e319f6268",
+  "name": "Active",
+  "created": "2025-02-13T04:07:02.005Z",
+  "modified": "2025-12-23T15:39:20.384Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Approval Reminder",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "approval_request_reminder",
+  "name": "Approval Reminder",
+  "description": "Sent to approvers who have not reviewed an assigned approval request after an admin-configured amount of time.",
+  "locale": "en",
+  "subject": "Reminder: An Approval Request Is Awaiting Your Review",
+  "header": null,
+  "body": "<p>Dear ${__recipient.name},</p> <p>This is a reminder that an approval request for $approvalName submitted by #if($requestee.name && $requestee.name != '') $requester.name for $requestee.name #else $requester.name #end is pending your reviewal.</p>  <p>To review approval requests that are assigned to you, please go to: $__global.productUrl/ui/d/$approverPath</p><br/>Thank you,<br/> The ${__global.productName} Team<br/>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

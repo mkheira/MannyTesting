@@ -1,0 +1,30 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "178cbac884f4418296e4ea294594a72b",
+    "name": "IdentityNow Admins"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [],
+  "enabled": false,
+  "technicalName": "inactive",
+  "description": null,
+  "identityCount": 0,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_LONG_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "61c321a6488647f3beeb1ae4ab6d476d",
+  "name": "Inactive",
+  "created": "2024-12-27T16:49:20.996Z",
+  "modified": "2024-12-27T16:49:20.996Z"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Source Collaboration Review Notification",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "source_config_collab_in_review",
+  "name": "Source Collaboration Review Notification",
+  "description": "Notifies the assigner when they have a review to approve by a collaborator who is configuring a source",
+  "locale": "en",
+  "subject": "$assignedUser has submitted a draft of the $referenceName source",
+  "header": null,
+  "body": "Dear $__recipient.name,<br><p>$assignedUser has submitted a draft of the $referenceName source configuration. You will be able to approve their configurations or request changes. You can then publish the draft to create a source.</p><p>Go to the <a href=\"$deepLink\">$referenceName configuration page</a> to review this draft.</p><br>Thanks,<br>The $__global.productName Team",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

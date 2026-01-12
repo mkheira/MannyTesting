@@ -1,0 +1,30 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "715dd0fedd1a4907aa349f71717d4d27",
+    "name": "Employees"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [],
+  "enabled": true,
+  "technicalName": "default",
+  "description": null,
+  "identityCount": 10,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [],
+  "accessProfileIds": [],
+  "identityState": "ACTIVE",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "8ac2e0b9602a47f2aae5f6dbafab3c57",
+  "name": "Default",
+  "created": "2025-02-17T16:04:40.820Z",
+  "modified": "2025-02-17T16:04:50.851Z"
+}

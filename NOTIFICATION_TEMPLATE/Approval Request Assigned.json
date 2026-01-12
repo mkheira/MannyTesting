@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Approval Request Assigned",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "approval_request_notification",
+  "name": "Approval Request Assigned",
+  "description": "Send a notification to a user indicating they have an approval request that they need to review.",
+  "locale": "en",
+  "subject": "An Approval Request Is Awaiting Your Review",
+  "header": null,
+  "body": "<p>Dear ${__recipient.name},</p> <p>You have $__contentJson.batchSize approval #if($__contentJson.batchSize==1) request #else requests #end waiting for your review.</p>  <p>To review approval requests that are assigned to you, please go to: $__global.productUrl/ui/d/$approverPath</p><br/>Thank you,<br/> The ${__global.productName} Team<br/>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

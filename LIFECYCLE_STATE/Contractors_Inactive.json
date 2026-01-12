@@ -1,0 +1,58 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "91ace1cac2be41e8a02676ac348a42a9",
+    "name": "Contractors"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [
+    {
+      "action": "DISABLE",
+      "allSources": false,
+      "sourceIdsRefs": [
+        {
+          "type": "SOURCE",
+          "id": "1a17d4b93c164592be143c63886e6660",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-Contractor"
+        },
+        {
+          "type": "SOURCE",
+          "id": "e30d0436a20b45b79517a08f0380b1b1",
+          "name": "CZR-Application-ActiveDirectory-Harrahs"
+        }
+      ],
+      "excludeSourceIdsRefs": []
+    }
+  ],
+  "enabled": true,
+  "technicalName": "inactive",
+  "description": null,
+  "identityCount": 68,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [
+    {
+      "action": "DISABLE",
+      "sourceIds": [
+        "1a17d4b93c164592be143c63886e6660",
+        "e30d0436a20b45b79517a08f0380b1b1"
+      ],
+      "excludeSourceIds": null,
+      "allSources": false
+    }
+  ],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_LONG_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "fab7ad58a2234364ade8419f31ba3500",
+  "name": "Inactive",
+  "created": "2025-02-11T21:44:13.386Z",
+  "modified": "2025-10-27T14:46:08.680Z"
+}

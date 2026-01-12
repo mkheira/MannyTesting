@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Account Correlation Test Complete",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "account_correlation_statistics_recommendation",
+  "name": "Account Correlation Test Complete",
+  "description": "Sent to the user when account correlation statistics have been generated.",
+  "locale": "en",
+  "subject": "Account Correlation Test Complete for $sourceName",
+  "header": null,
+  "body": "Dear $__recipient.name,<br/><br/>\n#set($url=$__global.productUrl + '/ui/a/admin/connections/sources/' + $sourceId + '/settings/account-correlation')Account correlation statistics have been generated based on your test correlation configuration for the $sourceName source. <br/> Go to the <a href=\"$url\">Account Correlation</a> page to review the results of the correlation test.<br/>\n<br/>Thanks,<br/> The $__global.productName Team<br/>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

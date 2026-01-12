@@ -1,0 +1,30 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "91ace1cac2be41e8a02676ac348a42a9",
+    "name": "Contractors"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [],
+  "enabled": true,
+  "technicalName": "prehire",
+  "description": null,
+  "identityCount": 0,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_SHORT_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "7c70d17608ef480f84a63768054391b0",
+  "name": "preHire",
+  "created": "2025-04-14T11:10:39.545Z",
+  "modified": "2025-04-14T11:10:57.228Z"
+}

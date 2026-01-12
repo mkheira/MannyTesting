@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Remove Assignee User Level",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "source_config_collab_revoke_user_level",
+  "name": "Remove Assignee User Level",
+  "description": "Notifies an administrator to remove Source Configuration Assignee user level.",
+  "locale": "en",
+  "subject": "$requesterUser has requested that you revoke the Source Configuration Assignee user level from $user",
+  "header": null,
+  "body": "Dear $adminUser,<br><br><p>$requesterUser has requested that the Source Configuration Assignee user level be removed from $user because they have finished onboarding their assigned sources.</p><p>To revoke this user level from $user, go to their <a href=\"$userLink\">identity</a> and remove the Source Configuration Assignee <a href=\"https://documentation.sailpoint.com/saas/help/accounts/identities.html#setting-user-level-permissions\">user level</a>.</p><br>Thanks,<br>The $__global.productName Team",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

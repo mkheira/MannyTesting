@@ -1,0 +1,18 @@
+{
+  "id": "ee6fe4a39e6a4a14be416cadd1de067d",
+  "created": "2024-12-20T22:16:15Z",
+  "modified": "2025-10-16T16:42:49Z",
+  "medium": "EMAIL",
+  "key": "certification_due",
+  "name": "Certification Due",
+  "description": "Sent to certification reviewers one week after a certification campaign starts and every seven days after that, until they sign off or the campaign ends.",
+  "locale": "en",
+  "subject": "Reminder: Certification needs your attention",
+  "header": null,
+  "body": "<p>Dear ${ownerName},</p><p>The certification \"$certification.certificationGroups.get(0).name\" is still open and needs to be completed.#if ($certification.expiration) This certification must be finished by $spTools.formatDate($certification.expiration,3,0).#{end} Click <a href=\"$identityNowUrl/ui/d/certifications-review/certification/${certification.id}\">here</a> to complete the certification.</p><p>Please note that failure to complete this certification by the due date may result in the removal of all access associated with this user.</p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

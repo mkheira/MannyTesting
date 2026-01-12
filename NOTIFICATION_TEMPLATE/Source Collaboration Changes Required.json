@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Source Collaboration Changes Required",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "source_config_collab_changes_required",
+  "name": "Source Collaboration Changes Required",
+  "description": "Notifies the assignee when the administrator requests additional changes to a source that is in review",
+  "locale": "en",
+  "subject": "Changes required to $referenceName source",
+  "header": null,
+  "body": "Dear $__recipient.name,<br/><br/><p>$owner has reviewed your changes to the $referenceName source and has assigned additional changes to you.</p><p>Go to the <a href=\"$deepLink\">$referenceName configuration page</a> to continue onboarding this source.</p><br/>Thanks,<br/> The $__global.productName Team<br/>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

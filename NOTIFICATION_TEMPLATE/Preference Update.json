@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Preference Update",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "cloud_user_authentication_setting_change",
+  "name": "Preference Update",
+  "description": "Sent whenever a user's authentication settings like phone number or answers to security questions change.",
+  "locale": "en",
+  "subject": "${PRODUCT_NAME} - ${changedSetting} ${hasOrHave} changed",
+  "header": null,
+  "body": "\tDear ${user.name},<br/>   <p>${changedSetting} for ${PRODUCT_NAME} ${hasOrHave} been updated at ${homeUrl}.</p>   <p> The change, made on ${date}, will apply to ${PRODUCT_NAME} the next time you sign in. <br />If you did not make this change, please contact your IT administrator immediately. </p>   <p> Thanks,<br/> The ${PRODUCT_NAME} Team </p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Access Request Decision for Other",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "access_request_decision_email_for_requested-for_identity",
+  "name": "Access Request Decision for Other",
+  "description": "Sent to a user when access was requested for them by another user and the reviewer of that request has made a decision.",
+  "locale": "en",
+  "subject": "${requesterName}'s Request for Access for you was #if($approved)approved#{else}denied#end",
+  "header": null,
+  "body": "\tDear ${user.name},<br/>\t<p>On ${dateRequested}, ${requesterName} requested ${requestedObjectName} for you.</p>\t#if ($approved)\t\t<p>Your access has been <span style=\"color:green\">approved</span>. The system is now processing the request.</p>\t\t#if ($removeDate)\t\t\t<p>Your access to ${requestedObjectName} is scheduled to end on ${removeDate}.</p>\t\t#end\t#{else}\t\t<p>Your access has been <span style=\"color:red\">denied</span>.</p>\t\t#if ($reviewerComment)\t\t\t<p>${rejecterName} included the following comment when denying the access: <b>$reviewerComment</b></p>\t\t#{else}\t\t\t<p>Please contact ${rejecterName} if you have any questions.</p>\t\t#end\t#end\t<p>\t\tThanks,<br/>\t\tThe ${PRODUCT_NAME} Team\t</p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

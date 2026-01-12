@@ -1,0 +1,52 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "715dd0fedd1a4907aa349f71717d4d27",
+    "name": "Employees"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [
+    {
+      "action": "DISABLE",
+      "allSources": false,
+      "sourceIdsRefs": [
+        {
+          "type": "SOURCE",
+          "id": "e30d0436a20b45b79517a08f0380b1b1",
+          "name": "CZR-Application-ActiveDirectory-Harrahs"
+        }
+      ],
+      "excludeSourceIdsRefs": []
+    }
+  ],
+  "enabled": true,
+  "technicalName": "lsalclbbdc",
+  "description": null,
+  "identityCount": 4,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [
+    {
+      "action": "DISABLE",
+      "sourceIds": [
+        "e30d0436a20b45b79517a08f0380b1b1"
+      ],
+      "excludeSourceIds": null,
+      "allSources": false
+    }
+  ],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_LONG_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "d704f183ba3340d0874b1100b6b37120",
+  "name": "LSALC/LBBDC",
+  "created": "2025-02-17T16:02:29.291Z",
+  "modified": "2025-03-18T05:59:28.700Z"
+}

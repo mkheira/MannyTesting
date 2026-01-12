@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Access Request Reassignment",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "access_request_reassignment",
+  "name": "Access Request Reassignment",
+  "description": "Sent to a reviewer when they have had access requests reassigned to them.",
+  "locale": "en",
+  "subject": "Access request for ${requesterName} ready for review",
+  "header": null,
+  "body": " \t<p> \t\tDear ${newOwnerName}, \t</p> \t<p>\t\t${previousOwnerName} has reassigned ${requesterName}'s request for access to the ${requestedObjectName}\t\t#if(${requestedObjectType}==\"Role\") role #elseif(${requestedObjectType}==\"Entitlement\") entitlement #else access profile #end to you. \t</p> \t#if($commentText) \t<p> \t\t${previousOwnerName} gave the following reason for reassignment: \t\t<br/> \t\t<p>${commentText}</p> \t</p> \t#end \t#if($removeDate)<p>The sunset date for ${requestedObjectName} is ${removeDate}.</p>#end \t#if($requestedObjectType==\"Role\") \t\t#if($accessibleItems && $accessibleItems.size() > 0) \t\t<p> \t\t\tIf you approve this request, the user will receive access to the following: \t\t\t<ul> \t\t\t#foreach($item in $accessibleItems) \t\t\t\t<li>$item</li> \t\t\t#end \t\t\t</ul> \t\t\t</p> \t\t#end \t#elseif($requestedObjectType==\"AccessProfile\") \t\tIf you approve this request, ${requesterName} will receive access to all entitlements in ${accessProfileName}. \t#end \t<p> \t\tThanks, \t\t<br/> \t\tThe ${PRODUCT_NAME} Team \t</p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

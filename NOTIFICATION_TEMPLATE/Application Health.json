@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Application Health",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "cloud_system_notification_apps",
+  "name": "Application Health",
+  "description": "Sent when an application changes status. This is a system notification email.",
+  "locale": "en",
+  "subject": "The application '$name' is now in #if ($healthy) a Healthy #{else} an Unhealthy #end state.",
+  "header": null,
+  "body": "\tDear recipient,    <p>     The application '$name' has been in #if ($healthy) a Healthy #{else} an Unhealthy #end state #if ($since) since $since ago. #end\t</p>\t<p>Please sign in to $PRODUCT_NAME for more information.</p>\tThank you,<br/>\tThe $PRODUCT_NAME Team\t<p>You are receiving this email because your email address was configured to receive $PRODUCT_NAME notification emails.</p>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

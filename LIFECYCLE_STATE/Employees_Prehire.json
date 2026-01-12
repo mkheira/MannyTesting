@@ -1,0 +1,30 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "715dd0fedd1a4907aa349f71717d4d27",
+    "name": "Employees"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [],
+  "enabled": true,
+  "technicalName": "prehire",
+  "description": null,
+  "identityCount": 19,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [],
+  "accessProfileIds": [],
+  "identityState": "ACTIVE",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": null,
+  "id": "4785f23e232846c1b8e01a97b0af4339",
+  "name": "Prehire",
+  "created": "2025-02-17T16:00:11.982Z",
+  "modified": "2025-02-17T16:04:15.989Z"
+}

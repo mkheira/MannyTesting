@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Access Request For Identity With Multiple Accounts Failed",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "access_request_for_identity_with_multiple_accounts_failed",
+  "name": "Access Request For Identity With Multiple Accounts Failed",
+  "description": "Sent to the requester if their access request failed because the user they requested access for has multiple accounts on the source.",
+  "locale": "en",
+  "subject": "Request for '${requestItemName}' Failed",
+  "header": null,
+  "body": "\t\tDear ${recipientName},<br/>        <p>Your request for '${requestItemName}' failed because you have more than one account on the '${sourceName}' source. </p>        <p>Please contact your administrator for assistance.</p>        Thanks,<br/>        The ${PRODUCT_NAME} Team",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

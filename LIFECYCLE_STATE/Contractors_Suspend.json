@@ -1,0 +1,52 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "91ace1cac2be41e8a02676ac348a42a9",
+    "name": "Contractors"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [
+    {
+      "action": "DISABLE",
+      "allSources": false,
+      "sourceIdsRefs": [
+        {
+          "type": "SOURCE",
+          "id": "1a17d4b93c164592be143c63886e6660",
+          "name": "CZR-Application-ActiveDirectory-Harrahs-Contractor"
+        }
+      ],
+      "excludeSourceIdsRefs": []
+    }
+  ],
+  "enabled": true,
+  "technicalName": "suspend",
+  "description": null,
+  "identityCount": 0,
+  "emailNotificationOption": {
+    "notifyManagers": false,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": []
+  },
+  "accountActions": [
+    {
+      "action": "DISABLE",
+      "sourceIds": [
+        "1a17d4b93c164592be143c63886e6660"
+      ],
+      "excludeSourceIds": null,
+      "allSources": false
+    }
+  ],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_SHORT_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": 10,
+  "id": "2181dea149c84bf6a95c11d0fd8316bb",
+  "name": "Suspend",
+  "created": "2025-11-11T19:43:50.924Z",
+  "modified": "2025-11-17T07:23:53.925Z"
+}

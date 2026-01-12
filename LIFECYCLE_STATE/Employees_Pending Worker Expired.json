@@ -1,0 +1,32 @@
+{
+  "identityProfileRef": {
+    "type": "IDENTITY_PROFILE",
+    "id": "715dd0fedd1a4907aa349f71717d4d27",
+    "name": "Employees"
+  },
+  "accessProfileRefs": null,
+  "accountActionRefs": [],
+  "enabled": true,
+  "technicalName": "pendingWorkerExpired",
+  "description": null,
+  "identityCount": 50,
+  "emailNotificationOption": {
+    "notifyManagers": true,
+    "notifyAllAdmins": false,
+    "notifySpecificUsers": false,
+    "emailAddressList": [
+      "srajathadri@caesars.com"
+    ]
+  },
+  "accountActions": [],
+  "accessProfileIds": [],
+  "identityState": "INACTIVE_LONG_TERM",
+  "accessActionConfiguration": {
+    "removeAllAccessEnabled": false
+  },
+  "priority": 10,
+  "id": "d5b0fbbf378e46b987bdd4e3b495e0f6",
+  "name": "Pending Worker Expired",
+  "created": "2025-12-09T11:40:30.607Z",
+  "modified": "2025-12-24T17:26:13.745Z"
+}

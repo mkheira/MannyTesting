@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Campaign Template Pre-Generation Notification",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "campaign_template_pregen_notification",
+  "name": "Campaign Template Pre-Generation Notification",
+  "description": "Sent out one week prior to Campaign Template generation.",
+  "locale": "en",
+  "subject": "Reminder: Your Certification Campaign is Scheduled to Start in 7 Days",
+  "header": null,
+  "body": "Dear ${__recipient.name},<br/><br/>\nThe certification $campaignTemplateName is scheduled to generate a campaign in 7 days. If you need to make any changes or updates to the contents of this campaign, please do so before ${generationDate}.\n<br/>Thanks,<br/> The $__global.productName Team<br/>",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}

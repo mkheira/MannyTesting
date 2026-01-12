@@ -1,0 +1,18 @@
+{
+  "id": "[Default] Remediation Work Item",
+  "created": null,
+  "modified": null,
+  "medium": "EMAIL",
+  "key": "remediation_work_item",
+  "name": "Remediation Work Item",
+  "description": "Sent to a user when a new remediation work item has been assigned to them.",
+  "locale": "en",
+  "subject": "New remediation request: $!workItemName",
+  "header": null,
+  "body": "$!requesterName has assigned a new remediation work item to you: $!workItemName.\n\nComments from $!requesterName:\n--------------------------------------------------------------------------------\n$!comments\n--------------------------------------------------------------------------------\n\nLogin and view your work item inbox to complete this request.",
+  "footer": null,
+  "from": "$__global.emailFromAddress",
+  "replyTo": "$__global.emailFromAddress",
+  "slackTemplate": null,
+  "teamsTemplate": null
+}
