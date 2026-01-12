@@ -1,0 +1,55 @@
+{
+  "description": "Entitlement SOD Policy",
+  "ownerRef": {
+    "type": "IDENTITY",
+    "id": "11ac2c3bfe8b419f8260b6d80434df95",
+    "name": "Adamson, Richard"
+  },
+  "creatorRef": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "Burka, Suman"
+  },
+  "externalPolicyReference": "",
+  "policyQuery": "@access(id:7433410b9d243699899c7c221a55ae2c) AND @access(id:7aaf53556aa5358eb9d6deb09bed147f)",
+  "compensatingControls": "User should not contain both the roles at a time",
+  "correctionAdvice": "Please remove first remove test entitlement and then request for okta entitlement",
+  "tags": [
+    "ENT_SOD"
+  ],
+  "state": "NOT_ENFORCED",
+  "scheduled": false,
+  "creatorId": "a59de7c458b8412196819de652475e5a",
+  "modifierId": "51853bd610094ac390620e1d89aad553",
+  "violationOwnerAssignmentConfig": {
+    "assignmentRule": null,
+    "ownerRef": null
+  },
+  "type": "CONFLICTING_ACCESS_BASED",
+  "conflictingAccessCriteria": {
+    "leftCriteria": {
+      "name": "access list",
+      "criteriaList": [
+        {
+          "type": "ENTITLEMENT",
+          "id": "7433410b9d243699899c7c221a55ae2c",
+          "name": "AC_Test"
+        }
+      ]
+    },
+    "rightCriteria": {
+      "name": "conflict access list",
+      "criteriaList": [
+        {
+          "type": "ENTITLEMENT",
+          "id": "7aaf53556aa5358eb9d6deb09bed147f",
+          "name": "Okta Tibco Control Center Dev Users Group"
+        }
+      ]
+    }
+  },
+  "id": "3d7abceb-85e9-4bf1-82f6-6de9d623f53b",
+  "name": "Entitlement SOD Policy",
+  "created": "2025-09-22T22:39:42Z",
+  "modified": "2025-09-23T20:53:27Z"
+}

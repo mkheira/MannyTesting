@@ -1,0 +1,36 @@
+{
+  "description": null,
+  "ownerRef": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "creatorRef": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "Rajathadri, Sachin"
+  },
+  "externalPolicyReference": null,
+  "policyQuery": "processingState:ERROR",
+  "compensatingControls": "check for identity errors",
+  "correctionAdvice": "check for identity errors",
+  "tags": [],
+  "state": "NOT_ENFORCED",
+  "scheduled": false,
+  "creatorId": "717de97e01cb457da08e697d0c78cde0",
+  "modifierId": "717de97e01cb457da08e697d0c78cde0",
+  "violationOwnerAssignmentConfig": {
+    "assignmentRule": "STATIC",
+    "ownerRef": {
+      "type": "IDENTITY",
+      "id": "9880e87611d64a5b9a6c66acd11b7301",
+      "name": "Lingareddy Some"
+    }
+  },
+  "type": "GENERAL",
+  "conflictingAccessCriteria": null,
+  "id": "3b277f3c-a536-4d07-8c3c-5d9c3d24ec41",
+  "name": "Identity Errors",
+  "created": "2025-12-15T17:45:03Z",
+  "modified": "2025-12-15T17:46:05Z"
+}

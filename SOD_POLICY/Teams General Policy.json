@@ -1,0 +1,36 @@
+{
+  "description": null,
+  "ownerRef": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "Inkoti, Kishore"
+  },
+  "creatorRef": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "Burka, Suman"
+  },
+  "externalPolicyReference": null,
+  "policyQuery": "@access(id:\\\"5a78137ae1c43ca8b82eb90ea20eabf8\\\") AND @access(id:\\\"af994d2e9307368b87826bb446cdb0df\\\")",
+  "compensatingControls": "Do not have both roles at the same time",
+  "correctionAdvice": "Please remove 30 days one then submit for permnant",
+  "tags": [],
+  "state": "NOT_ENFORCED",
+  "scheduled": false,
+  "creatorId": "a59de7c458b8412196819de652475e5a",
+  "modifierId": "a59de7c458b8412196819de652475e5a",
+  "violationOwnerAssignmentConfig": {
+    "assignmentRule": "STATIC",
+    "ownerRef": {
+      "type": "IDENTITY",
+      "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+      "name": "Elemmi, Sangamesh"
+    }
+  },
+  "type": "GENERAL",
+  "conflictingAccessCriteria": null,
+  "id": "915165b3-6687-4b03-af15-3fe91e1312ff",
+  "name": "Teams General Policy",
+  "created": "2025-09-29T15:23:07Z",
+  "modified": "2025-09-30T14:01:23Z"
+}

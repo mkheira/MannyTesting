@@ -1,0 +1,57 @@
+{
+  "description": "Teams Recording Conflict",
+  "ownerRef": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "creatorRef": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "externalPolicyReference": "",
+  "policyQuery": "@access(id:5a78137ae1c43ca8b82eb90ea20eabf8) AND @access(id:af994d2e9307368b87826bb446cdb0df)",
+  "compensatingControls": "Do not have both roles at the same time",
+  "correctionAdvice": "Please remove 30 days one then submit for permnant",
+  "tags": [],
+  "state": "NOT_ENFORCED",
+  "scheduled": false,
+  "creatorId": "9880e87611d64a5b9a6c66acd11b7301",
+  "modifierId": "a59de7c458b8412196819de652475e5a",
+  "violationOwnerAssignmentConfig": {
+    "assignmentRule": "STATIC",
+    "ownerRef": {
+      "type": "IDENTITY",
+      "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+      "name": "Elemmi, Sangamesh"
+    }
+  },
+  "type": "CONFLICTING_ACCESS_BASED",
+  "conflictingAccessCriteria": {
+    "leftCriteria": {
+      "name": "Teams Recording 30 day access",
+      "criteriaList": [
+        {
+          "type": "ENTITLEMENT",
+          "id": "5a78137ae1c43ca8b82eb90ea20eabf8",
+          "name": "Teams Recording 30 day access"
+        }
+      ]
+    },
+    "rightCriteria": {
+      "name": "Teams Recording permanent access",
+      "criteriaList": [
+        {
+          "type": "ENTITLEMENT",
+          "id": "af994d2e9307368b87826bb446cdb0df",
+          "name": "Teams Recording permanent access"
+        }
+      ]
+    }
+  },
+  "id": "846c128b-20ff-4513-bfb7-721d7e43a4d8",
+  "name": "Teams Recording Conflict",
+  "created": "2025-08-25T19:38:05Z",
+  "modified": "2025-09-26T03:27:23Z"
+}

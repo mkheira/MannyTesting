@@ -1,0 +1,83 @@
+{
+  "id": "3a25f061e1c14f798141ccc1b4cffe0e",
+  "name": "Service Desk-ServiceNow",
+  "description": "Service Desk-ServiceNow",
+  "type": "ServiceNow SDIM",
+  "clusterRef": {
+    "type": "CLUSTER",
+    "id": "497838ca82a74f24a17bc87a737276f3",
+    "name": "devAD"
+  },
+  "ownerRef": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "provisioningConfig": {
+    "universalManager": false,
+    "managedResourceRefs": [
+      {
+        "type": "SOURCE",
+        "id": "8658625170dc4dc69206007cd6fab106",
+        "name": "CZR-Application-Shareworks"
+      },
+      {
+        "type": "SOURCE",
+        "id": "c478eb84d64143d79d7782f913177b4c",
+        "name": "CZR-Application-MRI"
+      }
+    ],
+    "planInitializerScript": null,
+    "noProvisioningRequests": false,
+    "provisioningRequestExpiration": 0
+  },
+  "attributes": {
+    "provisioningTimeout": "180",
+    "serviceRequest": {
+      "checkStatus": {
+        "statusMap": {
+          "closed_complete": "Committed",
+          "requested": "Queued",
+          "in_process": "Queued",
+          "update": "Failed"
+        },
+        "closeNotes": "$.result[0].close_notes",
+        "resource": "/api/now/table/sc_request?number=$ticketId&sysparm_fields=request_state,close_notes",
+        "responseElement": "$.result[0].request_state",
+        "statusMapClosureCode": null
+      },
+      "provision": {
+        "request": {
+          "short_description": "SailPoint Access Request $!plan.arguments.identityRequestId",
+          "application": "$request.resource",
+          "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+          "opened_by": "$!{plan.arguments.opened_by|'Default_ServiceNow_Account_Sys_ID'}",
+          "req_description": "Service Request created by Service Desk Integration Module (SIM)",
+          "description": "#if($request.operation == 'Create') Create Account on application $request.resource #elseif($request.operation == 'Delete') For $request.id in application $request.resource : Requested action from SailPoint : Delete Account #if ($request.arguments.comments), Comments : $request.arguments.comments #end #else For $request.id in application $request.resource #end #if ($request.items) $newline #foreach ($item in $request.items) #if ($item.name == '*disabled*' && $item.value == 'true') Requested action from SailPoint : Disable Account #if ($request.arguments.comments), Comments : $request.arguments.comments #end $newline #elseif ($item.name == '*disabled*' && $item.value == 'false') Requested action from SailPoint : Enable Account #if ($request.arguments.comments), Comments : $request.arguments.comments #end $newline #elseif ($item.name == '*locked*' && $item.value == 'false') Requested action from SailPoint : Unlock Account #if ($request.arguments.comments), Comments : $request.arguments.comments #end $newline #else $!item.Operation $item.name: $item.value #if ($item.arguments.comments), Comment from SailPoint : $item.arguments.comments #end $newline #end #end #end",
+          "requested_for": "$!plan.arguments.requested_for",
+          "state": "-5"
+        },
+        "requestRootElement": "items",
+        "resource": "/api/x_sap_sdim/sailpoint_cart_js_api/create_ticket",
+        "responseElement": "$.result.request_number",
+        "catalogItem": {
+          "c478eb84d64143d79d7782f913177b4c": "8053818edbffb300e90690b3db9619c4",
+          "8658625170dc4dc69206007cd6fab106": "8053818edbffb300e90690b3db9619c4"
+        }
+      }
+    },
+    "ticketType": "serviceRequest",
+    "authenticationType": "Basic",
+    "connectorClass": "openconnector.connector.servicedesk.ServiceDeskConnector",
+    "requesterSource": "57188df5bf984b91abfc97459b987e47",
+    "url": "https://caesarsdev.service-now.com",
+    "spConnDebugLoggingEnabled": false,
+    "username": "iiq_integration_user"
+  },
+  "beforeProvisioningRule": {
+    "type": "RULE",
+    "id": "eafe615fc4b84643ac874f2a3ac1ee22",
+    "name": "Sample Before Provisioning Rule for SDIM"
+  },
+  "credentialProviderEnabled": false
+}
