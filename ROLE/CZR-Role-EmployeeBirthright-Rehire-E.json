@@ -1,0 +1,246 @@
+{
+  "id": "c5a1ab83c53943c08579fdfb01885217",
+  "name": "CZR-Role-EmployeeBirthright-Rehire-E",
+  "created": "2025-04-11T08:14:03.544563Z",
+  "modified": "2025-12-17T23:11:32.70535Z",
+  "description": "Caesars Employee Birthright Rehire Role for Employee Type E",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "a50df8b9-5bf5-33c9-b854-389bd74d5c22",
+      "type": "ENTITLEMENT",
+      "name": "empbrent"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "AND",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "OR",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "prehire",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "active",
+              "children": null
+            }
+          ]
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.assignmentStatusType",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "INACTIVE",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.workerType",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "Employee",
+          "children": null
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.excludedLocationFlag",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "true",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.managementLevelFlag",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "true",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.employeeType",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "E",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.primaryAssignment",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "Y",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.primaryWorkRelationship",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "Y",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.completeTermination",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "N",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.adProvFlagBr",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "H",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.hasHarrahsAd",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "true",
+          "children": null
+        },
+        {
+          "operation": "OR",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "CONTAINS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.adDescription",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "TERM(",
+              "children": null
+            },
+            {
+              "operation": "CONTAINS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.adDescription",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "TERM (",
+              "children": null
+            },
+            {
+              "operation": "CONTAINS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.adDescription",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "TERM ",
+              "children": null
+            }
+          ]
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.processName",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "rehire",
+          "children": null
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

@@ -1,0 +1,41 @@
+{
+  "id": "d3f979e68cf54fedb3b62a38899d9267",
+  "name": "Zoom Record 7 days",
+  "created": "2025-03-18T15:59:35.153785Z",
+  "modified": "2025-03-25T14:47:32.781034Z",
+  "description": "This role is designated for Zoom recording. Users can record Zoom meetings for up to 7 days. After this period, the Active Directory group will be automatically removed by ISC, and the user will no longer have the ability to record Zoom meetings.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "27b46fd1e46e4d95a5668648bc4fb336",
+      "type": "ACCESS_PROFILE",
+      "name": "Zoom Record 7 days-AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": false,
+    "denialCommentsRequired": false,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

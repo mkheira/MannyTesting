@@ -1,0 +1,107 @@
+{
+  "id": "1bd24be18ba7429eb336b93493b63a18",
+  "name": "WSOP CAGE SUPV",
+  "created": "2025-12-01T21:17:15.057523Z",
+  "modified": "2025-12-12T15:06:03.876733Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.locationCode",
+                "sourceId": null
+              },
+              "values": [
+                "PLV"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.jobTitle",
+                "sourceId": null
+              },
+              "values": [
+                "WSOP Tournament Manager",
+                "WSOP CAGE SUPERVISOR"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.workerType",
+                "sourceId": null
+              },
+              "values": [
+                "Employee"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

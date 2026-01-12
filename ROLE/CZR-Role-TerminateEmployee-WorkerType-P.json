@@ -1,0 +1,117 @@
+{
+  "id": "0f63f5d1911e4dcead193be96dd90c20",
+  "name": "CZR-Role-TerminateEmployee-WorkerType-P",
+  "created": "2025-04-19T04:52:02.953515Z",
+  "modified": "2025-12-17T23:15:44.211633Z",
+  "description": "Terminate employee with worker type P.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "2af18ee9-7441-3897-8616-680cec21ec67",
+      "type": "ENTITLEMENT",
+      "name": "TermWorkerTypeP"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "inactive",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.workerType",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "Employee",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.employeeType",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "P",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.hasHarrahsAd",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "true",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "ACCOUNT",
+                "property": "attribute.userAccountControl",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              },
+              "values": null,
+              "stringValue": "514",
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

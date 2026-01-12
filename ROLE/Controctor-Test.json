@@ -1,0 +1,35 @@
+{
+  "id": "142264b68fdb409582387f42a724ddfb",
+  "name": "Controctor-Test",
+  "created": "2025-12-01T20:31:01.906162Z",
+  "modified": "2025-12-08T16:46:44.969499Z",
+  "description": "Test",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "5ae0f8e09416430baf43fd558224bb7a",
+    "name": "svcdentspbsoft"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

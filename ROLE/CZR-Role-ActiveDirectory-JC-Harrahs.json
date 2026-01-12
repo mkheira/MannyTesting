@@ -1,0 +1,54 @@
+{
+  "id": "aa41c8c85e0042e68a89babaddcc1a0f",
+  "name": "CZR-Role-ActiveDirectory-JC-Harrahs",
+  "created": "2025-11-27T13:25:57.297107Z",
+  "modified": "2025-12-08T22:11:40.397603Z",
+  "description": "Role to get Harrahs JC-Account",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "466f5b31-d8f1-487d-9a8a-c2b65d90b376",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JC-Accounts",
+      "id": "b3aaddb1-2ffd-3545-8122-129d04a6ac6b",
+      "type": "ENTITLEMENT",
+      "name": "jAccountTesting"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "7acfdfe2e3f14bc29a631bbb6e999cf5",
+        "name": "Manbir22, Kheira22",
+        "aliasName": "900815022"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

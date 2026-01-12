@@ -1,0 +1,41 @@
+{
+  "id": "3fa107527c3145a9bf0fea2d105ddc45",
+  "name": "TEAMS Record Permission for 3 minutes",
+  "created": "2025-03-25T14:21:45.828227Z",
+  "modified": "2025-07-10T15:47:45.471052Z",
+  "description": "TEAMS Record Permission for 3 minutes",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "f1fbf8fe7033477dbc882f64e4e72e90",
+      "type": "ACCESS_PROFILE",
+      "name": "TEAMS Record Permission for 3 minutes-AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": false,
+    "denialCommentsRequired": false,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

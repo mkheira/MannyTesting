@@ -1,0 +1,41 @@
+{
+  "id": "ebd810dd6bbb4c0da5420fae92cac6ae",
+  "name": "USB - 48 Hour Read Only Access",
+  "created": "2025-09-03T15:14:02.454844Z",
+  "modified": "2025-09-03T18:45:14.760305Z",
+  "description": "Allows read-only access to USB storage devices for 48 hours.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "a28aeab65c244748890ed0c9c5627095",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - 48 hour access - Read Only - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

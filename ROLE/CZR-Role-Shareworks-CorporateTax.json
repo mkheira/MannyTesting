@@ -1,0 +1,61 @@
+{
+  "id": "e76343fbdd5b4e1aa26dcbb11eab0756",
+  "name": "CZR-Role-Shareworks-CorporateTax",
+  "created": "2025-11-21T13:41:23.601667Z",
+  "modified": "2025-12-05T17:27:39.495648Z",
+  "description": "Tax-related reports, employee tax information, no grant issuance capabilities",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "3036fac6-3ee9-3806-a2ea-77d0836a4622",
+      "type": "ENTITLEMENT",
+      "name": "Reports - Legal/Insider Reports"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "59bb510a-f654-3d4c-b0dd-6bf18e80e73c",
+      "type": "ENTITLEMENT",
+      "name": "Tools - Grant Approval"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "b88e09c879fc431f9d5dbabda4351865",
+        "name": "Manbir24, Kheira24",
+        "aliasName": "900815024"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

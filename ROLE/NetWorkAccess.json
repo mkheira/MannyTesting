@@ -1,0 +1,35 @@
+{
+  "id": "e8dd0bd9dbab4042ab890eeb033378de",
+  "name": "NetWorkAccess",
+  "created": "2025-03-07T20:38:45.40127Z",
+  "modified": "2025-12-01T16:56:53.229342Z",
+  "description": "NetWorkAccess",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f48d5550a15640b9aa1c9a8ec106ddbd",
+    "name": "Aguilar, Laura"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

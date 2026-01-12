@@ -1,0 +1,35 @@
+{
+  "id": "96253a9990074c7f82ba6553107759ba",
+  "name": "Test-Linga",
+  "created": "2025-06-18T19:11:26.773404Z",
+  "modified": "2025-06-18T19:11:26.773404Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

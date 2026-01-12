@@ -1,0 +1,159 @@
+{
+  "id": "71884481f3a64546a0a2f33ddfee2575",
+  "name": "CZR-Role-CNOWSetupLike-WilliamHill",
+  "created": "2025-10-23T18:18:59.660405Z",
+  "modified": "2025-12-02T22:36:22.190327Z",
+  "description": "CZR Role CNOW Setup Like for William Hill",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "AND",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "OR",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "prehire"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "leaveOfAbsence"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.assignmentStatusType",
+            "sourceId": null
+          },
+          "values": [
+            "INACTIVE"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.workerType",
+            "sourceId": null
+          },
+          "values": [
+            "Employee"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.primaryAssignment",
+            "sourceId": null
+          },
+          "values": [
+            "Y"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.adProvFlagCnowSetupLikeWh",
+            "sourceId": null
+          },
+          "values": [
+            "WH"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.isStartDateMoreThan21",
+            "sourceId": null
+          },
+          "values": [
+            "False",
+            "false"
+          ],
+          "stringValue": null,
+          "children": null
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

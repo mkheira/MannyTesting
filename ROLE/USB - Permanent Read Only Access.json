@@ -1,0 +1,41 @@
+{
+  "id": "4c3aaad423fa472ea6a27f1037ffe0de",
+  "name": "USB - Permanent Read Only Access",
+  "created": "2025-09-03T15:11:02.313904Z",
+  "modified": "2025-09-03T18:05:23.632855Z",
+  "description": "Allows read-only access to USB storage devices.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "adccfd02e86848e78b112f8d41949243",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - permanent access - Read Only - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

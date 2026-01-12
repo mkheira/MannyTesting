@@ -1,0 +1,50 @@
+{
+  "id": "d253e12c3a7f46798bc4ee8e67ff30ef",
+  "name": "CZR-Role-Shareworks-Payroll",
+  "created": "2025-11-21T13:36:49.833073Z",
+  "modified": "2025-12-10T18:18:11.040043Z",
+  "description": "Payroll reports, exercise book, limited demographic information, no tax ID access",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "401dd354-639a-38c1-982b-5be6a2c58350",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Payroll Reports"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "bd33c04c-2344-3381-aee5-bb1486f69fd0",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Payroll Reports - Restricted"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

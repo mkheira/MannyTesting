@@ -1,0 +1,41 @@
+{
+  "id": "3b7dd6cf98f74c52aa8e5dd72f143482",
+  "name": "USB - 48 Hours Read and Write Access",
+  "created": "2025-09-03T15:15:01.702689Z",
+  "modified": "2025-09-03T18:45:30.565229Z",
+  "description": "Allows read/write access to USB storage devices for 48 hours.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "b1aaf2d5738e4400a27d1534edc208c6",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - 48 hour access - Read and Write - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

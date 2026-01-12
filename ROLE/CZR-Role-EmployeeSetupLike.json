@@ -1,0 +1,150 @@
+{
+  "id": "6e1375c5c96f461b9de1c7eb1149028a",
+  "name": "CZR-Role-EmployeeSetupLike",
+  "created": "2025-03-20T09:59:50.87927Z",
+  "modified": "2025-12-10T16:57:44.046685Z",
+  "description": "CZR Role Employee Setup Like",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "fb10bd56-f36f-3b5d-87db-85c33b13daf4",
+      "type": "ENTITLEMENT",
+      "name": "empsetuplikeiscent"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "AND",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "OR",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "prehire",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "active",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "leaveOfAbsence",
+              "children": null
+            }
+          ]
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.workerType",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "Employee",
+          "children": null
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.assignmentStatusType",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "INACTIVE",
+          "children": null
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.excludedLocationFlag",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "true",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.primaryAssignment",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "Y",
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.adProvFlagSetupLike",
+            "sourceId": null
+          },
+          "values": null,
+          "stringValue": "H",
+          "children": null
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

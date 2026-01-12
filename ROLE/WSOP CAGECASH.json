@@ -1,0 +1,106 @@
+{
+  "id": "60f5cd889ffd441ebeb2540c5157d60c",
+  "name": "WSOP CAGE/CASH",
+  "created": "2025-12-01T20:54:27.205532Z",
+  "modified": "2025-12-12T15:05:19.009429Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.locationCode",
+                "sourceId": null
+              },
+              "values": [
+                "PLV"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.jobTitle",
+                "sourceId": null
+              },
+              "values": [
+                "WSOP Cage Cashier"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.workerType",
+                "sourceId": null
+              },
+              "values": [
+                "Employee"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

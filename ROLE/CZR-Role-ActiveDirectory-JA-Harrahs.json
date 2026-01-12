@@ -1,0 +1,60 @@
+{
+  "id": "b44cc313d89d4f27bcbe9c1692ee116d",
+  "name": "CZR-Role-ActiveDirectory-JA-Harrahs",
+  "created": "2025-11-27T12:42:20.351381Z",
+  "modified": "2025-12-11T14:13:14.352661Z",
+  "description": "Role to get Harrahs JA-Account",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "a1057331-2240-4926-bf07-33641c9d4b75",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs-JA-Accounts",
+      "id": "54bf4e2d-6d87-3397-8062-a7d08f69322c",
+      "type": "ENTITLEMENT",
+      "name": "jAccountTesting"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "b88e09c879fc431f9d5dbabda4351865",
+        "name": "Manbir24, Kheira24",
+        "aliasName": "900815024"
+      },
+      {
+        "type": "IDENTITY",
+        "id": "df17ef0df9fc4af9980c9406bfdb9ab1",
+        "name": "Manbir25, Kheira25",
+        "aliasName": "900815025"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

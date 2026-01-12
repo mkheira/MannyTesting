@@ -1,0 +1,180 @@
+{
+  "id": "4fd8cb235b7247c59ce2f11c1588f97d",
+  "name": "CZR-Role-CNOWSetupLike",
+  "created": "2025-03-20T05:37:18.682674Z",
+  "modified": "2025-12-10T16:55:03.822989Z",
+  "description": "CZR Role CNOW Setup Like",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "4abb213d-3bcf-374b-ad41-8d6c1937e137",
+      "type": "ENTITLEMENT",
+      "name": "empsetuplikecnowent"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "AND",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "OR",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "prehire"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "leaveOfAbsence"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.assignmentStatusType",
+            "sourceId": null
+          },
+          "values": [
+            "INACTIVE"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.workerType",
+            "sourceId": null
+          },
+          "values": [
+            "Employee"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "NOT_EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.excludedLocationFlag",
+            "sourceId": null
+          },
+          "values": [
+            "true"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.primaryAssignment",
+            "sourceId": null
+          },
+          "values": [
+            "Y"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.adProvFlagCnowSetupLike",
+            "sourceId": null
+          },
+          "values": [
+            "H"
+          ],
+          "stringValue": null,
+          "children": null
+        },
+        {
+          "operation": "EQUALS",
+          "key": {
+            "type": "IDENTITY",
+            "property": "attribute.isStartDateMoreThan21",
+            "sourceId": null
+          },
+          "values": [
+            "False",
+            "false"
+          ],
+          "stringValue": null,
+          "children": null
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

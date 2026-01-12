@@ -1,0 +1,43 @@
+{
+  "id": "6484fe3dff9f4e8883b7edf0621fea3f",
+  "name": "CZR-Role-ActiveDirectory-JA-SDSProd",
+  "created": "2025-12-08T22:10:33.444109Z",
+  "modified": "2025-12-16T18:32:29.103264Z",
+  "description": "Role to get SDSProd JA-Account",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "d9b99fcd-9444-4ab5-bdae-7b3eb3816f7a",
+      "sourceName": "CZR-Application-ActiveDirectory-SDSProd-JA-Accounts",
+      "id": "57604317-3c4f-3454-9cb4-a02dcc88d677",
+      "type": "ENTITLEMENT",
+      "name": "J-Sailpoint-Test-Group"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

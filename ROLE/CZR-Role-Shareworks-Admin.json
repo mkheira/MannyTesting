@@ -1,0 +1,71 @@
+{
+  "id": "3c3b6c19414148d9819067db5b30a28d",
+  "name": "CZR-Role-Shareworks-Admin",
+  "created": "2025-11-21T13:35:08.0704Z",
+  "modified": "2025-12-10T18:17:56.097881Z",
+  "description": "Full administrative access including grant approval, admin management, all security groups, and all field-level permissions",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "54f35b83-34f6-3735-963c-4c35382c3e30",
+      "type": "ENTITLEMENT",
+      "name": "Tools - Manage Admins"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "59bb510a-f654-3d4c-b0dd-6bf18e80e73c",
+      "type": "ENTITLEMENT",
+      "name": "Tools - Grant Approval"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "62b465eb-b575-364f-9235-3214198b8ff1",
+      "type": "ENTITLEMENT",
+      "name": "ESPP - Administrator"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "674de348-5000-37ae-aad6-350ae7138c54",
+      "type": "ENTITLEMENT",
+      "name": "Tools - View Administrators"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "be7ee319-ccf0-3396-a7fe-e043100dcd9f",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Administrator"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

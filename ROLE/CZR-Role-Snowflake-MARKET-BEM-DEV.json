@@ -1,0 +1,54 @@
+{
+  "id": "feb1fcf615704b5c9bc80417e4cdc84a",
+  "name": "CZR-Role-Snowflake-MARKET-BEM-DEV",
+  "created": "2025-11-20T22:07:43.544768Z",
+  "modified": "2025-12-09T19:50:54.957477Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "343ab75a-f13e-3882-a163-4144616f0e99",
+      "type": "ENTITLEMENT",
+      "name": "AUTH SNOWFLAKE MARKET BEM DEV"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "6a5394fe299c451a94cfc4ed5e2dc09a",
+        "name": "Manbir21, Kheira21",
+        "aliasName": "900815021"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

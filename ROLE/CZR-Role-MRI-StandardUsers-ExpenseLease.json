@@ -1,0 +1,75 @@
+{
+  "id": "2b50aeed2e06491eb6542bb3e87e17cb",
+  "name": "CZR-Role-MRI-StandardUsers-ExpenseLease",
+  "created": "2025-11-20T16:32:06.74846Z",
+  "modified": "2025-12-22T17:12:50.368408Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "58052ada-366a-3590-94b1-52ccbb18053d",
+      "type": "ENTITLEMENT",
+      "name": "CONTRACTSPEC"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "8b4a54f1-e44c-322d-ba1e-845c9ac3d90f",
+      "type": "ENTITLEMENT",
+      "name": "ADMIN"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "9460cda4-03e4-3bab-977c-0d391660a804",
+      "type": "ENTITLEMENT",
+      "name": "CRESPCL"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "fb050989-f874-3d85-98c4-bd98ec4cf25a",
+      "type": "ENTITLEMENT",
+      "name": "ACCOUNTANT"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "b88e09c879fc431f9d5dbabda4351865",
+        "name": "Manbir24, Kheira24",
+        "aliasName": "900815024"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

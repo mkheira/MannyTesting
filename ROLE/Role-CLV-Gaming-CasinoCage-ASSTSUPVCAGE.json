@@ -1,0 +1,120 @@
+{
+  "id": "d3d45d078545428a8d3e261e4c2ec22f",
+  "name": "Role-CLV-Gaming-CasinoCage-ASSTSUPVCAGE",
+  "created": "2025-10-27T18:43:52.251349Z",
+  "modified": "2025-11-06T03:38:58.885633Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.locationCode",
+                "sourceId": null
+              },
+              "values": [
+                "CLV"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "STARTS_WITH",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.division",
+                "sourceId": null
+              },
+              "values": [
+                "Gaming"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "STARTS_WITH",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.department",
+                "sourceId": null
+              },
+              "values": [
+                "Casino Cage"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "CONTAINS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.jobTitle",
+                "sourceId": null
+              },
+              "values": [
+                "ASSTSUPVCAGE"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active",
+                "prehire"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

@@ -1,0 +1,61 @@
+{
+  "id": "7f6aa27386a84415ab58b97b3595497f",
+  "name": "CZR-Role-MRI-ExternalUsers",
+  "created": "2025-12-01T21:19:47.405306Z",
+  "modified": "2025-12-22T17:09:16.239869Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "1b00665d-e879-3287-97d6-9b2a85c592ea",
+      "type": "ENTITLEMENT",
+      "name": "CREVIEW"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "d0993f56-062c-3279-bd84-8a7cbae1967b",
+      "type": "ENTITLEMENT",
+      "name": "CLASS3"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "9dde797cd0d64bfd83db840fbac27d92",
+        "name": "Valley3, Ashley2",
+        "aliasName": "900801034"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

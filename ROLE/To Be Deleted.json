@@ -1,0 +1,35 @@
+{
+  "id": "4c39edb19b7c46db95b6aa289acbe204",
+  "name": "To Be Deleted",
+  "created": "2025-07-28T15:25:53.157489Z",
+  "modified": "2025-07-28T15:25:53.157489Z",
+  "description": "Used for documentation",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "8f50a48fa32b441f8351d52af41bfb22",
+    "name": "Martinez, Phil"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

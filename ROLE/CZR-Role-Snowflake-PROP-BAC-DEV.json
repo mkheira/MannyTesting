@@ -1,0 +1,54 @@
+{
+  "id": "f0dafa9cbf0d44eaba9775482e673d58",
+  "name": "CZR-Role-Snowflake-PROP-BAC-DEV",
+  "created": "2025-11-20T22:22:04.34431Z",
+  "modified": "2025-12-09T19:50:44.949232Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "7cfc4491-b279-3fa9-8b1a-9db59d239eb1",
+      "type": "ENTITLEMENT",
+      "name": "AUTH SNOWFLAKE PROP BAC DEV"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "6a5394fe299c451a94cfc4ed5e2dc09a",
+        "name": "Manbir21, Kheira21",
+        "aliasName": "900815021"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

@@ -1,0 +1,85 @@
+{
+  "id": "a9f753bffd9f494398968813f16af2f5",
+  "name": "CZR-Role-Shareworks-FinancialReporting",
+  "created": "2025-11-21T13:37:47.399461Z",
+  "modified": "2025-12-10T18:18:05.400777Z",
+  "description": "Financial reports, expensing module, ad hoc reporting, no personally identifiable information",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "3c82551b-5f2f-3018-bfb3-fe35c400a122",
+      "type": "ENTITLEMENT",
+      "name": "Reports - Ad Hoc Reporting"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "66ae8c06-e214-3a5e-8915-6f22db61bf41",
+      "type": "ENTITLEMENT",
+      "name": "Report - Pickup Area"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "66d05001-e4c4-30b1-a283-da006f89de29",
+      "type": "ENTITLEMENT",
+      "name": "Tools - Expensing Module"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "7379e508-ddef-37cc-824c-d4eaa3949b3e",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Finance Reports - Restricted"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "b2b258d8-0f7c-30bb-a671-b2f780dd6339",
+      "type": "ENTITLEMENT",
+      "name": "ESPP - Full View & Reports"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "d4b4a42e-657f-3256-9302-549ab5e31756",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Full View & Reports"
+    },
+    {
+      "sourceId": "86586251-70dc-4dc6-9206-007cd6fab106",
+      "sourceName": "CZR-Application-Shareworks",
+      "id": "dac815e4-c47a-313a-83db-fe54652fd1f4",
+      "type": "ENTITLEMENT",
+      "name": "Awards - Finance Reports"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ddfbe2c2c8f341a8b21e20d5163b1f64",
+  "name": "CZR-Role-Snowflake-PROP-BAC-PROD",
+  "created": "2025-12-09T19:55:49.747019Z",
+  "modified": "2025-12-09T19:56:10.357561Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "5be9b707-6536-3c98-bec0-ba74c45fc44f",
+      "type": "ENTITLEMENT",
+      "name": "AUTH SNOWFLAKE PROP BAC PROD"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

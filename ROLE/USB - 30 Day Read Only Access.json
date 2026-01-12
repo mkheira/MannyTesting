@@ -1,0 +1,41 @@
+{
+  "id": "16257a9f615e43d5bcddc0d4bd001746",
+  "name": "USB - 30 Day Read Only Access",
+  "created": "2025-09-03T15:06:58.924191Z",
+  "modified": "2025-09-03T18:44:59.711022Z",
+  "description": "Allows read-only access to USB storage devices for 30 Days.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "0ae5b85f97cb48d6a82f38c47967a0fc",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - 30 Day Access - Read Only - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

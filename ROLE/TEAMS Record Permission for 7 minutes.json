@@ -1,0 +1,41 @@
+{
+  "id": "3e04cc3093934a5dafcf6e66d20a6dce",
+  "name": "TEAMS Record Permission for 7 minutes",
+  "created": "2025-03-25T14:23:50.615938Z",
+  "modified": "2025-07-30T16:55:03.356072Z",
+  "description": "TEAMS Record Permission for 7 minutes",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "37191cdcffb34abd9df9964316079da8",
+      "type": "ACCESS_PROFILE",
+      "name": "TEAMS Record Permission for 7 minutes-AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

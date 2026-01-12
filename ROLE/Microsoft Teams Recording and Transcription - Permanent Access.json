@@ -1,0 +1,49 @@
+{
+  "id": "fb17ae062fbc4f56a7d1c0c6edfd137d",
+  "name": "Microsoft Teams Recording and Transcription - Permanent Access",
+  "created": "2025-07-29T16:30:17.537291Z",
+  "modified": "2025-12-10T15:44:14.679212Z",
+  "description": "Permanent access to record and transcribe meetings in Microsoft Teams. \nAccess requests shall require approval by users' SMT leader; and granted access will be recertified annually.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "21c1731d-7a6d-340a-9cc1-42c60da41561",
+      "type": "ENTITLEMENT",
+      "name": "Teams Recording permanent access"
+    }
+  ],
+  "accessProfiles": [
+    {
+      "id": "2bb6756e961545ecbb09e875a2755832",
+      "type": "ACCESS_PROFILE",
+      "name": "Teams Recording - permanent access - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

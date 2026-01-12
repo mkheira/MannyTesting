@@ -1,0 +1,109 @@
+{
+  "id": "9931608c8ff54cc6b77347c79d4ced85",
+  "name": "CZR-Role-TerminateEmployee-WorkerType-P-WilliamHill",
+  "created": "2025-11-26T16:09:44.408245Z",
+  "modified": "2025-12-02T22:33:55.420521Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e30b3c2569c84bb0b35246023f20ee3a",
+    "name": "Some, Lingareddy"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "inactive",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.workerType",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "Employee",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.employeeType",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "P",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.hasHarrahsAd",
+                "sourceId": null
+              },
+              "values": null,
+              "stringValue": "true",
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "ACCOUNT",
+                "property": "attribute.userAccountControl",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              },
+              "values": null,
+              "stringValue": "514",
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": false,
+    "denialCommentsRequired": false,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

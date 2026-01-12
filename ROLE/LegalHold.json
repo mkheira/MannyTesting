@@ -1,0 +1,46 @@
+{
+  "id": "2d9973c85b744e829753b3c160f715e7",
+  "name": "LegalHold",
+  "created": "2025-12-15T16:56:43.771644Z",
+  "modified": "2025-12-15T16:59:17.628769Z",
+  "description": "test",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "5ae0f8e09416430baf43fd558224bb7a",
+    "name": "svcdentspbsoft"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "43c84ed987c34cb6a381ab4dd68bb327",
+      "type": "ACCESS_PROFILE",
+      "name": "LegalHold-Harrahs"
+    },
+    {
+      "id": "761e5cfa6f614b0a96fa08ea19f00cdf",
+      "type": "ACCESS_PROFILE",
+      "name": "LegalHold-WilliamHill"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

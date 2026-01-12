@@ -1,0 +1,119 @@
+{
+  "id": "130ffee6a04c437bab417e4a057e610b",
+  "name": "CZR-Role-Contractor-SetupLike",
+  "created": "2025-11-18T16:28:50.727381Z",
+  "modified": "2025-11-26T21:44:01.82963Z",
+  "description": "Used for AD Account Creation",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "Kumar Bayyaram, Shravan"
+  },
+  "entitlements": [],
+  "accessProfiles": [],
+  "membership": {
+    "type": "STANDARD",
+    "criteria": {
+      "operation": "OR",
+      "key": null,
+      "values": null,
+      "stringValue": null,
+      "children": [
+        {
+          "operation": "AND",
+          "key": null,
+          "values": null,
+          "stringValue": null,
+          "children": [
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.cloudLifecycleState",
+                "sourceId": null
+              },
+              "values": [
+                "active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.workerType",
+                "sourceId": null
+              },
+              "values": [
+                "Contractor"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.assignmentStatusType",
+                "sourceId": null
+              },
+              "values": [
+                "Active"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.adProvFlagSetupLike",
+                "sourceId": null
+              },
+              "values": [
+                "H"
+              ],
+              "stringValue": null,
+              "children": null
+            },
+            {
+              "operation": "NOT_EQUALS",
+              "key": {
+                "type": "IDENTITY",
+                "property": "attribute.hasharrahscontractorad",
+                "sourceId": null
+              },
+              "values": [
+                "true"
+              ],
+              "stringValue": null,
+              "children": null
+            }
+          ]
+        }
+      ]
+    },
+    "identities": null
+  },
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

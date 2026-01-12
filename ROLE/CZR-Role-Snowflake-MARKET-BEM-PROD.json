@@ -1,0 +1,43 @@
+{
+  "id": "468555516ed54ab5a3d1331c6697af2e",
+  "name": "CZR-Role-Snowflake-MARKET-BEM-PROD",
+  "created": "2025-11-20T21:57:42.231846Z",
+  "modified": "2025-12-09T19:51:02.709426Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "75d76bc4-639d-3aee-ba42-d20f64b9c804",
+      "type": "ENTITLEMENT",
+      "name": "AUTH SNOWFLAKE MARKET BEM PROD"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

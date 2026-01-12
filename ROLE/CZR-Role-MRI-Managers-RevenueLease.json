@@ -1,0 +1,75 @@
+{
+  "id": "7ccc6aa19d464d80a2117751870ac736",
+  "name": "CZR-Role-MRI-Managers-RevenueLease",
+  "created": "2025-11-20T16:07:29.993831Z",
+  "modified": "2025-12-22T17:12:03.138918Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "Kheira, Manbir"
+  },
+  "entitlements": [
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "02e9d447-83c0-3bd6-9a0d-e31dc9ba1520",
+      "type": "ENTITLEMENT",
+      "name": "CLASS1"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "58052ada-366a-3590-94b1-52ccbb18053d",
+      "type": "ENTITLEMENT",
+      "name": "CONTRACTSPEC"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "d37b80e8-4a4f-3959-9a1d-0684c5f2b2a0",
+      "type": "ENTITLEMENT",
+      "name": "_QRYUP"
+    },
+    {
+      "sourceId": "c478eb84-d641-43d7-9d77-82f913177b4c",
+      "sourceName": "CZR-Application-MRI",
+      "id": "fb050989-f874-3d85-98c4-bd98ec4cf25a",
+      "type": "ENTITLEMENT",
+      "name": "ACCOUNTANT"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "8e30524488d44202ad68da8176da0ab9",
+        "name": "Fondrick20, Richard20",
+        "aliasName": "900802020"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": false,
+    "denialCommentsRequired": false,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

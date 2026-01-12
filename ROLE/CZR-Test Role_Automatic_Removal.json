@@ -1,0 +1,43 @@
+{
+  "id": "180243ff264b49448116feafc06931bf",
+  "name": "CZR-Test Role_Automatic_Removal",
+  "created": "2025-12-04T19:15:42.576962Z",
+  "modified": "2025-12-23T20:54:29.88114Z",
+  "description": "Testing Automatic Removal process",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "Momula, Bhanuprakash"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "7433410b-9d24-3699-899c-7c221a55ae2c",
+      "type": "ENTITLEMENT",
+      "name": "AC_Test"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

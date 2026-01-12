@@ -1,0 +1,72 @@
+{
+  "id": "e999cf4448f5499e9f7dee918b1fb711",
+  "name": "CZR-Role-ActiveDirectory-EXT.Local-Test",
+  "created": "2025-11-21T16:06:28.653226Z",
+  "modified": "2025-11-24T17:03:35.147856Z",
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "db504f0e-56dd-4bf7-9501-2063e715fdee",
+      "sourceName": "CZR-Application-ActiveDirectory-EXT.Local",
+      "id": "a88970dd-aa07-35bd-8ae2-63563dd0998a",
+      "type": "ENTITLEMENT",
+      "name": "Test Sailpoint"
+    }
+  ],
+  "accessProfiles": [],
+  "membership": {
+    "type": "IDENTITY_LIST",
+    "criteria": null,
+    "identities": [
+      {
+        "type": "IDENTITY",
+        "id": "56920f91e8e247279032f678b9ac0446",
+        "name": "Manbir17, Kheira17",
+        "aliasName": "900815017"
+      },
+      {
+        "type": "IDENTITY",
+        "id": "5dc225fcdf484947848b340ba660e3dc",
+        "name": "Manbir18, Kheira18",
+        "aliasName": "900815018"
+      },
+      {
+        "type": "IDENTITY",
+        "id": "3a1e44b7d56540a9a9db3b08850cd961",
+        "name": "Manbir19 Test Kheira19",
+        "aliasName": "900815019"
+      },
+      {
+        "type": "IDENTITY",
+        "id": "b997d5f7c7ff4c52ab061c89ce64064c",
+        "name": "Manbir20, Kheira20",
+        "aliasName": "900815020"
+      }
+    ]
+  },
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

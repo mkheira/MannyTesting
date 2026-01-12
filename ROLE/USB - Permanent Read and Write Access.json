@@ -1,0 +1,41 @@
+{
+  "id": "ffa1592c9eca4a56825fb864871e1358",
+  "name": "USB - Permanent Read and Write Access",
+  "created": "2025-09-03T15:13:11.710277Z",
+  "modified": "2025-09-03T18:45:44.812028Z",
+  "description": "Allows read/write access to USB storage devices.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "f044707701274f8c87ad5abf265779c5",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - permanent access - Read/Write - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

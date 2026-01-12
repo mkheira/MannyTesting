@@ -1,0 +1,41 @@
+{
+  "id": "3a8647dd7fdd47d09c1795a3baa2e917",
+  "name": "TEAMS Record",
+  "created": "2025-03-25T14:23:00.515742Z",
+  "modified": "2025-12-01T17:00:48.123335Z",
+  "description": "TEAMS Record Permission for 5 minutes",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "14afbee762c648dca5c9904254fce8f5",
+      "type": "ACCESS_PROFILE",
+      "name": "TEAMS Record Permission for 5 minutes-AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": false,
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": false,
+    "denialCommentsRequired": false,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

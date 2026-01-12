@@ -1,0 +1,49 @@
+{
+  "id": "d08b92f5ba9f48dfa4bbbe6934ce1741",
+  "name": "Microsoft Teams Recording and Transcription - 30 Day Access",
+  "created": "2025-07-24T17:59:00.253025Z",
+  "modified": "2025-12-17T23:17:02.850924Z",
+  "description": "30-day access to record and transcribe meetings in Microsoft Teams. \nAccess requests shall require approval by a VP+ in users' reporting hierarchy; and granted access will be automatically revoked after 30 days.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "entitlements": [
+    {
+      "sourceId": "e30d0436-a20b-45b7-9517-a08f0380b1b1",
+      "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+      "id": "5a78137a-e1c4-3ca8-b82e-b90ea20eabf8",
+      "type": "ENTITLEMENT",
+      "name": "Teams Recording 30 day access"
+    }
+  ],
+  "accessProfiles": [
+    {
+      "id": "20d762b9a63c46c987efc57a381eb4f9",
+      "type": "ACCESS_PROFILE",
+      "name": "Teams Recording - 30 day access - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}

@@ -1,0 +1,41 @@
+{
+  "id": "80faec5ca54e43ccbf24da5db102591c",
+  "name": "USB - 30 Day Read and Write Access",
+  "created": "2025-09-03T15:09:57.423851Z",
+  "modified": "2025-09-03T18:44:40.089499Z",
+  "description": "Allows read/write access to USB storage devices for 30 Days.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "entitlements": [],
+  "accessProfiles": [
+    {
+      "id": "adf37bc4570d46a5ad24d79b6401c09f",
+      "type": "ACCESS_PROFILE",
+      "name": "USB - 30 day access -  Read and Write - AP"
+    }
+  ],
+  "membership": null,
+  "legacyMembershipInfo": null,
+  "enabled": true,
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "dimensional": false,
+  "dimensionRefs": null,
+  "additionalOwners": null,
+  "segmentRefs": [],
+  "dimensions": []
+}
