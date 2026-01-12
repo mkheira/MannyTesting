@@ -1,0 +1,39 @@
+{
+  "id": "389a0c0a-1d5c-404c-872a-e2a74fb52b0c",
+  "name": "Caesars_Identity Profile_Employee_ExclLocFlag",
+  "type": "lookup",
+  "attributes": {
+    "input": {
+      "type": "accountAttribute",
+      "attributes": {
+        "sourceName": "CZR-Application-OICWebservice",
+        "attributeName": "LocationCode"
+      }
+    },
+    "table": {
+      "BAC": "true",
+      "BNJ": "true",
+      "CAC": "true",
+      "CCR": "true",
+      "CHE": "true",
+      "CNJ": "true",
+      "CVR": "true",
+      "GVC": "true",
+      "HAC": "true",
+      "HBV": "true",
+      "HNC": "true",
+      "HNJ": "true",
+      "HPA": "true",
+      "JIL": "true",
+      "JOL": "true",
+      "MET": "true",
+      "MIL": "true",
+      "TAC": "true",
+      "UEL": "true",
+      "UEL_HEC": "true",
+      "WCL": "true",
+      "default": "false"
+    }
+  },
+  "internal": false
+}

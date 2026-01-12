@@ -1,0 +1,27 @@
+{
+  "id": "69923beb-2f82-407a-b8e7-35fbceb715f2",
+  "name": "Caesars_Identity Profile_Employee_CnowRequestedBy",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWLegalHoldRequest",
+          "attributeName": "RequestedBy",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+          "attributeName": "RequestedBy",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

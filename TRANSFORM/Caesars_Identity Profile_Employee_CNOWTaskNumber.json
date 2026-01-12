@@ -1,0 +1,27 @@
+{
+  "id": "59d3a3d0-b322-45ab-83cb-d741facdf29c",
+  "name": "Caesars_Identity Profile_Employee_CNOWTaskNumber",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWLegalHoldRequest",
+          "attributeName": "TaskNumber",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      },
+      {
+        "type": "accountAttribute",
+        "attributes": {
+          "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+          "attributeName": "TaskNumber",
+          "accountPropertyFilter": "(Status == \"active\")"
+        }
+      }
+    ],
+    "ignoreErrors": false
+  },
+  "internal": false
+}

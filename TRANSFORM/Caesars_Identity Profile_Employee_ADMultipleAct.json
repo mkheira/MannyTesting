@@ -1,0 +1,9 @@
+{
+  "id": "e211681c-864c-443a-90cd-ba3b0c39c9be",
+  "name": "Caesars_Identity Profile_Employee_ADMultipleAct",
+  "type": "static",
+  "attributes": {
+    "value": "#set($links = $identity.getLinksByAppIdOrName(\"e30d0436a20b45b79517a08f0380b1b1\", null))#if($links && $links.size() > 1)true#{else}false#end"
+  },
+  "internal": false
+}

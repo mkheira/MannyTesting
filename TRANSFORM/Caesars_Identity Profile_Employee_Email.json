@@ -1,0 +1,23 @@
+{
+  "id": "f681580c-af30-46ba-9985-e96c40201534",
+  "name": "Caesars_Identity Profile_Employee_Email",
+  "type": "firstValid",
+  "attributes": {
+    "values": [
+      {
+        "attributes": {
+          "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+          "attributeName": "mail"
+        },
+        "type": "accountAttribute"
+      },
+      {
+        "attributes": {
+          "value": "no email"
+        },
+        "type": "static"
+      }
+    ]
+  },
+  "internal": false
+}

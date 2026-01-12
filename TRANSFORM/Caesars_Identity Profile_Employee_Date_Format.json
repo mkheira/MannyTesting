@@ -1,0 +1,10 @@
+{
+  "id": "2bb6b134-408a-4ab0-8cdb-e0c62abe3013",
+  "name": "Caesars_Identity Profile_Employee_Date_Format",
+  "type": "dateFormat",
+  "attributes": {
+    "inputFormat": "yyyy-MM-dd",
+    "outputFormat": "yyyy-MM-dd"
+  },
+  "internal": false
+}
