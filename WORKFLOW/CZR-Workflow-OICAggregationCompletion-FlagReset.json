@@ -1,0 +1,79 @@
+{
+  "id": "05cc3d37-818f-4540-949d-ce0070d9fa20",
+  "name": "CZR-Workflow-OICAggregationCompletion-FlagReset",
+  "description": "Don't disable this workflow. This workflow is crucial to OIC scheduled aggregations. It resets the aggregation flag custom connector attribute after an OIC aggregation finishes.",
+  "created": "2025-05-27T20:10:51.617292093Z",
+  "modified": "2025-05-27T22:01:29.607195715Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "8221b47939d44ac1aade0324197049ca",
+    "name": "Medo Hafnaoui"
+  },
+  "definition": {
+    "start": "Compare Strings",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.trigger.source.id",
+            "variableB": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "description": "Check if it's an OIC Aggregation",
+        "displayName": "",
+        "type": "choice"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/connectorAttributes/isScheduledAggregationRunningFlag",
+              "value": "false"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.faa6d05d-7433-45c3-918f-97a15a481ca8",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/9f46913b2c9b4da5bc40734abda20886"
+        },
+        "description": "Update the aggregation custom connector flag on source to set to true",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:account-aggregation-completed"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "id": "7dca8bc6-588f-42fa-b15e-ba83ecc8a4ec",
+  "name": "TestOkta",
+  "description": "",
+  "created": "2025-08-14T18:07:37.986262923Z",
+  "modified": "2025-08-15T17:46:15.95498524Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "HTTP Request 2",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "responseID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest2.body.id"
+            }
+          ]
+        },
+        "displayName": "storeUserID",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "header",
+          "headerAuthName": "Authorization",
+          "headerAuthValue": "$.secrets.54f4d7b1-d904-4ce8-a422-b171b2a77d6a",
+          "method": "delete",
+          "oAuthClientId": "",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "",
+          "requestContentType": "json",
+          "url": "https://caesars2.oktapreview.com/api/v1/users/{{$.defineVariable.responseID}}/sessions"
+        },
+        "displayName": "0kta clear session",
+        "nextStep": "HTTP Request 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "header",
+          "headerAuthName": "Authorization",
+          "headerAuthValue": "$.secrets.54f4d7b1-d904-4ce8-a422-b171b2a77d6a",
+          "method": "post",
+          "oAuthClientId": "",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "",
+          "requestContentType": "json",
+          "url": "https://caesars2.oktapreview.com/api/v1/users/{{$.defineVariable.responseID}}/lifecycle/reset_factors"
+        },
+        "displayName": "Reset MFA",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "header",
+          "headerAuthName": "Authorization",
+          "headerAuthValue": "$.secrets.54f4d7b1-d904-4ce8-a422-b171b2a77d6a",
+          "method": "get",
+          "oAuthClientId": "",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "",
+          "requestContentType": "json",
+          "url": "https://caesars2.oktapreview.com/api/v1/users/tzulejhic58@dev.lab.local"
+        },
+        "displayName": "GetUserID",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

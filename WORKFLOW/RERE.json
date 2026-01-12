@@ -1,0 +1,30 @@
+{
+  "id": "3ac6a0ff-17a1-4ad1-bf44-08689bbe08a0",
+  "name": "RERE",
+  "description": "",
+  "created": "2025-08-14T19:07:00.2975874Z",
+  "modified": "2025-08-14T19:07:00.2975874Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "definition": {
+    "steps": {}
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "trigger": {
+    "type": "",
+    "attributes": {}
+  }
+}

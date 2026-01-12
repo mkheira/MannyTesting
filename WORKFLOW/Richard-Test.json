@@ -1,0 +1,81 @@
+{
+  "id": "8ce410ae-4ba5-4b3d-b4ae-9c09d3a69858",
+  "name": "Richard-Test",
+  "description": "",
+  "created": "2025-11-18T16:57:38.137489053Z",
+  "modified": "2025-12-09T17:32:13.486418554Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "800761288"
+  },
+  "definition": {
+    "start": "Active Directory",
+    "steps": {
+      "Active Directory": {
+        "actionId": "sp:pag-active-directory",
+        "attributes": {
+          "inputForPag_address": null,
+          "inputForPag_auth_username": null,
+          "inputForPag_limit": 100,
+          "inputForPag_port": 636,
+          "inputForPag_search_base_dn": "OU=Users,OU=HQL,OU=SailPointUsers,DC=dev,DC=lab,DC=local",
+          "inputForPag_search_scope": "Base",
+          "inputForPag_verify_cert": false,
+          "pagCommandType": "",
+          "pagInstanceId": "",
+          "pagSpecId": "",
+          "param_conn": {
+            "mapping": {
+              "address": "domainControllers",
+              "domain": "domainFQDN",
+              "port": "ldapsPort"
+            },
+            "paramID": "a5cfcf00-f000-4024-82c7-9838983d2e65",
+            "paramType": "2.1",
+            "refID": "284a4975-7b21-4aee-a809-f90530e82f91"
+          },
+          "param_connType": "paramSPS",
+          "param_credential": {
+            "mapping": {
+              "auth_password": "password",
+              "auth_username": "username"
+            },
+            "paramID": "df3632ec-4476-4d7b-98d6-5527e1db8d2f",
+            "paramType": "1.1",
+            "refID": "c90cafd4-d5ab-47c7-811b-a3148583c732"
+          },
+          "param_credentialType": "paramSPS"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "800761288"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "locationCode",
+      "filter.$": "$.changes[?(@.attribute == \"locationCode\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

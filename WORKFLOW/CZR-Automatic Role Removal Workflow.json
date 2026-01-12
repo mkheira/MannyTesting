@@ -1,0 +1,160 @@
+{
+  "id": "831884c9-099d-4e37-866e-97d05bc2ae64",
+  "name": "CZR-Automatic Role Removal Workflow",
+  "description": "Removes Role from the User after 30 days",
+  "created": "2025-12-04T19:30:28.594651083Z",
+  "modified": "2025-12-24T16:59:49.118594018Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "definition": {
+    "start": "Compare Strings",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable",
+            "variableA.$": "$.trigger.requestedItemsStatus[0].id",
+            "variableB": "180243ff264b49448116feafc06931bf"
+          }
+        ],
+        "defaultStep": "End Step - Success 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityId",
+              "transforms": [],
+              "variableA.$": "$.trigger.requestedFor.id"
+            },
+            {
+              "description": "",
+              "name": "startDate",
+              "transforms": [],
+              "variableA.$": "$.trigger.requestedItemsStatus[0].comment"
+            },
+            {
+              "description": "",
+              "name": "endDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 10,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Wait",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "GRANT_ACCESS",
+            "requestedFor": [
+              "{{$.defineVariable.identityId}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "Assigning access based on date mentioned in comments.",
+                "id": "180243ff264b49448116feafc06931bf",
+                "removeDate": "{{$.defineVariable.endDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.ca9c3bc4-0193-4d08-b7a8-e2885766a6b1",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;p&gt;Hello Team,&lt;/p&gt;</p>\n<p>&lt;p&gt;This is an automated notification regarding the removal of the following user role. The role has been automatically removed as it reached the 30-day validity period from the start date.&lt;/p&gt;</p>\n<p>&lt;p&gt;<br>&lt;strong&gt;Name:&lt;/strong&gt; ${name}&lt;br&gt;<br>&lt;strong&gt;Person Number:&lt;/strong&gt; ${personNumber}&lt;br&gt;<br>&lt;strong&gt;Role Removed:&lt;/strong&gt; ${roleName}&lt;br&gt;<br>&lt;/p&gt;</p>\n<p>&lt;p&gt;Thank you!&lt;br&gt;<br>Caesars Identity and Access Management Team&lt;/p&gt;</p>",
+          "context": {
+            "name.$": "$.defineVariable.identityId",
+            "personNumber.$": "$.defineVariable1.personNumber",
+            "roleName.$": "$.defineVariable.roleName"
+          },
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Automatic Removal of Role"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "date.$": "$.defineVariable.startDate",
+          "time": "1969-12-31T18:30:00.000Z",
+          "type": "waitUntil"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.requestedItemsStatus[?(@.type == 'ROLE' && @.operation == 'Add' && @.name == 'CZR-Test Role_Automatic_Removal'&& @.comment != 'Assigning access based on date mentioned in comments.')]",
+      "id": "idn:access-request-post-approval"
+    }
+  }
+}

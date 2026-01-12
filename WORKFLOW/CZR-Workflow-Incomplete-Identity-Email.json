@@ -1,0 +1,160 @@
+{
+  "id": "57e42f4c-52ca-46d0-85ac-6cc91cdef413",
+  "name": "CZR-Workflow-Incomplete-Identity-Email",
+  "description": "Send email on incomplete identity when it created.",
+  "created": "2025-12-04T14:42:21.660077232Z",
+  "modified": "2025-12-24T11:17:23.007358773Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "email of the identity created",
+              "name": "email",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "\\$.trigger.attributes.email",
+                    "replacement": "NONE"
+                  }
+                }
+              ],
+              "variableA.$": "$.trigger.attributes.email"
+            },
+            {
+              "description": "lastname of the identity created",
+              "name": "lastname",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "\\$.trigger.attributes.lastname",
+                    "replacement": "NONE"
+                  }
+                }
+              ],
+              "variableA.$": "$.trigger.attributes.lastname"
+            },
+            {
+              "description": "uid of the identity created",
+              "name": "uid",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "\\$.trigger.attributes.uid",
+                    "replacement": "NONE"
+                  }
+                }
+              ],
+              "variableA.$": "$.trigger.attributes.uid"
+            },
+            {
+              "description": "name of the identity created",
+              "name": "name",
+              "transforms": [],
+              "variableA.$": "$.trigger.identity.name"
+            }
+          ]
+        },
+        "displayName": "Get Required Identity Attributes",
+        "nextStep": "Verify Data Type",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that </span>Identity Created is incomplete: ${variable1}</p>\n<p>Identity Email: ${variable2}</p>\n<p>Identity Lastname: ${variable3}</p>\n<p>Identity UID: ${variable4}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {
+            "variable1.$": "$.defineVariable.name",
+            "variable2.$": "$.defineVariable.email",
+            "variable3.$": "$.defineVariable.lastname",
+            "variable4.$": "$.defineVariable.uid"
+          },
+          "recipientEmailList": [
+            "cybersecurity-iamsailpointteam@caesars.com",
+            "srajathadri@caesars.com"
+          ],
+          "replyTo": "DoNotReplyIAMOps@caesars.com",
+          "subject": "Incomplete Identity Created: ${variable1}"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Send Email",
+            "variableA.$": "$.trigger.attributes.email"
+          }
+        ],
+        "defaultStep": "Verify Data Type 1",
+        "displayName": "Is Email Null?",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Send Email",
+            "variableA.$": "$.trigger.attributes.lastname"
+          }
+        ],
+        "defaultStep": "Verify Data Type 2",
+        "displayName": "Is Lastname Null?",
+        "type": "choice"
+      },
+      "Verify Data Type 2": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Send Email",
+            "variableA.$": "$.trigger.attributes.uid"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "description": null,
+        "displayName": "Is Uid Null?",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-created"
+    }
+  }
+}

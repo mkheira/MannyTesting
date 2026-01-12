@@ -1,0 +1,141 @@
+{
+  "id": "d453aba9-ff52-410f-80ec-411386462644",
+  "name": "Copy of Copy of CZR-Test Automatic Role Removal Workflow",
+  "description": "Removes Role from the User after 30 days",
+  "created": "2025-12-23T15:57:00.872214845Z",
+  "modified": "2025-12-23T21:02:00.611758772Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "definition": {
+    "start": "Define Variable 1",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Wait",
+            "variableA.$": "$.trigger.requestedItemsStatus[0].id",
+            "variableB": "180243ff264b49448116feafc06931bf"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityId",
+              "transforms": [],
+              "variableA.$": "$.trigger.requestedFor.id"
+            },
+            {
+              "description": "",
+              "name": "startDate",
+              "transforms": [],
+              "variableA.$": "$.trigger.requestedItemsStatus[0].comment"
+            },
+            {
+              "description": "",
+              "name": "endDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 3,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "GRANT_ACCESS",
+            "requestedFor": [
+              "{{$.defineVariable1.identityId}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": " Assigning access based on date mentioned in comments.",
+                "id": "180243ff264b49448116feafc06931bf",
+                "removeDate": "{{$.defineVariable1.endDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.6b0b2cad-d70b-4da4-b967-a42354f6e2eb",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "date.$": "$.defineVariable1.startDate",
+          "time": "1969-12-31T18:30:00.000Z",
+          "type": "waitUntil"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.requestedItemsStatus[?(@.type == 'ROLE' && @.operation == 'Add' && @.name == 'CZR-Test Role_Automatic_Removal')]",
+      "id": "idn:access-request-post-approval"
+    }
+  }
+}

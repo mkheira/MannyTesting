@@ -1,0 +1,80 @@
+{
+  "id": "10d4aefa-d85c-4ed1-b91d-43749a310f4d",
+  "name": "Update of Contractor AD Attributes",
+  "description": "Select a user in Form 1 and display details in Form 2",
+  "created": "2025-10-23T15:20:31.099997785Z",
+  "modified": "2025-12-05T20:14:32.504952927Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "description": null,
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.steps['Interactive Form'].response.selectedIdentity"
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "f046cb7b-4962-4acd-a256-7f0a5a1155c7",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Get Identity",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "abe4c59a-3cd4-42f6-a234-24d073408477",
+          "inputs": {
+            "email.$": "$.steps['Get Identity'].response.attributes.email",
+            "firstName.$": "$.steps['Get Identity'].response.attributes.firstname",
+            "lastName.$": "$.steps['Get Identity'].response.attributes.lastname"
+          },
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "500000381"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "500000381"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '10d4aefa-d85c-4ed1-b91d-43749a310f4d')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "id": "77e88f9e-cd2e-45af-896c-83e17fef95ed",
+  "name": "Copy of CZR-Workflow-Powershell_Request",
+  "description": "",
+  "created": "2025-11-26T20:17:11.554758425Z",
+  "modified": "2025-12-09T17:30:22.143888911Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "800761288"
+  },
+  "definition": {
+    "start": "Windows Server",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Windows Server": {
+        "actionId": "sp:pag-windows-server",
+        "attributes": {
+          "inputForPag_address": "10.6.8.58",
+          "inputForPag_auth_password": "",
+          "inputForPag_auth_type": "ntlm",
+          "inputForPag_auth_username": "",
+          "inputForPag_command_timeout_seconds": 120,
+          "inputForPag_configuration_name": "Microsoft.PowerShell",
+          "inputForPag_kdc_port": 88,
+          "inputForPag_kdc_protocol": "udp",
+          "inputForPag_output_format": "text",
+          "inputForPag_script_arguments": {
+            "displayname": "CZRPreferredName Katragadda",
+            "dn": "CN=Suman Burka2,OU=Disabled,OU=Vendors and Contractors,OU=SailPointUsers,DC=dev,DC=lab,DC=local",
+            "domain": "H",
+            "emptype": "Contractor",
+            "license": "E3",
+            "personNumber": "500000530",
+            "sa": "sburka2",
+            "setuplike": "true",
+            "setuplikesource": "ISC",
+            "upn": "sburka2@dev.lab.local",
+            "workertype": "Contractor"
+          },
+          "inputForPag_script_path": "D:\\Sailpoint\\Scripts\\TestSuspension.ps1",
+          "inputForPag_use_ssl": false,
+          "inputForPag_verify_cert": false,
+          "pagCommandType": "",
+          "pagInstanceId": "",
+          "pagSpecId": "",
+          "param_conn": {
+            "mapping": {
+              "address": "address"
+            },
+            "paramType": "2.3"
+          },
+          "param_connType": "paramInline",
+          "param_credential": {
+            "mapping": {
+              "auth_password": "password",
+              "auth_username": "username"
+            },
+            "paramID": "df3632ec-4476-4d7b-98d6-5527e1db8d2f",
+            "paramType": "1.1",
+            "refID": "44e1c2fb-3eae-43d8-809d-62f070336bda"
+          },
+          "param_credentialType": "paramSPS",
+          "param_kerberos": {
+            "mapping": {
+              "kdc_address": "kdcAddress",
+              "kdc_port": "port",
+              "kdc_protocol": "transport",
+              "kdc_realm": "realm"
+            },
+            "paramType": "2.5"
+          },
+          "param_kerberosType": "paramInline"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '77e88f9e-cd2e-45af-896c-83e17fef95ed')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "id": "541c30b5-aab1-4584-9523-e906c1508281",
+  "name": "CZR-Workflow-MRI-Shareworks-Certification",
+  "description": "Scheduled trigger to start the staged Certification campaign",
+  "created": "2025-12-22T14:32:08.962565265Z",
+  "modified": "2025-12-26T12:10:43.897080943Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "HTTP Request",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.6a3d8166-8c84-4ae5-89b8-c6941066f550",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/campaigns",
+          "urlParams": {
+            "filters": "status eq \"STAGED\" and (name sw \"MRI\" or name sw \"Shareworks\")"
+          }
+        },
+        "displayName": "HTTP: Get Staged MRI/Shareworks Cert",
+        "nextStep": "Verify Data Type",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "input.$": "$.hTTPRequest.body[*]",
+          "start": "HTTP Request 1",
+          "steps": {
+            "End Step - Success 1": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 1": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.6a3d8166-8c84-4ae5-89b8-c6941066f550",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/campaigns/{{$.loop.loopInput.id}}/activate",
+                "urlParams": null
+              },
+              "displayName": "HTTP 1: Activate MRI/Shareworks Cert",
+              "nextStep": "End Step - Success 1",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Loop",
+            "variableA.$": "$.hTTPRequest.body[0].id"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "displayName": "",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "trigger": {
+    "type": "SCHEDULED",
+    "attributes": {
+      "cronString": "0 9 * * *",
+      "dailyTimes": [
+        "1970-01-01T03:30:00.000Z"
+      ],
+      "frequency": "daily",
+      "id": "idn:cron-schedule",
+      "timeZone": "Asia/Calcutta"
+    }
+  }
+}

@@ -1,0 +1,623 @@
+{
+  "id": "1288f476-5c73-4fc5-8c4e-3b0240ca7e3b",
+  "name": "CZR-Workflow-HBV-Employee-Onboarding",
+  "description": "CZR-Workflow-HBV-Employee-Onboarding",
+  "created": "2025-10-27T13:57:08.303798219Z",
+  "modified": "2025-12-16T00:23:03.453693954Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Boolean": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "HTTP Request 5",
+            "variableA.$": "$.interactiveForm.formData.NetworkAccess",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "HTTP Request 2",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "setUpLikePerson",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.SetupLikePerson"
+            }
+          ]
+        },
+        "displayName": "Variable : setUpLikePerson",
+        "nextStep": "Define Variable 1",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.FirstName"
+            }
+          ]
+        },
+        "displayName": "Trim First Name",
+        "nextStep": "Define Variable 2",
+        "type": "Mutation"
+      },
+      "Define Variable 11": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "latestID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body.attributes.newHBVEmployeeId"
+            }
+          ]
+        },
+        "displayName": "Variable : latestID",
+        "nextStep": "Define Variable 12",
+        "type": "Mutation"
+      },
+      "Define Variable 12": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "EnterpriseHireDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "managerAssignmentNumber",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.verifyingCaesarsManager"
+            }
+          ]
+        },
+        "displayName": "Variable : HireDate and manager",
+        "nextStep": "HTTP Request 4",
+        "type": "Mutation"
+      },
+      "Define Variable 13": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "company",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "Harrah's Buena Vista"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.property"
+            }
+          ]
+        },
+        "displayName": "Set Company Name",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "lastName",
+              "transforms": [
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.LastName"
+            }
+          ]
+        },
+        "displayName": "Trim Last Name",
+        "nextStep": "Define Variable 3",
+        "type": "Mutation"
+      },
+      "Define Variable 21": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedBy",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.requestedBy"
+            }
+          ]
+        },
+        "displayName": "Variable  : RequestedBy",
+        "nextStep": "HTTP Request 8",
+        "type": "Mutation"
+      },
+      "Define Variable 22": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedByEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest8.body[0].email"
+            }
+          ]
+        },
+        "displayName": "Variable : RequestedBy Email",
+        "nextStep": "Compare Boolean",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "title",
+              "transforms": [
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.JobTitle"
+            }
+          ]
+        },
+        "displayName": "Trim Title",
+        "nextStep": "Define Variable 8",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "displayName",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable2.lastName"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable1.firstName"
+            }
+          ]
+        },
+        "displayName": "Define DisplayName from First and Last Name",
+        "nextStep": "Define Variable 6",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "displayName",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.preferredName"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable1.firstName"
+            }
+          ]
+        },
+        "displayName": "Define DisplayName from Preferred and Last Name",
+        "nextStep": "Define Variable 6",
+        "type": "Mutation"
+      },
+      "Define Variable 6": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "displayName",
+              "transforms": [],
+              "variableA.$": "$['defineVariable5','defineVariable4'].displayName"
+            }
+          ]
+        },
+        "displayName": "Set Display Name",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 7": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DepartmentName",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "Harrah's Buena Vista"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.property"
+            }
+          ]
+        },
+        "displayName": "Set Department Name",
+        "nextStep": "Define Variable 13",
+        "type": "Mutation"
+      },
+      "Define Variable 8": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "preferredName",
+              "transforms": [
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.PreferredName"
+            }
+          ]
+        },
+        "displayName": "Trim Preferred Name",
+        "nextStep": "Verify Data Type",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.7cc35744-85cd-4cd5-be83-540810da28eb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/9e575268718d4e40ba6acecc821f7251/reload"
+        },
+        "displayName": "HTTP : reload ID",
+        "nextStep": "HTTP Request 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.5f1237ff-d3af-4bae-92c1-08e80e5e4b3f",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/9e575268718d4e40ba6acecc821f7251"
+        },
+        "displayName": "HTTP : Get account Details",
+        "nextStep": "Define Variable 11",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "false",
+              "NetworkAccessRequired": "{{$.interactiveForm.formData.NetworkAccess}}",
+              "RequestedBy": "{{$.interactiveForm.formData.requestedBy}}",
+              "RequestedByEmail": "{{$.defineVariable22.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable11.latestID}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable11.latestID}}",
+              "Status": "active",
+              "sourceId": "6656e52b129943fba8e6731cffc90d09"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.13fae520-f67a-4912-9d68-6ddde31f6f73",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AsgStartDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "AssignmentStatusType": "Active",
+              "DepartmentName": "{{$.defineVariable7.departmentName}}",
+              "DisplayName": "{{$.defineVariable6.displayName}}",
+              "Division": "Harrah's Buena Vista",
+              "EnterpriseHireDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "FirstName": "{{$.defineVariable1.firstName}}",
+              "KnownAs": "{{$.interactiveForm.formData.PreferredName}}",
+              "LastName": "{{$.defineVariable2.lastName}}",
+              "LegalEmployerName": "{{$.defineVariable13.company}}",
+              "LocationCode": "{{$.interactiveForm.formData.location}}",
+              "ManagerAssignmentNumber": "{{$.defineVariable12.managerAssignmentNumber}}",
+              "MiddleName": "{{$.interactiveForm.formData.MiddleName}}",
+              "PersonNumber": "{{$.defineVariable11.latestID}}",
+              "PositionName": "{{$.defineVariable3.JobTitle}}",
+              "PropertyCode": "{{$.interactiveForm.formData.property}}",
+              "Suffix": "{{$.interactiveForm.formData.Suffix}}",
+              "WorkerType": "{{$.interactiveForm.formData.employeeType}}",
+              "sourceId": "5bcb54289d5649149b01379de2d98800"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.53152202-2fa1-4020-8ec3-6f2b1886a957",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "textRequestBody": "",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in flatfile",
+        "nextStep": "Define Variable 21",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "{{$.interactiveForm.formData.exchangeMailbox}}",
+              "NetworkAccessRequired": "{{$.interactiveForm.formData.NetworkAccess}}",
+              "RequestedBy": "{{$.interactiveForm.formData.requestedBy}}",
+              "RequestedByEmail": "{{$.defineVariable22.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable11.latestID}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable11.latestID}}",
+              "SetupLikePerson": "{{$.defineVariable.setUpLikePerson}}",
+              "Status": "active",
+              "sourceId": "6656e52b129943fba8e6731cffc90d09"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.13fae520-f67a-4912-9d68-6ddde31f6f73",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in network file",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable21.requestedBy}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "0f00ff77-5817-4ea6-aa3e-f0fbe54f28bd",
+          "oAuthClientSecret": "$.secrets.1c102266-1e40-4d43-b4f2-2d2c11e23fa4",
+          "oAuthScope": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "textRequestBody": "",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : Get requestedBy user",
+        "nextStep": "Define Variable 22",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "e652cdf3-e569-4f2f-9c36-da51e0088ecb",
+          "inputForForm_contractorJobTitle": "hey",
+          "inputForForm_locationBlvCall": "hi",
+          "inputForForm_regulatorJobTitle": "hi",
+          "inputForForm_requestedByWorkflow": "CZR-Workflow-HBV-Employee-Onboarding",
+          "inputForForm_vendorJobTitle": "hi",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<p>HV Employee Onboarding</p>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "HV Employee Onboarding"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable 5",
+            "variableA.$": "$.defineVariable8.preferredName"
+          }
+        ],
+        "defaultStep": "Define Variable 4",
+        "displayName": "",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "500000382"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '1288f476-5c73-4fc5-8c4e-3b0240ca7e3b')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

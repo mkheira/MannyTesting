@@ -1,0 +1,104 @@
+{
+  "id": "52f7d105-c027-46af-9d0d-824d11e0afee",
+  "name": "CZR-Workflow-Notify MngLevelDecreaseNotification",
+  "description": "",
+  "created": "2025-03-17T19:16:43.137402541Z",
+  "modified": "2025-09-30T17:04:16.836429169Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "definition": {
+    "start": "HTTP Request 1",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "managementLevel",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.ManagementLevel"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "26fd891e096e4c4c85b7c825e58e7f60",
+          "oAuthClientSecret": "$.secrets.e32c4efe-7cf0-4793-b265-eb3902177c1b",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.trigger.identity.id}}\" and sourceId eq \"9f46913b2c9b4da5bc40734abda20886\""
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>**This is an automated email, please do not reply.**</p>\n<p>The following user management level is decreased: <strong>${firstName} ${lastName}.</strong></p>\n<p><strong>Employee Number: </strong>${empNum}<br><strong>Employee Name:</strong> ${firstName} ${lastName}<br><strong>Primary Location:</strong> ${location}<br><strong>Primary Job Title:</strong> ${job}<br><strong>Primary Department:</strong> ${department}<br><br></p>\n<p><strong>${firstName} ${lastName}</strong> management level is changed to <strong>{{$.defineVariable.managementLevel}}</strong>, please review user network account.<br>If the user need network account access ignore this email else please raise a revoke request network access account in CaesarsNow Portal.</p>\n<p>Please review, If any information is incorrect, take the following action:<br><strong>Employee:</strong> <span data-teams=\"true\">Submit the appropriate request form, through CaesarsNow, for the change.</span></p>\n<p>Thank you!</p>\n<p>If you feel that you have received this email in error, please immediately notify the Caesar&rsquo;s Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</p>\n<p>&nbsp;</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a></footer>",
+          "context": {
+            "department.$": "$.trigger.identity.department",
+            "empNum.$": "$.trigger.identity.identificationNumber",
+            "firstName.$": "$.trigger.identity.firstname",
+            "job.$": "$.trigger.identity.jobTitle",
+            "lastName.$": "$.trigger.identity.lastname",
+            "location.$": "$.trigger.identity.locationDescription",
+            "mngLevel.$": "$.trigger.identity.managementLevel",
+            "userName.$": "$.trigger.identity.displayName"
+          },
+          "from.$": "",
+          "recipientEmailList": [
+            "MKheira@caesars.com",
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Management level has been modified for ${userName}"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "0aac9dd9ddb241fb9b152c3cb41bc218",
+    "name": "Manbir Kheira"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "managementLevelFlag",
+      "filter.$": "$.changes[?(@.attribute==\"managementLevelFlag\" && @.oldValue==\"true\" && @.newValue==\"false\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

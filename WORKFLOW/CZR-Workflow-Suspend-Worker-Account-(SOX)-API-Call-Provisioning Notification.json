@@ -1,0 +1,540 @@
+{
+  "id": "83787069-2cb8-4f1b-9def-ad9f9f9e5527",
+  "name": "CZR-Workflow-Suspend-Worker-Account-(SOX)-API-Call-Provisioning Notification",
+  "description": "",
+  "created": "2025-12-10T21:26:52.588362556Z",
+  "modified": "2025-12-16T15:50:28.789435862Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "definition": {
+    "start": "Define Variable 1",
+    "steps": {
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThan",
+            "nextStep": "Compare Strings 4",
+            "variableA.$": "$.hTTPRequest.body.size()",
+            "variableB": 0
+          }
+        ],
+        "defaultStep": "End Step - Success 2",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 6",
+            "variableA.$": "$.defineVariable1.accountOperation",
+            "variableB": "Enable"
+          }
+        ],
+        "defaultStep": "Compare Strings 5",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 7",
+            "variableA.$": "$.defineVariable1.accountOperation",
+            "variableB": "Disable"
+          }
+        ],
+        "defaultStep": "End Step - Success 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.Status",
+            "variableB": "active"
+          }
+        ],
+        "defaultStep": "End Step - Success 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 7": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 2",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.Status",
+            "variableB": "inactive"
+          }
+        ],
+        "defaultStep": "End Step - Success 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 8": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringStartsWith",
+            "nextStep": "Loop",
+            "variableA.$": "$.defineVariable2.suspendedDate",
+            "variableB.$": "$.defineVariable1.triggeredDate"
+          }
+        ],
+        "defaultStep": "End Step - Success 4",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 9": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringStartsWith",
+            "nextStep": "Loop",
+            "variableA.$": "$.defineVariable4.enabledDate",
+            "variableB.$": "$.defineVariable1.triggeredDate"
+          }
+        ],
+        "defaultStep": "End Step - Success 4",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityID",
+              "transforms": [],
+              "variableA.$": "$.trigger.recipient.id"
+            },
+            {
+              "description": "",
+              "name": "accountOperation",
+              "transforms": [],
+              "variableA.$": "$.trigger.accountRequests[0].accountOperation"
+            },
+            {
+              "description": "",
+              "name": "getSuspendAccountsURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_Id",
+                    "replacement.$": "$.trigger.recipient.id"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "sourceName",
+                    "replacement": "CZR-Application-Suspend"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_Id\" and source.displayableName eq \"sourceName\""
+            },
+            {
+              "description": "",
+              "name": "triggeredDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "none"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "staticDate",
+              "transforms": [],
+              "variableA": "12/16/2025"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "suspendedDate",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.SuspendedDate"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 9",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "enabledDate",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.EnabledDate"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 8",
+        "type": "Mutation"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 3": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.969cd9d2-248c-42ba-bdf6-5c5385b527f8",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable1.getSuspendAccountsURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.defineVariable1.identityID}}\" and source.displayableName eq = \"CZR-Application-Suspend\""
+          }
+        },
+        "displayName": "",
+        "nextStep": "Compare Numbers",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.trigger",
+          "input.$": "$.trigger.accountRequests",
+          "start": "Define Variable",
+          "steps": {
+            "Compare Strings": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Send Email",
+                  "variableA.$": "$.loop.loopInput.provisioningResult",
+                  "variableB": "failed"
+                }
+              ],
+              "defaultStep": "Compare Strings 2",
+              "description": "Check for provisioning success/failure",
+              "displayName": "Check ProvisioningResult is not success?",
+              "type": "choice"
+            },
+            "Compare Strings 1": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringContains",
+                  "nextStep": "HTTP Request 2",
+                  "variableA.$": "$.defineVariable.adSources",
+                  "variableB.$": "$.defineVariable.application"
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "description": "Check if source is Active Directory",
+              "displayName": "Check source is AD?",
+              "type": "choice"
+            },
+            "Compare Strings 2": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Send Email 1",
+                  "variableA.$": "$.loop.loopInput.accountOperation",
+                  "variableB": "Disable"
+                }
+              ],
+              "defaultStep": "Compare Strings 3",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 3": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Send Email 2",
+                  "variableA.$": "$.loop.loopInput.accountOperation",
+                  "variableB": "Enable"
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Define Variable": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "adSources",
+                    "transforms": [],
+                    "variableA": "CZR-Application-ActiveDirectory-Harrahs,CZR-Application-ActiveDirectory-Harrahs-JAccounts,CZR-Application-ActiveDirectory-WilliamHill,CZR-Application-ActiveDirectory-Harrahs-Contractor"
+                  },
+                  {
+                    "description": "",
+                    "name": "application",
+                    "transforms": [],
+                    "variableA.$": "$.loop.loopInput.source.name"
+                  },
+                  {
+                    "description": "",
+                    "name": "triggeredDate",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:formatDate:string",
+                        "input": {
+                          "dateFormat": "MM/DD/YYYY",
+                          "style": "number",
+                          "timeFormat": "HH:MM:SS"
+                        }
+                      }
+                    ],
+                    "variableA.$": "$.now()"
+                  },
+                  {
+                    "description": "",
+                    "name": "identityID",
+                    "transforms": [],
+                    "variableA.$": "$.loop.context.recipient.id"
+                  },
+                  {
+                    "description": "",
+                    "name": "getIdentityURL",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "identity_Id",
+                          "replacement.$": "$.loop.context.recipient.id"
+                        }
+                      }
+                    ],
+                    "variableA": "https://caesars-sb.api.identitynow.com/v2024/identities/identity_Id"
+                  },
+                  {
+                    "description": "",
+                    "name": "getSuspendAccountsURL",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "identity_Id",
+                          "replacement.$": "$.loop.context.recipient.id"
+                        }
+                      },
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "sourceName",
+                          "replacement": "CZR-Application-Suspend"
+                        }
+                      }
+                    ],
+                    "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_Id\" and source.displayableName eq \"sourceName\""
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Compare Strings 1",
+              "type": "Mutation"
+            },
+            "End Step - Success": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 1": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+                "oAuthClientSecret": "$.secrets.a677a48a-f8d8-42ae-818e-00e7862fc2f9",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url.$": "$.defineVariable.getIdentityURL",
+                "urlParams": {
+                  "filters": "id eq \"{{$.loop.context.recipient.id}}\""
+                }
+              },
+              "displayName": "",
+              "nextStep": "Compare Strings",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 2": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+                "oAuthClientSecret": "$.secrets.969cd9d2-248c-42ba-bdf6-5c5385b527f8",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url.$": "$.defineVariable.getSuspendAccountsURL",
+                "urlParams": {
+                  "filters": "identityId eq \"{{$.loop.context.recipient.id}}\" and source.displayableName eq = \"CZR-Application-Suspend\""
+                }
+              },
+              "displayName": "",
+              "nextStep": "HTTP Request 1",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Send Email": {
+              "actionId": "sp:send-email",
+              "attributes": {
+                "body": "<p>&lt;p&gt;Dear SOC Team,&lt;/p&gt;We attempted to provision your Active Directory account through SailPoint ISC, but the process has failed for the user ${recipientName}&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;Details:&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;System:&lt;/strong&gt; Active Directory&lt;br&gt;&lt;strong&gt;AD Source:&lt;/strong&gt; ${provisioningTarget}&lt;br&gt;&lt;strong&gt;Action:&lt;/strong&gt; Provisioning Account ${accountOperation}&lt;br&gt;&lt;strong&gt;Status:&lt;/strong&gt; Failed&lt;br&gt;&lt;strong&gt;Date:&lt;/strong&gt; ${triggeredDate}&lt;br&gt;&lt;strong&gt;Error Reference:&lt;/strong&gt; ${errors}&lt;br&gt;&lt;p&gt;&lt;/p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team.</p>",
+                "context": {
+                  "accountOperation.$": "$.loop.loopInput.accountOperation",
+                  "attributeRequests.$": "$.loop.loopInput.attributeRequests",
+                  "errors.$": "$.loop.context.errors",
+                  "provisioningResult.$": "$.loop.loopInput.provisioningResult",
+                  "provisioningTarget.$": "$.loop.loopInput.provisioningTarget",
+                  "recipientId.$": "$.loop.context.recipient.id",
+                  "recipientName.$": "$.loop.context.recipient.name",
+                  "triggeredDate.$": "$.defineVariable.triggeredDate"
+                },
+                "from": "",
+                "recipientEmailList": [
+                  "sailpointsb@caesars.com"
+                ],
+                "subject": "AD Provisioning has failed for ${recipientName}"
+              },
+              "displayName": "Notify Ops Team",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Send Email 1": {
+              "actionId": "sp:send-email",
+              "attributes": {
+                "body": "<p>&lt;p&gt;Dear Team,&lt;/p&gt;This is to inform you that the Active Directory account for ${recipientName} (Employee ID: ${personNumber}) has been disabled through SailPoint ISC in accordance with company policy.&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;Details:&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;Action:&lt;/strong&gt; Account ${accountOperation}&lt;br&gt;&lt;strong&gt;System:&lt;/strong&gt; Active Directory&lt;br&gt;&lt;strong&gt;AD Source:&lt;/strong&gt; ${provisioningTarget}&lt;br&gt;&lt;strong&gt;Date:&lt;/strong&gt; ${triggeredDate}&lt;br&gt;&lt;strong&gt;Reason:&lt;/strong&gt; ${reason}&lt;br&gt;&lt;p&gt;&lt;/p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team.</p>",
+                "context": {
+                  "accountOperation.$": "$.loop.loopInput.accountOperation",
+                  "attributeRequests.$": "$.loop.loopInput.attributeRequests",
+                  "errors.$": "$.loop.context.errors",
+                  "personNumber.$": "$.hTTPRequest1.body.attributes.uid",
+                  "provisioningResult.$": "$.loop.loopInput.provisioningResult",
+                  "provisioningTarget.$": "$.loop.loopInput.provisioningTarget",
+                  "reason.$": "$.hTTPRequest2.body[0].attributes.ReasonForSuspension",
+                  "recipientId.$": "$.loop.context.recipient.id",
+                  "recipientName.$": "$.loop.context.recipient.name",
+                  "triggeredDate.$": "$.defineVariable.triggeredDate"
+                },
+                "from": "",
+                "recipientEmailList": [
+                  "sailpointsb@caesars.com"
+                ],
+                "subject": "Suspension Notification - AD Account Requested for ${recipientName}"
+              },
+              "displayName": "",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Send Email 2": {
+              "actionId": "sp:send-email",
+              "attributes": {
+                "body": "<p>&lt;p&gt;Dear Team,&lt;/p&gt;This is to inform you that the Active Directory account for ${recipientName} (Employee ID: ${personNumber}) has been enabled through SailPoint ISC in accordance with company policy.&lt;br&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;Details:&lt;/strong&gt;&lt;p&gt;&lt;/p&gt;&lt;strong&gt;Action:&lt;/strong&gt; Account ${accountOperation}&lt;br&gt;&lt;strong&gt;System:&lt;/strong&gt; Active Directory&lt;br&gt;&lt;strong&gt;AD Source:&lt;/strong&gt; ${provisioningTarget}&lt;br&gt;&lt;strong&gt;Date:&lt;/strong&gt; ${triggeredDate}&lt;br&gt;&lt;strong&gt;Reason:&lt;/strong&gt; ${reason}&lt;br&gt;&lt;p&gt;&lt;/p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team.</p>",
+                "context": {
+                  "accountOperation.$": "$.loop.loopInput.accountOperation",
+                  "attributeRequests.$": "$.loop.loopInput.attributeRequests",
+                  "errors.$": "$.loop.context.errors",
+                  "personNumber.$": "$.hTTPRequest1.body.attributes.uid",
+                  "provisioningResult.$": "$.loop.loopInput.provisioningResult",
+                  "provisioningTarget.$": "$.loop.loopInput.provisioningTarget",
+                  "reason.$": "$.hTTPRequest2.body[0].attributes.ReasonForActivation",
+                  "recipientId.$": "$.loop.context.recipient.id",
+                  "recipientName.$": "$.loop.context.recipient.name",
+                  "triggeredDate.$": "$.defineVariable.triggeredDate"
+                },
+                "from": "",
+                "recipientEmailList": [
+                  "sailpointsb@caesars.com"
+                ],
+                "subject": "Activation Notification - AD Account Requested for ${recipientName}"
+              },
+              "displayName": "",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:post-provisioning"
+    }
+  }
+}

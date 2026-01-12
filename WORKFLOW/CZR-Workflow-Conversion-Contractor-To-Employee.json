@@ -1,0 +1,1359 @@
+{
+  "id": "449f2de9-09ee-4225-a15c-3771fad068e4",
+  "name": "CZR-Workflow-Conversion-Contractor-To-Employee",
+  "description": "",
+  "created": "2025-09-08T15:38:26.916585406Z",
+  "modified": "2025-12-23T15:15:23.892559761Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 2",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.identificationNumber",
+            "variableB.$": "$.defineVariable.contractorId"
+          }
+        ],
+        "defaultStep": "HTTP Request 8",
+        "displayName": "Contractor exists in IDN?",
+        "type": "choice"
+      },
+      "Compare Strings 10": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 11",
+            "variableA.$": "$.hTTPRequest10.body[0].disabled",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "Compare Strings 12",
+        "displayName": "Disabled AD?",
+        "type": "choice"
+      },
+      "Compare Strings 12": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 5",
+            "variableA.$": "$.hTTPRequest1.body[0].attributes.legalHoldAdCheck",
+            "variableB": "none"
+          }
+        ],
+        "defaultStep": "HTTP Request 18",
+        "displayName": "Does Emp has an AD?",
+        "type": "choice"
+      },
+      "Compare Strings 14": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "HTTP Request 19",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.legalHoldAdCheck",
+            "variableB": "WilliamHill"
+          }
+        ],
+        "defaultStep": "Compare Strings 9",
+        "displayName": "Has non-H.org AD?",
+        "type": "choice"
+      },
+      "Compare Strings 15": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "HTTP Request 26",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.legalHoldAdCheck",
+            "variableB": "JAccount"
+          }
+        ],
+        "defaultStep": "Wait 2",
+        "displayName": "Contain J account?",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 3",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.cloudLifecycleState",
+            "variableB": "active"
+          }
+        ],
+        "defaultStep": "HTTP Request 2",
+        "displayName": "Contractor active in IDN?",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 4",
+            "variableA.$": "$.hTTPRequest1.body[0].attributes.identificationNumber",
+            "variableB.$": "$.defineVariable.empId"
+          }
+        ],
+        "defaultStep": "HTTP Request 3",
+        "displayName": "Employee exists in IDN?",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 5",
+            "variableA.$": "$.hTTPRequest1.body[0].attributes.cloudLifecycleState",
+            "variableB": "active"
+          }
+        ],
+        "defaultStep": "HTTP Request 4",
+        "displayName": "Employee active in IDN?",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 6",
+            "variableA.$": "$.hTTPRequest1.body[0].attributes.employeeType",
+            "variableB": "E"
+          }
+        ],
+        "defaultStep": "HTTP Request 5",
+        "displayName": "Employee WorkerType = E?",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 1",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.lastname",
+            "variableB.$": "$.hTTPRequest1.body[0].attributes.lastname"
+          }
+        ],
+        "defaultStep": "HTTP Request 6",
+        "displayName": "LastName Match?",
+        "type": "choice"
+      },
+      "Compare Strings 7": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 7",
+            "variableA.$": "$.defineVariable1.excludedLocationFlag",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "Compare Strings 14",
+        "displayName": "LocationCode is part of excluded list?",
+        "type": "choice"
+      },
+      "Compare Strings 8": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 9",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.multipleAdAccount",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "HTTP Request 10",
+        "displayName": "Has multiple AD?",
+        "type": "choice"
+      },
+      "Compare Strings 9": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Compare Strings 8",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.legalHoldAdCheck",
+            "variableB": "Harrahs"
+          }
+        ],
+        "defaultStep": "HTTP Request 16",
+        "displayName": "Has H.org AD?",
+        "type": "choice"
+      },
+      "Create Certification Campaign": {
+        "actionId": "sp:create-campaign",
+        "attributes": {
+          "activateUponCreation": true,
+          "description": "Please review employee access for {{$.hTTPRequest1.body[0].displayName}}",
+          "duration": "10d",
+          "emailNotificationEnabled": true,
+          "name": "Certfication for {{$.hTTPRequest1.body[0].displayName}}",
+          "recommendationsEnabled": false,
+          "reviewerCertificationType": "IDENTITY",
+          "reviewerId.$": "$.hTTPRequest1.body[0].manager.id",
+          "reviewerIdentitiesToCertify.$": "$.hTTPRequest1.body[0].id",
+          "type": "REVIEWER_IDENTITY",
+          "undecidedAccess": true
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "HTTP Request 28",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Create Certification Campaign 1": {
+        "actionId": "sp:create-campaign",
+        "attributes": {
+          "activateUponCreation": true,
+          "description": "Please review employee access for {{$.hTTPRequest1.body[0].displayName}}",
+          "duration": "10d",
+          "emailNotificationEnabled": true,
+          "name": "Certfication for {{$.hTTPRequest1.body[0].displayName}}",
+          "recommendationsEnabled": false,
+          "reviewerCertificationType": "IDENTITY",
+          "reviewerId.$": "$.hTTPRequest1.body[0].manager.id",
+          "reviewerIdentitiesToCertify.$": "$.hTTPRequest1.body[0].id",
+          "type": "REVIEWER_IDENTITY",
+          "undecidedAccess": true
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "HTTP Request 14",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "empId",
+              "transforms": [],
+              "variableA.$": "$.trigger.empId"
+            },
+            {
+              "description": "",
+              "name": "requestedByUserId",
+              "transforms": [],
+              "variableA.$": "$.trigger.requestedByUserId"
+            },
+            {
+              "description": "",
+              "name": "sctasknum",
+              "transforms": [],
+              "variableA.$": "$.trigger.sctasknum"
+            },
+            {
+              "description": "",
+              "name": "sctasksysid",
+              "transforms": [],
+              "variableA.$": "$.trigger.sctasksysid"
+            },
+            {
+              "description": "",
+              "name": "contractorId",
+              "transforms": [],
+              "variableA.$": "$.trigger.contractorId"
+            }
+          ]
+        },
+        "displayName": "Variable : Input variables from snow",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "excludedLocationFlag",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.excludedLocationFlag"
+            },
+            {
+              "description": "",
+              "name": "locationCode",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.locationCode"
+            }
+          ]
+        },
+        "displayName": "Variable 1 : Excluded Location",
+        "nextStep": "Compare Strings 7",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "ritmSysId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest19.body.result[0].request_item.value"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 22",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "PatchBody",
+              "transforms": [],
+              "variableA": "[     {         \"op\": \"replace\", \"path\": \"/attributes/AssignmentStatusType\",\"value\":\"Inactive\"     } ]"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 20",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "PatchBody",
+              "transforms": [],
+              "variableA": "[     {         \"op\": \"replace\", \"path\": \"/attributes/Status\",\"value\":\"inactive\"     } ]"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Wait 1",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "EmpType",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.workerType"
+            },
+            {
+              "description": "",
+              "name": "LocationCode",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.locationCode"
+            },
+            {
+              "description": "",
+              "name": "Title",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.jobTitle"
+            },
+            {
+              "description": "",
+              "name": "EmpActiveLocCode",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.activeLocationCode"
+            },
+            {
+              "description": "",
+              "name": "EmpAsgStatusType",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.assignmentStatusType"
+            },
+            {
+              "description": "",
+              "name": "EmpMgmtLevelFlag",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.managementLevelFlag"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 21",
+        "type": "Mutation"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 10": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 11": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 12": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 3": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 5": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 6": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 8": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 9": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.contractorId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : Get Contractor details",
+        "nextStep": "HTTP Request 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.empId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.125c4164-c64f-4039-8d10-e0f6d5ecfef6",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP 1: Get Employee details",
+        "nextStep": "Compare Strings 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 10": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"e30d0436a20b45b79517a08f0380b1b1\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 10: Get account details",
+        "nextStep": "Compare Strings 10",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 11": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.d79745ae-082f-4a3e-9c41-485d28e54268",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. The identity (Contractor id: {{$.defineVariable.contractorId}}) has an H.org AD account in disabled status."
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 12",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 12": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/AssignmentStatusType",
+              "value": "Inactive"
+            }
+          ],
+          "jsonRequestBody": null,
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.hTTPRequest16.body[0].id}}",
+          "urlParams": {}
+        },
+        "displayName": "HTTP 12: Disable Contractor",
+        "nextStep": "HTTP Request 30",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 13": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": null,
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/identityId",
+              "value": "{{$.hTTPRequest1.body[0].id}}"
+            }
+          ],
+          "jsonRequestBody": null,
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest10.body[0].id}}"
+        },
+        "displayName": "HTTP 13: Correlate AD",
+        "nextStep": "Compare Strings 15",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 14": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.d79745ae-082f-4a3e-9c41-485d28e54268",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "3",
+            "work_notes": "The identity (Contractor id: {{$.defineVariable.contractorId}}) doesn't have H.org, hence the Contractor account has been disabled and a new certification has been created."
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 15": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "$.defineVariable4.patchBody",
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest23.body[0].id}}",
+          "urlParams": null
+        },
+        "displayName": "HTTP 15: Disable Contractor Network",
+        "nextStep": "HTTP Request 24",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 16": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"5bcb54289d5649149b01379de2d98800\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 16: Get account details",
+        "nextStep": "HTTP Request 12",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 17": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"5bcb54289d5649149b01379de2d98800\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 17: Get account details",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 18": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"e30d0436a20b45b79517a08f0380b1b1\" and identityId eq \"{{$.hTTPRequest1.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 18: Get account details",
+        "nextStep": "Manage Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 19": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.6cb069c2-62e4-4932-b093-fc0773c0b6f6",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": null,
+          "method": "get",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task",
+          "urlParams": {
+            "sysparm_fields": "sys_id,request_item,request,number",
+            "sysparm_query": "number={{$.defineVariable.sctasknum}}"
+          }
+        },
+        "description": "get task",
+        "displayName": "HTTP 19: Get RITM",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.262a1aca-4f24-48bc-b1a4-2ab2e033a28e",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity is not active in SailPoint. Contractor id: {{$.defineVariable.contractorId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 20": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "$.defineVariable3.patchBody",
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest17.body[0].id}}",
+          "urlParams": null
+        },
+        "displayName": "HTTP 20: Disable Contractor",
+        "nextStep": "HTTP Request 31",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 21": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ContractorId": "{{$.defineVariable.contractorId}}",
+              "EmpActiveLocCode": "{{$.defineVariable5.empActiveLocCode}}",
+              "EmpAsgStatusType": "{{$.defineVariable5.empAsgStatusType}}",
+              "EmpLocCode": "{{$.defineVariable5.locationCode}}",
+              "EmpMgmtLevelFlag": "{{$.defineVariable5.empMgmtLevelFlag}}",
+              "EmpTitle": "{{$.defineVariable5.title}}",
+              "EmpType": "{{$.defineVariable5.empType}}",
+              "EmployeeBrFlag": "True",
+              "RequestedBy": "{{$.defineVariable.requestedByUserId}}",
+              "RequestedFor": "{{$.defineVariable.empId}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable.contractorId}}",
+              "Status": "active",
+              "TaskNumber": "{{$.defineVariable.sctasknum}}",
+              "TaskSysId": "{{$.defineVariable.sctasksysid}}",
+              "sourceId": "4a75188f9b054e90ac2757f307fae3bf"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP 21: Create/Update User in CNOWEmployeeConversion source",
+        "nextStep": "HTTP Request 23",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 22": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.6cb069c2-62e4-4932-b093-fc0773c0b6f6",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "request_item": "{{$.defineVariable2.ritmSysId}}",
+            "short_description": "Follow-up – opened by ISC",
+            "state": "-5",
+            "work_notes": "Creating a new task for manual updates on William Hill AD account"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task",
+          "urlParams": null
+        },
+        "description": "Create task",
+        "displayName": "HTTP 22: Create new Task",
+        "nextStep": "Compare Strings 9",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 23": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"6656e52b129943fba8e6731cffc90d09\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 23: Get account details",
+        "nextStep": "Define Variable 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 24": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"4a75188f9b054e90ac2757f307fae3bf\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 24: Get account details",
+        "nextStep": "HTTP Request 25",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 25": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/EmployeeBrFlag",
+              "value": "False"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/Status",
+              "value": "inactive"
+            }
+          ],
+          "jsonRequestBody": null,
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest24.body[0].id}}",
+          "urlParams": null
+        },
+        "displayName": "HTTP 25: Disable EmployeeConversion",
+        "nextStep": "HTTP Request 13",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 26": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"7de09998939547699404eecea625ad91\" and identityId eq \"{{$.hTTPRequest.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 26: Get account J AD",
+        "nextStep": "HTTP Request 27",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 27": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": null,
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/identityId",
+              "value": "{{$.hTTPRequest1.body[0].id}}"
+            }
+          ],
+          "jsonRequestBody": null,
+          "method": "patch",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "requestHeaders": {
+            "Content-Type": "application/json-patch+json"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest26.body[0].id}}"
+        },
+        "displayName": "HTTP 27: Correlate J AD",
+        "nextStep": "Wait 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 28": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.d79745ae-082f-4a3e-9c41-485d28e54268",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "3",
+            "work_notes": "The contractor-to-employee conversion has been completed, and a new certification has been created."
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 9",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 29": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": null,
+          "jsonPatchRequestBody": null,
+          "jsonRequestBody": null,
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest26.body[0].id}}/reload"
+        },
+        "displayName": "HTTP 29: Aggregate J Account",
+        "nextStep": "Wait 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.8075d0d5-3f8d-4142-a26b-80c51b0b6fbd",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity not found in SailPoint. Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 30": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ContractorId": "{{$.defineVariable.contractorId}}",
+              "EmployeeBrFlag": "False",
+              "RequestedBy": "{{$.defineVariable.requestedByUserId}}",
+              "RequestedFor": "{{$.defineVariable.empId}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable.contractorId}}",
+              "Status": "inactive",
+              "TaskNumber": "{{$.defineVariable.sctasknum}}",
+              "TaskSysId": "{{$.defineVariable.sctasksysid}}",
+              "sourceId": "4a75188f9b054e90ac2757f307fae3bf"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP 30: Create/Update User in CNOWEmployeeConversion source",
+        "nextStep": "Create Certification Campaign 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 31": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.c489f89c-ea37-43cc-89bd-2070edfc2245",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"e30d0436a20b45b79517a08f0380b1b1\" and identityId eq \"{{$.hTTPRequest1.body[0].id}}\""
+          }
+        },
+        "displayName": "HTTP 31: Get AD details",
+        "nextStep": "HTTP Request 32",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 32": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": null,
+          "jsonPatchRequestBody": null,
+          "jsonRequestBody": null,
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.f0a485be-3c8a-48d0-a6a7-b82b26b72270",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.hTTPRequest31.body[0].id}}/reload"
+        },
+        "displayName": "HTTP 32: Aggregate AD Account",
+        "nextStep": "Wait 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.63197ac4-4522-4310-b1ee-3b0dd6185d97",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity is not active in SailPoint. Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.08e48cc3-e906-4d60-8cea-8ccb26794bdd",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity's worker type is not set to E in SailPoint. Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.c42791d5-49c5-4cba-8830-cb5c72a8735d",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Contractor's Last Name does not match with Employee's LastName. Employee id: {{$.defineVariable.empId}}, Contractor id: {{$.defineVariable.contractorId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 8",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 7": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.eb709bee-6ea7-4b98-a297-d5abe56c458f",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity's location code is part of the exclusion list. Location Code: {{$.defineVariable1.locationCode}}, Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 10",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.6cb069c2-62e4-4932-b093-fc0773c0b6f6",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity not found in SailPoint. Contractor id: {{$.defineVariable.contractorId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 9": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.eb709bee-6ea7-4b98-a297-d5abe56c458f",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "0182d743db6db6401c7c5dd5ce96198c",
+            "state": "-5",
+            "work_notes": "Operation Failed. Identity has multiple AD accounts, please handle these manually. Contractor id: {{$.defineVariable.contractorId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "End Step - Success 11",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage Accounts": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.hTTPRequest18.body[0].id",
+          "operation": "disable"
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that the duplicate AD account for the employee has been disabled.&nbsp;</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">Employee id: {{$.defineVariable.empId}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "replyTo": "DoNotReplyIAMOps@caesars.com",
+          "subject": "Duplicate AD  for Employee id: {{$.defineVariable.empId}}"
+        },
+        "displayName": "Send Email to Manager",
+        "nextStep": "Define Variable 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait 1": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "5m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 15",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait 2": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 17",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait 3": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 29",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait 4": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "Create Certification Campaign",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "trigger": {
+    "type": "EXTERNAL",
+    "attributes": {
+      "clientId": "6937601b-ad92-497f-a267-4aae17a053c8",
+      "id": "idn:external-http",
+      "url": "/beta/workflows/execute/external/449f2de9-09ee-4225-a15c-3771fad068e4"
+    }
+  }
+}

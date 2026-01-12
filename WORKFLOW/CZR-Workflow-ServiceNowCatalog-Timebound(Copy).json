@@ -1,0 +1,100 @@
+{
+  "id": "de1a2765-3ceb-4216-8dc4-a85537dd101e",
+  "name": "CZR-Workflow-ServiceNowCatalog-Timebound(Copy)",
+  "description": "Teams recording will be enabled on the user's account for 30 days. After this period, access will be automatically revoked.Approval must follow the next-level reporting structure, and then proceed to management for final authorization.",
+  "created": "2025-09-15T20:53:18.805753173Z",
+  "modified": "2025-10-24T21:48:46.003161213Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": " USB 30 Day Access Read and Write-Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "80faec5ca54e43ccbf24da5db102591c",
+                "removeDate": "{{$.defineVariable.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.05e7b614-4ba4-4c47-8ec4-bdde3609c026",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.accountRequests[?(@.accountOperation=='Modify' &&  (@.attributeRequests[0].attributeValue=='CN=USB 30 Day Access Read and Write,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local'))]",
+      "id": "idn:post-provisioning"
+    }
+  }
+}

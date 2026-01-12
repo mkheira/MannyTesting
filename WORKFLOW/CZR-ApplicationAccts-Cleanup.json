@@ -1,0 +1,368 @@
+{
+  "id": "ec13d527-9e04-4c2d-8c97-91683388af39",
+  "name": "CZR-ApplicationAccts-Cleanup",
+  "description": "",
+  "created": "2025-09-22T20:21:34.166784782Z",
+  "modified": "2025-10-30T18:34:04.032017605Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThanEquals",
+            "nextStep": "Get Access 1",
+            "variableA.$": "$.hTTPRequest2.body.count()",
+            "variableB": 1
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.defineVariable3.inscopeApplications",
+            "variableB.$": "$.interactiveForm1.formData.selectUserAccount"
+          }
+        ],
+        "defaultStep": "End Step - Failure",
+        "description": "Check if the application selected is either AD or OIC",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 2",
+            "variableA.$": "$.interactiveForm1.formData.selectUserAccount",
+            "variableB": "CZR-Application-OICWebservice - Dev"
+          }
+        ],
+        "defaultStep": "End Step - Success 4",
+        "description": "Check if the selected application is OIC, then remove the OIC account",
+        "displayName": "Check OIC account",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "accountId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Get Account Id",
+        "nextStep": "Define Variable 1",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "removeURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "accountId",
+                    "replacement.$": "$.defineVariable.accountId"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts/accountId/remove"
+            }
+          ]
+        },
+        "displayName": "Build Remove URL",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "accountSearchURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.interactiveForm.formData.targetUser"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "source_name",
+                    "replacement.$": "$.interactiveForm1.formData.selectUserAccount"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+            }
+          ]
+        },
+        "displayName": "Build Account Search URL",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "inscopeApplications",
+              "transforms": [],
+              "variableA": "CZR-Application-OICWebservice - Dev,CZR-Application-ActiveDirectory-Dev.lab.local-DeleteAccounts"
+            }
+          ]
+        },
+        "displayName": "buildInscopeApplications",
+        "nextStep": "Compare Strings 2",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "accountSearchURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.interactiveForm.formData.targetUser"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "source_name",
+                    "replacement": "CZR-Application-ActiveDirectory-Dev.lab.local-DeleteAccounts"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+            }
+          ]
+        },
+        "displayName": "Get AD Account Search URL",
+        "nextStep": "HTTP Request 2",
+        "type": "Mutation"
+      },
+      "End Step - Failure": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureDetails": "Please Select \"CZR-Application-ActiveDirectory-Dev.lab.local-DeleteAccounts\" or \"CZR-Application-OICWebservice - Dev\"",
+        "failureName": "InvalidAppSelection",
+        "type": "failure"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Access 1": {
+        "actionId": "sp:access:get",
+        "attributes": {
+          "accessprofiles": false,
+          "entitlements": true,
+          "getAccessBy": "searchQuery",
+          "query": "attributes.name.exact eq \"CZR-DevAD-Cleanup\" && source.name:\"CZR-Application-ActiveDirectory-Dev.lab.local-DeleteAccounts\"",
+          "roles": false
+        },
+        "description": "Get AD entitlement to trigger AD delete operation",
+        "displayName": "Get AD Delete Entitlement",
+        "nextStep": "Manage Access 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.interactiveForm.formData.targetUser"
+        },
+        "description": "Get User Accounts",
+        "displayName": "",
+        "nextStep": "Interactive Form 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "792f56aac65e4d62a088ca383180424c",
+          "oAuthClientSecret": "$.secrets.4fc04a0d-3dd6-4fe6-9cf4-c002251b3c76",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable1.removeURL"
+        },
+        "description": "Remove OIC account using ISC API",
+        "displayName": "Remove OIC Account",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "792f56aac65e4d62a088ca383180424c",
+          "oAuthClientSecret": "$.secrets.faa0ac5f-776e-4a6d-adc9-4376d9919e3d",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable2.accountSearchURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.interactiveForm.formData.targetUser}}\" and source.displayableName eq \"{{$.interactiveForm1.formData.selectUserAccount}}\""
+          }
+        },
+        "description": "Get OIC account details",
+        "displayName": "Get Account Details",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "792f56aac65e4d62a088ca383180424c",
+          "oAuthClientSecret": "$.secrets.bcc4a6a8-f450-423a-bffb-f804af677705",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url.$": "$.defineVariable4.accountSearchURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.interactiveForm.formData.targetUser}}\" and source.displayableName eq \"CZR-Application-ActiveDirectory-Dev.lab.local-DeleteAccounts\""
+          }
+        },
+        "catch": [
+          {
+            "next": "Compare Strings 3"
+          }
+        ],
+        "description": "Get AD account Details",
+        "displayName": "Search AD Account",
+        "nextStep": "Compare Numbers",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "f917e0e3-5585-4f79-a402-fbff750a6331",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Accounts Cleanup"
+        },
+        "description": "Get the user selected in the form",
+        "displayName": "Get User",
+        "nextStep": "Get Accounts",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "8072d7a4-c0c5-4049-92d6-129baa25b041",
+          "inputForForm_array_userAccounts.$": "$.getAccounts.accounts",
+          "inputForForm_array_userAccounts_label": "$.sourceName",
+          "inputForForm_array_userAccounts_subLabel": null,
+          "inputForForm_array_userAccounts_value": "$.sourceName",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Select Account to Delete"
+        },
+        "description": "Trigger form to select accounts to delete",
+        "displayName": "Select Accounts to Delete",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Access 1": {
+        "actionId": "sp:access:manage",
+        "attributes": {
+          "addIdentities.$": "$.interactiveForm.formData.targetUser",
+          "comments": "Triggering Delete operation",
+          "requestType": "GRANT_ACCESS",
+          "requestedItems.$": "$.getAccess1.accessItems"
+        },
+        "description": "Request AD entitlement to user that triggers AD delete via beforeProvisioning rule",
+        "displayName": "Request AD entitlement to user",
+        "nextStep": "Wait",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "description": "Wait for 1 min to allow AD deletion",
+        "displayName": "Wait for AD delete",
+        "nextStep": "Compare Strings 3",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "trigger": {
+    "displayName": "Interactive Trigger to clean application accounts for a user",
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == 'ec13d527-9e04-4c2d-8c97-91683388af39')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

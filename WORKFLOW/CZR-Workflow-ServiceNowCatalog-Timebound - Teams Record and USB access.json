@@ -1,0 +1,444 @@
+{
+  "id": "7b2a3e32-c68f-4801-9ca6-86a9c7f6ab2e",
+  "name": "CZR-Workflow-ServiceNowCatalog-Timebound - Teams Record and USB access",
+  "description": "Teams Recording access and USB access Timebound will be controlled thru this workflow. After the period listed for each role, access will be automatically revoked.Approval must follow the next-level reporting structure, and then proceed to management for final authorization.",
+  "created": "2025-09-25T18:19:06.228697107Z",
+  "modified": "2025-10-01T21:10:27.37780706Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+    "name": "500000384"
+  },
+  "definition": {
+    "start": "Define Variable 1",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable",
+            "variableA.$": "$.defineVariable1.roleName",
+            "variableB": "USB - 30 Day Read Only Access [cloudRole-1756912019712]"
+          }
+        ],
+        "defaultStep": "Compare Strings 1",
+        "description": "USB - 30 Day Read Only Access",
+        "displayName": "USB - 30 Day Read Only Access",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Define Variable 2",
+            "variableA.$": "$.defineVariable1.roleName",
+            "variableB": "USB - 30 Day Read and Write Access [cloudRole-1756912198014]"
+          }
+        ],
+        "defaultStep": "Compare Strings 2",
+        "description": "USB - 30 Day Read and Write Access",
+        "displayName": "USB - 30 Day Read and Write Access",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 3",
+            "variableA.$": "$.defineVariable1.roleName",
+            "variableB": "USB - 48 Hour Read Only Access [cloudRole-1756912442852]"
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "description": "USB - 48 Hour Read Only Access",
+        "displayName": "USB - 48 Hour Read Only Access",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.defineVariable1.roleName",
+            "variableB": "USB - 48 Hours Read and Write Access [cloudRole-1756912502392]"
+          }
+        ],
+        "defaultStep": "Compare Strings 4",
+        "description": "USB - 48 Hours Read and Write Access",
+        "displayName": "USB - 48 Hours Read and Write Access",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 5",
+            "variableA.$": "$.defineVariable1.roleName",
+            "variableB": "Teams Recording 30 day access [cloudRole-1753379940658]"
+          }
+        ],
+        "defaultStep": "End Step - Failure",
+        "description": "USB - 48 Hours Read and Write Access",
+        "displayName": "Microsoft Teams Recording - 30 Day Access",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "attributeValue",
+              "name": "roleName",
+              "transforms": [],
+              "variableA.$": "$.trigger.accountRequests[0].attributeRequests[0].attributeValue"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 2",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 3",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 4",
+        "type": "Mutation"
+      },
+      "End Step - Failure": {
+        "actionId": "sp:operator-failure",
+        "description": "Failed to find group",
+        "displayName": "",
+        "failureName": "Failed to find group",
+        "type": "failure"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": " USB 30 Day Access Read -Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "16257a9f615e43d5bcddc0d4bd001746",
+                "removeDate": "{{$.defineVariable.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.53fee73c-370f-4136-ac4a-3c25f6613572",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "description": "USB Read and Write 30 Day revoke access",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": " USB 30 Day Access Read and Write-Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "80faec5ca54e43ccbf24da5db102591c",
+                "removeDate": "{{$.defineVariable2.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.72e51a68-329d-4a02-9848-8a0873dc3ba8",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "description": "USB Read and Write 30 Day revoke access",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "USB - 48 Hour Read Only Access -Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "ebd810dd6bbb4c0da5420fae92cac6ae",
+                "removeDate": "{{$.defineVariable3.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.0fec42aa-3dd3-4f8e-a9a8-18db23bec680",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "description": "USB Read and Write 30 Day revoke access",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "USB - 48 Hours Read and Write Access -Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "3b7dd6cf98f74c52aa8e5dd72f143482",
+                "removeDate": "{{$.defineVariable4.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.3f14da79-e4ee-49fc-bfe3-ce6e76fb24a5",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "description": "USB Read and Write 30 Day revoke access",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "Microsoft Teams Recording - 30 Day Access -Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "d08b92f5ba9f48dfa4bbbe6934ce1741",
+                "removeDate": "{{$.defineVariable5.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "f7f34d9888cd4b0cb8123b7ed92c427f",
+          "oAuthClientSecret": "$.secrets.3f14da79-e4ee-49fc-bfe3-ce6e76fb24a5",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "description": "USB Read and Write 30 Day revoke access",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+    "name": "500000384"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.accountRequests[?( @.accountOperation == 'Modify' && @.provisioningResult == 'committed')].attributeRequests[?(@.operation == \"Add\" && ( @.attributeValue == \"CN=USB 30 Day Access Read and Write,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\" || @.attributeValue == \"CN=USB 30 Day Access ReadOnly,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\" || @.attributeValue == \"CN=USB 48 Hour Access Read and Write,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\" || @.attributeValue == \"CN=USB 48 Hour Access Read Only,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\"|| @.attributeValue == \"CN=Teams Recording 30 day access,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local\"))]",
+      "id": "idn:post-provisioning"
+    }
+  }
+}

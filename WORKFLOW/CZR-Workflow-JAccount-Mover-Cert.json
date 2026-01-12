@@ -1,0 +1,571 @@
+{
+  "id": "35d1cc4a-ce3c-48ea-b5c9-073c45f72e30",
+  "name": "CZR-Workflow-JAccount-Mover-Cert",
+  "description": "This workflow is triggered when an identity changes departments. The workflow creates and activates a certification campaign so their manager can verify their new access",
+  "created": "2025-12-05T13:33:17.773032344Z",
+  "modified": "2025-12-26T12:54:21.551488756Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Create Certification Campaign",
+            "variableA.$": "$.getIdentity.attributes.legalHoldAdCheck",
+            "variableB": "JAccount"
+          }
+        ],
+        "defaultStep": "End Step - Success 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Send Email",
+            "variableA.$": "$.getCertificationCampaign.status",
+            "variableB": "Active"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "displayName": "Certification Active?",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Send Email 1",
+            "variableA.$": "$.getCertificationCampaign.status",
+            "variableB": "Active"
+          }
+        ],
+        "defaultStep": "End Step - Success 2",
+        "displayName": "Certification Active?",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 1",
+            "variableA.$": "$.hTTPRequest.body[?(@.sourceId=='a105733122404926bf0733641c9d4b75')].sourceId",
+            "variableB.$": "$.defineVariable.jAHarrahsID"
+          }
+        ],
+        "defaultStep": "Compare Strings 4",
+        "displayName": "Has JA-Harrahs AD?",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.hTTPRequest.body[?(@.sourceId=='fbcdc5d1ab24407ca93009f0c88c18b9')].sourceId",
+            "variableB.$": "$.defineVariable.jBHarrahsID"
+          }
+        ],
+        "defaultStep": "Compare Strings 5",
+        "displayName": "Has JB-Harrahs AD?",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 3",
+            "variableA.$": "$.hTTPRequest.body[?(@.sourceId=='466f5b31d8f1487d9a8ac2b65d90b376')].sourceId",
+            "variableB.$": "$.defineVariable.jCHarrahsID"
+          }
+        ],
+        "defaultStep": "Compare Strings 6",
+        "displayName": "Has JC-Harrahs AD?",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 4",
+            "variableA.$": "$.hTTPRequest.body[?(@.sourceId=='8e16ff65adaa44f2b5cdf671ef505d5c')].sourceId",
+            "variableB.$": "$.defineVariable.jDHarrahsID"
+          }
+        ],
+        "defaultStep": "HTTP Request 5",
+        "displayName": "Has JD-Harrahs AD?",
+        "type": "choice"
+      },
+      "Compare Strings 8": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.getCertificationCampaign.status",
+            "variableB": "Active"
+          }
+        ],
+        "defaultStep": "End Step - Success 4",
+        "displayName": "Certification Active?",
+        "type": "choice"
+      },
+      "Create Certification Campaign": {
+        "actionId": "sp:create-campaign",
+        "attributes": {
+          "activateUponCreation": true,
+          "description": "This Campaign was automatically created as {{$.getIdentity.attributes.displayName}} recently changed departments.",
+          "duration": "3d",
+          "emailNotificationEnabled": true,
+          "name": "Department change certification for $.getIdentity.attributes.displayName",
+          "recommendationsEnabled": true,
+          "sourceIds": null,
+          "type": "MANAGER",
+          "undecidedAccess": false
+        },
+        "description": "",
+        "displayName": "",
+        "nextStep": "Wait",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "JAHarrahsID",
+              "transforms": [],
+              "variableA": "a105733122404926bf0733641c9d4b75"
+            },
+            {
+              "description": "",
+              "name": "JBHarrahsID",
+              "transforms": [],
+              "variableA": "fbcdc5d1ab24407ca93009f0c88c18b9"
+            },
+            {
+              "description": "",
+              "name": "JCHarrahsID",
+              "transforms": [],
+              "variableA": "466f5b31d8f1487d9a8ac2b65d90b376"
+            },
+            {
+              "description": "",
+              "name": "JDHarrahsID",
+              "transforms": [],
+              "variableA": "8e16ff65adaa44f2b5cdf671ef505d5c"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 3",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 3": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Certification Campaign": {
+        "actionId": "sp:get-campaign",
+        "attributes": {
+          "id.$": "$.createCertificationCampaign.id"
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Certification Campaign 1": {
+        "actionId": "sp:get-campaign",
+        "attributes": {
+          "id.$": "$.createCertificationCampaign.id"
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Certification Campaign 2": {
+        "actionId": "sp:get-campaign",
+        "attributes": {
+          "id.$": "$.createCertificationCampaign.id"
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 8",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "description": "",
+        "displayName": "Get all of the Identities Attributes",
+        "nextStep": "Get Identity 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Get Identity 1": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.getIdentity.managerRef.id"
+        },
+        "description": "",
+        "displayName": "Get Managers eMail",
+        "nextStep": "Compare Strings",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.9c391350-15bf-4acf-9015-c22bc94ca4f3",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.getIdentity.id}}\""
+          }
+        },
+        "displayName": "HTTP: Get all Accounts",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "$.defineVariable.jAHarrahsID",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.88bbce62-63b8-4906-a8bc-f40ad188c1d6",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"{{$.defineVariable.jAHarrahsID}}\" and identityId eq \"{{$.getIdentity.id}}\""
+          }
+        },
+        "displayName": "HTTP 1: Get JA-Account",
+        "nextStep": "Manage Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.7af94180-0754-4cba-b50e-eafdbfbdc723",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"{{$.defineVariable.jBHarrahsID}}\" and identityId eq \"{{$.getIdentity.id}}\""
+          }
+        },
+        "displayName": "HTTP 2: Get JB-Account",
+        "nextStep": "Manage Accounts 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.7af94180-0754-4cba-b50e-eafdbfbdc723",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"{{$.defineVariable.jCHarrahsID}}\" and identityId eq \"{{$.getIdentity.id}}\""
+          }
+        },
+        "displayName": "HTTP 3: Get JC-Account",
+        "nextStep": "Manage Accounts 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.7af94180-0754-4cba-b50e-eafdbfbdc723",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "sourceId eq \"{{$.defineVariable.jDHarrahsID}}\" and identityId eq \"{{$.getIdentity.id}}\""
+          }
+        },
+        "displayName": "HTTP 4: Get JD-Account",
+        "nextStep": "Manage Accounts 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "ids": [
+              "{{$.createCertificationCampaign.id}}"
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.7af94180-0754-4cba-b50e-eafdbfbdc723",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/campaigns/delete",
+          "urlParams": null
+        },
+        "displayName": "HTTP5: Delete Certification",
+        "nextStep": "End Step - Success 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage Accounts": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.hTTPRequest1.body[0].id",
+          "operation": "disable"
+        },
+        "displayName": "",
+        "nextStep": "Send Email 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Accounts 1": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.hTTPRequest2.body[0].id",
+          "operation": "disable"
+        },
+        "displayName": "",
+        "nextStep": "Send Email 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Accounts 2": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.hTTPRequest3.body[0].id",
+          "operation": "disable"
+        },
+        "displayName": "",
+        "nextStep": "Send Email 4",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Accounts 3": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.hTTPRequest4.body[0].id",
+          "operation": "disable"
+        },
+        "displayName": "",
+        "nextStep": "Send Email 5",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is a reminder email is to inform you that&nbsp;<em><strong>{{$.getIdentity.attributes.displayName}} </strong></em>has recently changed departments and you are required to complete the certification. You have 2 days to complete the certification.</p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "description": "Send an email to the identity's manager so they know there is a certification campaign pending for their employee that they need to complete.\n\nNOTE: The email body makes use of \"Velocity Templating\" as well as inline variables to aid the admin in how to use both.",
+        "displayName": "Reminder Email to Manager",
+        "nextStep": "Wait 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 1": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is a reminder email is to inform you that&nbsp;<em><strong>{{$.getIdentity.attributes.displayName}} </strong></em>has recently changed departments and you are required to complete the certification. You have 1 day to complete the certification.</p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "description": "Send an email to the identity's manager so they know there is a certification campaign pending for their employee that they need to complete.\n\nNOTE: The email body makes use of \"Velocity Templating\" as well as inline variables to aid the admin in how to use both.",
+        "displayName": "Reminder Email to Manager",
+        "nextStep": "Wait 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 2": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that since the certification was not completed, the privileged AD account for the user has been disabled.&nbsp;</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">AD Account: {{$.hTTPRequest1.body[0].sourceName}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from.$": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "displayName": "Send Email to Manager",
+        "nextStep": "Compare Strings 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 3": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that since the certification was not completed, the privileged AD account for the user has been disabled.&nbsp;</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">AD Account: {{$.hTTPRequest2.body[0].sourceName}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from.$": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "displayName": "Send Email to Manager",
+        "nextStep": "Compare Strings 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 4": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that since the certification was not completed, the privileged AD account for the user has been disabled.&nbsp;</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">AD Account: {{$.hTTPRequest3.body[0].sourceName}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from.$": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "displayName": "Send Email to Manager",
+        "nextStep": "Compare Strings 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 5": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that since the certification was not completed, the privileged AD account for the user has been disabled.&nbsp;</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">User id: {{$.getIdentity.attributes.personNumber}}</span></p>\n<p><span data-olk-copy-source=\"MessageBody\">AD Account: {{$.hTTPRequest4.body[0].sourceName}}</span></p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from.$": "",
+          "recipientEmailList.$": "$.getIdentity1.attributes.email",
+          "subject": "Your Direct report {{$.getIdentity.attributes.displayName}} has changed departments"
+        },
+        "displayName": "Send Email to Manager",
+        "nextStep": "HTTP Request 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "24h",
+          "type": "waitFor"
+        },
+        "description": "",
+        "displayName": "Wait for 24 hours",
+        "nextStep": "Get Certification Campaign",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait 1": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "24h",
+          "type": "waitFor"
+        },
+        "description": "",
+        "displayName": "Wait for 24 hours",
+        "nextStep": "Get Certification Campaign 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait 2": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "24h",
+          "type": "waitFor"
+        },
+        "description": "",
+        "displayName": "Wait for 24 hours",
+        "nextStep": "Get Certification Campaign 2",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "trigger": {
+    "displayName": "Identity attribute \"department\" changed",
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.changes[?(@.attribute in [\"adDepartment\",\"jobTitle\",\"locationCode\"])]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

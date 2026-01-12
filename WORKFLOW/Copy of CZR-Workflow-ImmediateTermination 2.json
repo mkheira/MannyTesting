@@ -1,0 +1,310 @@
+{
+  "id": "f4455b20-31f3-4b33-bdae-ea7196bc3208",
+  "name": "Copy of CZR-Workflow-ImmediateTermination 2",
+  "description": "",
+  "created": "2025-10-13T15:23:21.442782217Z",
+  "modified": "2025-10-30T19:35:32.556065282Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "terminationDate",
+              "transforms": [],
+              "variableA.$": "$['defineVariable1','defineVariable2'].termDate"
+            }
+          ]
+        },
+        "displayName": "Capture Termination Date",
+        "nextStep": "Get Accounts",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "termDate",
+              "transforms": [],
+              "variableA.$": "$.getIdentity.attributes.terminationDate"
+            }
+          ]
+        },
+        "displayName": "Get User Termination Date",
+        "nextStep": "Define Variable",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "termDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "YYYY/MM/DD",
+                    "style": "number",
+                    "timeFormat": "none"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "Get Current Date",
+        "nextStep": "Define Variable",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "description": "This Workflow is Complete",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "filterCriteria": "name",
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.trigger.identity.id",
+          "operator": "eq",
+          "value": "",
+          "valueList": null
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "description": "Gets Identity so we can pass information to emails",
+        "displayName": "Get Identity To Pass Attributes to Email Templates",
+        "nextStep": "Verify Data Type 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AssignmentStatusType": "INACTIVE",
+              "CompleteTermination": "Y",
+              "PersonNumber": "{{$.getIdentity.attributes.personNumber}}",
+              "TerminationDate": "{{$.getIdentity.attributes.terminationDate}}",
+              "TerminationSource": "OIC",
+              "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "b0a1bde3060443c1871e9685720625fa",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "Set Termination Source To OIC",
+        "nextStep": "Send Email 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage ServiceNow Ticket": {
+        "actionId": "sp:snow",
+        "attributes": {
+          "action": "create",
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "caller": "Richard Fondrick",
+          "customFields": "assignment_group:Identity and Access Management (IAM)\npriority:3\ncmdb_ci:Termination",
+          "description": "The following account(s) need to be termed in the William Hill domain:\n\n•\tEmployee Number: {{$.getIdentity.attributes.personNumber}}\n•\tEmployee Name: {{$.getIdentity.name}}\n•\tPrimary Location: {{$.getIdentity.attributes.locationDescription}}\n•\tPrimary Job Title: {{$.getIdentity.attributes.jobTitle}}\n•\tPrimary Department: {{$.getIdentity.attributes.department}}\n•\tAD Source Name: CZR-Application-ActiveDirectory-WilliamHill\n•\tNetwork ID: {{$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-ActiveDirectory-Dev.lab.local')].attributes.sAMAccountName}}\n•\tTermination Date: {{$.getIdentity.attributes.terminationDate}}",
+          "shortDescription": "Immediate Termination on User: {{$.getIdentity.name}}",
+          "urgency": "3",
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage ServiceNow Ticket 1": {
+        "actionId": "sp:snow",
+        "attributes": {
+          "action": "create",
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "caller": "Richard Fondrick",
+          "customFields": "assignment_group:Identity and Access Management (IAM)\npriority:3\ncmdb_ci:Termination",
+          "description": "The following company phones need to be locked for this terminated user.\n\n•\tEmployee Number: {{$.getIdentity.attributes.personNumber}}\n•\tEmployee Name: {{$.getIdentity.name}}\n•\tCompany Phone: {{$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-MobileDevice')].attributes.Number}}",
+          "shortDescription": "Immediate Termination on User: {{$.getIdentity.name}}",
+          "urgency": "3",
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task"
+        },
+        "description": null,
+        "displayName": "CNOW: Lock Company Mobile Phone",
+        "nextStep": "Send Email 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=\"UTF-8\"&gt;<br>&lt;style type=\"text/css\"&gt;<br>.table1 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 40px 10px 27px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%;<br>&nbsp; border-collapse: separate !important;<br>}<br>.table2 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 20px 0px 35px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%; &nbsp;&nbsp;<br>}<br>.table3 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 20px 0px 45px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%; &nbsp;&nbsp;<br>}<br>.Padding {<br>&nbsp; margin-left: 27px;<br>&nbsp; width: 100%;<br>}<br>.center {<br>&nbsp; text-align: center;<br>&nbsp; font-style: italic;<br>} &nbsp; &nbsp;<br>.font {<br>&nbsp; font-size: 16px;<br>}<br>.container {<br>&nbsp; display: flex;<br>}<br>.div {<br>&nbsp; width: 20px;<br>&nbsp; height: 20px;<br>}<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;span&gt;The following user has been terminated. Please review and remove their access to any regulated applications.&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Employee Number:&lt;/b&gt; {{$.getIdentity.attributes.personNumber}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Employee Name:&lt;/b&gt; {{$.getIdentity.name}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Primary Location:&lt;/b&gt; {{$.getIdentity.attributes.locationDescription}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;Thank you,&lt;br/&gt;<br>Caesars Identity and Access Management Team&lt;/span&gt;&lt;br/&gt;<br>&lt;/body&gt;<br>&lt;footer&gt;</p>\n<p>&lt;a&gt;</p>\n<div>\n<p><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a>&lt;/a&gt;</p>\n<p>&lt;p&gt;If you feel that you have received this email in error, please immediately notify the Caesar's Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying, or reliance upon the contents of this email or its attachments is strictly prohibited.&lt;/p&gt;<br>&lt;/footer&gt;<br>&lt;/html&gt;</p>\n</div>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Automated Termination Request - {{$.getIdentity.attributes.personNumber}}"
+        },
+        "description": "Send Urgent Email to XSOAR",
+        "displayName": "Send Urgent Email To XSOAR",
+        "nextStep": "Verify Data Type",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 1": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=\"UTF-8\"&gt;<br>&lt;style type=\"text/css\"&gt;<br>.details p {<br>&nbsp; margin: 0; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* remove extra gap */<br>&nbsp; font-size: 15px;<br>&nbsp; color: #333333;<br>&nbsp; line-height: 1.2; &nbsp; /* tighter line spacing */<br>}<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;span&gt;The following user has been terminated immediately.&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Employee Number:&lt;/b&gt; {{$.getIdentity.attributes.personNumber}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Employee Name:&lt;/b&gt; {{$.getIdentity.name}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Primary Location:&lt;/b&gt; {{$.getIdentity.attributes.locationDescription}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;&lt;b&gt;Termination Date:&lt;/b&gt; {{$.defineVariable.terminationDate}}&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;Please monitor this process and ensure that all termination activities have been initiated and completed successfully.&lt;/span&gt;&lt;br/&gt;<br>&lt;span&gt;Thank you,&lt;br/&gt;<br>Caesars Identity and Access Management Team&lt;/span&gt;&lt;br/&gt;<br>&lt;footer&gt;</p>\n<p>&lt;a</p>\n<div>\n<p><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a>&lt;/a&gt;</p>\n</div>\n<p>&lt;p style=\"font-size:15px; color:#555;\"&gt;<br>If you feel that you have received this email in error, please immediately notify the Caesar's Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying, or reliance upon the contents of this email or its attachments is strictly prohibited.<br>&lt;/p&gt;<br>&lt;/footer&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</p>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Immediate Termination - {{$.getIdentity.attributes.personNumber}}"
+        },
+        "description": "Notify IAM Integrations and MOPS",
+        "displayName": "Notify IAM Integrations and MOPS",
+        "nextStep": "Verify Data Type 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 2": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=\"UTF-8\"&gt;<br>&lt;style type=\"text/css\"&gt;<br>&nbsp; &nbsp; body {<br>&nbsp; &nbsp; &nbsp; margin: 0;<br>&nbsp; &nbsp; &nbsp; padding: 0;<br>&nbsp; &nbsp; &nbsp; font-family: Arial, sans-serif;<br>&nbsp; &nbsp; &nbsp; color: #333333;<br>&nbsp; &nbsp; &nbsp; font-size: 14px;<br>&nbsp; &nbsp; &nbsp; line-height: 1.5;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; .content {<br>&nbsp; &nbsp; &nbsp; padding: 10px 20px;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; ul {<br>&nbsp; &nbsp; &nbsp; list-style-type: none;<br>&nbsp; &nbsp; &nbsp; margin: 10px 0;<br>&nbsp; &nbsp; &nbsp; padding: 0;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; ul li {<br>&nbsp; &nbsp; &nbsp; margin: 4px 0;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; .signature {<br>&nbsp; &nbsp; &nbsp; margin-top: 15px;<br>&nbsp; &nbsp; &nbsp; font-weight: bold;<br>&nbsp; &nbsp; }<br>&nbsp; &nbsp; footer {<br>&nbsp; &nbsp; &nbsp; margin-top: 20px;<br>&nbsp; &nbsp; &nbsp; font-size: 12px;<br>&nbsp; &nbsp; &nbsp; color: #555555;<br>&nbsp; &nbsp; &nbsp; line-height: 1.4;<br>&nbsp; &nbsp; }<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=\"content\"&gt;<br>&lt;p&gt;<br>The following user has been terminated immediately.<br>&lt;/p&gt;</p>\n<p>&lt;p&gt;&lt;b&gt;Employee Number:&lt;/b&gt; {{$.getIdentity.attributes.personNumber}}&lt;/br&gt;<br>&lt;b&gt;Employee Name:&lt;/b&gt; {{$.getIdentity.name}}&lt;/br&gt;<br>&lt;b&gt;Primary Location:&lt;/b&gt; {{$.getIdentity.attributes.locationDescription}}&lt;/br&gt;<br>&lt;b&gt;Termination Date:&lt;/b&gt; {{$.defineVariable.terminationDate}}&lt;/p&gt;</p>\n<p>&lt;p&gt;<br>Thank you,&lt;br/&gt;<br>&lt;span class=\"signature\"&gt;Caesars Identity and Access Management Team&lt;/span&gt;<br>&lt;/p&gt;<br>&lt;/div&gt;</p>\n<p>&lt;footer&gt;</p>\n<p>&lt;p&gt;</p>\n<p>&nbsp; &nbsp; &nbsp;&nbsp;&lt;a&nbsp;</p>\n<div>\n<p><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a>&lt;/a&gt;</p>\n<p>&lt;/p&gt;&nbsp;</p>\n<p>&lt;p&gt;If you feel that you have received this email in error, please immediately notify the Caesar's Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying, or reliance upon the contents of this email or its attachments is strictly prohibited.<br>&lt;/p&gt;<br>&lt;/footer&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</p>\n</div>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Immediate Termination - {{$.getIdentity.attributes.personNumber}}  - Mobile Device Found"
+        },
+        "description": "Inform the Mobile Device Team that we found a mobile device",
+        "displayName": "Notify Mobile Device Team",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 3": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<div>&lt;html&gt;<br>&lt;head&gt;<br>&nbsp; &nbsp;&lt;meta charset=\"UTF-8\"&gt;<br>&nbsp; &nbsp;&lt;style type=\"text/css\"&gt;<br>.table1 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 40px 10px 27px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%;<br>&nbsp; border-collapse: separate !important;<br>}<br>.table2 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 20px 0px 35px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%; &nbsp;&nbsp;<br>}<br>.table3 {<br>&nbsp; border: none;<br>&nbsp; padding: 0px 20px 0px 45px;<br>&nbsp; color: #333333;<br>&nbsp; width: 100%; &nbsp;&nbsp;<br>}<br>.Padding {<br>margin-left: 27px;<br>width: 100%;<br>}<br>.center {<br>&nbsp; &nbsp;text-align: center;<br>font-style: italic;<br>} &nbsp; &nbsp;<br>.font {<br>font-size: 16px;<br>}<br>.container {<br>display: flex;<br>}<br>.div{<br>width: 20px;<br>height: 20px;<br>}<br>&lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;p&gt;The following user has been terminated immediately.&lt;/p&gt;<br>&lt;b&gt;Employee Number:&lt;/b&gt; {{$.getIdentity.attributes.personNumber}}<br>&lt;br&gt;&lt;b&gt;Employee Name:&lt;/b&gt; {{$.getIdentity.name}}<br>&lt;br&gt;&lt;b&gt;Primary Location:&lt;/b&gt; {{$.getIdentity.attributes.locationDescription}}<br>&lt;br&gt;&lt;b&gt;Termination Date:&lt;/b&gt; {{$.getIdentity.attributes.terminationDate}}<br>&lt;p&gt; This email is to notify you that no mobile devices were found. Please review to determine if any additional action is needed within your team.</div>\n<div>&nbsp;</div>\n<div>Thank you,</div>\n<div>Caesars Identity and Access Management Team&lt;/p&gt;<br>&lt;/body&gt;<br>&lt;footer&gt;</div>\n<div>&lt;a&nbsp;\n<p><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a>&lt;/a&gt;</p>\n<p>&lt;p&gt;<br>If you feel that you have received this email in error, please immediately notify the Caesar's Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying, or reliance upon the contents of this email or its attachments is strictly prohibited.<br>&nbsp; &nbsp; &lt;/p&gt;<br>&lt;/footer&gt;<br>&lt;/html&gt;</p>\n</div>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Immediate Termination - {{$.getIdentity.attributes.personNumber}} - No Mobile Device Found"
+        },
+        "description": "Send Mobile Device team an email that no device was found",
+        "displayName": "No Mobile Device Email",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Manage ServiceNow Ticket 1",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-MobileDevice')]"
+          }
+        ],
+        "defaultStep": "Send Email 3",
+        "description": "check to see if user has a mobile device",
+        "displayName": "Verify Mobile Device Exists",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-ActiveDirectory-Dev.lab.local')]"
+          }
+        ],
+        "defaultStep": "Send Email",
+        "description": "check to see if user has william hill",
+        "displayName": "Verify William Hill exists",
+        "type": "choice"
+      },
+      "Verify Data Type 2": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-OICWebservice')].attributes.TerminationDate"
+          }
+        ],
+        "defaultStep": "Send Email 1",
+        "description": "Check to see if TerminationDate Exists",
+        "displayName": "Check to see if TerminationDate Exists",
+        "type": "choice"
+      },
+      "Verify Data Type 3": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable 2",
+            "variableA.$": "$.getIdentity.attributes.terminationDate"
+          }
+        ],
+        "defaultStep": "Define Variable 1",
+        "displayName": "Check if Term Date is Empty",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "description": "Trigger Immediate Termination under these conditions:\nComplete Termination: 'N' to 'Y'  \nTermination Date: Current date minus one day (Current date -1) \nStatus: From 'Active' to 'Inactive'",
+      "filter.$": "$.changes[?(@.attribute == 'cloudLifecycleState' && @.newValue == 'inactiveImmediateTerm')]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

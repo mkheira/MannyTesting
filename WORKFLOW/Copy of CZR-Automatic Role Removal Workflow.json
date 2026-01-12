@@ -1,0 +1,303 @@
+{
+  "id": "74200624-a188-4132-96b2-df145b26cf00",
+  "name": "Copy of CZR-Automatic Role Removal Workflow",
+  "description": "Removes Role from the User after 30 days",
+  "created": "2025-12-10T21:08:26.086421946Z",
+  "modified": "2025-12-18T14:41:00.394153347Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Wait",
+            "variableA.$": "$.defineVariable1.requestedRole",
+            "variableB.$": "$.defineVariable.roleName"
+          }
+        ],
+        "defaultStep": "End Step - Success 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "roleName",
+              "transforms": [],
+              "variableA.$": "$.getAccess.accessItems[0].name"
+            },
+            {
+              "description": "",
+              "name": "endDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 2,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "Role Details",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "personNumber",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-",
+                    "replacement": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.requestedFor"
+            },
+            {
+              "description": "",
+              "name": "requestedRole",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.role"
+            },
+            {
+              "description": "",
+              "name": "startDate",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.comments"
+            }
+          ]
+        },
+        "displayName": "Request Details",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].id"
+            },
+            {
+              "description": "",
+              "name": "userEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].email"
+            },
+            {
+              "description": "",
+              "name": "userName",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].employeeName"
+            }
+          ]
+        },
+        "displayName": "Identity Details",
+        "nextStep": "Get Access",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Access": {
+        "actionId": "sp:access:get",
+        "attributes": {
+          "accessprofiles": false,
+          "entitlements": false,
+          "getAccessBy": "searchQuery",
+          "query": "attributes.name.exact eq \"CZR-Test Role_Automatic_Removal\"",
+          "roles": true
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable1.personNumber}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.3f1b5afa-6398-44c1-b19a-de7b7a58830e",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.defineVariable2.identityId}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": " Removing role as it's only set for 30 days.",
+                "id": "180243ff264b49448116feafc06931bf",
+                "removeDate": "{{$.defineVariable.endDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.ccfb3f35-f7a8-4f40-b2f3-406508ab5d35",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "06f2ec23-4797-4d1f-adde-d59a732d91ad",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Automatic Role Removal Process Form"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Access": {
+        "actionId": "sp:access:manage",
+        "attributes": {
+          "addIdentities.$": "$.defineVariable2.identityId",
+          "comments": "Adding role as it's mentioned in comments",
+          "requestType": "GRANT_ACCESS",
+          "requestedItems.$": "$.getAccess.accessItems"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;p&gt;Hello Team,&lt;/p&gt;</p>\n<p>&lt;p&gt;This is an automated notification regarding the removal of the following user role. The role has been automatically removed as it reached the 30-day validity period from the start date.&lt;/p&gt;</p>\n<p>&lt;p&gt;<br>&lt;strong&gt;Name:&lt;/strong&gt; ${name}&lt;br&gt;<br>&lt;strong&gt;Person Number:&lt;/strong&gt; ${personNumber}&lt;br&gt;<br>&lt;strong&gt;Role Removed:&lt;/strong&gt; ${roleName}&lt;br&gt;<br>&lt;/p&gt;</p>\n<p>&lt;p&gt;Thank you!&lt;br&gt;<br>Caesars Identity and Access Management Team&lt;/p&gt;</p>",
+          "context": {
+            "name.$": "$.defineVariable2.userName",
+            "personNumber.$": "$.defineVariable1.personNumber",
+            "roleName.$": "$.defineVariable.roleName"
+          },
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Automatic Removal of Role"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "date.$": "$.defineVariable1.startDate",
+          "time": "1969-12-31T18:30:00.000Z",
+          "type": "waitUntil"
+        },
+        "displayName": "Wait till Start date",
+        "nextStep": "Manage Access",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '74200624-a188-4132-96b2-df145b26cf00')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "b6f63284-9e48-44b0-8b05-fd7659881d5e",
+  "name": "Test API calls",
+  "description": "",
+  "created": "2025-09-24T21:03:17.081929511Z",
+  "modified": "2025-09-24T21:05:32.596497432Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "definition": {
+    "start": "HTTP Request",
+    "steps": {
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {},
+        "displayName": "",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "500000380"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:source-created"
+    }
+  }
+}

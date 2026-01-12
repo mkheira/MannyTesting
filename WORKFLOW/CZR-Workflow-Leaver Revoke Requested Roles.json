@@ -1,0 +1,102 @@
+{
+  "id": "332a2efd-d980-4bbf-a5a8-27f08408d0ea",
+  "name": "CZR-Workflow-Leaver Revoke Requested Roles",
+  "description": "Triggered when cloudLifecycleState changes to inactive or inactiveImmediateTerm. Revokes all roles assigned via Access Request. Does not touch standalone entitlements, birthright roles, or O365 groups.",
+  "created": "2025-12-15T21:49:42.054416512Z",
+  "modified": "2025-12-16T18:18:57.562143602Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "definition": {
+    "start": "Wait",
+    "steps": {
+      "Get Revocable Roles": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.0dea18f5-4375-4a5d-be8f-4945743cc452",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "text",
+          "requestHeaders": "Content-Type:application/json",
+          "textRequestBody": "{\"indices\":[\"identities\"],\"query\":{\"innerHit\":{\"query\":\"type:ROLE AND revocable:true AND NOT name:*MRI* AND NOT name:*Shareworks*\",\"type\":\"access\"},\"query\":\"id:\\\"{{$.trigger.identity.id}}\\\"\"}}",
+          "url": "https://caesars-sb.api.identitynow.com/v2024/search"
+        },
+        "description": "Search for all revocable roles for this identity",
+        "nextStep": "Has Revocable Roles?",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Has Revocable Roles?": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Revoke Roles",
+            "variableA.$": "$.getRevocableRoles.body[0].id"
+          }
+        ],
+        "defaultStep": "No Roles to Revoke",
+        "type": "choice"
+      },
+      "No Roles to Revoke": {
+        "actionId": "sp:operator-success",
+        "description": "No revocable roles found - nothing to do",
+        "type": "success"
+      },
+      "Revoke Roles": {
+        "actionId": "sp:access:manage",
+        "attributes": {
+          "comments": "Automated Leaver Workflow - Revoking requested roles on termination",
+          "removeIdentity.$": "$.trigger.identity.id",
+          "requestType": "REVOKE_ACCESS",
+          "requestedItems.$": "$.getRevocableRoles.body[*]"
+        },
+        "nextStep": "Roles Revoked",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Roles Revoked": {
+        "actionId": "sp:operator-success",
+        "description": "Requested roles have been revoked",
+        "type": "success"
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "description": null,
+        "displayName": "Wait for Birthright Processing",
+        "nextStep": "Get Revocable Roles",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "description": "Triggers when cloudLifecycleState changes to inactive or inactiveImmediateTerm",
+      "filter.$": "$.changes[?(@.attribute == \"cloudLifecycleState\" && (@.newValue == \"inactive\" || @.newValue == \"inactiveImmediateTerm\"))]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

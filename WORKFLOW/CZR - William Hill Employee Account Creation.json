@@ -1,0 +1,296 @@
+{
+  "id": "7d8d9cf9-8602-43c0-8191-ea435cfbb07b",
+  "name": "CZR - William Hill Employee Account Creation",
+  "description": "Used to create employee William Hill Account.",
+  "created": "2025-11-12T18:32:23.323314898Z",
+  "modified": "2025-12-08T18:58:57.421266511Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThanEquals",
+            "nextStep": "Interactive Message",
+            "variableA.$": "$.hTTPRequest1.body.count()",
+            "variableB": 1
+          }
+        ],
+        "defaultStep": "Get Access",
+        "displayName": "check if account present",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "personNumber",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-",
+                    "replacement": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.employee"
+            },
+            {
+              "description": "",
+              "name": "requestedBy",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.requestedBy"
+            },
+            {
+              "description": "",
+              "name": "employeeDetails",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.employee"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "employeeId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Define Variable : empId",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "williamHillAccountId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Define Variable: williamHillAccountId",
+        "nextStep": "Compare Numbers",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "williamHillRole",
+              "transforms": [],
+              "variableA.$": "$.getAccess.accessItems[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Manage Access",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Access": {
+        "actionId": "sp:access:get",
+        "attributes": {
+          "accessprofiles": false,
+          "entitlements": false,
+          "getAccessBy": "searchQuery",
+          "query": "attributes.name.exact eq \"CZR-Role-CNOWSetupLike-WilliamHill\"",
+          "roles": true
+        },
+        "displayName": "Get WilliamHill Role",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "Interactive Form",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.personNumber}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.0d490f4e-4e0a-413b-9f88-ac23840f788a",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP Request: Get Employee Identity",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.d8013040-f4dd-4c57-b8d9-f504b00595cf",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.defineVariable1.employeeId}}\" and sourceId eq \"4f4839d8993144e3b1c0b1af7a2fd110\"",
+          "urlParams": {
+            "identityId": "$.defineVariable1.employeeId",
+            "sourceId": "4f4839d8993144e3b1c0b1af7a2fd110"
+          }
+        },
+        "displayName": "HTTP Request: Get Identity Account Details",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "id": "{{$.defineVariable.personNumber}}",
+              "name": "{{$.defineVariable.employeeDetails}}",
+              "requestedBy": "{{$.defineVariable.requestedBy}}",
+              "sourceId": "e13a882849a24726ad7d9dbc5d721c6c",
+              "status": "Active",
+              "williamHillDomainRequired": "{{$.interactiveForm.formData.williamHillDomainAccessRequired}}",
+              "workerType": "Employee"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.2b2ba678-916d-4702-ae71-26b0d49b0050",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "HTTP Request: Store Employee Details",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "35518505-5dea-4bbf-863c-9ab8ede8c970",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "William Hill Account Creation"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Message": {
+        "actionId": "sp:interactive-message",
+        "attributes": {
+          "category": "WARN",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<p><span style=\"color: #e03e2d;\">User Already Has William Hill Account.</span></p>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title.$": "$.interactiveForm.formData.employee"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Access": {
+        "actionId": "sp:access:manage",
+        "attributes": {
+          "addIdentities.$": "$.defineVariable1.employeeId",
+          "comments": "Adding this role to give William Hill access",
+          "requestType": "GRANT_ACCESS",
+          "requestedItems.$": "$.getAccess.accessItems"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 2",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "500000602"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '7d8d9cf9-8602-43c0-8191-ea435cfbb07b')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

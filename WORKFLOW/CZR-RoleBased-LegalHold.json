@@ -1,0 +1,837 @@
+{
+  "id": "3f179969-cbde-4138-b5ff-f24c2d34e641",
+  "name": "CZR-RoleBased-LegalHold",
+  "description": "",
+  "created": "2025-12-12T12:55:49.565604592Z",
+  "modified": "2025-12-24T18:25:33.163915222Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Interactive Form 1",
+            "variableA.$": "$.interactiveForm.formData.doYouWantToAddOrRemoveUserFromLegalHold",
+            "variableB": "Add"
+          }
+        ],
+        "defaultStep": "Interactive Form 2",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Loop",
+            "variableA.$": "$.interactiveForm.formData.doYouWantToAddOrRemoveUserFromLegalHold",
+            "variableB": "Add"
+          }
+        ],
+        "defaultStep": "Loop 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "HarrahsID",
+              "transforms": [],
+              "variableA": "e30d0436a20b45b79517a08f0380b1b1"
+            },
+            {
+              "description": "",
+              "name": "JAHarrahsID",
+              "transforms": [],
+              "variableA": "a105733122404926bf0733641c9d4b75"
+            },
+            {
+              "description": "",
+              "name": "JBHarrahsID",
+              "transforms": [],
+              "variableA": "fbcdc5d1ab24407ca93009f0c88c18b9"
+            },
+            {
+              "description": "",
+              "name": "JCHarrahsID",
+              "transforms": [],
+              "variableA": "466f5b31d8f1487d9a8ac2b65d90b376"
+            },
+            {
+              "description": "",
+              "name": "JDHarrahsID",
+              "transforms": [],
+              "variableA": "8e16ff65adaa44f2b5cdf671ef505d5c"
+            }
+          ]
+        },
+        "displayName": "Variable: Store all AD SourceIDs",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "addType",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm1.formData.identityName"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "addType",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm2.formData.identityName"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "addType",
+              "transforms": [],
+              "variableA.$": "$.[defineVariable1, defineVariable2].addType"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.d5d4c11e-56f2-4f78-b1df-f9f5357ba1f0",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/identities",
+          "urlParams": {
+            "filters": "alias eq \"{{$.defineVariable3.addType}}\""
+          }
+        },
+        "displayName": "HTTP: Get Identity",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "",
+          "method": "get",
+          "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+          "oAuthClientSecret": "$.secrets.cf9afba9-a4a1-4f17-9a3c-8a9ebd35346b",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.hTTPRequest.body[0].id}}\" and (sourceId eq \"{{$.defineVariable.harrahsID}}\" or sourceId eq \"{{$.defineVariable.jAHarrahsID}}\" or sourceId eq \"{{$.defineVariable.jBHarrahsID}}\" or sourceId eq \"{{$.defineVariable.jCHarrahsID}}\" or sourceId eq \"{{$.defineVariable.jDHarrahsID}}\")"
+          }
+        },
+        "displayName": "HTTP 1: Get all accounts",
+        "nextStep": "Compare Strings 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "e576b196-3a40-4bcb-802e-0f88a6e516f7",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Add or Remove"
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "8b0f0494-d900-4189-ac71-8217225f24aa",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Select a user"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 2": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "fdcebb9c-b580-490d-99b5-f1894f2d5736",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Select a user"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.hTTPRequest.body[0].id",
+          "input.$": "$.hTTPRequest1.body[*]",
+          "start": "Compare Strings 1",
+          "steps": {
+            "Compare Strings 1": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 14",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "e30d0436a20b45b79517a08f0380b1b1"
+                }
+              ],
+              "defaultStep": "Compare Strings 2",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 2": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 8",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "a105733122404926bf0733641c9d4b75"
+                }
+              ],
+              "defaultStep": "Compare Strings 3",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 3": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 5",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "fbcdc5d1ab24407ca93009f0c88c18b9"
+                }
+              ],
+              "defaultStep": "Compare Strings 4",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 4": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 10",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "466f5b31d8f1487d9a8ac2b65d90b376"
+                }
+              ],
+              "defaultStep": "Compare Strings 5",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 5": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 11",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "8e16ff65adaa44f2b5cdf671ef505d5c"
+                }
+              ],
+              "defaultStep": "End Step - Success 7",
+              "displayName": "",
+              "type": "choice"
+            },
+            "End Step - Success 7": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 10": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestedForWithRequestedItems": [
+                    {
+                      "identityId": "{{$.loop.context}}",
+                      "requestedItems": [
+                        {
+                          "accountSelection": [
+                            {
+                              "accounts": [
+                                {
+                                  "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}"
+                                }
+                              ],
+                              "sourceId": "466f5b31d8f1487d9a8ac2b65d90b376"
+                            }
+                          ],
+                          "comment": "Adding user to Legal Hold",
+                          "id": "83172666ef0338fd82b55eb7780b8ff3",
+                          "type": "ENTITLEMENT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.4f2beef1-7e48-4ba7-8f19-af0c7bfc6ca3",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 5",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 11": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestedForWithRequestedItems": [
+                    {
+                      "identityId": "{{$.loop.context}}",
+                      "requestedItems": [
+                        {
+                          "accountSelection": [
+                            {
+                              "accounts": [
+                                {
+                                  "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}"
+                                }
+                              ],
+                              "sourceId": "8e16ff65adaa44f2b5cdf671ef505d5c"
+                            }
+                          ],
+                          "comment": "Adding user to Legal Hold",
+                          "id": "a3e0e50498cb3e7b805ed75dff80fddd",
+                          "type": "ENTITLEMENT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.5f7cedb5-d3a2-425b-99d3-0bb2ce2a8bd9",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "End Step - Success 7",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 14": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestedForWithRequestedItems": [
+                    {
+                      "identityId": "{{$.loop.context}}",
+                      "requestedItems": [
+                        {
+                          "accountSelection": [
+                            {
+                              "accounts": [
+                                {
+                                  "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}"
+                                }
+                              ],
+                              "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+                            }
+                          ],
+                          "comment": "Adding user to Legal Hold",
+                          "id": "a5b53fa0e3163d739d0a2f8dc9fd3a8c",
+                          "type": "ENTITLEMENT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.c0ae7e22-7b81-4060-a7cf-3b2911f1edf6",
+                "oAuthCredentialLocation": null,
+                "oAuthScope": "",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests"
+              },
+              "displayName": "",
+              "nextStep": "Compare Strings 2",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 5": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestedForWithRequestedItems": [
+                    {
+                      "identityId": "{{$.loop.context}}",
+                      "requestedItems": [
+                        {
+                          "accountSelection": [
+                            {
+                              "accounts": [
+                                {
+                                  "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}"
+                                }
+                              ],
+                              "sourceId": "fbcdc5d1ab24407ca93009f0c88c18b9"
+                            }
+                          ],
+                          "comment": "Adding user to Legal Hold",
+                          "id": "748bfc4fa48f3ef79d50a365a50b5dea",
+                          "type": "ENTITLEMENT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.a63b3dd0-1658-455e-b2e0-a11b1ea46b16",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 4",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 8": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestedForWithRequestedItems": [
+                    {
+                      "identityId": "{{$.loop.context}}",
+                      "requestedItems": [
+                        {
+                          "accountSelection": [
+                            {
+                              "accounts": [
+                                {
+                                  "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}"
+                                }
+                              ],
+                              "sourceId": "a105733122404926bf0733641c9d4b75"
+                            }
+                          ],
+                          "comment": "Adding user to Legal Hold",
+                          "id": "f9facc7ac96c30989822e7f6d3a53c1e",
+                          "type": "ENTITLEMENT"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.b4bbea8a-f62d-43a8-9815-de625a54a031",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 3",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop 1": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.hTTPRequest.body[0].id",
+          "input.$": "$.hTTPRequest1.body[*]",
+          "start": "Compare Strings 11",
+          "steps": {
+            "Compare Strings 11": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 15",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "e30d0436a20b45b79517a08f0380b1b1"
+                }
+              ],
+              "defaultStep": "Compare Strings 13",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 13": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 21",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "a105733122404926bf0733641c9d4b75"
+                }
+              ],
+              "defaultStep": "Compare Strings 14",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 14": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 16",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "fbcdc5d1ab24407ca93009f0c88c18b9"
+                }
+              ],
+              "defaultStep": "Compare Strings 15",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 15": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 18",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "466f5b31d8f1487d9a8ac2b65d90b376"
+                }
+              ],
+              "defaultStep": "Compare Strings 16",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings 16": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "HTTP Request 19",
+                  "variableA.$": "$.loop.loopInput.sourceId",
+                  "variableB": "8e16ff65adaa44f2b5cdf671ef505d5c"
+                }
+              ],
+              "defaultStep": "End Step - Success 2",
+              "displayName": "",
+              "type": "choice"
+            },
+            "End Step - Success 2": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 15": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestType": "REVOKE_ACCESS",
+                  "requestedFor": [
+                    "{{$.loop.context}}"
+                  ],
+                  "requestedItems": [
+                    {
+                      "comment": "Removing user from Legal Hold",
+                      "id": "a5b53fa0e3163d739d0a2f8dc9fd3a8c",
+                      "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}",
+                      "type": "ENTITLEMENT"
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.6888d90c-27c5-471f-8b7b-71feb67bfbcd",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 13",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 16": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestType": "REVOKE_ACCESS",
+                  "requestedFor": [
+                    "{{$.loop.context}}"
+                  ],
+                  "requestedItems": [
+                    {
+                      "comment": "Removing user from Legal Hold",
+                      "id": "748bfc4fa48f3ef79d50a365a50b5dea",
+                      "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}",
+                      "type": "ENTITLEMENT"
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.3a08ff03-79fb-4f93-8ccd-4fec7882c4f5",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 15",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 18": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestType": "REVOKE_ACCESS",
+                  "requestedFor": [
+                    "{{$.loop.context}}"
+                  ],
+                  "requestedItems": [
+                    {
+                      "comment": "Removing user from Legal Hold",
+                      "id": "83172666ef0338fd82b55eb7780b8ff3",
+                      "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}",
+                      "type": "ENTITLEMENT"
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.e3261a10-dfcd-4b7b-840c-dd00f4b90135",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 16",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 19": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestType": "REVOKE_ACCESS",
+                  "requestedFor": [
+                    "{{$.loop.context}}"
+                  ],
+                  "requestedItems": [
+                    {
+                      "comment": "Removing user from Legal Hold",
+                      "id": "a3e0e50498cb3e7b805ed75dff80fddd",
+                      "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}",
+                      "type": "ENTITLEMENT"
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.66e4b89f-9da6-4e93-a326-3d5c36ffccc3",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "End Step - Success 2",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "HTTP Request 21": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "jsonRequestBody": {
+                  "requestType": "REVOKE_ACCESS",
+                  "requestedFor": [
+                    "{{$.loop.context}}"
+                  ],
+                  "requestedItems": [
+                    {
+                      "comment": "Removing user from Legal Hold",
+                      "id": "f9facc7ac96c30989822e7f6d3a53c1e",
+                      "nativeIdentity": "{{$.loop.loopInput.nativeIdentity}}",
+                      "type": "ENTITLEMENT"
+                    }
+                  ]
+                },
+                "method": "post",
+                "oAuthClientId": "4e2579d6883a4f0490fbcb280dbdd0ec",
+                "oAuthClientSecret": "$.secrets.6888d90c-27c5-471f-8b7b-71feb67bfbcd",
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": "json",
+                "url": "https://caesars-sb.api.identitynow.com/v2025/access-requests",
+                "urlParams": null
+              },
+              "description": "",
+              "displayName": "",
+              "nextStep": "Compare Strings 14",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "Send Email 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that </span>the user {{$.hTTPRequest.body[0].name}} has been added to Legal Hold.</p>\n<p>User ID: {{$.hTTPRequest.body[0].alias}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "replyTo": "DoNotReplyIAMOps@caesars.com",
+          "subject": "User added to Legal Hold: {{$.hTTPRequest.body[0].name}}"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 1": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that </span>the user {{$.hTTPRequest.body[0].name}} has been removed from Legal Hold.</p>\n<p>User ID: {{$.hTTPRequest.body[0].alias}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "replyTo": "DoNotReplyIAMOps@caesars.com",
+          "subject": "User removed from Legal Hold: {{$.hTTPRequest.body[0].name}}"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '3f179969-cbde-4138-b5ff-f24c2d34e641')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

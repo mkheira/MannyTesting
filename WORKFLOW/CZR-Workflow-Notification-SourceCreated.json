@@ -1,0 +1,55 @@
+{
+  "id": "d08a9703-9ab4-46e3-806d-f02dcae3f85b",
+  "name": "CZR-Workflow-Notification-SourceCreated",
+  "description": "",
+  "created": "2025-04-25T08:45:49.625867921Z",
+  "modified": "2025-04-25T08:55:49.544007121Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "definition": {
+    "start": "Send Email",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>Dear recipient,</p>\n<p>A new source Created in sandbox</p>\n<p><strong>Source Name</strong>: {{$.trigger.name}}</p>\n<p><strong>Source Created By</strong>: {{$.trigger.actor.name}}</p>\n<p><strong>Source Creation Time</strong>: {{$.trigger.created}}</p>\n<p>&nbsp;</p>\n<p>Thank you,<br>The Sailpoint ISC Team</p>",
+          "context": {},
+          "from": "donotreply@caesars.com",
+          "recipientEmailList": [
+            "amaity@majorkeytech.com"
+          ],
+          "subject": "New Source Created"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:source-created"
+    }
+  }
+}

@@ -1,0 +1,866 @@
+{
+  "id": "7e5f1856-26e1-42fc-93d9-2b78541f6fbe",
+  "name": "Copy of CZR-Workflow-Suspend-Worker-Account-(SOX)",
+  "description": "",
+  "created": "2025-11-13T10:26:45.865910576Z",
+  "modified": "2025-11-14T11:25:40.812933329Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "Compare Boolean": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.interactiveForm1.formData.suspendAdAccount",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "Compare Boolean 1",
+        "displayName": "Suspension Request ?",
+        "type": "choice"
+      },
+      "Compare Boolean 1": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "Define Variable 17",
+            "variableA.$": "$.interactiveForm1.formData.activateAdAccount",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "Compare Boolean 2",
+        "displayName": "Activation Request ?",
+        "type": "choice"
+      },
+      "Compare Boolean 2": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "Define Variable 14",
+            "variableA.$": "$.interactiveForm1.formData.suspendAllAdAccounts",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "Loop 2",
+        "displayName": "Suspend All Request ?",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "userName",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-",
+                    "replacement": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.selectUser"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 2",
+        "type": "Mutation"
+      },
+      "Define Variable 14": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "allEnabledADAccounts",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[?(@.disabled == false && @.sourceName =~ /.*ActiveDirectory.*/)].attributes.sAMAccountName[0]"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 6",
+        "type": "Mutation"
+      },
+      "Define Variable 15": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "ADURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.defineVariable1.identityID"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "source_displayableName",
+                    "replacement.$": "$.defineVariable17.firstSelectedADAccount"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.displayableName eq \"source_displayableName\""
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 8",
+        "type": "Mutation"
+      },
+      "Define Variable 17": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstSelectedADAccount",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.selectAdAccountsForActivate[0]"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 15",
+        "type": "Mutation"
+      },
+      "Define Variable 18": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "sAMAccountName",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest8.body[0].attributes.sAMAccountName"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 6",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "adAccountsURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.defineVariable1.identityID"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "source_Type",
+                    "replacement": "Direct"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.connectionType eq \"source_Type\""
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requesterUserName",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-",
+                    "replacement": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.requestedBy"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 4",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "triggeredDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Boolean",
+        "type": "Mutation"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 3": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 5": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 6": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.userName}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.ec5f4e9e-f608-47fd-8d69-5c4ad99707bb",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/search"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.3a8336b0-afce-4c3b-a75b-c5db26b9f050",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable2.adAccountsURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.defineVariable1.identityID}}\" and source.connectionType eq \"Direct\""
+          }
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AccountID": "{{$.interactiveForm1.formData.selectAdAccountsForSuspension[0]}}",
+              "EnabledBy": "",
+              "EnabledDate": "",
+              "EnabledSource": "",
+              "Name": "{{$.hTTPRequest.body[0].displayName}}",
+              "PersonNumber": "{{$.defineVariable.userName}}",
+              "ReasonForActivation": "",
+              "ReasonForSuspension": "{{$.interactiveForm1.formData.reasonForSuspension}}",
+              "Status": "inactive",
+              "Suspended": "Y",
+              "SuspendedBy": "{{$.defineVariable3.requesterUserName}}",
+              "SuspendedDate": "{{$.defineVariable4.triggeredDate}}",
+              "SuspendedSource": "LaunchPad",
+              "sourceId": "d97a1b031bf84548b0b494d423a08ec3"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "",
+        "nextStep": "Loop",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AccountID": "{{$.interactiveForm1.formData.selectAdAccountsForActivate[0]}}",
+              "EnabledBy": "{{$.defineVariable3.requesterUserName}}",
+              "EnabledDate": "{{$.defineVariable4.triggeredDate}}",
+              "EnabledSource": "LaunchPad",
+              "Name": "{{$.hTTPRequest.body[0].displayName}}",
+              "PersonNumber": "{{$.defineVariable.userName}}",
+              "ReasonForActivation": "{{$.interactiveForm1.formData.reasonForActivation}}",
+              "ReasonForSuspension": "",
+              "Status": "active",
+              "Suspended": "N",
+              "SuspendedBy": "",
+              "SuspendedDate": "",
+              "SuspendedSource": "",
+              "sourceId": "d97a1b031bf84548b0b494d423a08ec3"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthCredentialLocation": null,
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "",
+        "nextStep": "Loop 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AccountID": "{{$.hTTPRequest1.body[?(@.disabled == false && @.sourceName =~ /.*ActiveDirectory.*/)][0].attributes.sAMAccountName}}",
+              "EnabledBy": "",
+              "EnabledDate": "",
+              "EnabledSource": "",
+              "Name": "{{$.hTTPRequest.body[0].displayName}}",
+              "PersonNumber": "{{$.defineVariable.userName}}",
+              "ReasonForActivation": "",
+              "ReasonForSuspension": "{{$.interactiveForm1.formData.reasonForSuspension}}",
+              "Status": "inactive",
+              "Suspended": "Y",
+              "SuspendedBy": "{{$.defineVariable3.requesterUserName}}",
+              "SuspendedDate": "{{$.defineVariable4.triggeredDate}}",
+              "SuspendedSource": "LaunchPad",
+              "sourceId": "d97a1b031bf84548b0b494d423a08ec3"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.ffd120a4-7931-41b8-bc72-f9f75c6a0bc8",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.87ac668f-1b7c-48e3-beb2-0943857ecc49",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable15.aDURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.defineVariable9.identityId}}\" and source.displayableName eq \"{{$.defineVariable8.selectedADAccount}}\""
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 18",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "f9750df1-eb32-40e9-8a13-0648dc1486d9",
+          "inputForForm_selectUser": "$.interactiveForm.formData.selectUser",
+          "inputForForm_userType": "$.interactiveForm.formData.userType",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "User Selection Form"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "d738412f-9151-4d10-ab9f-94c78bd17316",
+          "inputForForm_array_usersDisabledAdAccounts.$": "$.hTTPRequest1.body[?((@.disabled == true) && (@.sourceName =~ /.*ActiveDirectory.*/) && !(@.sourceName =~ /.*JAccounts.*/) && !(@.sourceName =~ /.*WilliamHill.*/))]",
+          "inputForForm_array_usersDisabledAdAccounts_label": "$.sourceName",
+          "inputForForm_array_usersDisabledAdAccounts_value": "$.sourceName",
+          "inputForForm_array_usersEnabledAdAccounts.$": "$.hTTPRequest1.body[?(@.disabled == false && @.sourceName =~ /.*ActiveDirectory.*/)]",
+          "inputForForm_array_usersEnabledAdAccounts_label": "$.sourceName",
+          "inputForForm_array_usersEnabledAdAccounts_value": "$.sourceName",
+          "inputForForm_userType": "$.interactiveForm.formData.userType",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.defineVariable1.identityID",
+          "input.$": "$.interactiveForm1.formData.selectAdAccountsForSuspension",
+          "start": "Define Variable 5",
+          "steps": {
+            "Define Variable 5": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "selectedADAccount",
+                    "transforms": [],
+                    "variableA.$": "$.loop.loopInput"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 6",
+              "type": "Mutation"
+            },
+            "Define Variable 6": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "identityId",
+                    "transforms": [],
+                    "variableA.$": "$.loop.context"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 7",
+              "type": "Mutation"
+            },
+            "Define Variable 7": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "adAccountGetURL",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "identity_id",
+                          "replacement.$": "$.defineVariable6.identityId"
+                        }
+                      },
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "source_displayableName",
+                          "replacement.$": "$.defineVariable5.selectedADAccount"
+                        }
+                      }
+                    ],
+                    "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.displayableName eq \"source_displayableName\""
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "HTTP Request 3",
+              "type": "Mutation"
+            },
+            "End Step - Success": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 3": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+                "oAuthClientSecret": "$.secrets.87ac668f-1b7c-48e3-beb2-0943857ecc49",
+                "oAuthCredentialLocation": null,
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url.$": "$.defineVariable7.adAccountGetURL",
+                "urlParams": {
+                  "filters": "identityId eq \"{{$.defineVariable6.identityId}}\" and source.displayableName eq \"{{$.defineVariable5.selectedADAccount}}\""
+                }
+              },
+              "displayName": "",
+              "nextStep": "Manage Accounts",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Manage Accounts": {
+              "actionId": "sp:manage-account",
+              "attributes": {
+                "accountIds.$": "$.hTTPRequest3.body[0].id",
+                "operation": "disable"
+              },
+              "displayName": "",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 1
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop 1": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.defineVariable1.identityID",
+          "input.$": "$.interactiveForm1.formData.selectAdAccountsForActivate",
+          "start": "Define Variable 8",
+          "steps": {
+            "Define Variable 10": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "adAccountGetURL",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "identity_id",
+                          "replacement.$": "$.defineVariable9.identityId"
+                        }
+                      },
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "source_displayableName",
+                          "replacement.$": "$.defineVariable8.selectedADAccount"
+                        }
+                      }
+                    ],
+                    "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.displayableName eq \"source_displayableName\""
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "HTTP Request 5",
+              "type": "Mutation"
+            },
+            "Define Variable 8": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "selectedADAccount",
+                    "transforms": [],
+                    "variableA.$": "$.loop.loopInput"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 9",
+              "type": "Mutation"
+            },
+            "Define Variable 9": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "identityId",
+                    "transforms": [],
+                    "variableA.$": "$.loop.context"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 10",
+              "type": "Mutation"
+            },
+            "End Step - Success 2": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 5": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+                "oAuthClientSecret": "$.secrets.87ac668f-1b7c-48e3-beb2-0943857ecc49",
+                "oAuthCredentialLocation": null,
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url.$": "$.defineVariable10.adAccountGetURL",
+                "urlParams": {
+                  "filters": "identityId eq \"{{$.defineVariable9.identityId}}\" and source.displayableName eq \"{{$.defineVariable8.selectedADAccount}}\""
+                }
+              },
+              "displayName": "",
+              "nextStep": "Manage Accounts 1",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Manage Accounts 1": {
+              "actionId": "sp:manage-account",
+              "attributes": {
+                "accountIds.$": "$.hTTPRequest5.body[0].id",
+                "operation": "enable"
+              },
+              "displayName": "",
+              "nextStep": "End Step - Success 2",
+              "type": "action",
+              "versionNumber": 1
+            }
+          }
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop 2": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.defineVariable1.identityID",
+          "input.$": "$.hTTPRequest1.body[?(@.disabled == false && @.sourceName =~ /.*ActiveDirectory.*/)].sourceName",
+          "start": "Define Variable 11",
+          "steps": {
+            "Define Variable 11": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "selectedADAccount",
+                    "transforms": [],
+                    "variableA.$": "$.loop.loopInput"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 12",
+              "type": "Mutation"
+            },
+            "Define Variable 12": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "identityId",
+                    "transforms": [],
+                    "variableA.$": "$.loop.context"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "Define Variable 13",
+              "type": "Mutation"
+            },
+            "Define Variable 13": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "adAccountGetURL",
+                    "transforms": [
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "identity_id",
+                          "replacement.$": "$.defineVariable12.identityId"
+                        }
+                      },
+                      {
+                        "id": "sp:transform:replace:string",
+                        "input": {
+                          "pattern": "source_displayableName",
+                          "replacement.$": "$.defineVariable11.selectedADAccount"
+                        }
+                      }
+                    ],
+                    "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.displayableName eq \"source_displayableName\""
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "HTTP Request 7",
+              "type": "Mutation"
+            },
+            "End Step - Success 4": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request 7": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+                "oAuthClientSecret": "$.secrets.87ac668f-1b7c-48e3-beb2-0943857ecc49",
+                "oAuthCredentialLocation": null,
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "url.$": "$.defineVariable13.adAccountGetURL",
+                "urlParams": {
+                  "filters": "identityId eq \"{{$.defineVariable12.identityId}}\" and source.displayableName eq \"{{$.defineVariable11.selectedADAccount}}\""
+                }
+              },
+              "displayName": "",
+              "nextStep": "Manage Accounts 2",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Manage Accounts 2": {
+              "actionId": "sp:manage-account",
+              "attributes": {
+                "accountIds.$": "$.hTTPRequest7.body[0].id",
+                "operation": "disable"
+              },
+              "displayName": "",
+              "nextStep": "End Step - Success 4",
+              "type": "action",
+              "versionNumber": 1
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 4",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '7e5f1856-26e1-42fc-93d9-2b78541f6fbe')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

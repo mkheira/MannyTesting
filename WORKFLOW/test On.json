@@ -1,0 +1,1049 @@
+{
+  "id": "b8f12f72-2625-4322-a2b2-7c90d8f61c5d",
+  "name": "test On",
+  "description": "Contractor Onboarding Workflow",
+  "created": "2025-08-22T13:21:41.960717335Z",
+  "modified": "2025-08-22T13:21:41.960717335Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 3",
+            "variableA.$": "$.interactiveForm.formData.EmployeeType",
+            "variableB": "Special Firms"
+          }
+        ],
+        "defaultStep": "Compare Strings 1",
+        "displayName": "Employee Type =“Special Frims\" ?",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.interactiveForm.formData.EmployeeType",
+            "variableB": "Board of Directors"
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "displayName": "EmpType=\"Board of Directors\" ?",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 8",
+            "variableA.$": "$.interactiveForm.formData.EmployeeType",
+            "variableB": "Special Firms"
+          }
+        ],
+        "defaultStep": "Define Variable 9",
+        "displayName": "empType is Special Firms?",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 14",
+            "variableA.$": "$.interactiveForm.formData.EmployeeType",
+            "variableB": "Regulator"
+          }
+        ],
+        "defaultStep": "Define Variable 6",
+        "displayName": "EmpTye=\"Regulator\"?",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Define Variable",
+            "variableA.$": "$.defineVariable15.locationList",
+            "variableB.$": "$.defineVariable20.locationInput"
+          }
+        ],
+        "defaultStep": "Interactive Message",
+        "displayName": "Location is in source list?",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "setUpLikePerson",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.SetupLikePerson"
+            }
+          ]
+        },
+        "displayName": "Variable : setUpLikePerson",
+        "nextStep": "Verify Data Type",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DisplayName",
+              "transforms": [],
+              "variableA.$": "$['defineVariable3','defineVariable2'].displayName"
+            }
+          ]
+        },
+        "displayName": "Set Display Name",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 10": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LegalEmployerName",
+              "transforms": [],
+              "variableA.$": "$['defineVariable8','defineVariable9'].company"
+            },
+            {
+              "description": "",
+              "name": "exchange",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.exchangeMailbox"
+            }
+          ]
+        },
+        "displayName": "Set LegalEmployerName",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 11": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "latestID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body.attributes.newContractorId"
+            },
+            {
+              "description": "",
+              "name": "location",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Variable : latestID",
+        "nextStep": "Define Variable 12",
+        "type": "Mutation"
+      },
+      "Define Variable 12": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "EnterpriseHireDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "managerAssignmentNumber",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.verifyingCaesarsManager"
+            },
+            {
+              "description": "",
+              "name": "location",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.locationBLV_CALL"
+            }
+          ]
+        },
+        "displayName": "Variable : HireDate and manager",
+        "nextStep": "Verify Data Type 4",
+        "type": "Mutation"
+      },
+      "Define Variable 13": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "ContractorEndDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.contractEndDate"
+            }
+          ]
+        },
+        "displayName": "Variable : End Date",
+        "nextStep": "HTTP Request 3",
+        "type": "Mutation"
+      },
+      "Define Variable 14": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LocationAndCompany",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": Regulator"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Set Location And Regulator",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 15": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationList",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest6.body.connectorAttributes.locationList"
+            }
+          ]
+        },
+        "displayName": "Variable  : LocationList From AD attribute",
+        "nextStep": "Interactive Form",
+        "type": "Mutation"
+      },
+      "Define Variable 16": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LocationAndCompany",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.interactiveForm.formData.vendorCompany"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.locationBLV_CALL"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 17": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "location",
+              "transforms": [],
+              "variableA.$": "$['defineVariable18','defineVariable19'].location"
+            }
+          ]
+        },
+        "displayName": "Variable: location",
+        "nextStep": "Verify Data Type 1",
+        "type": "Mutation"
+      },
+      "Define Variable 18": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "location",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Variable : form location",
+        "nextStep": "Define Variable 17",
+        "type": "Mutation"
+      },
+      "Define Variable 19": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "location",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.locationBLV_CALL"
+            }
+          ]
+        },
+        "displayName": "Variable :BLV location",
+        "nextStep": "Define Variable 17",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DisplayName",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ", "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.interactiveForm.formData.PreferredName"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.LastName"
+            }
+          ]
+        },
+        "displayName": "Set Display Name Based on Preferred Name",
+        "nextStep": "Define Variable 1",
+        "type": "Mutation"
+      },
+      "Define Variable 20": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationInput",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ","
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Variable : location",
+        "nextStep": "Compare Strings 4",
+        "type": "Mutation"
+      },
+      "Define Variable 21": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedBy",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.requestedBy"
+            }
+          ]
+        },
+        "displayName": "Variable  : RequestedBy",
+        "nextStep": "HTTP Request 8",
+        "type": "Mutation"
+      },
+      "Define Variable 22": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedByEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest8.body[0].email"
+            }
+          ]
+        },
+        "displayName": "Variable : RequestedBy Email",
+        "nextStep": "Verify Data Type 2",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DisplayName",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ", "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.interactiveForm.formData.FirstName"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.LastName"
+            }
+          ]
+        },
+        "displayName": "Set Preferred Name Based on Firstname",
+        "nextStep": "Define Variable 1",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LocationAndCompany",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": Board of Directors"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Set Location And Board of director",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LocationAndCompany",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.interactiveForm.formData.vendorCompany"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Set Location And Vendor Company",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 6": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "LocationAndCompany",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": ": "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.interactiveForm.formData.HiringCompany"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.location"
+            }
+          ]
+        },
+        "displayName": "Set Location And Hiring Company",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 7": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DepartmentName",
+              "transforms": [],
+              "variableA.$": "$['defineVariable4','defineVariable5','defineVariable6','defineVariable14','defineVariable16'].locationAndCompany"
+            }
+          ]
+        },
+        "displayName": "Set Department Name",
+        "nextStep": "Compare Strings 2",
+        "type": "Mutation"
+      },
+      "Define Variable 8": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "Company",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.vendorCompany"
+            }
+          ]
+        },
+        "displayName": "Set company",
+        "nextStep": "Define Variable 10",
+        "type": "Mutation"
+      },
+      "Define Variable 9": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "Company",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm.formData.HiringCompany"
+            }
+          ]
+        },
+        "displayName": "Set Company",
+        "nextStep": "Define Variable 10",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/9e18abbd8c8d46f0b5a7c51c751a248e/reload"
+        },
+        "displayName": "HTTP : reload ID",
+        "nextStep": "HTTP Request 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/9e18abbd8c8d46f0b5a7c51c751a248e"
+        },
+        "displayName": "HTTP : Get account Details",
+        "nextStep": "Define Variable 11",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "{{$.interactiveForm.formData.exchangeMailbox}}",
+              "NetworkAccessRequired": "{{$.interactiveForm.formData.NetworkAccess}}",
+              "RequestedBy": "{{$.interactiveForm.formData.requestedBy}}",
+              "RequestedByEmail": "{{$.defineVariable22.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable11.latestID}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable11.latestID}}",
+              "Status": "active",
+              "sourceId": "6656e52b129943fba8e6731cffc90d09"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in network file",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AsgStartDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "AssignmentStatusType": "Active",
+              "DepartmentName": "{{$.defineVariable7.departmentName}}",
+              "DisplayName": "{{$.defineVariable1.displayName}}",
+              "EnterpriseHireDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "FirstName": "{{$.interactiveForm.formData.FirstName}}",
+              "KnownAs": "{{$.interactiveForm.formData.PreferredName}}",
+              "LastName": "{{$.interactiveForm.formData.LastName}}",
+              "LegalEmployerName": "{{$.defineVariable10.legalEmployerName}}",
+              "LocationCode": "{{$.defineVariable17.location}}",
+              "ManagerAssignmentNumber": "{{$.defineVariable12.managerAssignmentNumber}}",
+              "MiddleName": "{{$.interactiveForm.formData.MiddleName}}",
+              "PersonNumber": "{{$.defineVariable11.latestID}}",
+              "PositionName": "{{$.interactiveForm.formData.JobTitle}}",
+              "PropertyCode": "{{$.interactiveForm.formData.property}}",
+              "Suffix": "{{$.interactiveForm.formData.Suffix}}",
+              "TerminationDate": "{{$.defineVariable13.contractorEndDate}}",
+              "WorkerType": "{{$.interactiveForm.formData.EmployeeType}}",
+              "sourceId": "5bcb54289d5649149b01379de2d98800"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "textRequestBody": "",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in flatfile",
+        "nextStep": "Define Variable 21",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AsgStartDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "AssignmentStatusType": "Active",
+              "DepartmentName": "{{$.defineVariable7.departmentName}}",
+              "DisplayName": "{{$.defineVariable1.displayName}}",
+              "EnterpriseHireDate": "{{$.defineVariable12.enterpriseHireDate}}",
+              "FirstName": "{{$.interactiveForm.formData.FirstName}}",
+              "KnownAs": "{{$.interactiveForm.formData.PreferredName}}",
+              "LastName": "{{$.interactiveForm.formData.LastName}}",
+              "LegalEmployerName": "{{$.defineVariable10.legalEmployerName}}",
+              "LocationCode": "{{$.defineVariable17.location}}",
+              "ManagerAssignmentNumber": "{{$.defineVariable12.managerAssignmentNumber}}",
+              "MiddleName": "{{$.interactiveForm.formData.MiddleName}}",
+              "PersonNumber": "{{$.defineVariable11.latestID}}",
+              "PositionName": "{{$.interactiveForm.formData.JobTitle}}",
+              "PropertyCode": "{{$.interactiveForm.formData.property}}",
+              "Suffix": "{{$.interactiveForm.formData.Suffix}}",
+              "WorkerType": "{{$.interactiveForm.formData.EmployeeType}}",
+              "sourceId": "5bcb54289d5649149b01379de2d98800"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "textRequestBody": "",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in flatfile",
+        "nextStep": "Define Variable 21",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "{{$.interactiveForm.formData.exchangeMailbox}}",
+              "NetworkAccessRequired": "true",
+              "RequestedBy": "{{$.interactiveForm.formData.requestedBy}}",
+              "RequestedByEmail": "{{$.defineVariable22.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable11.latestID}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable11.latestID}}",
+              "SetupLikePerson": "{{$.defineVariable.setUpLikePerson}}",
+              "Status": "active",
+              "sourceId": "6656e52b129943fba8e6731cffc90d09"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in network file",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/e30d0436a20b45b79517a08f0380b1b1"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 15",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 7": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "{{$.interactiveForm.formData.exchangeMailbox}}",
+              "NetworkAccessRequired": "{{$.interactiveForm.formData.NetworkAccess}}",
+              "RequestedBy": "{{$.interactiveForm.formData.requestedBy}}",
+              "RequestedByEmail": "{{$.defineVariable22.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable11.latestID}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable11.latestID}}",
+              "SetupLikePerson": "{{$.defineVariable.setUpLikePerson}}",
+              "Status": "active",
+              "sourceId": "6656e52b129943fba8e6731cffc90d09"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create account in network file",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable21.requestedBy}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "textRequestBody": "",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : Get requestedBy user",
+        "nextStep": "Define Variable 22",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "6e6b052f-ca6b-425e-874d-153d74199c47",
+          "inputForForm_contractorJobTitle": "Contractor",
+          "inputForForm_locationBlvCall": "BLV_CALL",
+          "inputForForm_regulatorJobTitle": "Regulator",
+          "inputForForm_requestedByWorkflow.$": "$.getIdentity.attributes.displayName",
+          "inputForForm_vendorJobTitle": "Vendor",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<p>Contractor Onboarding</p>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Contractor Onboarding"
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 5",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Message": {
+        "actionId": "sp:interactive-message",
+        "attributes": {
+          "category": "ERROR",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<p>Invalid location : {{$.interactiveForm.formData.location}}.</p>\n<p>Please select the location from the available location dropdown values.</p>\n<p>Please contact administrator if you want to add a new location.</p>\n<p>Please resubmit the form.</p>\n<p>&nbsp;</p>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Invalid Location"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable 3",
+            "variableA.$": "$.interactiveForm.formData.PreferredName"
+          }
+        ],
+        "defaultStep": "Define Variable 2",
+        "displayName": "Preferred Name Is Null ?",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "HTTP Request 4",
+            "variableA.$": "$.interactiveForm.formData.contractEndDate"
+          }
+        ],
+        "defaultStep": "Define Variable 13",
+        "displayName": "ContractorEndDate is null?",
+        "type": "choice"
+      },
+      "Verify Data Type 2": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "HTTP Request 5",
+            "variableA.$": "$.interactiveForm.formData.NetworkAccess"
+          }
+        ],
+        "defaultStep": "Verify Data Type 6",
+        "displayName": "networkAccess is null? ",
+        "type": "choice"
+      },
+      "Verify Data Type 3": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable 16",
+            "variableA.$": "$.interactiveForm.formData.location"
+          }
+        ],
+        "defaultStep": "Define Variable 5",
+        "displayName": "location is null?",
+        "type": "choice"
+      },
+      "Verify Data Type 4": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable 19",
+            "variableA.$": "$.interactiveForm.formData.location"
+          }
+        ],
+        "defaultStep": "Define Variable 18",
+        "displayName": "form location is null?",
+        "type": "choice"
+      },
+      "Verify Data Type 5": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Define Variable",
+            "variableA.$": "$.interactiveForm.formData.location"
+          }
+        ],
+        "defaultStep": "Define Variable 20",
+        "displayName": "location is null?",
+        "type": "choice"
+      },
+      "Verify Data Type 6": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.interactiveForm.formData.SetupLikePerson"
+          }
+        ],
+        "defaultStep": "HTTP Request 7",
+        "displayName": "setupLike is null?",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == 'b8f12f72-2625-4322-a2b2-7c90d8f61c5d')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

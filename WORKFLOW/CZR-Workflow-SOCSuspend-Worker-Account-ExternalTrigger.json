@@ -1,0 +1,532 @@
+{
+  "id": "fdb72f92-f683-499e-92ae-73f3f571e80b",
+  "name": "CZR-Workflow-SOCSuspend-Worker-Account-ExternalTrigger",
+  "description": "",
+  "created": "2025-11-20T17:22:06.267759362Z",
+  "modified": "2025-12-19T16:54:56.64601387Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Compare Numbers 1": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThan",
+            "nextStep": "Define Variable 3",
+            "variableA.$": "$.hTTPRequest1.body.length()",
+            "variableB": 0
+          }
+        ],
+        "defaultStep": "Send Email 5",
+        "displayName": "Does User has AD Account ?",
+        "type": "choice"
+      },
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.defineVariable.operation",
+            "variableB": "suspend"
+          }
+        ],
+        "defaultStep": "Compare Strings 1",
+        "displayName": "Is Suspend Request ?",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 3",
+            "variableA.$": "$.defineVariable.operation",
+            "variableB": "enable"
+          }
+        ],
+        "defaultStep": "Send Email 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 7": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Send Email 2",
+            "variableA.$": "$.defineVariable.sAMAccountName",
+            "variableB": ""
+          }
+        ],
+        "defaultStep": "Define Variable 1",
+        "displayName": "Is SAMAccountName empty ?",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "sAMAccountName",
+              "transforms": [],
+              "variableA.$": "$.trigger.SAMAccountName"
+            },
+            {
+              "description": "",
+              "name": "requestedBy",
+              "transforms": [],
+              "variableA.$": "$.trigger.RequestedBy"
+            },
+            {
+              "description": "",
+              "name": "operation",
+              "transforms": [],
+              "variableA.$": "$.trigger.Operation"
+            },
+            {
+              "description": "",
+              "name": "triggeredDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "firstName",
+              "transforms": [],
+              "variableA.$": "$.trigger.FirstName"
+            },
+            {
+              "description": "",
+              "name": "lastName",
+              "transforms": [],
+              "variableA.$": "$.trigger.LastName"
+            },
+            {
+              "description": "",
+              "name": "displayName",
+              "transforms": [],
+              "variableA.$": "$.trigger.DisplayName"
+            },
+            {
+              "description": "",
+              "name": "userEmail",
+              "transforms": [],
+              "variableA.$": "$.trigger.UserEmail"
+            },
+            {
+              "description": "",
+              "name": "comments",
+              "transforms": [],
+              "variableA.$": "$.trigger.Comments"
+            }
+          ]
+        },
+        "displayName": "Read Input Variables",
+        "nextStep": "Compare Strings 7",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityDisplayName",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].name"
+            },
+            {
+              "description": "",
+              "name": "ADAccountURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "sAMAccountName",
+                    "replacement.$": "$.defineVariable.sAMAccountName"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=name eq \"sAMAccountName\""
+            },
+            {
+              "description": "",
+              "name": "getAllADAccountsURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.hTTPRequest.body[0].id"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "source_Type",
+                    "replacement": "Direct"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\" and source.connectionType eq \"source_Type\""
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 1",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "mutipleADAccountsURL",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "identity_id",
+                    "replacement.$": "$.hTTPRequest1.body[0].identityId"
+                  }
+                }
+              ],
+              "variableA": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"identity_id\"  and source.displayableName in (\"CZR-Application-ActiveDirectory-Harrahs\",\"CZR-Application-ActiveDirectory-Harrahs-JAccounts\",\"CZR-Application-ActiveDirectory-WilliamHill\")"
+            },
+            {
+              "description": "",
+              "name": "employeeID",
+              "variableA": "$.hTTPRequest1.body[0].attributes.employeeID"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 6",
+        "type": "Mutation"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 5": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 7": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.27478c35-be66-4932-b0e3-fa0959e4e4ce",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable1.aDAccountURL",
+          "urlParams": {
+            "filters": "name eq \"{{$.defineVariable.sAMAccountName}}\" "
+          }
+        },
+        "displayName": "Get AD Account HTTP Request",
+        "nextStep": "Compare Numbers 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AccountID": "{{$.defineVariable.sAMAccountName}}",
+              "EnabledBy": "",
+              "EnabledDate": "",
+              "EnabledSource": "",
+              "FirstName": "{{$.defineVariable.firstName}}",
+              "LastName": "{{$.defineVariable.lastName}}",
+              "Name": "{{$.hTTPRequest1.body[0].attributes.displayName}}",
+              "PersonNumber": "{{$.hTTPRequest1.body[0].attributes.employeeID}}",
+              "ReasonForActivation": "",
+              "ReasonForSuspension": "{{$.defineVariable.comments}}",
+              "Status": "inactive",
+              "Suspended": "Y",
+              "SuspendedBy": "{{$.defineVariable.requestedBy}}",
+              "SuspendedDate": "{{$.defineVariable.triggeredDate}}",
+              "SuspendedSource": "API CALL",
+              "UserEmail": "{{$.defineVariable.userEmail}}",
+              "sourceId": "d97a1b031bf84548b0b494d423a08ec3"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.9e261b16-7aea-46c1-8ca3-cae27e9b0fcd",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "Create/Update Suspend Account",
+        "nextStep": "Wait",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AccountID": "{{$.defineVariable.sAMAccountName}}",
+              "EnabledBy": "{{$.defineVariable.requestedBy}}",
+              "EnabledDate": "{{$.defineVariable.triggeredDate}}",
+              "EnabledSource": "API CALL",
+              "FirstName": "{{$.defineVariable.firstName}}",
+              "LastName": "{{$.defineVariable.lastName}}",
+              "Name": "{{$.hTTPRequest1.body[0].attributes.displayName}}",
+              "PersonNumber": "{{$.hTTPRequest1.body[0].attributes.employeeID}}",
+              "ReasonForActivation": "{{$.defineVariable.comments}}",
+              "ReasonForSuspension": "",
+              "Status": "active",
+              "Suspended": "N",
+              "SuspendedBy": "",
+              "SuspendedDate": "",
+              "SuspendedSource": "",
+              "UserEmail": "{{$.defineVariable.userEmail}}",
+              "sourceId": "d97a1b031bf84548b0b494d423a08ec3"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.9e261b16-7aea-46c1-8ca3-cae27e9b0fcd",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts"
+        },
+        "displayName": "Create/Update Suspend Account",
+        "nextStep": "Loop 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.af7fa289-2633-42dd-922b-5ede79e9495f",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url.$": "$.defineVariable3.mutipleADAccountsURL",
+          "urlParams": {
+            "filters": "identityId eq \"{{$.httpRequest1.body[0].identityId}}\" and source.connectionType eq \"Direct\""
+          }
+        },
+        "displayName": "Get Multiple AD Accounts HTTP Request",
+        "nextStep": "Compare Strings",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "",
+          "input.$": "$.hTTPRequest6.body",
+          "start": "Compare Boolean",
+          "steps": {
+            "Compare Boolean": {
+              "actionId": "sp:compare-boolean",
+              "choiceList": [
+                {
+                  "comparator": "BooleanEquals",
+                  "nextStep": "Manage Accounts",
+                  "variableA.$": "$.loop.loopInput.disabled",
+                  "variableB": false
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "displayName": "Is Enabled Account ?",
+              "type": "choice"
+            },
+            "End Step - Success": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "Manage Accounts": {
+              "actionId": "sp:manage-account",
+              "attributes": {
+                "accountIds.$": "$.loop.loopInput.id",
+                "operation": "disable"
+              },
+              "displayName": "Disable AD Account Request",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 1
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Loop 1": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.hTTPRequest.body",
+          "input.$": "$.hTTPRequest6.body",
+          "start": "Compare Boolean 1",
+          "steps": {
+            "Compare Boolean 1": {
+              "actionId": "sp:compare-boolean",
+              "choiceList": [
+                {
+                  "comparator": "BooleanEquals",
+                  "nextStep": "Manage Accounts 1",
+                  "variableA.$": "$.loop.loopInput.disabled",
+                  "variableB": true
+                }
+              ],
+              "defaultStep": "End Step - Success 3",
+              "displayName": "Is Disabled Account",
+              "type": "choice"
+            },
+            "End Step - Success 3": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "Manage Accounts 1": {
+              "actionId": "sp:manage-account",
+              "attributes": {
+                "accountIds.$": "$.loop.loopInput.id",
+                "operation": "enable"
+              },
+              "displayName": "Disable AD Account Request",
+              "nextStep": "End Step - Success 3",
+              "type": "action",
+              "versionNumber": 1
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 4",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Send Email 1": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;p&gt;<span class=\"NormalTextRun SCXW218388877 BCX8\">Dear SOC Team</span>,&lt;/p&gt;This is an automated notification regarding suspension/activation request and this is to inform you that input argument 'operation' is invalid. Please give 'suspend' or 'enable' values for the input operation.&lt;/p&gt;&lt;p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team&lt;/p&gt;</p>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Invalid input arguments for suspension/activation of AD Accounts"
+        },
+        "displayName": "Send Email To SOC Team",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 2": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;p&gt;<span class=\"NormalTextRun SCXW218388877 BCX8\">Dear SOC Team</span>,&lt;/p&gt;This is an automated notification regarding suspension/activation request and this is to inform you that input argument SAMAccountName null/empty. Please give proper input value for SAMAccountName.&lt;/p&gt;&lt;p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team&lt;/p&gt;</p>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Invalid input arguments for suspension/activation of AD Accounts"
+        },
+        "displayName": "Send Email To SOC Team",
+        "nextStep": "End Step - Success 7",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 5": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>&lt;p&gt;<span class=\"NormalTextRun SCXW218388877 BCX8\">Dear SOC Team</span>,&lt;/p&gt;This is an automated notification regarding suspension/activation request and this is to inform you that there is no AD Accounts found with input argument SAMAccountName ${sAMAccountName}. Please give proper input value for SAMAccountName.&lt;/p&gt;&lt;p&gt;Thank you! &lt;br&gt;Caesars Identity and Access Management Team&lt;/p&gt;</p>",
+          "context": {
+            "sAMAccountName.$": "$.defineVariable.sAMAccountName"
+          },
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "No Accounts found with SAMAccountName ${sAMAccountName} for suspension/activation of AD Accounts"
+        },
+        "displayName": "Send Email To SOC Team",
+        "nextStep": "End Step - Success 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "Loop",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "500000383"
+  },
+  "trigger": {
+    "type": "EXTERNAL",
+    "attributes": {
+      "clientId": "0277f1d0-e456-4ef5-9026-bc9fe5db32c1",
+      "id": "idn:external-http",
+      "url": "/beta/workflows/execute/external/fdb72f92-f683-499e-92ae-73f3f571e80b"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "id": "c1e9a6c0-3cba-45e2-b85b-ecd57584896d",
+  "name": "CNOW Ticket Modification",
+  "description": "",
+  "created": "2025-08-01T15:57:13.467682074Z",
+  "modified": "2025-08-05T13:12:48.958155835Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "description": "This Workflow is Complete",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "filterCriteria": "name",
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.trigger.identity.id",
+          "operator": "eq",
+          "value": "",
+          "valueList": null
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "description": "Gets Identity so we can pass information to emails",
+        "displayName": "Get Identity To Pass Attributes to Email Templates",
+        "nextStep": "Get Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage ServiceNow Ticket": {
+        "actionId": "sp:snow",
+        "attributes": {
+          "action": "create",
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.6e9f437f-cccd-49fc-8f0b-e913f5d32fd1",
+          "basicAuthUserName": "iiq_integration_user",
+          "caller": "Richard Fondrick",
+          "customFields": "assignment_group:Identity and Access Management (IAM)\npriority:3\ncmdb_ci:Termination",
+          "description": "The following account(s) need to be termed in the William Hill domain:\n\n•\tEmployee Number: {{$.getIdentity.attributes.personNumber}}\n•\tEmployee Name: {{$.getIdentity.name}}\n•\tPrimary Location: {{$.getIdentity.attributes.locationDescription}}\n•\tPrimary Job Title: {{$.getIdentity.attributes.jobTitle}}\n•\tPrimary Department: {{$.getIdentity.attributes.department}}\n•\tAD Source Name: CZR-Application-ActiveDirectory-WilliamHill\n•\tNetwork ID: {{$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-ActiveDirectory-Dev.lab.local')].attributes.sAMAccountName}}\n•\tTermination Date: {{$.getIdentity.attributes.terminationDate}}",
+          "shortDescription": "Immediate Termination on User: {{$.getIdentity.name}}",
+          "urgency": "3",
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-ActiveDirectory-Dev.lab.local')]"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "description": "check to see if user has william hill",
+        "displayName": "Verify William Hill exists",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "terminationDate",
+      "description": "Trigger Immediate Termination under these conditions:\nComplete Termination: 'N' to 'Y'  \nTermination Date: Current date minus one day (Current date -1) \nStatus: From 'Active' to 'Inactive'",
+      "filter.$": "$.changes[?(@.attribute == \"terminationDate\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "id": "60b4d1ee-c657-45c1-85b5-d19e50806dc0",
+  "name": "POC-TEAMS Record Permission for 5 minutes",
+  "description": "TEAMS Record Permission for 5 minutes",
+  "created": "2025-03-22T15:08:59.456889545Z",
+  "modified": "2025-07-15T21:43:03.795526413Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "GROUP-TEAMS Record Permission for 7 minutes-Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "3e04cc3093934a5dafcf6e66d20a6dce",
+                "removeDate": "{{$.defineVariable.removalDate}}",
+                "type": "ROLE"
+              },
+              {
+                "clientMetadata": null,
+                "comment": "GROUP-TEAMS Record Permission for 5 minutes-Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "3a8647dd7fdd47d09c1795a3baa2e917",
+                "removeDate": "{{$.defineVariable.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "3d957281e75e477eba1470c22e816c83",
+          "oAuthClientSecret": "$.secrets.e5a5b2a6-cefb-468d-9b0e-27f329f187df",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.accountRequests[?(@.accountOperation=='Modify' &&  @.attributeRequests[0].attributeValue=='CN=TEAMS Record Permission for 5 minutes,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local')]",
+      "id": "idn:post-provisioning"
+    }
+  }
+}

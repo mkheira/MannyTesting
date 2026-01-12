@@ -1,0 +1,30 @@
+{
+  "id": "742ea15e-a224-43be-9bba-f549d7bd4be8",
+  "name": "test",
+  "description": "",
+  "created": "2025-10-06T15:21:07.811091472Z",
+  "modified": "2025-10-06T15:21:07.811091472Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "steps": {}
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "trigger": {
+    "type": "",
+    "attributes": {}
+  }
+}

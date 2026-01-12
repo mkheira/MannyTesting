@@ -1,0 +1,640 @@
+{
+  "id": "717d696a-54ff-4e27-97e4-6a209ddf8311",
+  "name": "CZR-Workflow-Contractor Network or Exchange Access Request",
+  "description": "Contractor Update Network and Mailbox",
+  "created": "2025-11-13T22:16:57.808314279Z",
+  "modified": "2025-12-18T21:01:28.071709145Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "500000382"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Check Mailbox Request": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.interactiveForm1.formData.exchangeMailbox",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "HTTP Request 3",
+        "displayName": "Check if mailbox is requested",
+        "type": "choice"
+      },
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThanEquals",
+            "nextStep": "HTTP Request 1",
+            "variableA.$": "$.hTTPRequest11.body.count()",
+            "variableB": 1
+          }
+        ],
+        "defaultStep": "Interactive Form 2",
+        "displayName": "Check if account present",
+        "type": "choice"
+      },
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 3",
+            "variableA.$": "$.defineVariable4.existingMailbox",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "Check Mailbox Request",
+        "displayName": "Check Mailbox on User",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "setUpLikePerson",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm1.formData.SetupLikePerson"
+            }
+          ]
+        },
+        "displayName": "Variable : setUpLikePerson",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "contractorId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[*].id"
+            }
+          ]
+        },
+        "displayName": "contractor id",
+        "nextStep": "HTTP Request 9",
+        "type": "Mutation"
+      },
+      "Define Variable 11": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "latestID",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.contractor"
+            }
+          ]
+        },
+        "displayName": "Variable : latestID",
+        "nextStep": "Define Variable 21",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "AD_AccountID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest11.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Numbers",
+        "type": "Mutation"
+      },
+      "Define Variable 21": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedBy",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.requestedBy"
+            },
+            {
+              "description": "",
+              "name": "sourceId",
+              "transforms": [],
+              "variableA": "6656e52b129943fba8e6731cffc90d09"
+            }
+          ]
+        },
+        "displayName": "Variable : RequestedBy and SourceId",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "Define Variable 22": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "accountId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest9.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Variable : accountId",
+        "nextStep": "HTTP Request 8",
+        "type": "Mutation"
+      },
+      "Define Variable 23": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedByEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest8.body[0].email"
+            }
+          ]
+        },
+        "displayName": "Variable : RequestedBy Email",
+        "nextStep": "HTTP Request 11",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "setUpLikePerson",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm2.formData.SetupLikePerson"
+            }
+          ]
+        },
+        "displayName": "setuplike",
+        "nextStep": "HTTP Request 12",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "existingMailbox",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.exchangeMailboxRequired"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form 1",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Access 1": {
+        "actionId": "sp:access:get",
+        "attributes": {
+          "accessprofiles": false,
+          "entitlements": true,
+          "getAccessBy": "searchQuery",
+          "query": "attributes.name.exact eq \"Consetuplikeiscent\" && source.id:\"e30d0436a20b45b79517a08f0380b1b1\"",
+          "roles": false
+        },
+        "description": "Get entitlement",
+        "displayName": "Get Entitlement",
+        "nextStep": "HTTP Request 5",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable11.latestID}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.384b0a8c-15df-4e7d-90c9-d4727e81a800",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.de87a460-0dca-488e-9f22-5af66fc2b640",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable2.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable2.AD_AccountID"
+          }
+        },
+        "displayName": "HTTP : Reload AD Account",
+        "nextStep": "Define Variable 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 11": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.2892d307-8f55-4822-86e5-af359cdad017",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.defineVariable1.contractorId}}\" and sourceId eq \"e30d0436a20b45b79517a08f0380b1b1\"",
+          "urlParams": {
+            "identityId": "$.defineVariable1.contractorId",
+            "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+          }
+        },
+        "displayName": "HTTP : Check account in AD source",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 12": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/NetworkAccessRequired",
+              "value.$": "$.interactiveForm.formData.NetworkAccess"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/ExchangeMailboxRequired",
+              "value.$": "$.interactiveForm2.formData.exchangeMailbox"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/SetupLikePerson",
+              "value.$": "$.defineVariable3.setUpLikePerson"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.0c591f35-1c1e-45f9-8c65-8164ef58bf68",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable22.accountId}}"
+        },
+        "displayName": "HTTP : Update account in network file",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/NetworkAccessRequired",
+              "value.$": "$.interactiveForm.formData.NetworkAccess"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/ExchangeMailboxRequired",
+              "value.$": "$.interactiveForm1.formData.exchangeMailbox"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/SetupLikePerson",
+              "value.$": "$.defineVariable.setUpLikePerson"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedReason",
+              "value": "Enabled Exchange Mailbox and updated SetupLikePerson from Launcher"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedBy",
+              "value": "{{$.interactiveForm.formData.requestedBy}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.0c591f35-1c1e-45f9-8c65-8164ef58bf68",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable22.accountId}}"
+        },
+        "displayName": "HTTP Request - Update SetupLike and Mailbox",
+        "nextStep": "HTTP Request 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/NetworkAccessRequired",
+              "value.$": "$.interactiveForm.formData.NetworkAccess"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/SetupLikePerson",
+              "value.$": "$.defineVariable.setUpLikePerson"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedReason",
+              "value": "Updated setUpLikePerson"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedBy",
+              "value": "{{$.interactiveForm.formData.requestedBy}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.0c591f35-1c1e-45f9-8c65-8164ef58bf68",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable22.accountId}}"
+        },
+        "displayName": "HTTP Request - Update only SetupLike",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.de87a460-0dca-488e-9f22-5af66fc2b640",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable2.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable2.AD_AccountID"
+          }
+        },
+        "displayName": "Reload Account",
+        "nextStep": "Get Access 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.de87a460-0dca-488e-9f22-5af66fc2b640",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable2.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable2.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Manage Access 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable21.requestedBy}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.2119f0bd-ad77-4491-8ff7-cafc8b2cc89d",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : Get requestedBy user",
+        "nextStep": "Define Variable 23",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 9": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthClientSecret": "$.secrets.e70ee558-4a4c-4c3f-94b2-8407ae2b4687",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.defineVariable1.contractorId}}\" and sourceId eq \"{{$.defineVariable21.sourceId}}\"",
+          "urlParams": {
+            "identityId": "$.defineVariable1.contractorId"
+          }
+        },
+        "displayName": "HTTP : Get network account",
+        "nextStep": "Define Variable 22",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "87cefc5b-b9ac-4998-93ea-b26a301e9dab",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<h3 class=\"interactive-process-page__header-text\">Contractor Network or Exchange Access Request</h3>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Contractor Network or Exchange Access Request"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 11",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "facbcd8d-2f61-44e5-a5bb-095186479c2a",
+          "inputForForm_existingMailbox.$": "$.defineVariable4.existingMailbox",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "AD Account Detected"
+        },
+        "displayName": "Confirm Update for SetupLike & Mailbox",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 2": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "facbcd8d-2f61-44e5-a5bb-095186479c2a",
+          "inputForForm_existingMailbox": null,
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "<p>You can Enable Exchange Mailbox by enable the toggle</p>",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Create AD Account"
+        },
+        "displayName": "Select Setuplike and mailbox",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Access 1": {
+        "actionId": "sp:access:manage",
+        "attributes": {
+          "addIdentities.$": "$.defineVariable1.contractorId",
+          "comments": "Adding entitlement as part of mailbox update",
+          "requestType": "GRANT_ACCESS",
+          "requestedItems.$": "$.getAccess1.accessItems"
+        },
+        "description": "Add entitlement to identity",
+        "displayName": "Add Entitlement",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "500000382"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "500000382"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '717d696a-54ff-4e27-97e4-6a209ddf8311')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

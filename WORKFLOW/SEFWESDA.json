@@ -1,0 +1,30 @@
+{
+  "id": "de944ffa-d9db-4cc3-b0d3-5b1abfdd3a49",
+  "name": "SEFWESDA",
+  "description": "",
+  "created": "2025-08-14T19:09:38.448634867Z",
+  "modified": "2025-08-14T19:09:38.448634867Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "definition": {
+    "steps": {}
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2ee847a2cc4a40f686bdb78d083f7f33",
+    "name": "500000328"
+  },
+  "trigger": {
+    "type": "",
+    "attributes": {}
+  }
+}

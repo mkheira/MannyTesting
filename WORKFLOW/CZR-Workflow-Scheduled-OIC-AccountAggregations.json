@@ -1,0 +1,65 @@
+{
+  "id": "88465f03-5ae4-4789-9f39-7534e31bebf6",
+  "name": "CZR-Workflow-Scheduled-OIC-AccountAggregations",
+  "description": "This workflow is scheduled to run every 20 minutes and it triggers OIC delta account aggregations.",
+  "created": "2025-05-28T13:05:58.090200713Z",
+  "modified": "2025-05-29T16:33:56.463891805Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "6114adc0a2174360a9e39055a9321cdc",
+    "name": "Phillip Martinez"
+  },
+  "definition": {
+    "start": "HTTP Request",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": {
+            "sourceId": "c5039caec257461081fd751ea421f0ad"
+          },
+          "method": "post",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.254a3e6c-9ae3-4e21-8975-ee1308348beb",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "form",
+          "requestHeaders": {
+            "Content-Type": "multipart/form-data"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/beta/sources/c5039caec257461081fd751ea421f0ad/load-accounts"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "trigger": {
+    "type": "SCHEDULED",
+    "attributes": {
+      "cronString": "0 0/20 * * * ?",
+      "frequency": "cronSchedule",
+      "id": "idn:cron-schedule",
+      "timeZone": "Etc/UTC"
+    }
+  }
+}

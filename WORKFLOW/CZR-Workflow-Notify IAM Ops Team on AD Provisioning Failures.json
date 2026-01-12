@@ -1,0 +1,151 @@
+{
+  "id": "b418bc51-9366-4ffb-9ac1-7a6d4d50b3d5",
+  "name": "CZR-Workflow-Notify IAM Ops Team on AD Provisioning Failures",
+  "description": "Notify IAM Ops Team on AD Provisioning Failures",
+  "created": "2025-03-13T11:07:29.43112873Z",
+  "modified": "2025-10-28T17:59:55.264909107Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Compare Strings": {
+        "choiceList": [
+          {
+            "comparator": "StringContains",
+            "nextStep": "Verify Data Type",
+            "variableA.$": "$.defineVariable.sources",
+            "variableB": "CZR-Application-ActiveDirectory-Dev.lab.local"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "description": "Check if provisioning sources contains AD",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "Sources of provisioning activity",
+              "name": "sources",
+              "transforms": [],
+              "variableA.$": "$.trigger.sources"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "recipient",
+              "name": "recipient",
+              "transforms": [],
+              "variableA.$": "$.trigger.recipient.name"
+            },
+            {
+              "description": "emailSubjectPrefix",
+              "name": "emailSubjectPrefix",
+              "transforms": [],
+              "variableA": "AD Provisioning Failed for User: "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 2",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "emailSubject",
+              "name": "emailSubject",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable1.recipient"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable1.emailSubjectPrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "displayName": "",
+        "type": "success"
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body.$": "$.trigger.errors",
+          "context": {},
+          "from": "",
+          "recipientEmailList": [
+            "skumar@caesars.com"
+          ],
+          "subject.$": "$.defineVariable2.emailSubject"
+        },
+        "description": "Send email to Caesars Ops Team on AD Provisioning Error",
+        "displayName": "",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Verify Data Type": {
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 1",
+            "variableA.$": "$.trigger.errors"
+          }
+        ],
+        "defaultStep": "End Step - Success 1",
+        "description": "Check for Errors",
+        "displayName": "",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:post-provisioning"
+    }
+  }
+}

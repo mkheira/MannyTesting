@@ -1,0 +1,96 @@
+{
+  "id": "dbbf4bed-cea7-42ea-a49c-00864c76ee19",
+  "name": "CZR-Workflow-Access Change",
+  "description": "This workflow captures identity details from the attribute change event and creates accounts with corresponding data on the dummy source \"CZR-Application-AccessChange\". An asynchronous powershell script (which runs daily) picks data from this source and generates a daily access change report.",
+  "created": "2025-02-26T22:57:01.003469807Z",
+  "modified": "2025-08-25T16:32:27.122369452Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "8221b47939d44ac1aade0324197049ca",
+    "name": "Medo Hafnaoui"
+  },
+  "definition": {
+    "start": "HTTP Request 1",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "assignmentNumber": "{{$.hTTPRequest1.body.attributes.assignmentNumber}}",
+              "assignmentStatusType": "{{$.hTTPRequest1.body.attributes.assignmentStatusType}}",
+              "assignmentStatusTypeCode": "{{$.hTTPRequest1.body.attributes.assignmentStatusTypeCode}}",
+              "employeeType": "{{$.hTTPRequest1.body.attributes.employeeType}}",
+              "firstname": "{{$.hTTPRequest1.body.attributes.firstname}}",
+              "harrahsADUserName": "{{$.hTTPRequest1.body.attributes.harrahsADUserName}}",
+              "id": "{{$.trigger.identity.id}}",
+              "lastname": "{{$.hTTPRequest1.body.attributes.lastname}}",
+              "personNumber": "{{$.hTTPRequest1.body.attributes.personNumber}}",
+              "sourceId": "a1608263b7e84f6c98cc084d7430218c",
+              "wHillUserName": "{{$.hTTPRequest1.body.attributes.wHillUserName}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "812d1a7a610246718c8ae9bd52fe5888",
+          "oAuthClientSecret": "$.secrets.eca79213-be99-49c3-8d41-5bc17acd8b97",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "description": "Post Data to \"CZR-Application-AccessChange\" to be cumulated for Daily Access Change Report",
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": null,
+          "method": "get",
+          "oAuthClientId": "812d1a7a610246718c8ae9bd52fe5888",
+          "oAuthClientSecret": "$.secrets.3446c977-b9e7-461e-b19e-07b45bf2cafa",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "X-SailPoint-Experimental": "true"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/v2024/identities/{{$.trigger.identity.id}}",
+          "urlParams": null
+        },
+        "description": "Get Identity Details",
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "6427bfb6ce00489799012963e65b85f6",
+    "name": "170004119"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.changes[?(@.attribute == \"department\" || @.attribute == \"jobCode\" || @.attribute == \"jobTitle\" || @.attribute == \"locationCode\" || @.attribute == \"locationDesc\" || @.attribute == \"managementLevelFlag\" || @.attribute == \"manager\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

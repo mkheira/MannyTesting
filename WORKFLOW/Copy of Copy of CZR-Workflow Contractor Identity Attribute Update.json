@@ -1,0 +1,1553 @@
+{
+  "id": "b7430e84-5ea3-4c1d-9523-0c55a117de8b",
+  "name": "Copy of Copy of CZR-Workflow Contractor Identity Attribute Update",
+  "description": "For updating contractor identity attributes",
+  "created": "2025-12-11T16:47:37.922805021Z",
+  "modified": "2025-12-12T14:30:06.915213004Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "500000381"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "Compare Boolean": {
+        "actionId": "sp:compare-boolean",
+        "choiceList": [
+          {
+            "comparator": "BooleanEquals",
+            "nextStep": "HTTP Request 6",
+            "variableA.$": "$.interactiveForm.formData.extendContractor",
+            "variableB": true
+          }
+        ],
+        "defaultStep": "Interactive Form 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericGreaterThanEquals",
+            "nextStep": "Verify Data Type",
+            "variableA.$": "$.hTTPRequest27.body.count()",
+            "variableB": 1
+          }
+        ],
+        "defaultStep": "End Step - Failure 10",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 3",
+            "variableA.$": "$.defineVariable6.newLastName",
+            "variableB": "$.interactiveForm1.formData.newLastName"
+          }
+        ],
+        "defaultStep": "HTTP Request 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 1",
+            "variableA.$": "$.defineVariable6.newDisplayName",
+            "variableB": "$.interactiveForm1.formData.newDisplayName"
+          }
+        ],
+        "defaultStep": "HTTP Request 9",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 2",
+            "variableA.$": "$.defineVariable6.newFirstName",
+            "variableB": "$.interactiveForm1.formData.newFirstName"
+          }
+        ],
+        "defaultStep": "HTTP Request 10",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 4",
+            "variableA.$": "$.defineVariable6.newLocationCode",
+            "variableB": "$.interactiveForm1.formData.newLocationCode"
+          }
+        ],
+        "defaultStep": "HTTP Request 4",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 5",
+            "variableA.$": "$.defineVariable6.newManagerName",
+            "variableB": "$.interactiveForm1.formData.newManagerName"
+          }
+        ],
+        "defaultStep": "HTTP Request 11",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 6",
+            "variableA.$": "$.defineVariable6.newPositionName",
+            "variableB": "$.interactiveForm1.formData.newPositionName"
+          }
+        ],
+        "defaultStep": "HTTP Request 12",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 7",
+            "variableA.$": "$.defineVariable6.newWorkerType",
+            "variableB": "$.interactiveForm1.formData.newWorkerType"
+          }
+        ],
+        "defaultStep": "HTTP Request 13",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 7": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 8",
+            "variableA.$": "$.defineVariable6.newAssignmentStatusType",
+            "variableB": "$.interactiveForm1.formData.newAssignmentStatusType"
+          }
+        ],
+        "defaultStep": "HTTP Request 14",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 8": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Verify Data Type 9",
+            "variableA.$": "$.defineVariable6.newBusinessUnitName",
+            "variableB": "$.interactiveForm1.formData.newBusinessUnitName"
+          }
+        ],
+        "defaultStep": "HTTP Request 15",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 9": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable6.newDepartmentName",
+            "variableB": "$.interactiveForm1.formData.newDepartmentName"
+          }
+        ],
+        "defaultStep": "HTTP Request 16",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "AccountId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].id"
+            },
+            {
+              "description": "Extract employee ID after the dash (including the space after dash)",
+              "name": "managerId",
+              "transforms": [
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-\\s*",
+                    "replacement": ""
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm1.formData.newManagerName"
+            }
+          ]
+        },
+        "displayName": "Account Id & Manager Id",
+        "nextStep": "Define Variable 6",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "userName",
+              "transforms": [
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "^.*-",
+                    "replacement": " "
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.updatingFor"
+            }
+          ]
+        },
+        "displayName": "Selected User Person Number",
+        "nextStep": "HTTP Request 2",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "identityID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest2.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Identity Id",
+        "nextStep": "Get Identity",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "appId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 17",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "AccountId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest6.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 7",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "appId",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest5.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 8",
+        "type": "Mutation"
+      },
+      "Define Variable 6": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "NewDisplayName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newDisplayName"
+            },
+            {
+              "description": "",
+              "name": "NewFirstName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newFirstName"
+            },
+            {
+              "description": "",
+              "name": "NewLastName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newLastName"
+            },
+            {
+              "description": "",
+              "name": "NewManagerName",
+              "transforms": [],
+              "variableA.$": "$.defineVariable.managerId"
+            },
+            {
+              "description": "",
+              "name": "NewLocationCode",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newLocationCode"
+            },
+            {
+              "description": "",
+              "name": "NewPositionName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newPositionName"
+            },
+            {
+              "description": "",
+              "name": "NewDepartmentName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newDepartmentName"
+            },
+            {
+              "description": "",
+              "name": "NewAssignmentStatusType",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newAssignmentStatusType"
+            },
+            {
+              "description": "",
+              "name": "NewBusinessUnitName",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newBusinessUnitName"
+            },
+            {
+              "description": "",
+              "name": "NewWorkerType",
+              "transforms": [],
+              "variableA.$": "$.interactiveForm1.formData.newWorkerType"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 27",
+        "type": "Mutation"
+      },
+      "Define Variable 7": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "AD_AccountID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest27.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Numbers",
+        "type": "Mutation"
+      },
+      "End Step - Failure": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureDetails": null,
+        "failureName": "Unable to update the display name",
+        "type": "failure"
+      },
+      "End Step - Failure 1": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update the first name",
+        "type": "failure"
+      },
+      "End Step - Failure 10": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Active Directory account not found for this user.",
+        "type": "failure"
+      },
+      "End Step - Failure 2": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update the last name",
+        "type": "failure"
+      },
+      "End Step - Failure 3": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update Location Code",
+        "type": "failure"
+      },
+      "End Step - Failure 4": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update the Manager Assignment Number",
+        "type": "failure"
+      },
+      "End Step - Failure 5": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update the Position Name",
+        "type": "failure"
+      },
+      "End Step - Failure 6": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update Worker Type",
+        "type": "failure"
+      },
+      "End Step - Failure 7": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update Assignment Status Type",
+        "type": "failure"
+      },
+      "End Step - Failure 8": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update Business Unit Name",
+        "type": "failure"
+      },
+      "End Step - Failure 9": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Unable to update Department Name",
+        "type": "failure"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "Success",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.defineVariable2.identityID"
+        },
+        "displayName": "",
+        "nextStep": "Compare Boolean",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"5bcb54289d5649149b01379de2d98800\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "5bcb54289d5649149b01379de2d98800"
+          }
+        },
+        "displayName": "Get Source Id",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 10": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/FirstName",
+              "value": "{{$.defineVariable6.newFirstName}}"
+            }
+          ],
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/FirstName",
+              "value": "{{$.defineVariable6.newFirstName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 1"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 19",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 11": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/ManagerAssignmentNumber",
+              "value": "{{$.defineVariable6.newManagerName}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/ManagerAssignmentNumber",
+              "value": "{{$.defineVariable6.newManagerName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 4"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 22",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 12": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/PositionName",
+              "value": "{{$.defineVariable6.newPositionName}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/PositionName",
+              "value": "{{$.defineVariable6.newPositionName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 5"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 23",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 13": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/WorkerType",
+              "value": "{{$.defineVariable6.newWorkerType}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/WorkerType",
+              "value": "{{$.defineVariable6.newWorkerType}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 6"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 24",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 14": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/AssignmentStatusType",
+              "value": "{{$.defineVariable6.newAssignmentStatusType}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/AssignmentStatusType",
+              "value": "{{$.defineVariable6.newAssignmentStatusType}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 7"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 25",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 15": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/BusinessUnitName",
+              "value": "{{$.defineVariable6.newBusinessUnitName}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/BusinessUnitName",
+              "value": "{{$.defineVariable6.newBusinessUnitName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 8"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 26",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 16": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/DepartmentName",
+              "value": "{{$.defineVariable6.newDepartmentName}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/DepartmentName",
+              "value": "{{$.defineVariable6.newDepartmentName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 9"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 17": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedReason",
+              "value": "{{$.interactiveForm.formData.reasonToUpdate}}"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedBy",
+              "value": "{{$.interactiveForm.formData.updatedBy}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable3.appId}}"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 18": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 36",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 19": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 37",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable1.userName}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "Get User Request",
+        "nextStep": "Define Variable 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 20": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 28",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 21": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 29",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 22": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 30",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 23": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 31",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 24": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 32",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 25": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 33",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 26": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 34",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 27": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.defineVariable2.identityID}}\" and sourceId eq \"e30d0436a20b45b79517a08f0380b1b1\"",
+          "urlParams": {
+            "identityId": "$.defineVariable2.identityID",
+            "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 7",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 28": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 29": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            [
+              {
+                "op": "add",
+                "path": "/attributes/LastName",
+                "value": "{{$.defineVariable6.newLastName}}"
+              }
+            ]
+          ],
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/LastName",
+              "value": "{{$.defineVariable6.newLastName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 2"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 20",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 30": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 31": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 32": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 7",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 33": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 8",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 34": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 9",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 36": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 37": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "post",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable7.AD_AccountID}}/reload",
+          "urlParams": {
+            "AD_AccountID": "$.defineVariable7.AD_AccountID"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/LocationCode",
+              "value": "{{$.defineVariable6.newLocationCode}}"
+            }
+          ],
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/LocationCode",
+              "value": "{{$.defineVariable6.newLocationCode}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure 3"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 21",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/UpdatedReason",
+              "value": "{{$.interactiveForm.formData.reasonToUpdate}}"
+            }
+          ],
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"6656e52b129943fba8e6731cffc90d09\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "6656e52b129943fba8e6731cffc90d09"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts?filters=identityId eq \"{{$.getIdentity.id}}\" and sourceId eq \"a85f3c961657493ab730deaa570bacbc\"",
+          "urlParams": {
+            "identityId": "$.getIdentity.id",
+            "sourceId": "a85f3c961657493ab730deaa570bacbc"
+          }
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 7": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "replace",
+              "path": "/attributes/contractorTerminationDate",
+              "value": "{{$.interactiveForm.formData.contractEndDate}}"
+            },
+            {
+              "op": "replace",
+              "path": "/attributes/location",
+              "value": "{{$.getIdentity.attributes.location}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthCredentialLocation": null,
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable4.accountId}}",
+          "urlParams": null
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedReason",
+              "value": "{{$.interactiveForm.formData.reasonToUpdate}}"
+            },
+            {
+              "op": "add",
+              "path": "/attributes/UpdatedBy",
+              "value": "{{$.interactiveForm.formData.updatedBy}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable5.appId}}",
+          "urlParams": null
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 9": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/DisplayName",
+              "value": "{{$.defineVariable6.newDisplayName}}"
+            }
+          ],
+          "jsonRequestBody": [
+            {
+              "op": "add",
+              "path": "/attributes/DisplayName",
+              "value": "{{$.defineVariable6.newDisplayName}}"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "04e17c484bd8428f8dfad8d96557f3a9",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v2025/accounts/{{$.defineVariable.accountId}}"
+        },
+        "catch": [
+          {
+            "next": "End Step - Failure"
+          }
+        ],
+        "displayName": "",
+        "nextStep": "HTTP Request 18",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "2878548b-c682-48ce-8434-c2ebcb1d26a6",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": ""
+        },
+        "displayName": "Select Identity Form",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Interactive Form 1": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "7e84e4e8-c337-444d-a9e5-123d78db40a5",
+          "inputForForm_array_getIdentityAttributes.$": "$.getIdentity.attributes",
+          "inputForForm_array_getIdentityAttributes_label": "$.cloudAuthoritativeSource",
+          "inputForForm_array_getIdentityAttributes_subLabel": null,
+          "inputForForm_array_getIdentityAttributes_value": "$.cloudAuthoritativeSource",
+          "inputForForm_assignmentStatusType.$": "$.getIdentity.attributes.assignmentStatusType",
+          "inputForForm_businessUnitName.$": "$.getIdentity.attributes.businessUnitName",
+          "inputForForm_departmentName.$": "$.getIdentity.attributes.department",
+          "inputForForm_displayName.$": "$.getIdentity.attributes.displayName",
+          "inputForForm_email.$": "$.getIdentity.attributes.email",
+          "inputForForm_firstName.$": "$.getIdentity.attributes.firstname",
+          "inputForForm_lastName.$": "$.getIdentity.attributes.lastname",
+          "inputForForm_locationCode.$": "$.getIdentity.attributes.locationCode",
+          "inputForForm_managerName.$": "$.getIdentity.attributes.managerDisplayName",
+          "inputForForm_personNumber.$": "$.getIdentity.attributes.personNumber",
+          "inputForForm_positionName.$": "$.getIdentity.attributes.employeeType",
+          "inputForForm_workerType.$": "$.getIdentity.attributes.workerType",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": ""
+        },
+        "displayName": "Attribute Update Form",
+        "nextStep": "HTTP Request 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 1",
+            "variableA.$": "$.defineVariable6.newDisplayName"
+          }
+        ],
+        "defaultStep": "Compare Strings 1",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 2",
+            "variableA.$": "$.defineVariable6.newFirstName"
+          }
+        ],
+        "defaultStep": "Compare Strings 2",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 2": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 3",
+            "variableA.$": "$.defineVariable6.newLastName"
+          }
+        ],
+        "defaultStep": "Compare Strings",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 3": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 4",
+            "variableA.$": "$.defineVariable6.newLocationCode"
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 4": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 5",
+            "variableA.$": "$.defineVariable6.newManagerName"
+          }
+        ],
+        "defaultStep": "Compare Strings 4",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 5": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 6",
+            "variableA.$": "$.defineVariable6.newPositionName"
+          }
+        ],
+        "defaultStep": "Compare Strings 5",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 6": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 7",
+            "variableA.$": "$.defineVariable6.newWorkerType"
+          }
+        ],
+        "defaultStep": "Compare Strings 6",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 7": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 8",
+            "variableA.$": "$.defineVariable6.newAssignmentStatusType"
+          }
+        ],
+        "defaultStep": "Compare Strings 7",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 8": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "Verify Data Type 9",
+            "variableA.$": "$.defineVariable6.newBusinessUnitName"
+          }
+        ],
+        "defaultStep": "Compare Strings 8",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 9": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsNull",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable6.newDepartmentName"
+          }
+        ],
+        "defaultStep": "Compare Strings 9",
+        "displayName": "",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "500000381"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "500000381"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == 'b7430e84-5ea3-4c1d-9523-0c55a117de8b')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

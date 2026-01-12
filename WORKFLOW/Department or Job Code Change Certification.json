@@ -1,0 +1,104 @@
+{
+  "id": "7dafa9fb-da1b-4360-b805-a5ce5c2ae06f",
+  "name": "Department or Job Code Change Certification",
+  "description": "Triggers a certification and notifies manager when an identity's department or job code changes",
+  "created": "2025-10-06T15:59:58.406437868Z",
+  "modified": "2025-10-14T21:30:39.498935929Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "800761288"
+  },
+  "definition": {
+    "start": "Compare Department or Job Code",
+    "steps": {
+      "Compare Department or Job Code": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringDoesNotEquals",
+            "nextStep": "Create Certification Campaign",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'department')].oldValue",
+            "variableB.$": "$.trigger.changes[?(@.attribute == 'department')].newValue"
+          },
+          {
+            "comparator": "StringDoesNotEquals",
+            "nextStep": "Create Certification Campaign",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'jobCode')].oldValue",
+            "variableB.$": "$.trigger.changes[?(@.attribute == 'jobCode')].newValue"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "type": "choice"
+      },
+      "Create Certification Campaign": {
+        "actionId": "sp:create-campaign",
+        "attributes": {
+          "activateUponCreation": true,
+          "description": "Review access due to department or job code change",
+          "duration": "7d",
+          "emailNotificationEnabled": true,
+          "name": "Department or Job Code Change Review",
+          "recommendationsEnabled": true,
+          "type": "MANAGER",
+          "undecidedAccess": false
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "Get Identity",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "displayName": "",
+        "nextStep": "Send Email to Manager",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email to Manager": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "An access review has been initiated due to a change in department or job code for ${getIdentity.name}. Please review their access in the certification campaign.",
+          "context": {
+            "name.$": "$.getIdentity.name"
+          },
+          "from": "",
+          "recipientEmailList.$": "$.getIdentity.attributes.managerEmail",
+          "replyTo": "",
+          "subject": "Access Review Required: Department or Job Code Change"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "jobCode",
+      "filter.$": "$.changes[?(@.attribute == \"jobCode\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

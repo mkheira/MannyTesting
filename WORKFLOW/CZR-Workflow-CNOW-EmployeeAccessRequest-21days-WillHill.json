@@ -1,0 +1,1808 @@
+{
+  "id": "7328a7b1-eb1f-4b8c-972c-cb00ee07b545",
+  "name": "CZR-Workflow-CNOW-EmployeeAccessRequest-21days-WillHill",
+  "description": "Enhanced to support both Harrahs and William Hill domains",
+  "created": "2025-10-23T13:59:46.253520526Z",
+  "modified": "2025-12-18T14:42:07.855382354Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "170004121"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringStartsWith",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable.empId",
+            "variableB": "900"
+          }
+        ],
+        "defaultStep": "HTTP Request 7",
+        "displayName": "empID starts with 800?",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 2",
+            "variableA.$": "$.defineVariable1.assignmentStatusType",
+            "variableB": "ACTIVE"
+          }
+        ],
+        "defaultStep": "HTTP Request 8",
+        "displayName": "User is active in IDN?",
+        "type": "choice"
+      },
+      "Compare Strings 10": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 11",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.isStartDateMoreThan21",
+            "variableB": "True"
+          }
+        ],
+        "defaultStep": "HTTP Request 4",
+        "displayName": "Start Date - 21 days check",
+        "type": "choice"
+      },
+      "Compare Strings 10 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 11 WH",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.isStartDateMoreThan21",
+            "variableB": "True"
+          }
+        ],
+        "defaultStep": "HTTP Request 4 WH",
+        "displayName": "Start Date - 21 days check (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 11": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 10",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.employeeType",
+            "variableB": "P"
+          }
+        ],
+        "defaultStep": "Compare Strings 12",
+        "displayName": "workerType P?",
+        "type": "choice"
+      },
+      "Compare Strings 11 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 10 WH",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.employeeType",
+            "variableB": "P"
+          }
+        ],
+        "defaultStep": "Compare Strings 12 WH",
+        "displayName": "workerType P? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 12": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 11",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.employeeType",
+            "variableB": "E"
+          }
+        ],
+        "defaultStep": "Compare Strings 13",
+        "displayName": "workerType E?",
+        "type": "choice"
+      },
+      "Compare Strings 12 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 11 WH",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.employeeType",
+            "variableB": "E"
+          }
+        ],
+        "defaultStep": "Compare Strings 13 WH",
+        "displayName": "workerType E? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 13": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 18",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.cloudLifecycleState",
+            "variableB": "inactive"
+          }
+        ],
+        "defaultStep": "HTTP Request 4",
+        "displayName": "LCS Inactive?",
+        "type": "choice"
+      },
+      "Compare Strings 13 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 18",
+            "variableA.$": "$.hTTPRequest.body[0].attributes.cloudLifecycleState",
+            "variableB": "inactive"
+          }
+        ],
+        "defaultStep": "HTTP Request 4 WH",
+        "displayName": "LCS Inactive? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 3",
+            "variableA.$": "$.defineVariable.networkRequired",
+            "variableB": "Yes"
+          }
+        ],
+        "defaultStep": "Compare Strings 8",
+        "displayName": "networkRequired is yes?",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings Domain 1",
+            "variableA.$": "$.defineVariable2.excludedLocationFlag",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "Compare Strings Domain",
+        "displayName": "LocationCode is part of excluded list?",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.defineVariable3.setupLikePersonNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 10",
+        "description": "\"defineVariable3\" is HTTP response\n\"DefindVariable\" is input variable.\n\nif setuplikeperson is same for both means user is available in IDN",
+        "displayName": "setuplike person is not null ?",
+        "type": "choice"
+      },
+      "Compare Strings 4 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 4 WH",
+            "variableA.$": "$.defineVariable3WH.setupLikePersonNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 10",
+        "displayName": "setuplike person is not null ? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 3",
+            "variableA.$": "$.hTTPRequest2.body[0].attributes.personNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 11",
+        "displayName": "has AD like requestedFor ?",
+        "type": "choice"
+      },
+      "Compare Strings 5 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 3 WH",
+            "variableA.$": "$.hTTPRequest2WH.body[0].attributes.personNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 11",
+        "displayName": "has AD like requestedFor ? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 5",
+            "variableA.$": "$.hTTPRequest3.body[0].attributes.personNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 12",
+        "displayName": "has entitlement in AD?",
+        "type": "choice"
+      },
+      "Compare Strings 6 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 5 WH",
+            "variableA.$": "$.hTTPRequest3WH.body[0].attributes.personNumber",
+            "variableB.$": "$.defineVariable.setupLikeUserId"
+          }
+        ],
+        "defaultStep": "HTTP Request 12",
+        "displayName": "has entitlement in AD? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 7": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 6",
+            "variableA.$": "$.defineVariable5.requestedForNativeIdentity",
+            "variableB.$": "$.defineVariable.empId"
+          }
+        ],
+        "defaultStep": "Define Variable 7",
+        "displayName": "RequestedFor account exists?",
+        "type": "choice"
+      },
+      "Compare Strings 7 WH": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Define Variable 6 WH",
+            "variableA.$": "$.defineVariable5WH.requestedForNativeIdentity",
+            "variableB.$": "$.defineVariable.empId"
+          }
+        ],
+        "defaultStep": "Define Variable 7 WH",
+        "displayName": "RequestedFor account exists? (WH)",
+        "type": "choice"
+      },
+      "Compare Strings 8": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 13",
+            "variableA.$": "$.defineVariable.emailRequired",
+            "variableB": "Yes"
+          }
+        ],
+        "defaultStep": "End Step - Failure",
+        "displayName": "emailRequired is Yes?",
+        "type": "choice"
+      },
+      "Compare Strings 9": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 5",
+            "variableA.$": "$.hTTPRequest13.body[0].attributes.personNumber",
+            "variableB.$": "$.defineVariable.empId"
+          }
+        ],
+        "defaultStep": "HTTP Request 14",
+        "displayName": "has AD?",
+        "type": "choice"
+      },
+      "Compare Strings Domain": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request 1 WH",
+            "variableA.$": "$.defineVariable.domain",
+            "variableB": "WilliamHill"
+          }
+        ],
+        "defaultStep": "HTTP Request 1",
+        "displayName": "Is William Hill Domain?",
+        "type": "choice"
+      },
+      "Compare Strings Domain 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings Domain",
+            "variableA.$": "$.defineVariable.domain",
+            "variableB": "WilliamHill"
+          }
+        ],
+        "defaultStep": "HTTP Request 9",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "empId",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.empId"
+            },
+            {
+              "description": "",
+              "name": "requestedByUserId",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.requestedByUserId"
+            },
+            {
+              "description": "",
+              "name": "setupLikeUserId",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.setupLikeUserId"
+            },
+            {
+              "description": "",
+              "name": "sctasknum",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.sctasknum"
+            },
+            {
+              "description": "",
+              "name": "sctasksysid",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.sctasksysid"
+            },
+            {
+              "description": "",
+              "name": "emailRequired",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.emailRequired"
+            },
+            {
+              "description": "",
+              "name": "networkRequired",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.networkRequired"
+            },
+            {
+              "description": "Target domain - Harrahs or WilliamHill",
+              "name": "domain",
+              "transforms": [],
+              "variableA.$": "$.trigger.workflowArgs.domain"
+            }
+          ]
+        },
+        "displayName": "Variable : Input variables from snow",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "assignmentStatusType",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.assignmentStatusType"
+            },
+            {
+              "description": "",
+              "name": "userEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.email"
+            }
+          ]
+        },
+        "displayName": "Variable : get assignmentStatusType",
+        "nextStep": "Compare Strings 1",
+        "type": "Mutation"
+      },
+      "Define Variable 10": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "projdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:subtractTime:time",
+                  "input": {
+                    "length": 21,
+                    "unit": "days"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable9.projdate21Days"
+            }
+          ]
+        },
+        "displayName": "Variable 10: ISO 8601 ProjDate",
+        "nextStep": "HTTP Request 16",
+        "type": "Mutation"
+      },
+      "Define Variable 10 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "projdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:subtractTime:time",
+                  "input": {
+                    "length": 21,
+                    "unit": "days"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable9WH.projdate21Days"
+            }
+          ]
+        },
+        "displayName": "Variable 10: ISO 8601 ProjDate (WH)",
+        "nextStep": "HTTP Request 16 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 11": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "asgdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:subtractTime:time",
+                  "input": {
+                    "length": 21,
+                    "unit": "days"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable9.asgdate21Days"
+            }
+          ]
+        },
+        "displayName": "Variable 11: ISO 8601 AsgDate",
+        "nextStep": "HTTP Request 17",
+        "type": "Mutation"
+      },
+      "Define Variable 11 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "asgdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:subtractTime:time",
+                  "input": {
+                    "length": 21,
+                    "unit": "days"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable9WH.asgdate21Days"
+            }
+          ]
+        },
+        "displayName": "Variable 11: ISO 8601 AsgDate (WH)",
+        "nextStep": "HTTP Request 17 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationCode",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.locationCode"
+            },
+            {
+              "description": "",
+              "name": "AdDomainBasedOnLocation",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.mappedAdDomain"
+            },
+            {
+              "description": "",
+              "name": "excludedLocationFlag",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.excludedLocationFlag"
+            }
+          ]
+        },
+        "displayName": "Variable : Location and AD domain",
+        "nextStep": "Compare Strings 2",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "setupLikePersonNumber",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1.body[0].attributes.personNumber"
+            }
+          ]
+        },
+        "displayName": " Variable : setUplikePerson Number",
+        "nextStep": "Compare Strings 4",
+        "type": "Mutation"
+      },
+      "Define Variable 3 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "name": "setupLikePersonNumber",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest1WH.body[0].attributes.personNumber"
+            }
+          ]
+        },
+        "displayName": " Variable : setUplikePerson Number (WH)",
+        "nextStep": "Compare Strings 4 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "adDomainNameRequestedFor",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.mappedAdDomain"
+            }
+          ]
+        },
+        "displayName": "Variable : ADdomainName(RequestedFor)",
+        "nextStep": "HTTP Request 2",
+        "type": "Mutation"
+      },
+      "Define Variable 4 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "adDomainNameRequestedFor",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.mappedAdDomain"
+            }
+          ]
+        },
+        "displayName": "Variable : ADdomainName(RequestedFor) (WH)",
+        "nextStep": "HTTP Request 2 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedForNativeIdentity",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest5.body[0].nativeIdentity"
+            },
+            {
+              "description": "",
+              "name": "requestedForAccountID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest5.body[0].id"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 7",
+        "type": "Mutation"
+      },
+      "Define Variable 5 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "requestedForNativeIdentity",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest5WH.body[0].nativeIdentity"
+            },
+            {
+              "description": "",
+              "name": "requestedForAccountID",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest5WH.body[0].id"
+            }
+          ]
+        },
+        "displayName": "Define Variable 5 (WH)",
+        "nextStep": "Compare Strings 7 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 6": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "PatchBody",
+              "transforms": [],
+              "variableA": "[     {         \"op\": \"replace\", \"path\": \"/attributes/Status\",\"value\":\"Inactive\"     } ]"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 6",
+        "type": "Mutation"
+      },
+      "Define Variable 6 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "PatchBody",
+              "transforms": [],
+              "variableA": "[     {         \"op\": \"replace\", \"path\": \"/attributes/Status\",\"value\":\"Inactive\"     } ]"
+            }
+          ]
+        },
+        "displayName": "Define Variable 6 (WH)",
+        "nextStep": "HTTP Request 6 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 7": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "networkRequested",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "Yes",
+                    "replacement": "true"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "No",
+                    "replacement": "false"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable.networkRequired"
+            },
+            {
+              "description": "",
+              "name": "emailRequested",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "Yes",
+                    "replacement": "true"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "No",
+                    "replacement": "false"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable.emailRequired"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request 15",
+        "type": "Mutation"
+      },
+      "Define Variable 7 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "networkRequested",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "Yes",
+                    "replacement": "true"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "No",
+                    "replacement": "false"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable.networkRequired"
+            },
+            {
+              "description": "",
+              "name": "emailRequested",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "Yes",
+                    "replacement": "true"
+                  }
+                },
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": "No",
+                    "replacement": "false"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable.emailRequired"
+            }
+          ]
+        },
+        "displayName": "Define Variable 7 (WH)",
+        "nextStep": "HTTP Request 15 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 8": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "requestedByEmail",
+              "name": "requestedByEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest15.body[0].attributes.email"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 9",
+        "type": "Mutation"
+      },
+      "Define Variable 8 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "requestedByEmail",
+              "name": "requestedByEmail",
+              "transforms": [],
+              "variableA.$": "$.hTTPRequest15WH.body[0].attributes.email"
+            }
+          ]
+        },
+        "displayName": "Define Variable 8 (WH)",
+        "nextStep": "Define Variable 9 WH",
+        "type": "Mutation"
+      },
+      "Define Variable 9": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "asgdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "T00:00:00.000Z"
+                  }
+                }
+              ],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.assignmentStartDate"
+            },
+            {
+              "description": "",
+              "name": "projdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "T00:00:00.000Z"
+                  }
+                }
+              ],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.projectedStartDate"
+            }
+          ]
+        },
+        "displayName": "Variable 9: Get AsgDate and ProjDate",
+        "nextStep": "Compare Strings 10",
+        "type": "Mutation"
+      },
+      "Define Variable 9 WH": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "asgdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "T00:00:00.000Z"
+                  }
+                }
+              ],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.assignmentStartDate"
+            },
+            {
+              "description": "",
+              "name": "projdate21Days",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "T00:00:00.000Z"
+                  }
+                }
+              ],
+              "variableA.$": "$.hTTPRequest.body[0].attributes.projectedStartDate"
+            }
+          ]
+        },
+        "displayName": "Variable 9: Get AsgDate and ProjDate (WH)",
+        "nextStep": "Compare Strings 10 WH",
+        "type": "Mutation"
+      },
+      "End Step - Failure": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureDetails": "Ending workflow because network and email access are not requested.",
+        "failureName": "Network and email are not requested",
+        "type": "failure"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 3": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 4 WH": {
+        "actionId": "sp:operator-success",
+        "displayName": "End Step - Success 4 (WH)",
+        "type": "success"
+      },
+      "End Step - Success 5": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 6": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 7": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "End Step - Success 8": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.empId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.523c5a2a-4c41-4f5a-b810-7106244bc5a2",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : Get user details",
+        "nextStep": "Define Variable 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.9cc5c08b-812e-4ab7-a32d-2b973f817537",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : setuplike User details",
+        "nextStep": "Define Variable 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.9da0803e-7ba3-4325-ae6a-7e57353a8c75",
+          "oAuthCredentialLocation": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : setuplike User details (WH)",
+        "nextStep": "Define Variable 3 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 10": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed. The provided setupLikeUser doesn't exist in SailPoint. SetupLikeUserPersonNumber: {{$.defineVariable.setupLikeUserId}}, Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 11": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed. The provided setupLikeUser doesn't have an existing network account in domain: {{$.hTTPRequest.body[0].attributes.mappedAdDomain}}. SetupLikeUserPersonNumber: {{$.defineVariable.setupLikeUserId}}, Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 12": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed. The provided setupLikeUser is not a member of any group. SetupLikeUserPersonNumber: {{$.defineVariable.setupLikeUserId}}, Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 13": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.empId}} AND @accounts(source.name:\"CZR-Application-ActiveDirectory-Dev.lab.local\")"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "description": null,
+        "displayName": "Get AD Details",
+        "nextStep": "Compare Strings 9",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 14": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed. The user (Employee id: {{$.defineVariable.empId}}) doesn't have a network account."
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 15": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.requestedByUserId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 8",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 15 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.requestedByUserId}}"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.e4371226-3d8e-414b-8fb8-4361514656fe",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "description": null,
+        "displayName": "HTTP Request 15 (WH)",
+        "nextStep": "Define Variable 8 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 16": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Start date is more than 21 days in future, request will be worked on {{$.defineVariable10.projdate21Days}} for Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket 2",
+        "nextStep": "Compare Strings 13",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 16 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Start date is more than 21 days in future, request will be worked on {{$.defineVariable10WH.projdate21Days}} for Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket 2 (WH)",
+        "nextStep": "Compare Strings 13 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 17": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Start date is more than 21 days in future, request will be worked on {{$.defineVariable11.asgdate21Days}} for Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket 1",
+        "nextStep": "Compare Strings 13",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 17 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Start date is more than 21 days in future, request will be worked on {{$.defineVariable11WH.asgdate21Days}} for Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket 1 (WH)",
+        "nextStep": "Compare Strings 13 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 18": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Employee is no longer valid, request has not been processed for Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket 3",
+        "nextStep": "End Step - Success 8",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}} AND @accounts(source.name:\"CZR-Application-ActiveDirectory-Dev.lab.local\")"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : setUplikeUser AD details",
+        "nextStep": "Compare Strings 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}} AND @accounts(source.name:\"CZR-Application-ActiveDirectory-WilliamHill\")"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.164db6b7-31b1-4201-b5f8-8fe780a054ef",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : setUplikeUser AD details (WH)",
+        "nextStep": "Compare Strings 5 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}}  AND @accounts(source.name:\"CZR-Application-ActiveDirectory-Dev.lab.local\" AND _exists_:entitlementAttributes.memberOf)"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.76207861-9e45-452f-85c2-1de17b3bf5ca",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : memberOf of setUplikePerson",
+        "nextStep": "Compare Strings 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "indices": [
+              "identities"
+            ],
+            "query": {
+              "query": "attributes.uid:{{$.defineVariable.setupLikeUserId}}  AND @accounts(source.name:\"CZR-Application-ActiveDirectory-WilliamHill\" AND _exists_:entitlementAttributes.memberOf)"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.a89f7505-019d-4067-a50f-78b90d023c86",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/search"
+        },
+        "displayName": "HTTP : memberOf of setUplikePerson (WH)",
+        "nextStep": "Compare Strings 6 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "ExchangeMailboxRequired": "{{$.defineVariable7.emailRequested}}",
+              "NetworkAccessRequired": "{{$.defineVariable7.networkRequested}}",
+              "RequestedBy": "{{$.defineVariable.requestedByUserId}}",
+              "RequestedByEmail": "{{$.defineVariable8.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable.empId}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable.empId}}",
+              "SetupLikePerson": "{{$.defineVariable.setupLikeUserId}}",
+              "Status": "active",
+              "TaskNumber": "{{$.defineVariable.sctasknum}}",
+              "TaskSysId": "{{$.defineVariable.sctasksysid}}",
+              "sourceId": "ded5c044d138470684355e6d9c11a549"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "HTTP : Create/Update User in EmployeeNetwork source",
+        "nextStep": "End Step - Success 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "Domain": "WilliamHill",
+              "ExchangeMailboxRequired": "{{$.defineVariable7WH.emailRequested}}",
+              "NetworkAccessRequired": "{{$.defineVariable7WH.networkRequested}}",
+              "RequestedBy": "{{$.defineVariable.requestedByUserId}}",
+              "RequestedByEmail": "{{$.defineVariable8WH.requestedByEmail}}",
+              "RequestedFor": "{{$.defineVariable.empId}}",
+              "RequestedForPersonalNumber": "{{$.defineVariable.empId}}",
+              "SetupLikePerson": "{{$.defineVariable.setupLikeUserId}}",
+              "Status": "active",
+              "TaskNumber": "{{$.defineVariable.sctasknum}}",
+              "TaskSysId": "{{$.defineVariable.sctasksysid}}",
+              "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.50b52650-cf49-4d9b-b9a2-cc836936f1ce",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "description": null,
+        "displayName": "HTTP : Create/Update User in WilliamHill EmployeeNetwork source",
+        "nextStep": "End Step - Success 4 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "nativeIdentity eq \"{{$.defineVariable.empId}}\" and sourceId eq \"ded5c044d138470684355e6d9c11a549\""
+          }
+        },
+        "displayName": "HTTP : RequestedFor account details",
+        "nextStep": "Define Variable 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.62f7b8c8-2275-40d2-8806-0cc5a07cfd09",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts",
+          "urlParams": {
+            "filters": "nativeIdentity eq \"{{$.defineVariable.empId}}\" and sourceId eq \"b1f0ca79f2224c2bad0d41372e14e774\""
+          }
+        },
+        "displayName": "HTTP : RequestedFor account details (WH)",
+        "nextStep": "Define Variable 5 WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "$.defineVariable6.patchBody",
+          "method": "patch",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable5.requestedForAccountID}}"
+        },
+        "displayName": "",
+        "nextStep": "Wait",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 6 WH": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody.$": "$.defineVariable6WH.patchBody",
+          "method": "patch",
+          "oAuthClientId": "4847cf012c464e949ad9af210f65fadb",
+          "oAuthClientSecret": "$.secrets.0d85f27f-55b7-423b-ac82-e4ed945f1564",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts/{{$.defineVariable5WH.requestedForAccountID}}"
+        },
+        "displayName": "HTTP Request 6 (WH)",
+        "nextStep": "Wait WH",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 7": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Network/Email creation is not supported for employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 8": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed.  Identity is not active in SailPoint. Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 9": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "basic",
+          "basicAuthUserName": "iiq_integration_user",
+          "jsonRequestBody": {
+            "assignment_group": "e709934c934f5edc720fb25a7bba108e",
+            "state": "-5",
+            "work_notes": "Operation Failed.  User's location code doesn't allow Network account creation. Location Code: {{$.defineVariable2.locationCode}}, Employee id: {{$.defineVariable.empId}}"
+          },
+          "method": "post",
+          "requestContentType": "json",
+          "requestHeaders": {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "X-HTTP-Method-Override": "PATCH"
+          },
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task/{{$.defineVariable.sctasksysid}}"
+        },
+        "description": "Update CNOW Ticket on failure",
+        "displayName": "Update CNOW Ticket",
+        "nextStep": "Send Email 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p><span data-olk-copy-source=\"MessageBody\">This is to notify you that Network/Exchange MailBox creation failed because </span>{{$.defineVariable.empId}} is not active in SP.&nbsp;</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Invalid EmployeeId for Network/Email Creation"
+        },
+        "displayName": "Send Email to Ops Team",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 1": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Network/Exchange MailBox creation failed because identity ({{$.defineVariable.empId}}) is not active in SP.</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "Send Email to Ops Team",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 2": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Network/Exchange mailbox creation failed because user's ({{$.defineVariable.empId}}) location code ({{$.defineVariable2.locationCode}}) doesn't allow network account creation</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "Send Email to Ops Team",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 3": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Network/Email creation for {{$.defineVariable.empId}} failed because the provided setuplike User ({{$.defineVariable.setupLikeUserId}}) does not exist in SP.</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "Send Email to Ops Team",
+        "nextStep": "End Step - Success 3",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 4": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Network/Exchange mailbox creation failed for {{$.defineVariable.empId}} failed because setuplike user( {{$.defineVariable.setupLikeUserId}}) does not have an existing network account in domain({{$.hTTPRequest.body[0].attributes.mappedAdDomain}}).</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "Send Email to Ops Team",
+        "nextStep": "End Step - Success 6",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 5": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Network/Exchange mailbox creation failed for {{$.defineVariable.empId}} because setuplike user({{$.defineVariable.setupLikeUserId}}) is not a member of any group.</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email 6": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>This is to notify you that Exchange mailbox creation failed for {{$.defineVariable.empId}} because the user doesn't have a network account.</p>\n<p>ID: {{$.defineVariable.sctasknum}}</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Network/Exchange Mailbox request failed"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 7",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Wait": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 7",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Wait WH": {
+        "actionId": "sp:sleep",
+        "attributes": {
+          "duration": "1m",
+          "type": "waitFor"
+        },
+        "displayName": "Wait (WH)",
+        "nextStep": "Define Variable 7 WH",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "trigger": {
+    "type": "EXTERNAL",
+    "attributes": {
+      "clientId": "b31cb309-badf-4a93-b9ab-a1cbc1fb0a7d",
+      "id": "idn:external-http",
+      "url": "/beta/workflows/execute/external/7328a7b1-eb1f-4b8c-972c-cb00ee07b545"
+    }
+  }
+}

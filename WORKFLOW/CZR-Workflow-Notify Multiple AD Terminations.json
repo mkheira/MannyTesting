@@ -1,0 +1,183 @@
+{
+  "id": "f58fe1d4-2b1c-4de8-9d4d-402af8431298",
+  "name": "CZR-Workflow-Notify Multiple AD Terminations",
+  "description": "As per (05/08/2025), if a user contains multiple AD accounts in Dev.lab.local and is terminated. All AD accounts will be disabled, but post termination clean up operations such as changing description, removing entitlements, resetting manager will not take place by default.\nThis workflow will generate notifications to the MOPS team to make changes for secondary accounts manually.",
+  "created": "2025-05-08T18:06:50.475684642Z",
+  "modified": "2025-09-04T21:04:42.790483211Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Loop",
+    "steps": {
+      "End Step - Success 2": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.trigger.identity",
+          "input.$": "$.trigger.changes",
+          "start": "Compare Strings",
+          "steps": {
+            "Compare Numbers": {
+              "actionId": "sp:compare-numbers",
+              "choiceList": [
+                {
+                  "comparator": "NumericGreaterThan",
+                  "nextStep": "Send Email",
+                  "variableA.$": "$.hTTPRequest.body.length()",
+                  "variableB": 1
+                }
+              ],
+              "defaultStep": "End Step - Success 4",
+              "displayName": "",
+              "type": "choice"
+            },
+            "Compare Strings": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Compare Strings 1",
+                  "variableA.$": "$.loop.loopInput.attribute",
+                  "variableB": "cloudLifecycleState"
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "description": "",
+              "displayName": "Is CloudLifeCycleState?",
+              "type": "choice"
+            },
+            "Compare Strings 1": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Define Variable",
+                  "variableA.$": "$.loop.loopInput.newValue",
+                  "variableB": "inactive"
+                }
+              ],
+              "defaultStep": "End Step - Success 1",
+              "description": null,
+              "displayName": "Is Terminated?",
+              "type": "choice"
+            },
+            "Define Variable": {
+              "actionId": "sp:define-variable",
+              "attributes": {
+                "id": "sp:define-variable",
+                "variables": [
+                  {
+                    "description": "",
+                    "name": "id",
+                    "transforms": [],
+                    "variableA.$": "$.loop.context.id"
+                  }
+                ]
+              },
+              "displayName": "",
+              "nextStep": "HTTP Request",
+              "type": "Mutation"
+            },
+            "End Step - Success": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "End Step - Success 1": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "End Step - Success 3": {
+              "actionId": "sp:operator-success",
+              "description": null,
+              "displayName": "",
+              "type": "success"
+            },
+            "End Step - Success 4": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "HTTP Request": {
+              "actionId": "sp:http",
+              "attributes": {
+                "authenticationType": "OAuth",
+                "method": "get",
+                "oAuthClientId": "403dc11d733e4f3996caa1a24f0b3925",
+                "oAuthClientSecret": "$.secrets.6249885a-3e7e-4bd6-a70d-f4978573ae6c",
+                "oAuthCredentialLocation": "oAuthInHeader",
+                "oAuthScope": null,
+                "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+                "requestContentType": null,
+                "url": "https://caesars-sb.api.identitynow.com/v2024/accounts",
+                "urlParams": {
+                  "count": "true",
+                  "filters": "identityId eq \"{{$.defineVariable.id}}\" and source.displayableName eq \"CZR-Application-ActiveDirectory-Dev.lab.local\""
+                }
+              },
+              "displayName": "Get AD accounts",
+              "nextStep": "Compare Numbers",
+              "type": "action",
+              "versionNumber": 2
+            },
+            "Send Email": {
+              "actionId": "sp:send-email",
+              "attributes": {
+                "body": "<p>This is an automated notification regarding termination of the following user with multiple AD accounts. All AD accounts have been disabled as part of the standard termination process. Please perform post termination cleanup operations manually for secondary AD accounts.&nbsp;<br><strong>Name:</strong> ${name}<br><strong>Person Number:</strong> ${personNumber}<br><strong>AD Accounts:</strong><br>#foreach($account in $accounts) ${account.name}<br>#end\n</p>\n<p>&nbsp;</p>\n<p>If you feel that you have received this email in error, please immediately notify the Caesar&rsquo;s Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</p>\n<p>&nbsp;</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a></footer>",
+                "context": {
+                  "accounts.$": "$.hTTPRequest.body",
+                  "name.$": "$.hTTPRequest.body[0].attributes.displayName",
+                  "personNumber.$": "$.hTTPRequest.body[0].attributes.employeeNumber"
+                },
+                "from": null,
+                "recipientEmailList": [
+                  "VKumar@caesars.com",
+                  "sailpointsb@caesars.com",
+                  "amaity@majorkeytech.com"
+                ],
+                "subject": "Termination Notification - Multiple AD Accounts Detected for ${name}"
+              },
+              "description": null,
+              "displayName": "",
+              "nextStep": "End Step - Success 3",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "description": "Loop through attribute change array",
+        "displayName": "",
+        "nextStep": "End Step - Success 2",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "6427bfb6ce00489799012963e65b85f6",
+    "name": "170004119"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "cloudLifecycleState",
+      "filter.$": "$.changes[?(@.attribute == \"cloudLifecycleState\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

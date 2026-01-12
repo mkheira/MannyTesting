@@ -1,0 +1,100 @@
+{
+  "id": "6e6db2a8-b2ef-4c47-80a2-b1101dd20d72",
+  "name": "CZR-Workflow-ServiceNowCatalog-Timebound",
+  "description": "Teams recording will be enabled on the user's account for 30 days. After this period, access will be automatically revoked.Approval must follow the next-level reporting structure, and then proceed to management for final authorization.",
+  "created": "2025-08-25T14:37:09.119753441Z",
+  "modified": "2025-09-15T20:30:49.751445461Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Define Variable",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "removalDate",
+              "name": "removalDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:addTime:time",
+                  "input": {
+                    "length": 5,
+                    "unit": "minutes"
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "clientMetadata": null,
+            "requestType": "REVOKE_ACCESS",
+            "requestedFor": [
+              "{{$.trigger.recipient.id}}"
+            ],
+            "requestedItems": [
+              {
+                "clientMetadata": null,
+                "comment": "TEAMS Record Permission for 30 days-Active Directory group has been automatically removed by ISC. If you believe this is an error, please reach out to your manager or the Team AD group owner for assistance.",
+                "id": "d08b92f5ba9f48dfa4bbbe6934ce1741",
+                "removeDate": "{{$.defineVariable.removalDate}}",
+                "type": "ROLE"
+              }
+            ]
+          },
+          "method": "post",
+          "oAuthClientId": "3d957281e75e477eba1470c22e816c83",
+          "oAuthClientSecret": "$.secrets.f6086613-cc3d-4023-a686-98ed79d6ce9c",
+          "oAuthCredentialLocation": "oAuthInBody",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "requestHeaders": null,
+          "url": "https://caesars-sb.api.identitynow.com/v2024/access-requests"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.accountRequests[?(@.accountOperation=='Modify' &&  (@.attributeRequests[0].attributeValue=='CN=Teams Recording 30 day access,OU=Okta,OU=Applications,OU=SailPointUsers,DC=dev,DC=lab,DC=local'))]",
+      "id": "idn:post-provisioning"
+    }
+  }
+}

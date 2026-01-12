@@ -1,0 +1,203 @@
+{
+  "id": "84915788-8c6d-4c0c-b365-977f91039f43",
+  "name": "WSOP Tickets",
+  "description": "",
+  "created": "2025-12-05T15:16:54.577124408Z",
+  "modified": "2025-12-12T21:48:23.411613863Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP Asst Tournament Shift Manager"
+          }
+        ],
+        "defaultStep": "Compare Strings 1",
+        "displayName": "Check for WSOP Asst Tournament Shift Manager",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP Cage Cashier"
+          }
+        ],
+        "defaultStep": "Compare Strings 2",
+        "displayName": "Check for WSOP Cage Cashier",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP Tournament Manager"
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "displayName": "Check for WSOP Tournament Manager",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP CAGE SUPERVISOR"
+          }
+        ],
+        "defaultStep": "Compare Strings 4",
+        "displayName": "Check for WSOP CAGE SUPERVISOR",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP MGR PAYOUT SHIFT"
+          }
+        ],
+        "defaultStep": "Compare Strings 5",
+        "displayName": "Check for WSOP MGR PAYOUT SHIFT",
+        "type": "choice"
+      },
+      "Compare Strings 5": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP Tournament Clerk"
+          }
+        ],
+        "defaultStep": "Compare Strings 6",
+        "displayName": "Check for WSOP Tournament Clerk",
+        "type": "choice"
+      },
+      "Compare Strings 6": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage ServiceNow Ticket",
+            "variableA.$": "$.getIdentity.attributes.jobTitle",
+            "variableB": "WSOP Supv Casino Poker"
+          }
+        ],
+        "defaultStep": "End Step - Failure 1",
+        "displayName": "Check for WSOP Supv Casino Poker",
+        "type": "choice"
+      },
+      "End Step - Failure": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureDetails": "WSOP Not Detected",
+        "failureName": "WSOP Not Detected",
+        "type": "failure"
+      },
+      "End Step - Failure 1": {
+        "actionId": "sp:operator-failure",
+        "displayName": "",
+        "failureName": "Not WSOP",
+        "type": "failure"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.trigger.identity.id"
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "displayName": "",
+        "nextStep": "Get Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage ServiceNow Ticket": {
+        "actionId": "sp:snow",
+        "attributes": {
+          "action": "create",
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.407869cc-2d7c-458d-87dd-4248dfc85769",
+          "basicAuthUserName": "iiq_integration_user",
+          "caller": "Admin",
+          "customFields": "assignment_group:Identity and Access Management (IAM)\npriority:3\ncmdb_ci:SailPoint ISC SandBox (DEV)",
+          "description": "Create iSeries Account For User:\n\n•\tEmployee Number: {{$.getIdentity.attributes.personNumber}}\n•\tEmployee Name: {{$.getIdentity.name}}",
+          "shortDescription": "Create iSeries Account For User: {{$.getIdentity.name}}",
+          "urgency": "3",
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_task"
+        },
+        "displayName": "Send iSeries Cnow Ticket",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "End Step - Failure",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'iSeriesTEST')]"
+          }
+        ],
+        "defaultStep": "Compare Strings",
+        "displayName": "Check For iSeries",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

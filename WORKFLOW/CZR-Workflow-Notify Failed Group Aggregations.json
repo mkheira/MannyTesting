@@ -1,0 +1,30 @@
+{
+  "id": "a668afcd-6cb8-498d-9164-66b44be99a49",
+  "name": "CZR-Workflow-Notify Failed Group Aggregations",
+  "description": "Workflow that triggers email notifications about group aggregation failures",
+  "created": "2025-04-29T03:54:34.035282086Z",
+  "modified": "2025-04-29T03:54:34.035282086Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "definition": {
+    "steps": {}
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "trigger": {
+    "type": "",
+    "attributes": {}
+  }
+}

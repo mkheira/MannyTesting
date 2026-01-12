@@ -1,0 +1,129 @@
+{
+  "id": "86c2044a-0cad-439f-81d7-73a9b74786c0",
+  "name": "Copy of CZR-Workflow-Immediate-Termination",
+  "description": "Immediate Termination Workflow for Employees/Contractors",
+  "created": "2025-07-30T14:55:18.63783943Z",
+  "modified": "2025-07-30T14:55:18.63783943Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "definition": {
+    "start": "Interactive Form",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "TerminationDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.terminationDate"
+            },
+            {
+              "description": "",
+              "name": "user",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.user"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AssignmentStatusType": "{{$.interactiveForm.formData.assignmentStatusType}}",
+              "CompleteTermination": "{{$.interactiveForm.formData.completeTermination}}",
+              "PersonNumber": "{{$.defineVariable.user}}",
+              "TerminationDate": "{{$.defineVariable.terminationDate}}",
+              "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "80e44f448a474d28ac71a18bf24dbfa7",
+          "oAuthClientSecret": "",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "e6191cc1-a913-416f-a5ae-6cf87a1313a6",
+          "inputForForm_assignmentStatusType": "Inactive",
+          "inputForForm_completeTermination": "Y",
+          "inputForForm_defaultValue": "1",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Immediate Termination"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '86c2044a-0cad-439f-81d7-73a9b74786c0')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

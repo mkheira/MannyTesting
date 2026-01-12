@@ -1,0 +1,66 @@
+{
+  "id": "7fae7e40-05b8-4f71-9656-975579387be5",
+  "name": "POC-Create CNow Ticket for Manual Provisioning",
+  "description": "Test",
+  "created": "2025-03-17T22:11:59.31241959Z",
+  "modified": "2025-08-05T17:02:21.560000107Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "Manage ServiceNow Ticket",
+    "steps": {
+      "End Step - Success": {
+        "displayName": "",
+        "type": "success"
+      },
+      "Manage ServiceNow Ticket": {
+        "actionId": "sp:snow",
+        "attributes": {
+          "action": "create",
+          "authenticationType": "basic",
+          "basicAuthPassword": "$.secrets.a752db7d-7fb8-477c-9879-a283b25b75d1",
+          "basicAuthUserName": "iiq_integration_user",
+          "caller": "Richard Fondrick",
+          "category": "",
+          "customFields": "assignment_group:Identity and Access Management (IAM)",
+          "description": "POC-Create CNow Ticket for Manual Provisioning",
+          "oAuthClientId": "3a49143c-5c10-494d-becf-35abfd67617d",
+          "oAuthClientSecret": "$.secrets.7e0c9d11-5d5b-4110-92bd-3d5255eac49f",
+          "oAuthPassword": "$.secrets.510baffa-ce71-4461-b8d0-d629384bc742",
+          "oAuthTokenUrl": "https://caesarsdev.service-now.com/api/oauth/token",
+          "oAuthUserName": "iiq_integration_user",
+          "shortDescription": "POC-Create CNow Ticket for Manual Provisioning",
+          "subCategory": "",
+          "urgency": "3",
+          "url": "https://caesarsdev.service-now.com/api/now/table/sc_request",
+          "watchlist": null
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "5b86c76d5e07433dbd969f098bc262dd",
+    "name": "Richard Fondrick"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

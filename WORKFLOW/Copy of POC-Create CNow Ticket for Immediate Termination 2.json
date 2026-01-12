@@ -1,0 +1,112 @@
+{
+  "id": "6924a697-c741-4720-9673-acb91f69c5a1",
+  "name": "Copy of POC-Create CNow Ticket for Immediate Termination 2",
+  "description": "",
+  "created": "2025-08-05T19:54:11.15100929Z",
+  "modified": "2025-08-11T13:48:57.732069579Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "description": "This Workflow is Complete",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "filterCriteria": "name",
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.trigger.identity.id",
+          "operator": "eq",
+          "value": "",
+          "valueList": null
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "description": "Gets Identity so we can pass information to emails",
+        "displayName": "Get Identity To Pass Attributes to Email Templates",
+        "nextStep": "Get Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<div>&lt;html&gt;</div>\n<div>&lt;head&gt;</div>\n<div>&nbsp; &nbsp;&lt;meta charset=\"UTF-8\"&gt;</div>\n<div>&nbsp; &nbsp;&lt;style type=\"text/css\"&gt;</div>\n<div>.table1 {</div>\n<div>&nbsp; border: none;</div>\n<div>&nbsp; padding: 0px 40px 10px 27px;</div>\n<div>&nbsp; color: #333333;</div>\n<div>&nbsp; width: 100%;</div>\n<div>&nbsp; border-collapse: separate !important;</div>\n<div>}</div>\n<div>.table2 {</div>\n<div>&nbsp; border: none;</div>\n<div>&nbsp; padding: 0px 20px 0px 35px;</div>\n<div>&nbsp; color: #333333;</div>\n<div>&nbsp; width: 100%; &nbsp;&nbsp;</div>\n<div>}</div>\n<div>.table3 {</div>\n<div>&nbsp; border: none;</div>\n<div>&nbsp; padding: 0px 20px 0px 45px;</div>\n<div>&nbsp; color: #333333;</div>\n<div>&nbsp; width: 100%; &nbsp;&nbsp;</div>\n<div>}</div>\n<div>.Padding {</div>\n<div>margin-left: 27px;</div>\n<div>width: 100%;</div>\n<div>}</div>\n<div>.center {</div>\n<div>text-align: center;</div>\n<div>font-style: italic;</div>\n<div>} &nbsp; &nbsp;</div>\n<div>.font {</div>\n<div>font-size: 16px;</div>\n<div>}</div>\n<div>.container {</div>\n<div>display: flex;</div>\n<div>}</div>\n<div>.div{</div>\n<div>width: 20px;</div>\n<div>height: 20px;</div>\n<div>}</div>\n<div>&lt;/style&gt;</div>\n<div>&lt;/head&gt;</div>\n<div>&lt;body&gt;</div>\n<div>&nbsp; &nbsp;&lt;p&gt; <span class=\"TextRun SCXW25588283 BCX8\" lang=\"EN-US\" xml:lang=\"EN-US\" data-contrast=\"auto\"><span class=\"NormalTextRun SCXW25588283 BCX8\">The following </span><span class=\"NormalTextRun SCXW25588283 BCX8\">user has been terminated. Please review and remove their access to any regulated applications</span><span class=\"NormalTextRun SCXW25588283 BCX8\">.</span></span><span class=\"EOP SCXW25588283 BCX8\" data-ccp-props=\"{&quot;335559685&quot;:720}\">&nbsp;</span>&lt;br/&gt;&lt;/p&gt;</div>\n<div>&nbsp; &lt;ul&gt;</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp;&lt;li&gt;&lt;b&gt;<span class=\"NormalTextRun SCXW88593540 BCX8\">Employee Number:</span>&lt;/b&gt; {{$.getIdentity.attributes.personNumber}} &lt;/li&gt;</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp;&lt;li&gt;&lt;b&gt;<span class=\"NormalTextRun SCXW65741493 BCX8\">Employee Name</span>:&lt;/b&gt; {{$.getIdentity.name}} &lt;/li&gt;</div>\n<div>&nbsp;&lt;li&gt;&lt;b&gt;<span class=\"NormalTextRun SCXW65741493 BCX8\">Primary Location</span>:&lt;/b&gt; {{$.getIdentity.attributes.locationDescription}} &lt;/li&gt;</div>\n<div>&nbsp; &nbsp;&lt;/ul&gt;</div>\n<div>&nbsp; &nbsp;&lt;p&gt; Thank you,&lt;br/&gt;</div>\n<div>Caesars Identity and Access Management Team&lt;br/&gt;&lt;/p&gt;</div>\n<div>&nbsp; &nbsp;&lt;br/&gt;</div>\n<div>&lt;/body&gt;</div>\n<div>&lt;footer&gt;</div>\n<div>&nbsp; &nbsp; &lt;p&gt;</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp;&lt;a&nbsp;\n<p><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a></p>\n</div>\n<div>&nbsp; &nbsp; &nbsp; &nbsp;&lt;/a&gt;</div>\n<div>&nbsp; &nbsp; &lt;/p&gt;</div>\n<div>&nbsp; &nbsp; &lt;br/&gt;&nbsp;&nbsp;</div>\n<div>&nbsp; &nbsp; &lt;p&gt;</div>\n<div><span style=\"font-size: 12.0pt; font-family: 'Aptos',sans-serif; mso-fareast-font-family: Aptos; mso-fareast-theme-font: minor-latin; mso-bidi-font-family: Aptos; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;\">If you feel that you have received this email in error, please immediately notify the Caesar's Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying, or reliance upon the contents of this email or its attachments is strictly prohibited.</span></div>\n<div>&nbsp; &nbsp; &lt;/p&gt;</div>\n<div>&lt;/footer&gt;</div>\n<div>&lt;/html&gt;</div>",
+          "context": {},
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Automated Termination Request - {{$.getIdentity.attributes.personNumber}}"
+        },
+        "description": "Send Urgent Email to XSOAR",
+        "displayName": "Send Urgent Email To XSOAR",
+        "nextStep": "Verify Data Type",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "End Step - Success",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-MobileDevice')]"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "description": "check to see if user has a mobile device",
+        "displayName": "Verify Mobile Device Exists",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Send Email",
+            "variableA.$": "$.getAccounts.accounts[?(@.sourceName== 'CZR-Application-ActiveDirectory-Dev.lab.local')]"
+          }
+        ],
+        "defaultStep": "Send Email",
+        "description": "check to see if user has william hill",
+        "displayName": "Verify William Hill exists",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "description": "Trigger Immediate Termination under these conditions:\nComplete Termination: 'N' to 'Y'  \nTermination Date: Current date minus one day (Current date -1) \nStatus: From 'Active' to 'Inactive'",
+      "filter.$": "$.changes[?(@.attribute == 'cloudLifecycleState' && @.newValue == 'inactiveImmediateTerm')]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

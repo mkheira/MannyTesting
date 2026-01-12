@@ -1,0 +1,51 @@
+{
+  "id": "45d4fb37-b0b3-475e-9628-0d223f06fb98",
+  "name": "POC - Source Account Update",
+  "description": "Send email when source account updates",
+  "created": "2025-05-20T14:27:55.409449158Z",
+  "modified": "2025-05-20T15:30:58.561451831Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "5b86c76d5e07433dbd969f098bc262dd",
+    "name": "Richard Fondrick"
+  },
+  "definition": {
+    "start": "Send Email",
+    "steps": {
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>The source account has been updated for this user.</p>",
+          "context": {},
+          "from": "DoNotReplyIAMOps@caesars.com",
+          "recipientEmailList": [
+            "rfondrick@caesars.com"
+          ],
+          "replyTo": null,
+          "subject": "Source account updated"
+        },
+        "description": "Source account update email",
+        "displayName": "",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "5b86c76d5e07433dbd969f098bc262dd",
+    "name": "Richard Fondrick"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "5b86c76d5e07433dbd969f098bc262dd",
+    "name": "Richard Fondrick"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:source-updated"
+    }
+  }
+}

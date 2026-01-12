@@ -1,0 +1,952 @@
+{
+  "id": "3274bb95-812a-45a2-b628-ebbdff398a19",
+  "name": "CZR-Workflow-Notify UpdateAccount Notification",
+  "description": "Identity Attribute Change Email - Sent when key identity attributes are modified:\nFirst Name\nLast Name\nMiddle Name\nPreferred Name\nDepartment\nJob Title\nLocation Code",
+  "created": "2025-03-19T13:15:07.790287804Z",
+  "modified": "2025-10-01T19:42:52.73042252Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "definition": {
+    "start": "Verify Data Type",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "department",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'adDepartment')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "departmentNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'adDepartment')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Primary Department: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Primary Department: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 1",
+        "type": "Mutation"
+      },
+      "Define Variable 1": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "departmentFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable.department"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable.departmentNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "Mutation"
+      },
+      "Define Variable 10": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "lastnameFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 11",
+        "type": "Mutation"
+      },
+      "Define Variable 11": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "lastnameHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable9','defineVariable10'].lastnameFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 3",
+        "type": "Mutation"
+      },
+      "Define Variable 12": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "middleName",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'middleName')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "middleNameNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'middleName')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Middle Name: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Middle Name: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 13",
+        "type": "Mutation"
+      },
+      "Define Variable 13": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "middleNameFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable12.middleName"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable12.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable12.middleNameNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable12.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 15",
+        "type": "Mutation"
+      },
+      "Define Variable 14": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "middleNameFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 15",
+        "type": "Mutation"
+      },
+      "Define Variable 15": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "middleNameHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable13','defineVariable14'].middleNameFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 4",
+        "type": "Mutation"
+      },
+      "Define Variable 16": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "jobTitle",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'jobTitle')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "jobTitleNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'jobTitle')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Primary Job Title: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Primary Job Title: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 17",
+        "type": "Mutation"
+      },
+      "Define Variable 17": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "jobTitleFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable16.jobTitle"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable16.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable16.jobTitleNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable16.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 19",
+        "type": "Mutation"
+      },
+      "Define Variable 18": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "jobTitleFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 19",
+        "type": "Mutation"
+      },
+      "Define Variable 19": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "jobTitleHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable17','defineVariable18'].jobTitleFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 5",
+        "type": "Mutation"
+      },
+      "Define Variable 2": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "departmentFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 3",
+        "type": "Mutation"
+      },
+      "Define Variable 20": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationCode",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'locationCode')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "locationCodeNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'locationCode')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Primary Location: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Primary Location: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 21",
+        "type": "Mutation"
+      },
+      "Define Variable 21": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationCodeFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable20.locationCode"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable20.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable20.locationCodeNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable20.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 23",
+        "type": "Mutation"
+      },
+      "Define Variable 22": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationCodeFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 23",
+        "type": "Mutation"
+      },
+      "Define Variable 23": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "locationCodeHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable21','defineVariable22'].locationCodeFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 6",
+        "type": "Mutation"
+      },
+      "Define Variable 24": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "preferredName",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'preferredName')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "preferredNameNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'preferredName')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Name: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Name: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 25",
+        "type": "Mutation"
+      },
+      "Define Variable 25": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "preferredNameFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable24.preferredName"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.lastname"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable24.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable24.preferredNameNew"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": " "
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.lastnameNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable24.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 27",
+        "type": "Mutation"
+      },
+      "Define Variable 26": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "preferredNameFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 27",
+        "type": "Mutation"
+      },
+      "Define Variable 27": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "preferredNameHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable25','defineVariable26'].preferredNameFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Send Email",
+        "type": "Mutation"
+      },
+      "Define Variable 3": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "departmentHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable1','defineVariable2'].departmentFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 1",
+        "type": "Mutation"
+      },
+      "Define Variable 4": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstname",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'firstname')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "firstnameNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'firstname')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. First Name: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New First Name: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 5",
+        "type": "Mutation"
+      },
+      "Define Variable 5": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstnameFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable4.firstname"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable4.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable4.firstnameNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable4.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 6": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstnameFinal",
+              "transforms": [],
+              "variableA": " "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 7",
+        "type": "Mutation"
+      },
+      "Define Variable 7": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "firstnameHTML",
+              "transforms": [],
+              "variableA.$": "$['defineVariable5','defineVariable6'].firstnameFinal"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Verify Data Type 2",
+        "type": "Mutation"
+      },
+      "Define Variable 8": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "lastname",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'lastname')].oldValue"
+            },
+            {
+              "description": "",
+              "name": "lastnameNew",
+              "transforms": [],
+              "variableA.$": "$.trigger.changes[?(@.attribute == 'lastname')].newValue"
+            },
+            {
+              "description": "",
+              "name": "oldValuePrefix",
+              "transforms": [],
+              "variableA": "<b>Prev. Last Name: </b>"
+            },
+            {
+              "description": "",
+              "name": "newValuePrefix",
+              "transforms": [],
+              "variableA": "<b>New Last Name: </b> "
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 9",
+        "type": "Mutation"
+      },
+      "Define Variable 9": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "lastnameFinal",
+              "transforms": [
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.lastname"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB": "<br/>"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.newValuePrefix"
+                  }
+                },
+                {
+                  "id": "sp:transform:concatenate:string",
+                  "input": {
+                    "variableB.$": "$.defineVariable8.lastnameNew"
+                  }
+                }
+              ],
+              "variableA.$": "$.defineVariable8.oldValuePrefix"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "Define Variable 11",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>**This is an automated email, please do not reply.**</p>\n<p>The following primary account information was modified:</p>\n<p>{{$.defineVariable27.preferredNameHTML}}</p>\n<p>{{$.defineVariable7.firstnameHTML}}</p>\n<p>{{$.defineVariable15.middleNameHTML}}</p>\n<p>{{$.defineVariable11.lastnameHTML}}</p>\n<p>{{$.defineVariable3.departmentHTML}}</p>\n<p>{{$.defineVariable19.jobTitleHTML}}</p>\n<p>{{$.defineVariable23.locationCodeHTML}}</p>\n<p>Please review, if any information is incorrect take the following action:<br><strong>Employee:</strong>&nbsp;<span data-teams=\"true\">Update the employee's information in Oracle Fusion or contact your local HR Department.&nbsp;</span><br><strong>Contractor:&nbsp;</strong><span data-teams=\"true\">Submit the appropriate request form, through CaesarsNow, for the change.</span></p>\n<p>Thank you!</p>\n<p>If you feel that you have received this email in error, please immediately notify the Caesar&rsquo;s Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</p>\n<p>&nbsp;</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a></footer>",
+          "context": {
+            "userName.$": "$.trigger.identity.name"
+          },
+          "from": "",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "replyTo": null,
+          "subject": "Account Has Been Modified for ${userName}"
+        },
+        "description": null,
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Verify Data Type": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'adDepartment')]"
+          }
+        ],
+        "defaultStep": "Define Variable 2",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 1": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 4",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'firstname')]"
+          }
+        ],
+        "defaultStep": "Define Variable 6",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 2": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 8",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'lastname')]"
+          }
+        ],
+        "defaultStep": "Define Variable 10",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 3": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 12",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'middleName')]"
+          }
+        ],
+        "defaultStep": "Define Variable 14",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 4": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 16",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'jobTitle')]"
+          }
+        ],
+        "defaultStep": "Define Variable 18",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 5": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 20",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'locationCode')]"
+          }
+        ],
+        "defaultStep": "Define Variable 22",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Verify Data Type 6": {
+        "actionId": "sp:compare-unary",
+        "choiceList": [
+          {
+            "comparator": "IsPresent",
+            "nextStep": "Define Variable 24",
+            "variableA.$": "$.trigger.changes[?(@.attribute == 'lastname')]"
+          }
+        ],
+        "defaultStep": "Define Variable 26",
+        "displayName": "",
+        "type": "choice"
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "0aac9dd9ddb241fb9b152c3cb41bc218",
+    "name": "Manbir Kheira"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "170004118"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$.changes[?(@.attribute in [\"adDepartment\",\"jobTitle\",\"locationCode\",\"firstname\",\"lastname\",\"middleName\"])]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "5c0a6f3e-275b-4fdf-8c16-88fd245ff04b",
+  "name": "CZR-Workflow-Provisioning Failure Notification",
+  "description": "The workflow sends notifications for AD provisioning failures to the Ops team",
+  "created": "2025-03-20T04:11:54.832152017Z",
+  "modified": "2025-05-09T19:23:50.353128776Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "0aac9dd9ddb241fb9b152c3cb41bc218",
+    "name": "Manbir Kheira"
+  },
+  "definition": {
+    "start": "Loop",
+    "steps": {
+      "End Step - Success 1": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Loop": {
+        "actionId": "sp:loop:iterator",
+        "attributes": {
+          "context.$": "$.trigger",
+          "input.$": "$.trigger.accountRequests",
+          "start": "Compare Strings 1",
+          "steps": {
+            "Compare Strings": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringDoesNotEquals",
+                  "nextStep": "Send Email",
+                  "variableA.$": "$.loop.loopInput.provisioningResult",
+                  "variableB": "SUCCESS"
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "description": "Check for provisioning success",
+              "displayName": "Check ProvisioningResult is not success?",
+              "type": "choice"
+            },
+            "Compare Strings 1": {
+              "actionId": "sp:compare-strings",
+              "choiceList": [
+                {
+                  "comparator": "StringEquals",
+                  "nextStep": "Compare Strings",
+                  "variableA.$": "$.loop.loopInput.source.id",
+                  "variableB": "e30d0436a20b45b79517a08f0380b1b1"
+                }
+              ],
+              "defaultStep": "End Step - Success",
+              "description": "Check if source is Active Directory",
+              "displayName": "Check source is AD?",
+              "type": "choice"
+            },
+            "End Step - Success": {
+              "actionId": "sp:operator-success",
+              "displayName": "",
+              "type": "success"
+            },
+            "Send Email": {
+              "actionId": "sp:send-email",
+              "attributes": {
+                "body": "<p>Hello Team,</p>\n<p>AD Provisioning has failed for user #if($!displayName)${recipientName} #end with following error:<br>Employee ID: ${recipientId}<br>Entitlements: ${attributeRequests}<br>Provisioning Result: ${provisioningResult}<br>Error: ${errors}<br><br></p>\n<p>Thank you! <br>Caesars Identity and Access Management Team</p>\n<footer><a href=\"https://www.caesars.com/\"><img style=\"height: 60px; width: 140px;\" src=\"https://www.caesars.com/content/dam/corporate/email/cet_nfl_logo_lockup_03.jpg\" width=\"140\" height=\"60\" border=\"0\"></a> <br>If you feel that you have received this email in error, please immediately notify the <span data-olk-copy-source=\"MessageBody\">Caesars </span>Service Desk at 1-877-438-4457 and delete this email from your system. This email and any attachments may contain confidential or legally privileged information that is intended only for the individual(s) named in this email. If you are not the intended recipient, or an authorized representative of the intended recipient, you are hereby notified that any review, dissemination, disclosure, copying or reliance upon the contents of this email or its attachments is strictly prohibited</footer>",
+                "context": {
+                  "attributeRequests.$": "$.loop.loopInput.attributeRequests",
+                  "errors.$": "$.loop.context.errors",
+                  "provisioningResult.$": "$.loop.loopInput.provisioningResult",
+                  "recipientId.$": "$.loop.context.recipient.id",
+                  "recipientName.$": "$.loop.context.recipient.name"
+                },
+                "from": "DoNotReplyIAMOps@caesars.com",
+                "recipientEmailList": [
+                  "VKumar@caesars.com",
+                  "sailpointsb@caesars.com"
+                ],
+                "subject": "AD Provisioning has failed for ${recipientName}"
+              },
+              "displayName": "Notify Ops Team",
+              "nextStep": "End Step - Success",
+              "type": "action",
+              "versionNumber": 2
+            }
+          }
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success 1",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:post-provisioning"
+    }
+  }
+}

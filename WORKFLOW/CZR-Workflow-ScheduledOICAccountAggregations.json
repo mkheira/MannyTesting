@@ -1,0 +1,349 @@
+{
+  "id": "0ab538d8-bdc9-4457-846c-d51b53c6abbf",
+  "name": "CZR-Workflow-ScheduledOICAccountAggregations",
+  "description": "Workflow is scheduled to trigger every 20 minutes to run delta OIC aggregations. On the first day and first hour of each month, it triggers full OIC aggregation",
+  "created": "2025-05-27T13:53:49.183857976Z",
+  "modified": "2025-05-29T16:41:20.975856631Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "6114adc0a2174360a9e39055a9321cdc",
+    "name": "Phillip Martinez"
+  },
+  "definition": {
+    "start": "HTTP Request 4",
+    "steps": {
+      "Compare Numbers": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericEquals",
+            "nextStep": "HTTP Request 1",
+            "variableA.$": "$.hTTPRequest.statusCode",
+            "variableB": 200
+          }
+        ],
+        "defaultStep": "End Step — Success",
+        "description": null,
+        "type": "choice"
+      },
+      "Compare Numbers 1": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericEquals",
+            "nextStep": "HTTP Request 2",
+            "variableA.$": "$.hTTPRequest1.statusCode",
+            "variableB": 202
+          }
+        ],
+        "defaultStep": "End Step — Success",
+        "description": null,
+        "type": "choice"
+      },
+      "Compare Numbers 4": {
+        "actionId": "sp:compare-numbers",
+        "choiceList": [
+          {
+            "comparator": "NumericEquals",
+            "nextStep": "HTTP Request 5",
+            "variableA.$": "$.hTTPRequest3.statusCode",
+            "variableB": 202
+          }
+        ],
+        "defaultStep": "End Step — Success",
+        "description": null,
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Compare Strings 2",
+            "variableA.$": "$.defineVariable.dateAndMinuteFlag",
+            "variableB": "01T01"
+          }
+        ],
+        "defaultStep": "HTTP Request 3",
+        "description": "Checks if the workflow is triggered on the 1st of every month",
+        "displayName": "Check Date",
+        "type": "choice"
+      },
+      "Compare Strings 1": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "End Step — Success",
+            "variableA.$": "$.hTTPRequest4.body.connectorAttributes.isScheduledAggregationRunningFlag",
+            "variableB": "true"
+          }
+        ],
+        "defaultStep": "Define Variable",
+        "displayName": "IsAggregationRunning?",
+        "type": "choice"
+      },
+      "Compare Strings 2": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable.minuteFirstDigitFlag",
+            "variableB": "0"
+          }
+        ],
+        "defaultStep": "Compare Strings 3",
+        "displayName": "Check First Digit of minute timestamp",
+        "type": "choice"
+      },
+      "Compare Strings 3": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable.minuteFirstDigitFlag",
+            "variableB": "1"
+          }
+        ],
+        "defaultStep": "Compare Strings 4",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Compare Strings 4": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "HTTP Request",
+            "variableA.$": "$.defineVariable.minuteFirstDigitFlag",
+            "variableB": "2"
+          }
+        ],
+        "defaultStep": "HTTP Request 3",
+        "displayName": "",
+        "type": "choice"
+      },
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "DateAndMinuteFlag",
+              "transforms": [
+                {
+                  "id": "sp:transform:substring:string",
+                  "input": {
+                    "length": 5,
+                    "start": 8
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "MinuteFirstDigitFlag",
+              "transforms": [
+                {
+                  "id": "sp:transform:substring:string",
+                  "input": {
+                    "length": 1,
+                    "start": 14
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            },
+            {
+              "description": "",
+              "name": "MinuteSecondDigitFlag",
+              "transforms": [
+                {
+                  "id": "sp:transform:substring:string",
+                  "input": {
+                    "length": 1,
+                    "start": 15
+                  }
+                }
+              ],
+              "variableA.$": "$.now()"
+            }
+          ]
+        },
+        "displayName": "CalculateTimeStamps",
+        "nextStep": "Compare Strings",
+        "type": "Mutation"
+      },
+      "End Step — Success": {
+        "actionId": "sp:operator-success",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/connectorAttributes/deltaAggregationEnabled",
+              "value": "false"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.7821a96f-a46f-4223-bf61-d63c01fd04a1",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/9f46913b2c9b4da5bc40734abda20886"
+        },
+        "description": "Update the source configuration using REST API and set Delta aggregation flag to false",
+        "nextStep": "Compare Numbers",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 1": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": {
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          },
+          "jsonPatchRequestBody": null,
+          "method": "post",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.9205266c-417f-487c-bfe8-17997925a358",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "form",
+          "requestHeaders": {
+            "Content-Type": "multipart/form-data"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/beta/sources/9f46913b2c9b4da5bc40734abda20886/load-accounts"
+        },
+        "description": "Trigger a Full Source Account Aggregation",
+        "displayName": "",
+        "nextStep": "Compare Numbers 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 2": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/connectorAttributes/deltaAggregationEnabled",
+              "value": "true"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.81e0f83a-0d92-4bc2-9009-bea7f4b3b38a",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/9f46913b2c9b4da5bc40734abda20886"
+        },
+        "description": "Update the source configuration using REST API and set Delta aggregation flag to true",
+        "nextStep": "HTTP Request 5",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 3": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "formRequestBody": {
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          },
+          "jsonPatchRequestBody": null,
+          "method": "post",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.9205266c-417f-487c-bfe8-17997925a358",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "form",
+          "requestHeaders": {
+            "Content-Type": "multipart/form-data"
+          },
+          "url": "https://caesars-sb.api.identitynow.com/beta/sources/9f46913b2c9b4da5bc40734abda20886/load-accounts"
+        },
+        "description": "Trigger a Full Source Account Aggregation",
+        "displayName": "",
+        "nextStep": "Compare Numbers 4",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 4": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "method": "get",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.80704e79-b5e0-4821-bb79-6acd6abb48fe",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/9f46913b2c9b4da5bc40734abda20886"
+        },
+        "displayName": "",
+        "nextStep": "Compare Strings 1",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request 5": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonPatchRequestBody": [
+            {
+              "op": "replace",
+              "path": "/connectorAttributes/isScheduledAggregationRunningFlag",
+              "value": "true"
+            }
+          ],
+          "method": "patch",
+          "oAuthClientId": "6eace9cd8839430cbe111d2b86fbc7f0",
+          "oAuthClientSecret": "$.secrets.dc52de7e-448a-4070-ab91-220ee686ac6a",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthScope": null,
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json-patch+json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/sources/9f46913b2c9b4da5bc40734abda20886"
+        },
+        "description": "Update the aggregation custom connector flag on source to set to true",
+        "displayName": "",
+        "nextStep": "End Step — Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "f915c85308214fb0b8da6bbe294900e3",
+    "name": "Vivek Kumar"
+  },
+  "trigger": {
+    "type": "SCHEDULED",
+    "attributes": {
+      "cronString": "0 */20 * * *",
+      "frequency": "cronSchedule",
+      "id": "idn:cron-schedule",
+      "timeZone": "US/Central"
+    }
+  }
+}

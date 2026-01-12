@@ -1,0 +1,97 @@
+{
+  "id": "a6f8392d-d8f3-413f-b99b-f6fedca77139",
+  "name": "CZR-Workflow-Powershell_Request",
+  "description": "",
+  "created": "2025-11-04T19:53:12.631485831Z",
+  "modified": "2025-12-09T17:26:13.802233088Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "800761288"
+  },
+  "definition": {
+    "start": "Windows Server",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Windows Server": {
+        "actionId": "sp:pag-windows-server",
+        "attributes": {
+          "inputForPag_address": "10.6.8.58",
+          "inputForPag_auth_password": "",
+          "inputForPag_auth_type": "ntlm",
+          "inputForPag_auth_username": "",
+          "inputForPag_command_timeout_seconds": 120,
+          "inputForPag_configuration_name": "Microsoft.PowerShell",
+          "inputForPag_kdc_port": 88,
+          "inputForPag_kdc_protocol": "udp",
+          "inputForPag_output_format": "text",
+          "inputForPag_script_arguments": {
+            "personNumber": "500000530"
+          },
+          "inputForPag_script_path": "D:\\Sailpoint\\Scripts\\DisableAD.ps1",
+          "inputForPag_use_ssl": false,
+          "inputForPag_verify_cert": false,
+          "pagCommandType": "",
+          "pagInstanceId": "",
+          "pagSpecId": "",
+          "param_conn": {
+            "mapping": {
+              "address": "address"
+            },
+            "paramID": "ecd28338-784e-4fbb-b9fb-e98a1479403f",
+            "paramType": "2.3",
+            "refID": "076f2eb7-7493-4e6c-b92b-85f6c747249c"
+          },
+          "param_connType": "paramInline",
+          "param_credential": {
+            "mapping": {
+              "auth_password": "password",
+              "auth_username": "username"
+            },
+            "paramID": "df3632ec-4476-4d7b-98d6-5527e1db8d2f",
+            "paramType": "1.1",
+            "refID": "8f545b16-d5f1-4549-bbd1-4723ccdf1ed9"
+          },
+          "param_credentialType": "paramSPS",
+          "param_kerberos": {
+            "mapping": {
+              "kdc_address": "kdcAddress",
+              "kdc_port": "port",
+              "kdc_protocol": "transport",
+              "kdc_realm": "realm"
+            },
+            "paramID": "",
+            "paramType": "2.5"
+          },
+          "param_kerberosType": "paramInline"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+    "name": "500000384"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+    "name": "500000384"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == 'a6f8392d-d8f3-413f-b99b-f6fedca77139')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "id": "ea6c2107-6b2f-450d-b158-9e94bf833e5f",
+  "name": "CZR-Workflow-Leaver-RemoveSetupLikeAccounts",
+  "description": "If LCS is Inactive, This workflow will delete account of CNOWemployeeAccessrequest and EmployeeNetworkAccessRequest",
+  "created": "2025-04-10T04:08:49.334749915Z",
+  "modified": "2025-05-28T11:03:33.8885983Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Compare Strings": {
+        "actionId": "sp:compare-strings",
+        "choiceList": [
+          {
+            "comparator": "StringEquals",
+            "nextStep": "Manage Accounts 2",
+            "variableA.$": "$.getIdentity.attributes.workerType",
+            "variableB": "Employee"
+          }
+        ],
+        "defaultStep": "End Step - Success",
+        "displayName": "Check for Worker Type Employee",
+        "type": "choice"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Accounts": {
+        "actionId": "sp:get-accounts",
+        "attributes": {
+          "filterCriteria": "sourceId",
+          "getAccountsBy": "specificIdentity",
+          "identity.$": "$.trigger.identity.id",
+          "operator": "eq",
+          "value": "ded5c044d138470684355e6d9c11a549"
+        },
+        "displayName": "",
+        "nextStep": "Manage Accounts",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.identity.id"
+        },
+        "displayName": "",
+        "nextStep": "Get Accounts",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Manage Accounts": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.getAccounts.accounts[?(@.sourceName == \"CZR-Application-CNOWEmployeeNetworkAccessRequest\")].id",
+          "operation": "delete"
+        },
+        "catch": [
+          {
+            "next": "Manage Accounts 1"
+          }
+        ],
+        "description": null,
+        "displayName": "ManageAccounts:Delete CNOWEmployeeNetworkAccessRequest",
+        "nextStep": "Manage Accounts 1",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Accounts 1": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.getAccounts.accounts[?(@.sourceName == \"CZR-Application-EmployeeNetworkAccessRequest\")].id",
+          "operation": "delete"
+        },
+        "catch": [
+          {
+            "next": "Compare Strings"
+          }
+        ],
+        "description": null,
+        "displayName": "ManageAccounts:Delete EmployeeNetworkAccessRequest",
+        "nextStep": "Compare Strings",
+        "type": "action",
+        "versionNumber": 1
+      },
+      "Manage Accounts 2": {
+        "actionId": "sp:manage-account",
+        "attributes": {
+          "accountIds.$": "$.getAccounts.accounts[?(@.sourceName == \"CZR-Application-EditIdentity\")].id",
+          "operation": "delete"
+        },
+        "catch": [
+          {
+            "next": "End Step - Success"
+          }
+        ],
+        "description": null,
+        "displayName": "Manage Accounts: Delete Edit Identity Records",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "attributeToFilter": "cloudLifecycleState",
+      "filter.$": "$.changes[?(@.attribute == \"cloudLifecycleState\" && @.newValue == \"inactive\")]",
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

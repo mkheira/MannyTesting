@@ -1,0 +1,58 @@
+{
+  "id": "546bc5aa-7951-4bad-9496-2fb2750fd9e1",
+  "name": "TestO365",
+  "description": "",
+  "created": "2025-08-01T13:36:03.33134708Z",
+  "modified": "2025-08-14T18:07:29.193845325Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "HTTP Request",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "header",
+          "headerAuthName": "Authorization",
+          "headerAuthValue": "$.secrets.f28c67fb-19c9-4cb5-b150-4cf3b9c7e4b2",
+          "method": "get",
+          "oAuthClientId": "3aafd28e-cb15-488d-b537-650e83324b89",
+          "oAuthClientSecret": "$.secrets.42f31fff-6522-40ea-aa70-822ca94aa19e",
+          "oAuthCredentialLocation": "oAuthInHeader",
+          "oAuthTokenUrl": "https://login.microsoftonline.com/5081e954-92b3-4459-8637-c1f00f627b63/oauth2/v2.0/token",
+          "requestContentType": "json",
+          "url": "https://graph.microsoft.com/v1.0/me/messages"
+        },
+        "displayName": "0365",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:identity-attributes-changed"
+    }
+  }
+}

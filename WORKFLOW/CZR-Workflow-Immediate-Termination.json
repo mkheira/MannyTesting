@@ -1,0 +1,141 @@
+{
+  "id": "203a0242-1286-49e4-baf8-801144130f8f",
+  "name": "CZR-Workflow-Immediate-Termination",
+  "description": "Immediate Termination Workflow for Employees/Contractors",
+  "created": "2025-02-19T07:07:11.437563115Z",
+  "modified": "2025-12-16T16:47:04.760583178Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "definition": {
+    "start": "Get Identity",
+    "steps": {
+      "Define Variable": {
+        "actionId": "sp:define-variable",
+        "attributes": {
+          "id": "sp:define-variable",
+          "variables": [
+            {
+              "description": "",
+              "name": "TerminationDate",
+              "transforms": [
+                {
+                  "id": "sp:transform:formatDate:string",
+                  "input": {
+                    "dateFormat": "MM/DD/YYYY",
+                    "style": "number",
+                    "timeFormat": "HH:MM:SS"
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.terminationDate"
+            },
+            {
+              "description": "",
+              "name": "user",
+              "transforms": [
+                {
+                  "id": "sp:transform:replace:string",
+                  "input": {
+                    "pattern": ".*-\\s*",
+                    "replacement": ""
+                  }
+                },
+                {
+                  "id": "sp:transform:trim:string",
+                  "input": {
+                    "postfix": true,
+                    "prefix": true
+                  }
+                }
+              ],
+              "variableA.$": "$.interactiveForm.formData.user"
+            }
+          ]
+        },
+        "displayName": "",
+        "nextStep": "HTTP Request",
+        "type": "Mutation"
+      },
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Get Identity": {
+        "actionId": "sp:get-identity",
+        "attributes": {
+          "id.$": "$.trigger.launchedBy.id"
+        },
+        "displayName": "",
+        "nextStep": "Interactive Form",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "HTTP Request": {
+        "actionId": "sp:http",
+        "attributes": {
+          "authenticationType": "OAuth",
+          "jsonRequestBody": {
+            "attributes": {
+              "AssignmentStatusType": "{{$.interactiveForm.formData.assignmentStatusType}}",
+              "CompleteTermination": "{{$.interactiveForm.formData.completeTermination}}",
+              "PersonNumber": "{{$.defineVariable.user}}",
+              "TerminatedBy": "{{$.getIdentity.attributes.identificationNumber}}",
+              "TerminationDate": "{{$.defineVariable.terminationDate}}",
+              "TerminationSource": "Launchpad",
+              "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+            }
+          },
+          "method": "post",
+          "oAuthClientId": "55c7dec6-c8fd-49d8-8f4e-06ec628b62d9",
+          "oAuthClientSecret": "$.secrets.4bb23e5f-ed69-49c0-bd7a-6c442841ef44",
+          "oAuthTokenUrl": "https://caesars-sb.api.identitynow.com/oauth/token",
+          "requestContentType": "json",
+          "url": "https://caesars-sb.api.identitynow.com/v3/accounts"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      },
+      "Interactive Form": {
+        "actionId": "sp:interactive-form",
+        "attributes": {
+          "formDefinitionId": "e6191cc1-a913-416f-a5ae-6cf87a1313a6",
+          "inputForForm_assignmentStatusType": "Inactive",
+          "inputForForm_completeTermination": "Y",
+          "inputForForm_defaultValue": "1",
+          "interactiveProcessId.$": "$.trigger.interactiveProcessId",
+          "message": "",
+          "ownerId.$": "$.trigger.launchedBy.id",
+          "title": "Immediate Termination"
+        },
+        "displayName": "",
+        "nextStep": "Define Variable",
+        "type": "action",
+        "versionNumber": 1
+      }
+    }
+  },
+  "enabled": true,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "filter.$": "$[?(@.workflowId == '203a0242-1286-49e4-baf8-801144130f8f')]",
+      "id": "idn:interactive-process-launched"
+    }
+  }
+}

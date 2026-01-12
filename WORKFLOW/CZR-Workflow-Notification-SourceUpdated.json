@@ -1,0 +1,55 @@
+{
+  "id": "a96a15a9-4617-4b2d-8438-63b7f61273e0",
+  "name": "CZR-Workflow-Notification-SourceUpdated",
+  "description": "",
+  "created": "2025-04-25T09:08:45.458977362Z",
+  "modified": "2025-07-30T16:11:28.57711119Z",
+  "modifiedBy": {
+    "type": "IDENTITY",
+    "id": "afbb99b5b6d044ad97421f6b0f8883b1",
+    "name": "Amar Zulejhic"
+  },
+  "definition": {
+    "start": "Send Email",
+    "steps": {
+      "End Step - Success": {
+        "actionId": "sp:operator-success",
+        "displayName": "",
+        "type": "success"
+      },
+      "Send Email": {
+        "actionId": "sp:send-email",
+        "attributes": {
+          "body": "<p>Dear recipient,<br>A source updated in sandbox</p>\n<p><strong>Source Name</strong>: {{$.trigger.name}}</p>\n<p><strong>Source Updated By</strong>:{{$.trigger.actor.name}}</p>\n<p><strong>Attributes Updated</strong>:{{$.trigger.attributesUpdated}}</p>\n<p>&nbsp;</p>\n<p>Thank you,<br>The Sailpoint ISC Team</p>\n<p>&nbsp;</p>",
+          "context": {},
+          "from": "donotreply@caesars.com",
+          "recipientEmailList": [
+            "sailpointsb@caesars.com"
+          ],
+          "subject": "Source Updated"
+        },
+        "displayName": "",
+        "nextStep": "End Step - Success",
+        "type": "action",
+        "versionNumber": 2
+      }
+    }
+  },
+  "enabled": false,
+  "creator": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "trigger": {
+    "type": "EVENT",
+    "attributes": {
+      "id": "idn:source-updated"
+    }
+  }
+}
