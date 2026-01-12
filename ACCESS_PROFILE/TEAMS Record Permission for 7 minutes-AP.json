@@ -1,0 +1,35 @@
+{
+  "id": "37191cdcffb34abd9df9964316079da8",
+  "name": "TEAMS Record Permission for 7 minutes-AP",
+  "description": "TEAMS Record Permission for 7 minutes",
+  "created": "2025-03-25T14:20:16.819682Z",
+  "modified": "2025-12-01T17:00:03.64482Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

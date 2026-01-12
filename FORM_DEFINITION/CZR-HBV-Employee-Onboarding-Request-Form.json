@@ -1,0 +1,498 @@
+{
+  "id": "e652cdf3-e569-4f2f-9c36-da51e0088ecb",
+  "name": "CZR-HBV-Employee-Onboarding-Request-Form",
+  "description": "CZR-HBV-Employee-Onboarding-Request-Form",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "Inkoti, Kishore"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "63262b4c-2bc6-43d8-afbc-420bb3eaeb3c",
+      "name": "Copy of CZR-Workflow-HBV-Employee-Onboarding"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "1288f476-5c73-4fc5-8c4e-3b0240ca7e3b",
+      "name": "CZR-Workflow-HBV-Employee-Onboarding"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "4858c83e-c8a0-4b33-9ea2-68ae7bc34514",
+      "name": "CZR-Workflow-HBV-Employee-Onboarding-old"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "requestedByWorkflow",
+      "type": "STRING",
+      "label": "RequestedByWorkflow",
+      "description": "RequestedByWorkflow"
+    },
+    {
+      "id": "contractorJobTitle",
+      "type": "STRING",
+      "label": "Contractor JobTitle",
+      "description": "Contractor JobTitle"
+    },
+    {
+      "id": "regulatorJobTitle",
+      "type": "STRING",
+      "label": "Regulator JobTitle",
+      "description": "Regulator JobTitle"
+    },
+    {
+      "id": "vendorJobTitle",
+      "type": "STRING",
+      "label": "Vendor JobTitle",
+      "description": "Vendor JobTitle"
+    },
+    {
+      "id": "locationBlvCall",
+      "type": "STRING",
+      "label": "Location BLV_CALL",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "296594569714",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "Employee",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Employee Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1183386400725",
+                    "key": "employeeType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "RequestedBy",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "488770355492",
+                    "key": "requestedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": false,
+                      "falseLabel": "Not Required",
+                      "helpText": "Enable it to add network access",
+                      "label": "Network Access",
+                      "trueLabel": "Required"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "845045419799",
+                    "key": "NetworkAccess",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": false,
+                      "falseLabel": "Not Required",
+                      "helpText": "Enable it to add exchange mailbox access",
+                      "label": "Exchange Mailbox",
+                      "trueLabel": "Required"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "749723619575",
+                    "key": "exchangeMailbox",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "filters": {},
+                          "indices": [
+                            "identities"
+                          ],
+                          "label": "",
+                          "query": "attributes.cloudLifecycleState:active AND @accounts(source.name:\"CZR-Application-ActiveDirectory-Harrahs\" AND disabled:false)",
+                          "sublabel": "",
+                          "value": ""
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Enter SetupLikePerson's Employee Name or ID",
+                      "label": "Setup Like Person",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "1448711469591",
+                    "key": "SetupLikePerson",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Network",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1187267265550",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Basic Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    },
+    {
+      "id": "929421288857",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "First Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "676504376572",
+                    "key": "FirstName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Last Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1334603027489",
+                    "key": "LastName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Preferred Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "495483991392",
+                    "key": "PreferredName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "options": [
+                            {
+                              "label": "HBV_HEC",
+                              "sublabel": "",
+                              "value": "HBV_HEC"
+                            },
+                            {
+                              "label": "HBV",
+                              "sublabel": "",
+                              "value": "HBV"
+                            }
+                          ]
+                        },
+                        "dataSourceType": "STATIC"
+                      },
+                      "forceSelect": false,
+                      "helpText": "Enter Location Details",
+                      "label": "Location",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "54594459245",
+                    "key": "location",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "HBV",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Property",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "457886658639",
+                    "key": "property",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Middle Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "148969263884",
+                    "key": "MiddleName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Suffix",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "966992474342",
+                    "key": "Suffix",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active AND attributes.workerType:Employee"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Enter Manager Name or ID",
+                      "label": "Verifying Caesars Manager",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "1724889466886",
+                    "key": "verifyingCaesarsManager",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "User's Job Title based on employee Type",
+                      "label": "Job Title",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1308003999044",
+                    "key": "JobTitle",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Column Set",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1689841731791",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "User Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "requestedByWorkflow",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "empty"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1183386400725"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "457886658639"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "false"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "749723619575"
+          }
+        },
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "1448711469591"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "749723619575"
+          }
+        },
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "1448711469591"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-21T17:22:27.005036448Z",
+  "modified": "2025-11-26T18:35:28.271510904Z"
+}

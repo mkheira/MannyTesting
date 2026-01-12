@@ -1,0 +1,193 @@
+{
+  "id": "2db3fd5c-2201-4fa8-beba-05664dd35c8d",
+  "name": "Employee Network Access Request",
+  "description": "Employee Network Access Request",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "654b7ca1-e61b-4895-97b3-2b36f5915688",
+      "name": "CZR-Workflow-EmployeeNetworkAccessRequest"
+    },
+    {
+      "type": "MySailPoint",
+      "id": "MySailPoint",
+      "name": ""
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "38ffd82a-4a03-4d18-a358-10ff639e792e",
+      "name": "CZR-Workflow-IG Provision_DepProvision"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "510a8503-8269-405c-9f58-e3cd457970b8",
+      "name": "Richard: Create a New User in Active Directory"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "a19ff4d1-844a-47f5-8c91-1cfa7a1226a3",
+      "name": "Copy of CZR-Workflow-EmployeeNetworkAccessRequest"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "requestedByWorkflow",
+      "type": "STRING",
+      "label": "RequestedByWorkflow",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1190487979684",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Requested By",
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "TEXT",
+            "id": "1621606790893",
+            "key": "requestedBy",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "filters": {},
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Enter Setup like person Employee ID",
+                      "label": "Setup Like Person",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "816792007114",
+                    "key": "setupLikePerson",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "filters": {},
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active AND attributes.workerType:Employee AND attributes.employeeType:E"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Enter requested for Employee ID",
+                      "label": "Requested For",
+                      "maximum": 1,
+                      "placeholder": "    ",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "653601408516",
+                    "key": "requestedFor",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Column Set",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "984049319159",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Employee Add AD Group Form",
+        "labelStyle": "h5",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "requestedByWorkflow",
+          "operator": "NOT_EM",
+          "valueType": "STRING",
+          "value": ""
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1621606790893"
+          }
+        },
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "requestedByWorkflow",
+            "element": "1621606790893"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-02-25T19:21:31.941397408Z",
+  "modified": "2025-04-22T20:07:08.080305704Z"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "adccfd02e86848e78b112f8d41949243",
+  "name": "USB - permanent access - Read Only - AP",
+  "description": "An AD group allows read-only access to USB storage devices.",
+  "created": "2025-07-25T12:27:45.397321Z",
+  "modified": "2025-12-01T17:00:49.628031Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

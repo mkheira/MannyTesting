@@ -1,0 +1,162 @@
+{
+  "id": "f9750df1-eb32-40e9-8a13-0648dc1486d9",
+  "name": "CZR-Suspend-Worker-Account-(SOX)-User-Selection-Form",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "Burka, Suman"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "0e62ef74-6dcc-46e2-affd-7f467a1c6554",
+      "name": "CZR-Workflow-Suspend-Worker-Account-(SOX)"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "userType",
+      "type": "STRING",
+      "label": "userType",
+      "description": ""
+    },
+    {
+      "id": "selectUser",
+      "type": "STRING",
+      "label": "selectUser",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1047768543890",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "indices": [
+                    "identities"
+                  ],
+                  "label": "",
+                  "query": "*",
+                  "sublabel": "",
+                  "value": ""
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "RequestedBy",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "247749748287",
+            "key": "requestedBy",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "options": [
+                    {
+                      "label": "Employee",
+                      "sublabel": "",
+                      "value": "Employee"
+                    },
+                    {
+                      "label": "Contractor",
+                      "sublabel": "",
+                      "value": "Contractor"
+                    }
+                  ]
+                },
+                "dataSourceType": "STATIC"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Select User Type",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "10907801584",
+            "key": "userType",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "filters": {
+                    "attributes.workerType": {
+                      "exclude": false,
+                      "value": "$.form.data.userType"
+                    }
+                  },
+                  "indices": [
+                    "identities"
+                  ],
+                  "label": "",
+                  "query": "@accounts(source.type:\"Active Directory - Direct\")",
+                  "sublabel": "",
+                  "value": ""
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Select User",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "361613987214",
+            "key": "selectUser",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "User Selection",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-06T11:43:33.741475573Z",
+  "modified": "2025-11-06T11:46:35.419375285Z"
+}

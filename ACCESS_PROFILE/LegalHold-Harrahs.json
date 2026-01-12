@@ -1,0 +1,41 @@
+{
+  "id": "43c84ed987c34cb6a381ab4dd68bb327",
+  "name": "LegalHold-Harrahs",
+  "description": null,
+  "created": "2025-12-15T16:57:22.236105Z",
+  "modified": "2025-12-15T18:58:00.557358Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [
+    {
+      "id": "3737dbaa98423f9ca71bc7638eb3d6bc",
+      "type": "ENTITLEMENT",
+      "name": "AC-FBCOST"
+    }
+  ],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

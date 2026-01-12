@@ -1,0 +1,35 @@
+{
+  "id": "f1fbf8fe7033477dbc882f64e4e72e90",
+  "name": "TEAMS Record Permission for 3 minutes-AP",
+  "description": "TEAMS Record Permission for 3 minutes",
+  "created": "2025-03-25T13:46:30.439744Z",
+  "modified": "2025-12-01T16:58:15.527961Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "Hale, Laurie"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

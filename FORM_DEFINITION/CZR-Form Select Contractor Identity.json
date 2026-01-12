@@ -1,0 +1,268 @@
+{
+  "id": "2878548b-c682-48ce-8434-c2ebcb1d26a6",
+  "name": "CZR-Form Select Contractor Identity",
+  "description": "For updating identity attributes",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "b7430e84-5ea3-4c1d-9523-0c55a117de8b",
+      "name": "Copy of Copy of CZR-Workflow Contractor Identity Attribute Update"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "a9a9443d-aa2e-4bae-98cd-67553e20c161",
+      "name": "Copy of CZR-Workflow Contractor Identity Attribute Update"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "35f651a6-365b-4f00-b125-ff0237d22459",
+      "name": "Copy of CZR-Workflow Contractor Identity Attribute Update 2"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "contractor",
+      "type": "STRING",
+      "label": "contractor",
+      "description": ""
+    },
+    {
+      "id": "contractorEndDate",
+      "type": "STRING",
+      "label": "Contractor end date",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1062191938705",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "Contractor",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Employee Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "747446283867",
+                    "key": "employeeType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Reason To Update",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1354041493184",
+                    "key": "reasonToUpdate",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": false,
+                      "falseLabel": "Disabled",
+                      "helpText": "Enable this to extend contractor",
+                      "label": "Extend Contractor",
+                      "trueLabel": "Enabled"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "1380302054465",
+                    "key": "extendContractor",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "Enter contract End Date.\nNote: End date should not be more than a year",
+                      "label": "Contract End Date",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "DATE",
+                    "id": "614069826695",
+                    "key": "contractEndDate",
+                    "validations": [
+                      {
+                        "validationType": "DATE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active  AND attributes.workerType:Employee"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "Updated By",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "343570239301",
+                    "key": "updatedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active  AND attributes.workerType:Contractor"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "Updating For",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "1005643438616",
+                    "key": "updatingFor",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": false,
+                      "falseLabel": "Disabled",
+                      "helpText": "Enable this to update contractor attributes",
+                      "label": "Update Contractor Details",
+                      "trueLabel": "Enabled"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "25065303229",
+                    "key": "updateContractorDetails",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Column Set",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "267379080041",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Select Identity",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "Contractor",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "Employee Type",
+            "element": "747446283867"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "747446283867"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "extendContractor",
+          "operator": "NE",
+          "valueType": "BOOLEAN",
+          "value": "false"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "614069826695"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-26T09:19:35.307139287Z",
+  "modified": "2025-12-16T19:33:33.72210318Z"
+}

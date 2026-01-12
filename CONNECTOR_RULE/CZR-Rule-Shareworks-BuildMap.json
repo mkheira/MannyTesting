@@ -1,0 +1,40 @@
+{
+  "description": "A BuildMap rule is used to manipulate the raw input data (provided via the rows and columns in the file) and build a map out of the incoming data.",
+  "type": "BuildMap",
+  "signature": {
+    "input": [
+      {
+        "name": "col",
+        "description": "An ordered list of the column names from the file’s header record or specified Columns list.",
+        "type": null
+      },
+      {
+        "name": "record",
+        "description": "An ordered list of the values for the current record (parsed based on the specified delimiter)",
+        "type": null
+      },
+      {
+        "name": "application",
+        "description": "The source object sent to the connector from IdentityNow.",
+        "type": null
+      },
+      {
+        "name": "schema",
+        "description": "A reference to the Schema object for the Delimited File source being read.",
+        "type": null
+      }
+    ],
+    "output": null
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import sailpoint.connector.DelimitedFileConnector;\r\nimport java.util.Arrays;\r\n\r\nMap map = DelimitedFileConnector.defaultBuildMap(cols, record);\r\n\r\n// Handle disabled status based on End Date\r\nString endDate = (String) map.get(\"End Date\");\r\nif (endDate != null && !endDate.trim().isEmpty()) {\r\n    map.put(\"IIQDisabled\", \"true\");\r\n} else {    \r\n    map.put(\"IIQDisabled\", \"false\");\r\n}\r\n\r\n// Handle Security Groups\r\nString securityGroups = (String) map.get(\"Security Groups\");\r\nif (securityGroups != null && !securityGroups.isEmpty()) {\r\n    String[] groups = securityGroups.split(\",\");\r\n    \r\n    for (int i = 0; i < groups.length; i++) {\r\n        groups[i] = groups[i].trim();\r\n    }\r\n    \r\n    map.put(\"Security Groups\", Arrays.asList(groups));\r\n}\r\n\r\n// Handle Field Level Security Types\r\nString fieldLevelSecurityTypes = (String) map.get(\"Field Level Security Types\");\r\nif (fieldLevelSecurityTypes != null && !fieldLevelSecurityTypes.isEmpty()) {\r\n    String[] types = fieldLevelSecurityTypes.split(\",\");\r\n    \r\n    for (int i = 0; i < types.length; i++) {\r\n        types[i] = types[i].trim();\r\n    }\r\n    \r\n    map.put(\"Field Level Security Types\", Arrays.asList(types));\r\n}\r\n\r\nreturn map;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "0c597d5f3efe4a7bb3854d0ed2d81bdb",
+  "name": "CZR-Rule-Shareworks-BuildMap",
+  "created": "2025-11-14T19:08:42.033Z",
+  "modified": "2025-12-03T19:47:28.477Z"
+}

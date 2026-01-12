@@ -1,0 +1,23 @@
+{
+  "approvalsMustBeExternal": false,
+  "autoApprovalEnabled": false,
+  "reauthorizationEnabled": false,
+  "requestOnBehalfOfConfig": {
+    "allowRequestOnBehalfOfAnyoneByAnyone": true,
+    "allowRequestOnBehalfOfEmployeeByManager": false
+  },
+  "approvalReminderAndEscalationConfig": {
+    "daysUntilEscalation": null,
+    "daysBetweenReminders": null,
+    "maxReminders": null,
+    "fallbackApprover": null
+  },
+  "entitlementRequestConfig": {
+    "allowEntitlementRequest": true,
+    "requestCommentsRequired": true,
+    "deniedCommentsRequired": false,
+    "grantRequestApprovalSchemes": []
+  },
+  "govGroupVisibilityEnabled": false,
+  "fallbackAccessDurationInDays": null
+}

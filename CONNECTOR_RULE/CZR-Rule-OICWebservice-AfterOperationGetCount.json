@@ -1,0 +1,49 @@
+{
+  "description": "This rule is used by the  Web Services connector to update parsed resource object.\n    Create List of Objects  which will later converted to Resource object ",
+  "type": "WebServiceAfterOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": null
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information contain header, body ,response object",
+        "type": null
+      },
+      {
+        "name": "processedResponseObject",
+        "description": "Response Object processed by the Web services connector",
+        "type": null
+      },
+      {
+        "name": "rawResponseObject",
+        "description": "Response Object returned from the end system",
+        "type": null
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object",
+        "type": null
+      }
+    ],
+    "output": {
+      "name": "Update Account/Group List",
+      "description": "Update information Map contains parsed list of accounts",
+      "type": null
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import connector.common.JsonUtil;\r\nimport java.util.HashMap;\r\nimport java.util.LinkedHashMap;\r\nimport java.util.Map.Entry;\r\nimport java.util.Map;\r\nimport java.util.List;\r\nimport java.util.ArrayList;\r\n\r\nif(null != rawResponseObject) {\r\n    String changeCount=\"0\";\r\n    String fullCount=\"0\";\r\n\ttry {\r\n\t\tMap rawResponseMap = (Map) JsonUtil.toMap(rawResponseObject);\r\n\t\r\n\t\tif(null != rawResponseMap){\r\n\t\t\tMap changeOnly = rawResponseMap.get(\"ChangesOnly\");\r\n\t\t\tMap totalCount = rawResponseMap.get(\"totalResults\");\r\n\t\t\tif(changeOnly!=null)\r\n\t\t\t  changeCount = changeOnly.get(\"Count\");\r\n\t\t\telse if(totalCount!=null)\r\n\t\t\t  fullCount = totalCount.get(\"employeesCnt\");\r\n\t\t}\r\n\r\n\t\tlog.warn(\"ChangeCount after rule rawResponseObject:: \"+changeCount);\r\n\t\tlog.warn(\"fullCount after rule rawResponseObject:: \"+fullCount);\t\t\r\n\t\t\r\n\t\tMap transientValues = application.getAttributeValue(\"transientValues\");\r\n\t\t\r\n\t\tif(transientValues == null) {\r\n\t\t\ttransientValues = new HashMap();\r\n\t\t\tapplication.setAttribute(\"transientValues\", transientValues);\r\n\t\t}\r\n\t\ttransientValues.put(\"changeCount\",changeCount);\r\n\t\ttransientValues.put(\"fullCount\",fullCount);\r\n\t\t\r\n\t} catch(Exception e) {\r\n\t\tlog.error(\"Catch bolck running in OIC AfterOperationGetChangeCount rule:: \"+e);\r\n\t\tthrow new sailpoint.tools.GeneralException(\"Catch bolck running in OIC AfterOperationGetChangeCount rule:: \" + e.getLocalizedMessage());\r\n\t}\t\r\n}\r\n\r\nMap updatedMapInfo = new HashMap();\r\nupdatedMapInfo.put(\"data\", processedResponseObject);\r\nreturn updatedMapInfo;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "648cd7dc83364791804f2f34991cf615",
+  "name": "CZR-Rule-OICWebservice-AfterOperationGetCount",
+  "created": "2025-02-11T05:02:41.967Z",
+  "modified": "2025-05-14T19:57:46.912Z"
+}

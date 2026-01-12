@@ -1,0 +1,16 @@
+{
+  "id": "e13544b1-ab06-432d-80bc-056e17b4dcc9",
+  "name": "Contractor details",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [],
+  "formInput": [],
+  "formElements": [],
+  "formConditions": [],
+  "created": "2025-10-23T15:24:09.502715072Z",
+  "modified": "2025-10-23T15:24:09.502715072Z"
+}

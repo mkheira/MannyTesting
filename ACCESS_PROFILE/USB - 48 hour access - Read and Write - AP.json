@@ -1,0 +1,35 @@
+{
+  "id": "b1aaf2d5738e4400a27d1534edc208c6",
+  "name": "USB - 48 hour access - Read and Write - AP",
+  "description": "An AD group allows read/write access to USB storage devices for 48 hours.",
+  "created": "2025-09-03T15:01:00.25077Z",
+  "modified": "2025-12-01T16:56:31.361828Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

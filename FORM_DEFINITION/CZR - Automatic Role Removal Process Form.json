@@ -1,0 +1,157 @@
+{
+  "id": "06f2ec23-4797-4d1f-adde-d59a732d91ad",
+  "name": "CZR - Automatic Role Removal Process Form",
+  "description": "The requested role will be removed automatically from the user after 30 days.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "Momula, Bhanuprakash"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "74200624-a188-4132-96b2-df145b26cf00",
+      "name": "Copy of CZR-Automatic Role Removal Workflow"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "c598b95c-0d02-48bd-9870-6b211241a1b2",
+      "name": "CZR-Test Automatic Role Removal Workflow"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "232069506844",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "filters": {},
+                  "indices": [
+                    "identities"
+                  ],
+                  "query": "attributes.cloudLifecycleState:active"
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Requested By",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "1176144803176",
+            "key": "requestedBy",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "indices": [
+                    "identities"
+                  ],
+                  "query": "attributes.cloudLifecycleState:active"
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Requested For",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "706378559438",
+            "key": "requestedFor",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "name",
+                  "filters": {},
+                  "indices": [
+                    "roles"
+                  ],
+                  "query": "attributes.name.exact eq \"CZR-Test Role_Automatic_Removal\""
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Role",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "968772121995",
+            "key": "role",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "Please mention the start date in YYYY-MM-DD format.",
+              "label": "Comments",
+              "placeholder": "2025-01-31",
+              "required": true,
+              "resize": false,
+              "rows": 2
+            },
+            "elementType": "TEXTAREA",
+            "id": "577495391940",
+            "key": "comments",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Role Request Form",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-12-08T15:41:53.686963787Z",
+  "modified": "2025-12-18T17:31:45.917907187Z"
+}

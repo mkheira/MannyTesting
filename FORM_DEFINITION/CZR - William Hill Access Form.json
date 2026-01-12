@@ -1,0 +1,169 @@
+{
+  "id": "35518505-5dea-4bbf-863c-9ab8ede8c970",
+  "name": "CZR - William Hill Access Form",
+  "description": "This form is used to create William Hill Account for the employees",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "876749316b794ea38c6d378f0ab85161",
+    "name": "Momula, Bhanuprakash"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "7d8d9cf9-8602-43c0-8191-ea435cfbb07b",
+      "name": "CZR - William Hill Employee Account Creation"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "cfbbcb58-b81c-45ac-a0e4-d905181024be",
+      "name": "Copy of CZR - William Hill Employee Account Creation"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "471333cb-33a6-4af4-a77d-a38a68206d9b",
+      "name": "Copy of CZR - William Hill Employee Account Creation 2"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "296594569714",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "RequestedBy",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "488770355492",
+                    "key": "requestedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active  AND attributes.workerType:Employee"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Select the employee to Create Account",
+                      "label": "Employee",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "123456789012",
+                    "key": "employee",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": false,
+                      "falseLabel": "Not Required",
+                      "helpText": "Enable it to add William Hill Domain access",
+                      "label": "William Hill Domain Access",
+                      "trueLabel": "Required"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "845045419799",
+                    "key": "williamHillDomainAccessRequired",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Update Details",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1187267265550",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "William Hill Account Creation",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "NE",
+          "valueType": "BOOLEAN",
+          "value": "false"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValue": "true",
+            "element": "845045419799"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "845045419799"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-11-12T14:37:40.153660951Z",
+  "modified": "2025-11-20T14:56:40.136180111Z"
+}

@@ -1,0 +1,49 @@
+{
+  "description": "This rule is used by the Web Services connector to update parsed resource object. Create List of Objects which will later converted to Resource object.",
+  "type": "WebServiceAfterOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": null
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information contain header, body ,response object",
+        "type": null
+      },
+      {
+        "name": "processedResponseObject",
+        "description": "Response Object processed by the Web services connector",
+        "type": null
+      },
+      {
+        "name": "rawResponseObject",
+        "description": "Response Object returned from the end system",
+        "type": null
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object",
+        "type": null
+      }
+    ],
+    "output": {
+      "name": "Update Account/Group List",
+      "description": "Update information Map contains parsed list of accounts",
+      "type": null
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.util.Iterator;\r\nimport java.util.Map.Entry;\r\n\r\n\r\nMap updatedMapwarn = new HashMap();\r\nMap updatedAssignments = new HashMap();\r\nlog.warn(\"Processedstuff\"+ processedResponseObject);\r\n\r\n\r\nif (processedResponseObject != null) {\r\n    \r\n    log.warn(\"REDDY1\");\r\n\r\n\t\t for (Map account : processedResponseObject) {\r\n        Iterator<Entry> iterator = account.entrySet().iterator();\r\n\r\n        log.warn(\"REDDY2\");\r\n\r\n        while (iterator.hasNext()) {\r\n             log.warn(\"REDDY22\");\r\n            Entry entry = iterator.next();\r\n             log.warn(\"REDDY222\" +entry.getValue());\r\n            if (entry.getValue() == null || entry.getValue().equals(\"\")) {\r\n\t\t\t\t     // Object oldValue = appLink.get(entry.getKey());\r\n\r\n                     log.warn(\"REDDY3\");\r\n                Object oldValue = \"CAESARS\";\r\n\r\n                log.warn(\"REDDY4 \" + entry.getValue());\r\n               if(oldValue !=null){\r\n                log.warn(\"REDDY5\"+oldValue);\r\n\t\t\t\tentry.setValue(oldValue);\r\n\r\n                log.warn(\"REDDY5\"+ entry.getValue());\r\n\t\t\t   }\r\n            }\r\n            if(entry.getKey().toString().equals(\"assignments\")){\r\n              log.warn(\"heloooooooooooooooooooooooooooooooooooooooo\");\r\n              Object assignmentMap= entry.getValue();\r\n              log.warn(\"assignmentmap\" + assignmentMap);\r\n\r\n\r\n            }\r\n\r\n\r\n        }\r\n    }\r\n\r\n    updatedMapwarn.put(\"data\", processedResponseObject);\r\n}\r\nlog.warn(\"updatedmap\" + updatedMapwarn);\r\nreturn updatedMapwarn;\r\n"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "0a57ec475d0f4d0695a376fd5b770041",
+  "name": "Retain Original Values on Null",
+  "created": "2025-08-10T15:22:52.679Z",
+  "modified": "2025-08-11T21:14:04.081Z"
+}

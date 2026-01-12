@@ -1,0 +1,44 @@
+{
+  "description": "This rule is used by the  Web Services connector before performing any operation like testconnection, aggregation, etc.",
+  "type": "WebServiceBeforeOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": null
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information contain header, body, context url, method type, response attribute map,\n          successful response code\n        ",
+        "type": null
+      },
+      {
+        "name": "oldResponseMap",
+        "description": "earlier response object ",
+        "type": null
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object",
+        "type": null
+      }
+    ],
+    "output": {
+      "name": "EndPoint",
+      "description": "Updated EndPoint Object",
+      "type": null
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import java.util.Map;\r\n\r\ntry {\r\n\tMap headerMap= requestEndPoint.getHeader();\r\n\tif(null != headerMap && headerMap.containsKey(\"Content-Type\")) {\r\n\t\theaderMap.remove(\"Content-Type\");\r\n\t\trequestEndPoint.setHeader(headerMap);\r\n\t}\r\n} catch(Exception e) {\r\n\tlog.error(\"Catch block running in OIC before operation rule:: \" + e.getMessage(), e);\r\n\tthrow new sailpoint.tools.GeneralException(\"Catch block running in OIC before operation rule:: \" + e.getLocalizedMessage(), e);\r\n}\r\n\r\nreturn requestEndPoint;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "3489950ddcdf43cb99a9208f2cb48a35",
+  "name": "CZR-Rule-OICWebservice-BeforeOperation",
+  "created": "2025-02-11T04:51:42.711Z",
+  "modified": "2025-08-05T23:32:28.417Z"
+}

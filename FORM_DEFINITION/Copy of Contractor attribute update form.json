@@ -1,0 +1,150 @@
+{
+  "id": "f046cb7b-4962-4acd-a256-7f0a5a1155c7",
+  "name": "Copy of Contractor attribute update form",
+  "description": "Contractor Network Access Request Form",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "10d4aefa-d85c-4ed1-b91d-43749a310f4d",
+      "name": "Update of Contractor AD Attributes"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "employeeType",
+      "type": "STRING",
+      "label": "employeeType",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "296594569714",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "Contractor",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Employee Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1183386400725",
+                    "key": "employeeType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "label": "",
+                          "query": "attributes.employeeType:Contractor",
+                          "sublabel": "",
+                          "value": ""
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "RequestedBy",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "488770355492",
+                    "key": "requestedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Reason for the update.",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "392923205420",
+                    "key": "reasonForTheUpdate",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Network",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1187267265550",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Basic Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "employeeType",
+          "operator": "EQ",
+          "valueType": "STRING",
+          "value": "Contractor"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1183386400725"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-24T21:03:35.10277691Z",
+  "modified": "2025-10-27T21:15:00.207381028Z"
+}

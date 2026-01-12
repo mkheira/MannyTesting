@@ -1,0 +1,79 @@
+{
+  "id": "f917e0e3-5585-4f79-a402-fbff750a6331",
+  "name": "CZR-ApplicationAccounts-Cleanup-UserSelection",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "Inkoti, Kishore"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "ec13d527-9e04-4c2d-8c97-91683388af39",
+      "name": "CZR-ApplicationAccts-Cleanup"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "91973e69-2b5a-40c1-aa77-0263d6623c89",
+      "name": "Copy of CZR-ApplicationAccts-Cleanup 2"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "611058433355",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "Section to take input of target user and application details",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "objectType": "IDENTITY"
+                },
+                "dataSourceType": "INTERNAL"
+              },
+              "forceSelect": true,
+              "helpText": "Target User",
+              "label": "Select User",
+              "maximum": 1,
+              "placeholder": "Select target identity to cleanup accounts",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "916032210255",
+            "key": "targetUser",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Application Account Cleanup Form",
+        "labelStyle": "h1",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "formButtons": [
+    {
+      "id": "form-btn-submit",
+      "config": {
+        "alignment": "center",
+        "label": "Submit",
+        "type": "submit"
+      }
+    }
+  ],
+  "created": "2025-09-22T18:21:12.971961206Z",
+  "modified": "2025-09-22T20:53:41.287123551Z"
+}

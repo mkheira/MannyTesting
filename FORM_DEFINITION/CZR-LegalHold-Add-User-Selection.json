@@ -1,0 +1,68 @@
+{
+  "id": "8b0f0494-d900-4189-ac71-8217225f24aa",
+  "name": "CZR-LegalHold-Add-User-Selection",
+  "description": "Select the identity to add Legal Hold",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "Rajathadri, Sachin"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "3f179969-cbde-4138-b5ff-f24c2d34e641",
+      "name": "CZR-RoleBased-LegalHold"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "45695735917",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "indices": [
+                    "identities"
+                  ],
+                  "query": "!attributes.cloudLifecycleState:\"inactive\" AND !attributes.adDescription:LEGAL AND @accounts(source.name:\"CZR-Application-ActiveDirectory-Harrahs\")"
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "Select the identity",
+              "label": "Identity Name",
+              "maximum": 1,
+              "placeholder": "Legal Hold identity",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "310940135908",
+            "key": "identityName",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Add user to Legal Hold",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-12-11T10:48:33.230416056Z",
+  "modified": "2025-12-19T12:52:42.588569469Z"
+}

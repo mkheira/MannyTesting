@@ -1,0 +1,115 @@
+{
+  "id": "253c1c3c-d449-42e1-84ad-739046e69659",
+  "name": "Select Windows Service and Operation",
+  "description": "An interactive form that allows users to select a windows service and whether to stop, start, or restart that service.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "50015ffc-9aa1-4b1f-a630-f02000264b5c",
+      "name": "Template: Update the State of a Windows Service"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "services",
+      "type": "ARRAY",
+      "label": "services",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "928983815105",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "Select the Windows service and operation to perform on the service below.",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "formInputId": "services",
+                  "sortBy": "ASC"
+                },
+                "dataSourceType": "FORM_INPUT"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Service",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "1179356401375",
+            "key": "service",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "options": [
+                    {
+                      "label": "Stop",
+                      "subLabel": "",
+                      "value": "Stop"
+                    },
+                    {
+                      "label": "Start",
+                      "subLabel": "",
+                      "value": "Start"
+                    },
+                    {
+                      "label": "Restart",
+                      "subLabel": "",
+                      "value": "Restart"
+                    }
+                  ]
+                },
+                "dataSourceType": "STATIC"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Operation",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "207070661066",
+            "key": "operation",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "{{ $.form.input.operation }} Windows Service",
+        "labelStyle": "h4",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-10-30T14:45:15.170817801Z",
+  "modified": "2025-10-30T14:45:15.170817801Z"
+}

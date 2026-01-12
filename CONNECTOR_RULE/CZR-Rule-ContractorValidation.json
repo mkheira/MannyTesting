@@ -1,0 +1,49 @@
+{
+  "description": "This rule is used by the Web Services connector to update parsed resource object. Create List of Objects which will later converted to Resource object.",
+  "type": "WebServiceAfterOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": null
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information contain header, body ,response object",
+        "type": null
+      },
+      {
+        "name": "processedResponseObject",
+        "description": "Response Object processed by the Web services connector",
+        "type": null
+      },
+      {
+        "name": "rawResponseObject",
+        "description": "Response Object returned from the end system",
+        "type": null
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object",
+        "type": null
+      }
+    ],
+    "output": {
+      "name": "Update Account/Group List",
+      "description": "Update information Map contains parsed list of accounts",
+      "type": null
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import java.util.HashMap;\r\n\r\nimport java.util.List;\r\n\r\nimport java.util.Map;\r\n\r\nimport java.util.Map.Entry;\r\n\r\nimport java.util.Iterator;\r\n \r\n//We can parse the response(rawResponseObject) to fetch from the respective executed Endpoint operation.\r\n\r\nMap updatedMapInfo = new HashMap();\r\n\r\nif (processedResponseObject != null){\r\n\r\n    for (Map iterateMap : processedResponseObject) {\r\n\r\n        if (iterateMap != null ) {\r\n\r\n            String firstname=iterateMap.get(\"FirstName\");\r\n\t\t\tString lastname=iterateMap.get(\"LastName\");\r\n\t\t\tString preferredname=iterateMap.get(\"PreferredName\");\r\n\t\t\tString displayname=\"\";\r\n\t\t\tif(sailpoint.tools.Util.isNotNullOrEmpty(preferredname)){\r\n\t\t\t \r\n\t\t\t displayname=preferredname+\" \"+lastname;\r\n\t\t\t\r\n\t\t\t}else{\r\n\t\t\tdisplayname=firstname+\" \"+lastname;\r\n\t\t\t\r\n\t\t\t}\r\n\t\t\titerateMap.put(\"DisplayName\",displayname);\r\n        }\r\n    }\r\nupdatedMapInfo.put(\"data\", processedResponseObject);\r\n\r\n}\r\nreturn updatedMapInfo;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "25cca95437674c57b182294a1f0df8f7",
+  "name": "CZR-Rule-ContractorValidation",
+  "created": "2025-02-27T11:00:51.554Z",
+  "modified": "2025-02-27T11:05:39.328Z"
+}

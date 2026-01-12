@@ -1,0 +1,69 @@
+{
+  "id": "6ffecc0a-96c2-4aca-a2a5-a3d75928e602",
+  "name": "Choose Firewall Rule Operation",
+  "description": "An interactive form that allows the user to select whether to enable or disable an inbound firewall rule.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "usedBy": [],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "1384004097650",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "Select a firewall rule operation below.",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "options": [
+                    {
+                      "label": "Enable",
+                      "subLabel": "",
+                      "value": "Enable"
+                    },
+                    {
+                      "label": "Disable",
+                      "subLabel": "",
+                      "value": "Disable"
+                    }
+                  ]
+                },
+                "dataSourceType": "STATIC"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Operation",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "848391309744",
+            "key": "operation",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Manage Inbound Firewall Rule",
+        "labelStyle": "h4",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-11T20:22:31.669653179Z",
+  "modified": "2025-11-11T20:22:31.669653179Z"
+}

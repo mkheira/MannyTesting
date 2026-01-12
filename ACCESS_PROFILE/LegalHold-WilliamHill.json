@@ -1,0 +1,41 @@
+{
+  "id": "761e5cfa6f614b0a96fa08ea19f00cdf",
+  "name": "LegalHold-WilliamHill",
+  "description": null,
+  "created": "2025-12-15T16:58:26.608463Z",
+  "modified": "2025-12-15T18:58:07.906898Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "136c2e6d25154894a28dda6701c6a54f",
+    "name": "svcdentspsbcf"
+  },
+  "source": {
+    "id": "4f4839d8993144e3b1c0b1af7a2fd110",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-WilliamHill"
+  },
+  "entitlements": [
+    {
+      "id": "0008dc3fea3532d69deab87228d28d5d",
+      "type": "ENTITLEMENT",
+      "name": "ROL-T2-CAC-ContactManagers"
+    }
+  ],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

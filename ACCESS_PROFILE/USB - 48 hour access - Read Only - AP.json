@@ -1,0 +1,35 @@
+{
+  "id": "a28aeab65c244748890ed0c9c5627095",
+  "name": "USB - 48 hour access - Read Only - AP",
+  "description": "An AD group allows read-only access to USB storage devices for 48 hours.",
+  "created": "2025-09-03T15:04:10.631214Z",
+  "modified": "2025-12-01T17:02:18.019804Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

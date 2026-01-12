@@ -1,0 +1,41 @@
+{
+  "id": "40c82afffa674ff1b11af2b622c45750",
+  "name": "William Hill Test",
+  "description": "testing for William Hill",
+  "created": "2025-09-23T20:35:02.724246Z",
+  "modified": "2025-09-23T20:36:43.319213Z",
+  "enabled": true,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "Kheira, Manbir"
+  },
+  "source": {
+    "id": "4f4839d8993144e3b1c0b1af7a2fd110",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-WilliamHill"
+  },
+  "entitlements": [
+    {
+      "id": "7c743c7dfe1f3c3a9c0a33354f283c47",
+      "type": "ENTITLEMENT",
+      "name": "CBS-Vendor-Delegation"
+    }
+  ],
+  "requestable": true,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

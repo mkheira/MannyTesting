@@ -1,0 +1,40 @@
+{
+  "description": "A BuildMap rule is used to manipulate the raw input data (provided via the rows and columns in the file) and build a map out of the incoming data.",
+  "type": "BuildMap",
+  "signature": {
+    "input": [
+      {
+        "name": "col",
+        "description": "An ordered list of the column names from the file’s header record or specified Columns list.",
+        "type": null
+      },
+      {
+        "name": "record",
+        "description": "An ordered list of the values for the current record (parsed based on the specified delimiter)",
+        "type": null
+      },
+      {
+        "name": "application",
+        "description": "The source object sent to the connector from IdentityNow.",
+        "type": null
+      },
+      {
+        "name": "schema",
+        "description": "A reference to the Schema object for the Delimited File source being read.",
+        "type": null
+      }
+    ],
+    "output": null
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import sailpoint.connector.DelimitedFileConnector;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.Arrays;\r\n\r\n// Check if the first column (User ID) is empty before processing\r\nif (record == null || record.size() == 0 || record.get(0) == null || record.get(0).trim().isEmpty()) {\r\n    return new HashMap();\r\n}\r\n\r\nMap map = DelimitedFileConnector.defaultBuildMap(cols, record);\r\n\r\n// Handle Disabled status - set IIQDisabled based on the Disabled column\r\nString disabledValue = (String) map.get(\"Disabled\");\r\nif (disabledValue != null && \"Y\".equalsIgnoreCase(disabledValue.trim())) {\r\n    map.put(\"IIQDisabled\", \"true\");\r\n} else {\r\n    map.put(\"IIQDisabled\", \"false\");\r\n}\r\n\r\n// Define the entitlement columns to check\r\nList entitlementColumns = new ArrayList();\r\nentitlementColumns.add(\"_QRYUP\");\r\nentitlementColumns.add(\"ACCOUNTANT\");\r\nentitlementColumns.add(\"ADMIN\");\r\nentitlementColumns.add(\"CLASS1\");\r\nentitlementColumns.add(\"CLASS3\");\r\nentitlementColumns.add(\"CONTRACTSPEC\");\r\nentitlementColumns.add(\"CREADMIN\");\r\nentitlementColumns.add(\"CRESPCL\");\r\nentitlementColumns.add(\"CREVIEW\");\r\nentitlementColumns.add(\"APITEST\");\r\nentitlementColumns.add(\"MIX\");\r\nentitlementColumns.add(\"MUNIBILLING\");\r\nentitlementColumns.add(\"PROFITSTARS\");\r\nentitlementColumns.add(\"RTC\");\r\n\r\n// Create a list to hold granted entitlements\r\nList grantedEntitlements = new ArrayList();\r\n\r\n// Loop through each entitlement column\r\nfor (int i = 0; i < entitlementColumns.size(); i++) {\r\n    String entCol = (String) entitlementColumns.get(i);\r\n    String value = (String) map.get(entCol);\r\n    \r\n    // If Y, add the entitlement name to our list\r\n    if (value != null && \"Y\".equalsIgnoreCase(value.trim())) {\r\n        grantedEntitlements.add(entCol);\r\n    }\r\n}\r\n\r\n// Add the consolidated entitlements as a List (same format as Shareworks)\r\nif (grantedEntitlements.size() > 0) {\r\n    map.put(\"Entitlements\", grantedEntitlements);\r\n}\r\n\r\nreturn map;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "27271644f9264c728096d9af294d1d71",
+  "name": "CZR-Rule-MRI-BuildMap",
+  "created": "2025-11-14T22:58:35.140Z",
+  "modified": "2025-12-02T20:52:37.134Z"
+}

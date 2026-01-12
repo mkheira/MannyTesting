@@ -1,0 +1,162 @@
+{
+  "id": "87cefc5b-b9ac-4998-93ea-b26a301e9dab",
+  "name": "Contractor Network Access Request - Form",
+  "description": "Contractor Network Access Request Form",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "Kumar Bayyaram, Shravan"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "fc45bdd7-ea8a-4dbd-84a2-8e5f46d9f40c",
+      "name": "Copy of CZR-Workflow-Contractor Network or Exchange Access Request"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "296594569714",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "RequestedBy",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "488770355492",
+                    "key": "requestedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "label": "",
+                          "query": "attributes.cloudLifecycleState:active  AND attributes.workerType:Contractor ",
+                          "sublabel": "",
+                          "value": ""
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "Select the contractor to update",
+                      "label": "Contractor",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "123456789012",
+                    "key": "contractor",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": true,
+                      "falseLabel": "Not Required",
+                      "helpText": "Enable it to add network access",
+                      "label": "Network Access",
+                      "trueLabel": "Required"
+                    },
+                    "elementType": "TOGGLE",
+                    "id": "845045419799",
+                    "key": "NetworkAccess",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Update Details",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1187267265550",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Create Network or Enable Mailbox",
+        "labelStyle": "h5",
+        "showLabel": false
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "NE",
+          "valueType": "BOOLEAN",
+          "value": "false"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValue": "true",
+            "element": "845045419799"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "845045419799"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-11-14T12:53:34.099131091Z",
+  "modified": "2025-11-14T17:13:05.387043605Z"
+}

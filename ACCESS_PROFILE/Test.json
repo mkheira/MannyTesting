@@ -1,0 +1,35 @@
+{
+  "id": "faee1a961d0d4f949864ffcc5e7b5ebe",
+  "name": "Test",
+  "description": null,
+  "created": "2025-11-06T22:44:48.905853Z",
+  "modified": "2025-11-14T04:21:27.381714Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "51853bd610094ac390620e1d89aad553",
+    "name": "Kheira, Manbir"
+  },
+  "source": {
+    "id": "8658625170dc4dc69206007cd6fab106",
+    "type": "SOURCE",
+    "name": "CZR-Application-Shareworks"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

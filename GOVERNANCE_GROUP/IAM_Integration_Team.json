@@ -1,0 +1,29 @@
+{
+  "members": [
+    {
+      "type": "IDENTITY",
+      "id": "9880e87611d64a5b9a6c66acd11b7301",
+      "name": "Lingareddy Some"
+    },
+    {
+      "type": "IDENTITY",
+      "id": "e617f2920751421b89573d8b7a85ea86",
+      "name": "Ashley Valley"
+    }
+  ],
+  "connections": null,
+  "description": "IAM Integration Team",
+  "owner": {
+    "displayName": null,
+    "emailAddress": null,
+    "type": "IDENTITY",
+    "id": "50d28334b5e84440a090b431239cc7d8",
+    "name": "800164526"
+  },
+  "memberCount": 0,
+  "connectionCount": 0,
+  "id": "909fb39c-8469-4088-91d2-ff608e0dec82",
+  "name": "IAM_Integration_Team",
+  "created": null,
+  "modified": null
+}

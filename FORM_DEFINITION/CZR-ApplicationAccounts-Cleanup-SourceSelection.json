@@ -1,0 +1,77 @@
+{
+  "id": "8072d7a4-c0c5-4049-92d6-129baa25b041",
+  "name": "CZR-ApplicationAccounts-Cleanup-SourceSelection",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "7ae1e53f4aa7463b9ce0eb405c55da3c",
+    "name": "Inkoti, Kishore"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "ec13d527-9e04-4c2d-8c97-91683388af39",
+      "name": "CZR-ApplicationAccts-Cleanup"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "91973e69-2b5a-40c1-aa77-0263d6623c89",
+      "name": "Copy of CZR-ApplicationAccts-Cleanup 2"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "userAccounts",
+      "type": "ARRAY",
+      "label": "userAccounts",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "607353328307",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "formInputId": "userAccounts",
+                  "sortBy": "ASC"
+                },
+                "dataSourceType": "FORM_INPUT"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Select User Account",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "914610942804",
+            "key": "selectUserAccount",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Application Account Cleanup",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-09-22T20:55:50.896471682Z",
+  "modified": "2025-10-01T16:12:56.435645247Z"
+}

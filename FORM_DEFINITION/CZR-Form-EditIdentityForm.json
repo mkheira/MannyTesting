@@ -1,0 +1,195 @@
+{
+  "id": "e6191cc1-a913-416f-a5ae-6cf87a1313a6",
+  "name": "CZR-Form-EditIdentityForm",
+  "description": "CZR-Form-EditIdentityForm",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "dded92ecac1c4739910ce541c4c19675",
+    "name": "Ashis Maity"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "203a0242-1286-49e4-baf8-801144130f8f",
+      "name": "CZR-Workflow-Immediate-Termination"
+    },
+    {
+      "type": "MySailPoint",
+      "id": "MySailPoint",
+      "name": ""
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "86c2044a-0cad-439f-81d7-73a9b74786c0",
+      "name": "Copy of CZR-Workflow-Immediate-Termination"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "assignmentStatusType",
+      "type": "STRING",
+      "label": "AssignmentStatusType",
+      "description": "AssignmentStatusType"
+    },
+    {
+      "id": "completeTermination",
+      "type": "STRING",
+      "label": "CompleteTermination",
+      "description": ""
+    },
+    {
+      "id": "defaultValue",
+      "type": "STRING",
+      "label": "DefaultValue",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1351307501911",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "Please select the user (employee/contractor) details",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                  "indices": [
+                    "identities"
+                  ],
+                  "query": "(attributes.workerType:Employee AND attributes.employeeType:E AND (attributes.cloudLifecycleState:active OR attributes.cloudLifecycleState:leaveOfAbsence)) OR (attributes.workerType:Contractor AND attributes.cloudLifecycleState:active)"
+                },
+                "dataSourceType": "SEARCH"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "User",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "1403466538431",
+            "key": "user",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Assignment Status Type",
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "TEXT",
+            "id": "55236940450",
+            "key": "assignmentStatusType",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Termination Date",
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "DATE",
+            "id": "874354575784",
+            "key": "terminationDate",
+            "validations": [
+              {
+                "validationType": "DATE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Complete Termination",
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "TEXT",
+            "id": "1539528283273",
+            "key": "completeTermination",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "User Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "defaultValue",
+          "operator": "NOT_EM",
+          "valueType": "STRING",
+          "value": ""
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "55236940450"
+          }
+        },
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "assignmentStatusType",
+            "element": "55236940450"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1539528283273"
+          }
+        },
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "completeTermination",
+            "element": "1539528283273"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-02-19T07:01:47.948087022Z",
+  "modified": "2025-06-06T13:22:06.273274723Z"
+}

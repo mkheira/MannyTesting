@@ -1,0 +1,365 @@
+{
+  "id": "d738412f-9151-4d10-ab9f-94c78bd17316",
+  "name": "CZR-Suspend-Worker-Account-(SOX)-AD-Account-Selection-Form",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a59de7c458b8412196819de652475e5a",
+    "name": "Burka, Suman"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "7e5f1856-26e1-42fc-93d9-2b78541f6fbe",
+      "name": "Copy of CZR-Workflow-Suspend-Worker-Account-(SOX)"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "0e62ef74-6dcc-46e2-affd-7f467a1c6554",
+      "name": "CZR-Workflow-Suspend-Worker-Account-(SOX)"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "userType",
+      "type": "STRING",
+      "label": "userType",
+      "description": ""
+    },
+    {
+      "id": "usersEnabledAdAccounts",
+      "type": "ARRAY",
+      "label": "usersEnabledADAccounts",
+      "description": ""
+    },
+    {
+      "id": "usersDisabledAdAccounts",
+      "type": "ARRAY",
+      "label": "usersDisabledADAccounts",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "607353328307",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "default": false,
+              "falseLabel": "Disabled",
+              "helpText": "Use this field to capture yes/no responses",
+              "label": "Suspend All AD Accounts",
+              "trueLabel": "Enabled"
+            },
+            "elementType": "TOGGLE",
+            "id": "1020612469837",
+            "key": "suspendAllAdAccounts",
+            "validations": []
+          },
+          {
+            "config": {
+              "default": false,
+              "falseLabel": "Disabled",
+              "helpText": "Use this field to capture yes/no responses",
+              "label": "Suspend AD Account",
+              "trueLabel": "Enabled"
+            },
+            "elementType": "TOGGLE",
+            "id": "1482400463938",
+            "key": "suspendAdAccount",
+            "validations": []
+          },
+          {
+            "config": {
+              "default": false,
+              "falseLabel": "Disabled",
+              "helpText": "Use this field to capture yes/no responses",
+              "label": "Activate AD Account",
+              "trueLabel": "Enabled"
+            },
+            "elementType": "TOGGLE",
+            "id": "333514495467",
+            "key": "activateAdAccount",
+            "validations": []
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "formInputId": "usersEnabledAdAccounts",
+                  "sortBy": "ASC"
+                },
+                "dataSourceType": "FORM_INPUT"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Select AD Accounts for Suspension",
+              "maximum": 5,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "315358567200",
+            "key": "selectAdAccountsForSuspension",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "formInputId": "usersDisabledAdAccounts",
+                  "sortBy": "ASC"
+                },
+                "dataSourceType": "FORM_INPUT"
+              },
+              "forceSelect": false,
+              "helpText": "",
+              "label": "Select AD Accounts for Activate",
+              "maximum": 10,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "197485703858",
+            "key": "selectAdAccountsForActivate",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Reason For Suspension",
+              "placeholder": "",
+              "required": true,
+              "resize": false,
+              "rows": 2
+            },
+            "elementType": "TEXTAREA",
+            "id": "523350205420",
+            "key": "reasonForSuspension",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Reason For Activation",
+              "placeholder": "",
+              "required": true,
+              "resize": false,
+              "rows": 2
+            },
+            "elementType": "TEXTAREA",
+            "id": "889500961516",
+            "key": "reasonForActivation",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "AD Account Selection",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "OR",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "selectAdAccountsForSuspension",
+          "operator": "NOT_EM",
+          "valueType": "STRING_LIST",
+          "value": []
+        },
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAllAdAccounts",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "523350205420"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "selectAdAccountsForActivate",
+          "operator": "NOT_EM",
+          "valueType": "STRING_LIST",
+          "value": []
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "889500961516"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "315358567200"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "activateAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "197485703858"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "OR",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        },
+        {
+          "sourceType": "ELEMENT",
+          "source": "activateAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "1020612469837"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "OR",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        },
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAllAdAccounts",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "333514495467"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "OR",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "activateAdAccount",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        },
+        {
+          "sourceType": "ELEMENT",
+          "source": "suspendAllAdAccounts",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "1482400463938"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-11-06T11:47:04.601242248Z",
+  "modified": "2025-11-06T11:48:04.452788937Z"
+}

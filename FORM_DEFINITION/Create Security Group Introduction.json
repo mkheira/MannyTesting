@@ -1,0 +1,42 @@
+{
+  "id": "3dc60467-48e9-4d10-b8d1-3bb7b2e2fb1c",
+  "name": "Create Security Group Introduction",
+  "description": "An interactive form explaining the Create a Security Group in Active Directory workflow to the user.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "usedBy": [],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "1682787735342",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "description": "<p>This interactive workflow creates a new Active Directory security group.</p>\n<p>You will be asked to provide the following group details using an interactive form:</p>\n<p><em>Name</em></p>\n<p><em>Managed By</em></p>\n<p><em>Group Type</em></p>\n<p><em>Location</em></p>\n<p>The group manager will receive a notification once the group has been created.</p>\n<p><em><strong>Note:</strong> The group name must be unique.</em></p>",
+              "label": "Introduction",
+              "showLabel": true
+            },
+            "elementType": "DESCRIPTION",
+            "id": "99215908622",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Active Directory - Create Security Group",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-11T20:24:40.89500152Z",
+  "modified": "2025-11-11T20:24:40.89500152Z"
+}

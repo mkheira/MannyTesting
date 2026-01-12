@@ -1,0 +1,56 @@
+{
+  "id": "5fba4edf-e02a-4ada-bce3-1ffc94915248",
+  "name": "Copy of Supply Email Address",
+  "description": "An interactive form that allows the user to provide an email address for the user who is assigned as the group manager.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "a0d9586ce9314f9f89c2d094dca4e27e",
+    "name": "Elemmi, Sangamesh"
+  },
+  "usedBy": [],
+  "formInput": [
+    {
+      "id": "comment",
+      "type": "STRING",
+      "label": "comment",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "795112953218",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "Provide the manager's email address.",
+              "label": "{{ $.form.input.comment }}",
+              "placeholder": "",
+              "required": false
+            },
+            "elementType": "EMAIL",
+            "id": "210389602543",
+            "key": "managerEmailAddress",
+            "validations": [
+              {
+                "validationType": "EMAIL"
+              }
+            ]
+          }
+        ],
+        "label": "Email Address",
+        "labelStyle": "h5",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-11T23:55:48.795136403Z",
+  "modified": "2025-11-11T23:55:48.795136403Z"
+}

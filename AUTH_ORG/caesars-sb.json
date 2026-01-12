@@ -1,0 +1,57 @@
+{
+  "tenant": "caesars-sb",
+  "lockoutConfig": {
+    "maximumAttempts": 5,
+    "lockoutDuration": 15,
+    "lockoutWindow": 5
+  },
+  "networkConfig": {
+    "range": null,
+    "geolocation": null,
+    "whitelisted": false
+  },
+  "orgConfig": {
+    "domain": "caesars-sb.identitynow.com",
+    "redirectPatterns": [
+      "https://caesars2.oktapreview.com"
+    ],
+    "legacyPasswordReset": false
+  },
+  "serviceProviderConfig": {
+    "enabled": true,
+    "bypassIDP": true,
+    "federationProtocolDetails": [
+      {
+        "role": "SAML_IDP",
+        "entityId": "http://www.okta.com/exk2aphsl9uitA9yB0h8",
+        "cert": "MIIDoDCCAoigAwIBAgIGAZQ9HSf4MA0GCSqGSIb3DQEBCwUAMIGQMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEUMBIGA1UECwwLU1NPUHJvdmlkZXIxETAPBgNVBAMMCGNhZXNhcnMyMRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMB4XDTI1MDEwNjE5MzQwOFoXDTM1MDEwNjE5MzUwOFowgZAxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlhMRYwFAYDVQQHDA1TYW4gRnJhbmNpc2NvMQ0wCwYDVQQKDARPa3RhMRQwEgYDVQQLDAtTU09Qcm92aWRlcjERMA8GA1UEAwwIY2Flc2FyczIxHDAaBgkqhkiG9w0BCQEWDWluZm9Ab2t0YS5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8MvlU0ZQYzwtdflzrvnTD79w0aI2szNcVwmoBFJAy1mnM9ZMFA8uM0M+7imbE4kZLMYbvl9Hfk4at90YCJv4aU+ZWtl6PjMwHqU9QZL7xMFP1C+gP1HRJ/gHPK0+u/dhDq/v0tzph7zQj/QUF8gr7usu5sbozkqeSJgToYzuywOHhZHYM5JJr6Snep1NcDKSqX0tDjpcOFYwNviR4llUCKt0Q0tKNZ2C1Ue7cLMw6QCzoNNxSfcWgZb6PNsQrt86Td+pDO/fOf7Snoc8LdfO/Xw84GYdwgGuYHj1wcUdl1BtorHrkZLoMvajD+oq1907O6t3R6j/T5ZIVWVJ7NlgFAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAI2bAb8K1I3QQ07i8m7ozUHp453CAnwiK9zD6Kzs5dBC1btJ2V0ZUUhICTgq849E4xyJx2+BxIdLiLwNfg+IYmfYWyvdJn373aFyk05Mh8fqnWTczMeptKn28eUoEQwE6UT+YYTjh+fWRSsKDoSJjYvtJOqybaiiiIq5P5MCFwI8YikhFz541W+mMfKwez1RGVYJKo9PqUmuAaJFVOLnpuIRF8UO8wozU4gDL4H4i+w8QurF3cDjIoqTM5Z1V1sZWTS0YAG8kv2cGx7gJr3Njh6reNc5DDLw5X01vJcLH0FaixZqqRM0VLRpx9rm0hqOadCjMQ2Rf9RHfF2hkNq29s0=",
+        "loginUrlPost": "https://caesars2.oktapreview.com/app/caesars2_sailpointiscsandbox_1/exk2aphsl9uitA9yB0h8/sso/saml",
+        "loginUrlRedirect": "https://caesars2.oktapreview.com/app/caesars2_sailpointiscsandbox_1/exk2aphsl9uitA9yB0h8/sso/saml",
+        "logoutUrl": "https://caesars2.oktapreview.com",
+        "nameId": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+        "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST",
+        "includeAuthnContext": false,
+        "mappingAttribute": "uid",
+        "jitConfiguration": {
+          "enabled": false,
+          "sourceId": null,
+          "sourceAttributeMappings": {}
+        }
+      },
+      {
+        "role": "SAML_SP",
+        "entityId": "https://caesars-sb.identitynow.com/sp",
+        "alias": "caesars-sb-sp",
+        "callbackUrl": "https://caesars-sb.login.sailpoint.com/saml/SSO/alias/caesars-sb-sp",
+        "legacyAcsUrl": null
+      }
+    ],
+    "samlConfigurationValid": true
+  },
+  "sessionConfig": {
+    "maxSessionTime": 720,
+    "maxIdleTime": 300,
+    "rememberMe": false
+  },
+  "enabled": true
+}

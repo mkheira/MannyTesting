@@ -1,0 +1,72 @@
+{
+  "id": "a79b9fc7-fdc0-4e83-959f-fe02e8a7c9f9",
+  "name": "Select Inbound Firewall Rule",
+  "description": "An interactive form that allows the user to select which inbound firewall rule to update.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "usedBy": [],
+  "formInput": [
+    {
+      "id": "rules",
+      "type": "ARRAY",
+      "label": "rules",
+      "description": ""
+    },
+    {
+      "id": "operation",
+      "type": "STRING",
+      "label": "operation",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "928983815105",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "Select the firewall rule below.",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "formInputId": "rules",
+                  "sortBy": "ASC"
+                },
+                "dataSourceType": "FORM_INPUT"
+              },
+              "forceSelect": true,
+              "helpText": "",
+              "label": "Rule to {{ $.form.input.operation }}",
+              "maximum": 1,
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "1179356401375",
+            "key": "rule",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "{{ $.form.input.operation }} Inbound Firewall Rule ",
+        "labelStyle": "h4",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-11T20:22:31.415634808Z",
+  "modified": "2025-11-11T20:22:31.415634808Z"
+}

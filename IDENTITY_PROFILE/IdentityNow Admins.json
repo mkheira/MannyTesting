@@ -1,0 +1,137 @@
+{
+  "description": null,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "cfbce175c0c847b580c74ca4bdcc1d99",
+    "name": "SailPoint Services"
+  },
+  "priority": 30,
+  "authoritativeSource": {
+    "type": "SOURCE",
+    "id": "d16e292903fc4a41bf46f367cd08b625",
+    "name": "IdentityNow Admins"
+  },
+  "identityRefreshRequired": false,
+  "identityCount": 7,
+  "identityAttributeConfig": {
+    "enabled": true,
+    "attributeTransforms": [
+      {
+        "identityAttributeName": "uid",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "id",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "email",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "email",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "lastname",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "familyName",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "firstname",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "givenName",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "personalEmail",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "secondaryEmail",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "phone",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "secondaryPhoneNumber",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "displayName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "displayName",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "identificationNumber",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "employeeNumber",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "manager",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "manager",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "workPhone",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "IdentityNow Admins",
+            "attributeName": "phoneNumber",
+            "sourceId": "d16e292903fc4a41bf46f367cd08b625"
+          }
+        }
+      }
+    ]
+  },
+  "identityExceptionReportReference": null,
+  "hasTimeBasedAttr": false,
+  "id": "178cbac884f4418296e4ea294594a72b",
+  "name": "IdentityNow Admins",
+  "created": "2024-12-27T16:49:20.936Z",
+  "modified": "2025-09-23T19:17:27.934Z"
+}

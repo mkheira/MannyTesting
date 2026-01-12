@@ -1,0 +1,24 @@
+{
+  "description": "Executes PowerShell commands on the IQService component after a source account is deleted.",
+  "type": "ConnectorAfterDelete",
+  "signature": {
+    "input": [],
+    "output": null
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "// source code"
+  },
+  "attributes": {
+    "ObjectOrientedScript": "true",
+    "extension": ".ps1",
+    "sourceVersion": "1.0",
+    "disabled": "false",
+    "program": "powershell.exe",
+    "timeout": "300"
+  },
+  "id": "f541c4b57ede40d7b467a2392862f055",
+  "name": "CZR_ActiveDirectory_DeleteAccounts_After_Delete_Rule",
+  "created": "2025-10-06T21:22:17.604Z",
+  "modified": "2025-10-06T21:22:17.604Z"
+}

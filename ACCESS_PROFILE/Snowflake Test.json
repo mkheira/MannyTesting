@@ -1,0 +1,46 @@
+{
+  "id": "bf3f6c9c2d884cccb2c1f597e22a4e0b",
+  "name": "Snowflake Test",
+  "description": "test profile for Snowflake SaaS connection",
+  "created": "2025-11-12T18:40:35.187345Z",
+  "modified": "2025-11-12T18:41:26.671885Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "source": {
+    "id": "a88821ee06f2449a87a6d7e3ddf69db1",
+    "type": "SOURCE",
+    "name": "CZR-Application-Snowflake"
+  },
+  "entitlements": [
+    {
+      "id": "93d0f708d29632ba931adad588cda5f3",
+      "type": "ENTITLEMENT",
+      "name": "\"AUTH SNOWFLAKE APP DEV\""
+    },
+    {
+      "id": "20c52eab9d32375bb89a9eb166146882",
+      "type": "ENTITLEMENT",
+      "name": "\"AUTH SNOWFLAKE DAAS IT COMPUTE QA\""
+    }
+  ],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

@@ -1,0 +1,69 @@
+{
+  "id": "e576b196-3a40-4bcb-802e-0f88a6e516f7",
+  "name": "CZR-LegalHold-Add-Remove",
+  "description": "Add or Remove user from Legal Hold",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "717de97e01cb457da08e697d0c78cde0",
+    "name": "Rajathadri, Sachin"
+  },
+  "usedBy": [],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "45695735917",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "dataSource": {
+                "config": {
+                  "options": [
+                    {
+                      "label": "Add",
+                      "sublabel": "",
+                      "value": "Add"
+                    },
+                    {
+                      "label": "Remove",
+                      "sublabel": "",
+                      "value": "Remove"
+                    }
+                  ]
+                },
+                "dataSourceType": "STATIC"
+              },
+              "forceSelect": true,
+              "helpText": "Please select \"Add\" or \"Remove\"",
+              "label": "Do you want to Add or Remove user from Legal Hold",
+              "maximum": 1,
+              "placeholder": "Add/Remove",
+              "required": true
+            },
+            "elementType": "SELECT",
+            "id": "1022954518011",
+            "key": "doYouWantToAddOrRemoveUserFromLegalHold",
+            "validations": [
+              {
+                "validationType": "DATA_SOURCE"
+              },
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          }
+        ],
+        "label": "Add or Remove user from Legal Hold",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-12-11T11:03:42.931908035Z",
+  "modified": "2025-12-19T10:23:07.911829784Z"
+}

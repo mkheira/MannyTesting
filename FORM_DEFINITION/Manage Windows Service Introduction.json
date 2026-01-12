@@ -1,0 +1,48 @@
+{
+  "id": "3cb68302-8474-4ffa-bac0-584f93ab1a72",
+  "name": "Manage Windows Service Introduction",
+  "description": "An interactive form explaining the Update the State of a Windows Service workflow to the user.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "50015ffc-9aa1-4b1f-a630-f02000264b5c",
+      "name": "Template: Update the State of a Windows Service"
+    }
+  ],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "1682787735342",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "description": "<p>This interactive workflow allows you to stop, start, or restart a Windows service.</p>\n<p>You will be asked to choose the service and operation using an interactive form.</p>",
+              "label": "Introduction",
+              "showLabel": true
+            },
+            "elementType": "DESCRIPTION",
+            "id": "99215908622",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Windows - Manage Service",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-10-30T14:45:15.497320344Z",
+  "modified": "2025-10-30T14:45:15.497320344Z"
+}

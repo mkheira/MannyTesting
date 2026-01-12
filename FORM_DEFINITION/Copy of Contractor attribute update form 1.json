@@ -1,0 +1,600 @@
+{
+  "id": "abe4c59a-3cd4-42f6-a234-24d073408477",
+  "name": "Copy of Contractor attribute update form 1",
+  "description": "Contractor Network Access Request Form",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "10d4aefa-d85c-4ed1-b91d-43749a310f4d",
+      "name": "Update of Contractor AD Attributes"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "personNumber",
+      "type": "STRING",
+      "label": "personNumber",
+      "description": ""
+    },
+    {
+      "id": "positionName",
+      "type": "STRING",
+      "label": "positionName",
+      "description": ""
+    },
+    {
+      "id": "firstName",
+      "type": "STRING",
+      "label": "firstName",
+      "description": ""
+    },
+    {
+      "id": "locationCode",
+      "type": "STRING",
+      "label": "locationCode",
+      "description": ""
+    },
+    {
+      "id": "managerFullName",
+      "type": "STRING",
+      "label": "managerFullName",
+      "description": ""
+    },
+    {
+      "id": "assignmentStatusType",
+      "type": "STRING",
+      "label": "assignmentStatusType",
+      "description": ""
+    },
+    {
+      "id": "managerAssignmentNumber",
+      "type": "STRING",
+      "label": "managerAssignmentNumber",
+      "description": ""
+    },
+    {
+      "id": "workerType",
+      "type": "STRING",
+      "label": "workerType",
+      "description": ""
+    },
+    {
+      "id": "lastName",
+      "type": "STRING",
+      "label": "lastName",
+      "description": ""
+    },
+    {
+      "id": "displayName",
+      "type": "STRING",
+      "label": "displayName",
+      "description": ""
+    },
+    {
+      "id": "departmentName",
+      "type": "STRING",
+      "label": "departmentName",
+      "description": ""
+    },
+    {
+      "id": "businessUnitName",
+      "type": "STRING",
+      "label": "businessUnitName",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "929421288857",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Person Number",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1109334807383",
+                    "key": "personNumber",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "First Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "676504376572",
+                    "key": "FirstName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Manager Full Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "423403500554",
+                    "key": "managerFullName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Location Code",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "738235841503",
+                    "key": "locationCode",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Position Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1169829730184",
+                    "key": "positionName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Worker Type",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "211735360181",
+                    "key": "workerType",
+                    "validations": []
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Display Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1719308233286",
+                    "key": "displayName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Last Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "829282727320",
+                    "key": "lastName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Manager Assignment Number",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1368790485904",
+                    "key": "managerAssignmentNumber",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Department Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "398982660733",
+                    "key": "departmentName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Business Unit Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1407025136125",
+                    "key": "businessUnitName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Assignment Status Type",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "66636507943",
+                    "key": "assignmentStatusType",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": false,
+                      "description": "",
+                      "helpText": "",
+                      "label": "Network Access",
+                      "required": false
+                    },
+                    "elementType": "CHECKBOX",
+                    "id": "NetworkAccess",
+                    "key": "networkAccess",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Column Set",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1689841731791",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "User Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "personNumber",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "personNumber",
+            "element": "1109334807383"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "positionName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "positionName",
+            "element": "1169829730184"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "firstName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "firstName",
+            "element": "676504376572"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "locationCode",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "locationCode",
+            "element": "738235841503"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "personNumber",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "personNumber",
+            "element": "1109334807383"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "managerFullName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "managerFullName",
+            "element": "423403500554"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "assignmentStatusType",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "assignmentStatusType",
+            "element": "66636507943"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "managerAssignmentNumber",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "managerAssignmentNumber",
+            "element": "1368790485904"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "workerType",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "workerType",
+            "element": "211735360181"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "lastName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "lastName",
+            "element": "829282727320"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "displayName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "displayName",
+            "element": "1719308233286"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "departmentName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "departmentName",
+            "element": "398982660733"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "businessUnitName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "businessUnitName",
+            "element": "1407025136125"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-24T21:09:46.19380282Z",
+  "modified": "2025-11-14T14:31:45.117853555Z"
+}

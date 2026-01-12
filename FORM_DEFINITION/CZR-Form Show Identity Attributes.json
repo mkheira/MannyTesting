@@ -1,0 +1,1979 @@
+{
+  "id": "7e84e4e8-c337-444d-a9e5-123d78db40a5",
+  "name": "CZR-Form Show Identity Attributes",
+  "description": "",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "b7430e84-5ea3-4c1d-9523-0c55a117de8b",
+      "name": "Copy of Copy of CZR-Workflow Contractor Identity Attribute Update"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "a9a9443d-aa2e-4bae-98cd-67553e20c161",
+      "name": "Copy of CZR-Workflow Contractor Identity Attribute Update"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "35f651a6-365b-4f00-b125-ff0237d22459",
+      "name": "Copy of CZR-Workflow Contractor Identity Attribute Update 2"
+    },
+    {
+      "type": "WORKFLOW",
+      "id": "4c29c329-35d3-4837-9ea1-c78f12ad684f",
+      "name": "CZR-Workflow Contractor Identity Attribute Update"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "getIdentityAttributes",
+      "type": "ARRAY",
+      "label": "$.getIdentity.attributes",
+      "description": ""
+    },
+    {
+      "id": "displayName",
+      "type": "STRING",
+      "label": "displayName",
+      "description": ""
+    },
+    {
+      "id": "lastName",
+      "type": "STRING",
+      "label": "lastName",
+      "description": ""
+    },
+    {
+      "id": "firstName",
+      "type": "STRING",
+      "label": "firstName",
+      "description": ""
+    },
+    {
+      "id": "email",
+      "type": "STRING",
+      "label": "email",
+      "description": ""
+    },
+    {
+      "id": "personNumber",
+      "type": "STRING",
+      "label": "personNumber",
+      "description": ""
+    },
+    {
+      "id": "positionName",
+      "type": "STRING",
+      "label": "positionName",
+      "description": ""
+    },
+    {
+      "id": "assignmentStatusType",
+      "type": "STRING",
+      "label": "assignmentStatusType",
+      "description": ""
+    },
+    {
+      "id": "locationCode",
+      "type": "STRING",
+      "label": "locationCode",
+      "description": ""
+    },
+    {
+      "id": "managerName",
+      "type": "STRING",
+      "label": "managerName",
+      "description": ""
+    },
+    {
+      "id": "workerType",
+      "type": "STRING",
+      "label": "WorkerType",
+      "description": ""
+    },
+    {
+      "id": "departmentName",
+      "type": "STRING",
+      "label": "departmentName",
+      "description": ""
+    },
+    {
+      "id": "businessUnitName",
+      "type": "STRING",
+      "label": "businessUnitName",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1257719208437",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "formElements": [
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "",
+              "label": "Person Number",
+              "placeholder": "",
+              "required": true
+            },
+            "elementType": "TEXT",
+            "id": "311545103641",
+            "key": "personNumber",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Display Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1531775965667",
+                    "key": "displayName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "First Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "660247513373",
+                    "key": "firstName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Last Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1071295380127",
+                    "key": "lastName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Manager Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "911696582610",
+                    "key": "managerName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Location Code",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1143561609113",
+                    "key": "locationCode",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Position Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "566773440460",
+                    "key": "positionName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Department Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "579642272783",
+                    "key": "departmentName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Assignment Status Type",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "887891227485",
+                    "key": "assignmentStatusType",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Business Unit Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1102393407958",
+                    "key": "businessUnitName",
+                    "validations": []
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Display Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "277367407778",
+                    "key": "newDisplayName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New First Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "873081139842",
+                    "key": "newFirstName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Last Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "403154342881",
+                    "key": "newLastName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "filters": {},
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active  AND attributes.workerType:Employee"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "New Manager Name",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "964988833744",
+                    "key": "newManagerName",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "options": [
+                            {
+                              "label": "AKC",
+                              "sublabel": "",
+                              "value": "AKC"
+                            },
+                            {
+                              "label": "AKC_HEC",
+                              "sublabel": "",
+                              "value": "AKC_HEC"
+                            },
+                            {
+                              "label": "BBR",
+                              "sublabel": "",
+                              "value": "BBR"
+                            },
+                            {
+                              "label": "BLV",
+                              "sublabel": "",
+                              "value": "BLV"
+                            },
+                            {
+                              "label": "BLV_CALL",
+                              "sublabel": "",
+                              "value": "BLV_CALL"
+                            },
+                            {
+                              "label": "BLV_HEC",
+                              "sublabel": "",
+                              "value": "BLV_HEC"
+                            },
+                            {
+                              "label": "BLV_LND",
+                              "sublabel": "",
+                              "value": "BLV_LND"
+                            },
+                            {
+                              "label": "BNJ",
+                              "sublabel": "",
+                              "value": "BNJ"
+                            },
+                            {
+                              "label": "BVG",
+                              "sublabel": "",
+                              "value": "BVG"
+                            },
+                            {
+                              "label": "BVG_HEC",
+                              "sublabel": "",
+                              "value": "BVG_HEC"
+                            },
+                            {
+                              "label": "CBR",
+                              "sublabel": "",
+                              "value": "CBR"
+                            },
+                            {
+                              "label": "CBR_HEC",
+                              "sublabel": "",
+                              "value": "CBR_HEC"
+                            },
+                            {
+                              "label": "CCR",
+                              "sublabel": "",
+                              "value": "CCR"
+                            },
+                            {
+                              "label": "CFC",
+                              "sublabel": "",
+                              "value": "CFC"
+                            },
+                            {
+                              "label": "CLV",
+                              "sublabel": "",
+                              "value": "CLV"
+                            },
+                            {
+                              "label": "CLV_HEC",
+                              "sublabel": "",
+                              "value": "CLV_HEC"
+                            },
+                            {
+                              "label": "CNJ",
+                              "sublabel": "",
+                              "value": "CNJ"
+                            },
+                            {
+                              "label": "CNJ_HEC",
+                              "sublabel": "",
+                              "value": "CNJ_HEC"
+                            },
+                            {
+                              "label": "COB",
+                              "sublabel": "",
+                              "value": "COB"
+                            },
+                            {
+                              "label": "COB_HEC",
+                              "sublabel": "",
+                              "value": "COB_HEC"
+                            },
+                            {
+                              "label": "CVA",
+                              "sublabel": "",
+                              "value": "CVA"
+                            },
+                            {
+                              "label": "CVA_HEC",
+                              "sublabel": "",
+                              "value": "CVA_HEC"
+                            },
+                            {
+                              "label": "DCR_HEC",
+                              "sublabel": "",
+                              "value": "DCR_HEC"
+                            },
+                            {
+                              "label": "DLV",
+                              "sublabel": "",
+                              "value": "DLV"
+                            },
+                            {
+                              "label": "ESD",
+                              "sublabel": "",
+                              "value": "ESD"
+                            },
+                            {
+                              "label": "ESD_HEC",
+                              "sublabel": "",
+                              "value": "ESD_HEC"
+                            },
+                            {
+                              "label": "FLV",
+                              "sublabel": "",
+                              "value": "FLV"
+                            },
+                            {
+                              "label": "FLV_HEC",
+                              "sublabel": "",
+                              "value": "FLV_HEC"
+                            },
+                            {
+                              "label": "GBI",
+                              "sublabel": "",
+                              "value": "GBI"
+                            },
+                            {
+                              "label": "GBI_HEC",
+                              "sublabel": "",
+                              "value": "GBI_HEC"
+                            },
+                            {
+                              "label": "GVC",
+                              "sublabel": "",
+                              "value": "GVC"
+                            },
+                            {
+                              "label": "GVC_HEC",
+                              "sublabel": "",
+                              "value": "GVC_HEC"
+                            },
+                            {
+                              "label": "HAC",
+                              "sublabel": "",
+                              "value": "HAC"
+                            },
+                            {
+                              "label": "HAC_HEC",
+                              "sublabel": "",
+                              "value": "HAC_HEC"
+                            },
+                            {
+                              "label": "HBV",
+                              "sublabel": "",
+                              "value": "HBV"
+                            },
+                            {
+                              "label": "HEC",
+                              "sublabel": "",
+                              "value": "HEC"
+                            },
+                            {
+                              "label": "HHP",
+                              "sublabel": "",
+                              "value": "HHP"
+                            },
+                            {
+                              "label": "HHP_HEC",
+                              "sublabel": "",
+                              "value": "HHP_HEC"
+                            },
+                            {
+                              "label": "HNC",
+                              "sublabel": "",
+                              "value": "HNC"
+                            },
+                            {
+                              "label": "HNC_HEC",
+                              "sublabel": "",
+                              "value": "HNC_HEC"
+                            },
+                            {
+                              "label": "HNE",
+                              "sublabel": "",
+                              "value": "HNE"
+                            },
+                            {
+                              "label": "HNE_HEC",
+                              "sublabel": "",
+                              "value": "HNE_HEC"
+                            },
+                            {
+                              "label": "HNG_HEC",
+                              "sublabel": "",
+                              "value": "HNG_HEC"
+                            },
+                            {
+                              "label": "HOK",
+                              "sublabel": "",
+                              "value": "HOK"
+                            },
+                            {
+                              "label": "HPA",
+                              "sublabel": "",
+                              "value": "HPA"
+                            },
+                            {
+                              "label": "HPA_HEC",
+                              "sublabel": "",
+                              "value": "HPA_HEC"
+                            },
+                            {
+                              "label": "IBE",
+                              "sublabel": "",
+                              "value": "IBE"
+                            },
+                            {
+                              "label": "IBE_HEC",
+                              "sublabel": "",
+                              "value": "IBE_HEC"
+                            },
+                            {
+                              "label": "IBH",
+                              "sublabel": "",
+                              "value": "IBH"
+                            },
+                            {
+                              "label": "IBH_HEC",
+                              "sublabel": "",
+                              "value": "IBH_HEC"
+                            },
+                            {
+                              "label": "IBV",
+                              "sublabel": "",
+                              "value": "IBV"
+                            },
+                            {
+                              "label": "IBV_HEC",
+                              "sublabel": "",
+                              "value": "IBV_HEC"
+                            },
+                            {
+                              "label": "ILC",
+                              "sublabel": "",
+                              "value": "ILC"
+                            },
+                            {
+                              "label": "ILC_HEC",
+                              "sublabel": "",
+                              "value": "ILC_HEC"
+                            },
+                            {
+                              "label": "ILU",
+                              "sublabel": "",
+                              "value": "ILU"
+                            },
+                            {
+                              "label": "ILU_HEC",
+                              "sublabel": "",
+                              "value": "ILU_HEC"
+                            },
+                            {
+                              "label": "IPB",
+                              "sublabel": "",
+                              "value": "IPB"
+                            },
+                            {
+                              "label": "IPB_HEC",
+                              "sublabel": "",
+                              "value": "IPB_HEC"
+                            },
+                            {
+                              "label": "IWA",
+                              "sublabel": "",
+                              "value": "IWA"
+                            },
+                            {
+                              "label": "IWA_HEC",
+                              "sublabel": "",
+                              "value": "IWA_HEC"
+                            },
+                            {
+                              "label": "JCC",
+                              "sublabel": "",
+                              "value": "JCC"
+                            },
+                            {
+                              "label": "JCC_HEC",
+                              "sublabel": "",
+                              "value": "JCC_HEC"
+                            },
+                            {
+                              "label": "JIL",
+                              "sublabel": "",
+                              "value": "JIL"
+                            },
+                            {
+                              "label": "JIL_HEC",
+                              "sublabel": "",
+                              "value": "JIL_HEC"
+                            },
+                            {
+                              "label": "LAU",
+                              "sublabel": "",
+                              "value": "LAU"
+                            },
+                            {
+                              "label": "LAU_HEC",
+                              "sublabel": "",
+                              "value": "LAU_HEC"
+                            },
+                            {
+                              "label": "LNQ",
+                              "sublabel": "",
+                              "value": "LNQ"
+                            },
+                            {
+                              "label": "LNQ_HEC",
+                              "sublabel": "",
+                              "value": "LNQ_HEC"
+                            },
+                            {
+                              "label": "LTH",
+                              "sublabel": "",
+                              "value": "LTH"
+                            },
+                            {
+                              "label": "LTH_HEC",
+                              "sublabel": "",
+                              "value": "LTH_HEC"
+                            },
+                            {
+                              "label": "LUM",
+                              "sublabel": "",
+                              "value": "LUM"
+                            },
+                            {
+                              "label": "LUS",
+                              "sublabel": "",
+                              "value": "LUS"
+                            },
+                            {
+                              "label": "LUS_HEC",
+                              "sublabel": "",
+                              "value": "LUS_HEC"
+                            },
+                            {
+                              "label": "MIL",
+                              "sublabel": "",
+                              "value": "MIL"
+                            },
+                            {
+                              "label": "MIL_HEC",
+                              "sublabel": "",
+                              "value": "MIL_HEC"
+                            },
+                            {
+                              "label": "NKC",
+                              "sublabel": "",
+                              "value": "NKC"
+                            },
+                            {
+                              "label": "NKC_HEC",
+                              "sublabel": "",
+                              "value": "NKC_HEC"
+                            },
+                            {
+                              "label": "PHV",
+                              "sublabel": "",
+                              "value": "PHV"
+                            },
+                            {
+                              "label": "PHV_HEC",
+                              "sublabel": "",
+                              "value": "PHV_HEC"
+                            },
+                            {
+                              "label": "PLV",
+                              "sublabel": "",
+                              "value": "PLV"
+                            },
+                            {
+                              "label": "PLV_HEC",
+                              "sublabel": "",
+                              "value": "PLV_HEC"
+                            },
+                            {
+                              "label": "QUD",
+                              "sublabel": "",
+                              "value": "QUD"
+                            },
+                            {
+                              "label": "QUD_HEC",
+                              "sublabel": "",
+                              "value": "QUD_HEC"
+                            },
+                            {
+                              "label": "RCN",
+                              "sublabel": "",
+                              "value": "RCN"
+                            },
+                            {
+                              "label": "RCN_HEC",
+                              "sublabel": "",
+                              "value": "RCN_HEC"
+                            },
+                            {
+                              "label": "REN_HEC",
+                              "sublabel": "",
+                              "value": "REN_HEC"
+                            },
+                            {
+                              "label": "RIO",
+                              "sublabel": "",
+                              "value": "RIO"
+                            },
+                            {
+                              "label": "RIO_HEC",
+                              "sublabel": "",
+                              "value": "RIO_HEC"
+                            },
+                            {
+                              "label": "RNV_HEC",
+                              "sublabel": "",
+                              "value": "RNV_HEC"
+                            },
+                            {
+                              "label": "RSP_HEC",
+                              "sublabel": "",
+                              "value": "RSP_HEC"
+                            },
+                            {
+                              "label": "SAC",
+                              "sublabel": "",
+                              "value": "SAC"
+                            },
+                            {
+                              "label": "SIL",
+                              "sublabel": "",
+                              "value": "SIL"
+                            },
+                            {
+                              "label": "SIL_HEC",
+                              "sublabel": "",
+                              "value": "SIL_HEC"
+                            },
+                            {
+                              "label": "SMC_HEC",
+                              "sublabel": "",
+                              "value": "SMC_HEC"
+                            },
+                            {
+                              "label": "SVP",
+                              "sublabel": "",
+                              "value": "SVP"
+                            },
+                            {
+                              "label": "TAC",
+                              "sublabel": "",
+                              "value": "TAC"
+                            },
+                            {
+                              "label": "TAC_HEC",
+                              "sublabel": "",
+                              "value": "TAC_HEC"
+                            },
+                            {
+                              "label": "TGV",
+                              "sublabel": "",
+                              "value": "TGV"
+                            },
+                            {
+                              "label": "TLA",
+                              "sublabel": "",
+                              "value": "TLA"
+                            },
+                            {
+                              "label": "TLA_HEC",
+                              "sublabel": "",
+                              "value": "TLA_HEC"
+                            },
+                            {
+                              "label": "UBA",
+                              "sublabel": "",
+                              "value": "UBA"
+                            },
+                            {
+                              "label": "UBA_HEC",
+                              "sublabel": "",
+                              "value": "UBA_HEC"
+                            },
+                            {
+                              "label": "UBC",
+                              "sublabel": "",
+                              "value": "UBC"
+                            },
+                            {
+                              "label": "UBC_HEC",
+                              "sublabel": "",
+                              "value": "UBC_HEC"
+                            },
+                            {
+                              "label": "UEL",
+                              "sublabel": "",
+                              "value": "UEL"
+                            },
+                            {
+                              "label": "UEL_HEC",
+                              "sublabel": "",
+                              "value": "UEL_HEC"
+                            },
+                            {
+                              "label": "UHA",
+                              "sublabel": "",
+                              "value": "UHA"
+                            },
+                            {
+                              "label": "UHA_HEC",
+                              "sublabel": "",
+                              "value": "UHA_HEC"
+                            },
+                            {
+                              "label": "UIN",
+                              "sublabel": "",
+                              "value": "UIN"
+                            },
+                            {
+                              "label": "UIN_HEC",
+                              "sublabel": "",
+                              "value": "UIN_HEC"
+                            },
+                            {
+                              "label": "UTU",
+                              "sublabel": "",
+                              "value": "UTU"
+                            },
+                            {
+                              "label": "UTU_HEC",
+                              "sublabel": "",
+                              "value": "UTU_HEC"
+                            },
+                            {
+                              "label": "VEG",
+                              "sublabel": "",
+                              "value": "VEG"
+                            },
+                            {
+                              "label": "VEG_HEC",
+                              "sublabel": "",
+                              "value": "VEG_HEC"
+                            },
+                            {
+                              "label": "WHA_ALAMO",
+                              "sublabel": "",
+                              "value": "WHA_ALAMO"
+                            },
+                            {
+                              "label": "WHA_ALOLV",
+                              "sublabel": "",
+                              "value": "WHA_ALOLV"
+                            },
+                            {
+                              "label": "WHA_AQUAR",
+                              "sublabel": "",
+                              "value": "WHA_AQUAR"
+                            },
+                            {
+                              "label": "WHA_AVILA",
+                              "sublabel": "",
+                              "value": "WHA_AVILA"
+                            },
+                            {
+                              "label": "WHA_AZCBL",
+                              "sublabel": "",
+                              "value": "WHA_AZCBL"
+                            },
+                            {
+                              "label": "WHA_AZCDC",
+                              "sublabel": "",
+                              "value": "WHA_AZCDC"
+                            },
+                            {
+                              "label": "WHA_BINIO",
+                              "sublabel": "",
+                              "value": "WHA_BINIO"
+                            },
+                            {
+                              "label": "WHA_BONAN",
+                              "sublabel": "",
+                              "value": "WHA_BONAN"
+                            },
+                            {
+                              "label": "WHA_BOOMT",
+                              "sublabel": "",
+                              "value": "WHA_BOOMT"
+                            },
+                            {
+                              "label": "WHA_BORDT",
+                              "sublabel": "",
+                              "value": "WHA_BORDT"
+                            },
+                            {
+                              "label": "WHA_BUFF",
+                              "sublabel": "",
+                              "value": "WHA_BUFF"
+                            },
+                            {
+                              "label": "WHA_CACTP",
+                              "sublabel": "",
+                              "value": "WHA_CACTP"
+                            },
+                            {
+                              "label": "WHA_CAP",
+                              "sublabel": "",
+                              "value": "WHA_CAP"
+                            },
+                            {
+                              "label": "WHA_CARSN",
+                              "sublabel": "",
+                              "value": "WHA_CARSN"
+                            },
+                            {
+                              "label": "WHA_CASI",
+                              "sublabel": "",
+                              "value": "WHA_CASI"
+                            },
+                            {
+                              "label": "WHA_CASVV",
+                              "sublabel": "",
+                              "value": "WHA_CASVV"
+                            },
+                            {
+                              "label": "WHA_CBSLV",
+                              "sublabel": "",
+                              "value": "WHA_CBSLV"
+                            },
+                            {
+                              "label": "WHA_CBSMS",
+                              "sublabel": "",
+                              "value": "WHA_CBSMS"
+                            },
+                            {
+                              "label": "WHA_CBSMW",
+                              "sublabel": "",
+                              "value": "WHA_CBSMW"
+                            },
+                            {
+                              "label": "WHA_CBSNJ",
+                              "sublabel": "",
+                              "value": "WHA_CBSNJ"
+                            },
+                            {
+                              "label": "WHA_CBSRN",
+                              "sublabel": "",
+                              "value": "WHA_CBSRN"
+                            },
+                            {
+                              "label": "WHA_CHFD",
+                              "sublabel": "",
+                              "value": "WHA_CHFD"
+                            },
+                            {
+                              "label": "WHA_CHNJ",
+                              "sublabel": "",
+                              "value": "WHA_CHNJ"
+                            },
+                            {
+                              "label": "WHA_CIRCR",
+                              "sublabel": "",
+                              "value": "WHA_CIRCR"
+                            },
+                            {
+                              "label": "WHA_CLBCN",
+                              "sublabel": "",
+                              "value": "WHA_CLBCN"
+                            },
+                            {
+                              "label": "WHA_CLUBF",
+                              "sublabel": "",
+                              "value": "WHA_CLUBF"
+                            },
+                            {
+                              "label": "WHA_CMIAF",
+                              "sublabel": "",
+                              "value": "WHA_CMIAF"
+                            },
+                            {
+                              "label": "WHA_CODNV",
+                              "sublabel": "",
+                              "value": "WHA_CODNV"
+                            },
+                            {
+                              "label": "WHA_COSMO",
+                              "sublabel": "",
+                              "value": "WHA_COSMO"
+                            },
+                            {
+                              "label": "WHA_CRYBC",
+                              "sublabel": "",
+                              "value": "WHA_CRYBC"
+                            },
+                            {
+                              "label": "WHA_DIAMD",
+                              "sublabel": "",
+                              "value": "WHA_DIAMD"
+                            },
+                            {
+                              "label": "WHA_DOWNG",
+                              "sublabel": "",
+                              "value": "WHA_DOWNG"
+                            },
+                            {
+                              "label": "WHA_EDGEW",
+                              "sublabel": "",
+                              "value": "WHA_EDGEW"
+                            },
+                            {
+                              "label": "WHA_ELLIL",
+                              "sublabel": "",
+                              "value": "WHA_ELLIL"
+                            },
+                            {
+                              "label": "WHA_EUREK",
+                              "sublabel": "",
+                              "value": "WHA_EUREK"
+                            },
+                            {
+                              "label": "WHA_FALLN",
+                              "sublabel": "",
+                              "value": "WHA_FALLN"
+                            },
+                            {
+                              "label": "WHA_FANDA",
+                              "sublabel": "",
+                              "value": "WHA_FANDA"
+                            },
+                            {
+                              "label": "WHA_FOURQ",
+                              "sublabel": "",
+                              "value": "WHA_FOURQ"
+                            },
+                            {
+                              "label": "WHA_GDWCA",
+                              "sublabel": "",
+                              "value": "WHA_GDWCA"
+                            },
+                            {
+                              "label": "WHA_GDWRE",
+                              "sublabel": "",
+                              "value": "WHA_GDWRE"
+                            },
+                            {
+                              "label": "WHA_GOLDD",
+                              "sublabel": "",
+                              "value": "WHA_GOLDD"
+                            },
+                            {
+                              "label": "WHA_GRAND",
+                              "sublabel": "",
+                              "value": "WHA_GRAND"
+                            },
+                            {
+                              "label": "WHA_GRDAY",
+                              "sublabel": "",
+                              "value": "WHA_GRDAY"
+                            },
+                            {
+                              "label": "WHA_GRVER",
+                              "sublabel": "",
+                              "value": "WHA_GRVER"
+                            },
+                            {
+                              "label": "WHA_HARDH",
+                              "sublabel": "",
+                              "value": "WHA_HARDH"
+                            },
+                            {
+                              "label": "WHA_HOBEY",
+                              "sublabel": "",
+                              "value": "WHA_HOBEY"
+                            },
+                            {
+                              "label": "WHA_HOOTO",
+                              "sublabel": "",
+                              "value": "WHA_HOOTO"
+                            },
+                            {
+                              "label": "WHA_IA",
+                              "sublabel": "",
+                              "value": "WHA_IA"
+                            },
+                            {
+                              "label": "WHA_J CTY",
+                              "sublabel": "",
+                              "value": "WHA_J CTY"
+                            },
+                            {
+                              "label": "WHA_JANUR",
+                              "sublabel": "",
+                              "value": "WHA_JANUR"
+                            },
+                            {
+                              "label": "WHA_JER",
+                              "sublabel": "",
+                              "value": "WHA_JER"
+                            },
+                            {
+                              "label": "WHA_JERRY",
+                              "sublabel": "",
+                              "value": "WHA_JERRY"
+                            },
+                            {
+                              "label": "WHA_JJSSS",
+                              "sublabel": "",
+                              "value": "WHA_JJSSS"
+                            },
+                            {
+                              "label": "WHA_KLOND",
+                              "sublabel": "",
+                              "value": "WHA_KLOND"
+                            },
+                            {
+                              "label": "WHA_KRK",
+                              "sublabel": "",
+                              "value": "WHA_KRK"
+                            },
+                            {
+                              "label": "WHA_LDS",
+                              "sublabel": "",
+                              "value": "WHA_LDS"
+                            },
+                            {
+                              "label": "WHA_LNGSHT",
+                              "sublabel": "",
+                              "value": "WHA_LNGSHT"
+                            },
+                            {
+                              "label": "WHA_LONGH",
+                              "sublabel": "",
+                              "value": "WHA_LONGH"
+                            },
+                            {
+                              "label": "WHA_LUCKY",
+                              "sublabel": "",
+                              "value": "WHA_LUCKY"
+                            },
+                            {
+                              "label": "WHA_LVCSS",
+                              "sublabel": "",
+                              "value": "WHA_LVCSS"
+                            },
+                            {
+                              "label": "WHA_MONM",
+                              "sublabel": "",
+                              "value": "WHA_MONM"
+                            },
+                            {
+                              "label": "WHA_MONTB",
+                              "sublabel": "",
+                              "value": "WHA_MONTB"
+                            },
+                            {
+                              "label": "WHA_MOUNT",
+                              "sublabel": "",
+                              "value": "WHA_MOUNT"
+                            },
+                            {
+                              "label": "WHA_MOUWV",
+                              "sublabel": "",
+                              "value": "WHA_MOUWV"
+                            },
+                            {
+                              "label": "WHA_MS RC",
+                              "sublabel": "",
+                              "value": "WHA_MS RC"
+                            },
+                            {
+                              "label": "WHA_NJOFF",
+                              "sublabel": "",
+                              "value": "WHA_NJOFF"
+                            },
+                            {
+                              "label": "WHA_NVOFF",
+                              "sublabel": "",
+                              "value": "WHA_NVOFF"
+                            },
+                            {
+                              "label": "WHA_PA",
+                              "sublabel": "",
+                              "value": "WHA_PA"
+                            },
+                            {
+                              "label": "WHA_PAHRN",
+                              "sublabel": "",
+                              "value": "WHA_PAHRN"
+                            },
+                            {
+                              "label": "WHA_PALMS",
+                              "sublabel": "",
+                              "value": "WHA_PALMS"
+                            },
+                            {
+                              "label": "WHA_PICRF",
+                              "sublabel": "",
+                              "value": "WHA_PICRF"
+                            },
+                            {
+                              "label": "WHA_PIGBH",
+                              "sublabel": "",
+                              "value": "WHA_PIGBH"
+                            },
+                            {
+                              "label": "WHA_PLAZA",
+                              "sublabel": "",
+                              "value": "WHA_PLAZA"
+                            },
+                            {
+                              "label": "WHA_PMDS",
+                              "sublabel": "",
+                              "value": "WHA_PMDS"
+                            },
+                            {
+                              "label": "WHA_POKPA",
+                              "sublabel": "",
+                              "value": "WHA_POKPA"
+                            },
+                            {
+                              "label": "WHA_PRAIM",
+                              "sublabel": "",
+                              "value": "WHA_PRAIM"
+                            },
+                            {
+                              "label": "WHA_PRVRE",
+                              "sublabel": "",
+                              "value": "WHA_PRVRE"
+                            },
+                            {
+                              "label": "WHA_R7OFF",
+                              "sublabel": "",
+                              "value": "WHA_R7OFF"
+                            },
+                            {
+                              "label": "WHA_R8OFF",
+                              "sublabel": "",
+                              "value": "WHA_R8OFF"
+                            },
+                            {
+                              "label": "WHA_RAILC",
+                              "sublabel": "",
+                              "value": "WHA_RAILC"
+                            },
+                            {
+                              "label": "WHA_RAYN",
+                              "sublabel": "",
+                              "value": "WHA_RAYN"
+                            },
+                            {
+                              "label": "WHA_REDL",
+                              "sublabel": "",
+                              "value": "WHA_REDL"
+                            },
+                            {
+                              "label": "WHA_REDM",
+                              "sublabel": "",
+                              "value": "WHA_REDM"
+                            },
+                            {
+                              "label": "WHA_RIVER",
+                              "sublabel": "",
+                              "value": "WHA_RIVER"
+                            },
+                            {
+                              "label": "WHA_RKTFH",
+                              "sublabel": "",
+                              "value": "WHA_RKTFH"
+                            },
+                            {
+                              "label": "WHA_RNB",
+                              "sublabel": "",
+                              "value": "WHA_RNB"
+                            },
+                            {
+                              "label": "WHA_RR PS",
+                              "sublabel": "",
+                              "value": "WHA_RR PS"
+                            },
+                            {
+                              "label": "WHA_SANDS",
+                              "sublabel": "",
+                              "value": "WHA_SANDS"
+                            },
+                            {
+                              "label": "WHA_SCORE",
+                              "sublabel": "",
+                              "value": "WHA_SCORE"
+                            },
+                            {
+                              "label": "WHA_SESID",
+                              "sublabel": "",
+                              "value": "WHA_SESID"
+                            },
+                            {
+                              "label": "WHA_SILNG",
+                              "sublabel": "",
+                              "value": "WHA_SILNG"
+                            },
+                            {
+                              "label": "WHA_SILSV",
+                              "sublabel": "",
+                              "value": "WHA_SILSV"
+                            },
+                            {
+                              "label": "WHA_SILVR",
+                              "sublabel": "",
+                              "value": "WHA_SILVR"
+                            },
+                            {
+                              "label": "WHA_SKYLN",
+                              "sublabel": "",
+                              "value": "WHA_SKYLN"
+                            },
+                            {
+                              "label": "WHA_SLSSH",
+                              "sublabel": "",
+                              "value": "WHA_SLSSH"
+                            },
+                            {
+                              "label": "WHA_STRAT",
+                              "sublabel": "",
+                              "value": "WHA_STRAT"
+                            },
+                            {
+                              "label": "WHA_TAMAR",
+                              "sublabel": "",
+                              "value": "WHA_TAMAR"
+                            },
+                            {
+                              "label": "WHA_THEMR",
+                              "sublabel": "",
+                              "value": "WHA_THEMR"
+                            },
+                            {
+                              "label": "WHA_TMAXC",
+                              "sublabel": "",
+                              "value": "WHA_TMAXC"
+                            },
+                            {
+                              "label": "WHA_TRPEV",
+                              "sublabel": "",
+                              "value": "WHA_TRPEV"
+                            },
+                            {
+                              "label": "WHA_TRPEX",
+                              "sublabel": "",
+                              "value": "WHA_TRPEX"
+                            },
+                            {
+                              "label": "WHA_TRPLV",
+                              "sublabel": "",
+                              "value": "WHA_TRPLV"
+                            },
+                            {
+                              "label": "WHA_VENET",
+                              "sublabel": "",
+                              "value": "WHA_VENET"
+                            },
+                            {
+                              "label": "WHA_WENNN",
+                              "sublabel": "",
+                              "value": "WHA_WENNN"
+                            },
+                            {
+                              "label": "WHA_WFHNJ",
+                              "sublabel": "",
+                              "value": "WHA_WFHNJ"
+                            },
+                            {
+                              "label": "WHA_WFHNV",
+                              "sublabel": "",
+                              "value": "WHA_WFHNV"
+                            },
+                            {
+                              "label": "WHA_WINNE",
+                              "sublabel": "",
+                              "value": "WHA_WINNE"
+                            },
+                            {
+                              "label": "Zero_Flucs",
+                              "sublabel": "",
+                              "value": "Zero_Flucs"
+                            }
+                          ]
+                        },
+                        "dataSourceType": "STATIC"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "New Location Code",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "429481570510",
+                    "key": "newLocationCode",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Position Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "1627674992572",
+                    "key": "newPositionName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Department Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "123176991599",
+                    "key": "newDepartmentName",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Assignment Status Type",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "588908317051",
+                    "key": "newAssignmentStatusType",
+                    "validations": []
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "New Business Unit Name",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "276525255420",
+                    "key": "newBusinessUnitName",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Review the identity details on the left and enter the new or updated values in the fields on the right.",
+              "labelStyle": "h5",
+              "showLabel": true
+            },
+            "elementType": "COLUMN_SET",
+            "id": "512246259355",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Identity Attributes",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "lastName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "lastName",
+            "element": "1071295380127"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1071295380127"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "personNumber",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "personNumber",
+            "element": "311545103641"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "311545103641"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "positionName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "positionName",
+            "element": "566773440460"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "566773440460"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "firstName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "firstName",
+            "element": "660247513373"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "660247513373"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "displayName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "displayName",
+            "element": "1531775965667"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1531775965667"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "assignmentStatusType",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "assignmentStatusType",
+            "element": "887891227485"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "887891227485"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "locationCode",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "locationCode",
+            "element": "1143561609113"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1143561609113"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "departmentName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "departmentName",
+            "element": "579642272783"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "579642272783"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "businessUnitName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "businessUnitName",
+            "element": "1102393407958"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1102393407958"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "managerName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "managerName",
+            "element": "911696582610"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "911696582610"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "displayName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "displayName",
+            "element": "277367407778"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "firstName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "firstName",
+            "element": "873081139842"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "lastName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "lastName",
+            "element": "403154342881"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "positionName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "positionName",
+            "element": "1627674992572"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "departmentName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "departmentName",
+            "element": "123176991599"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "assignmentStatusType",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "assignmentStatusType",
+            "element": "588908317051"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "businessUnitName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "businessUnitName",
+            "element": "276525255420"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-11-14T17:38:08.29253612Z",
+  "modified": "2025-12-23T14:00:13.535791246Z"
+}

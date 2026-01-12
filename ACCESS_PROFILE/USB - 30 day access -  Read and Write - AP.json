@@ -1,0 +1,35 @@
+{
+  "id": "adf37bc4570d46a5ad24d79b6401c09f",
+  "name": "USB - 30 day access -  Read and Write - AP",
+  "description": "An AD group allows read / write access to USB storage devices; but write access is limited to non-sensitive data.",
+  "created": "2025-07-24T17:21:35.976217Z",
+  "modified": "2025-12-01T17:02:07.257738Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "e617f2920751421b89573d8b7a85ea86",
+    "name": "Ashley Valley"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": []
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

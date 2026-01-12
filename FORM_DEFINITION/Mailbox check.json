@@ -1,0 +1,85 @@
+{
+  "id": "860b959f-031d-4732-9122-6a0698aee7f8",
+  "name": "Mailbox check",
+  "description": "Contractor Network Access Update - AD Account Confirmation",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "26aba1108c134ce7a77fba28fef7ff5a",
+    "name": "Kumar Bayyaram, Shravan"
+  },
+  "usedBy": [],
+  "formInput": [],
+  "formElements": [
+    {
+      "id": "msg-section",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": null,
+        "formElements": [
+          {
+            "config": {
+              "label": "Proceed with SetupLike update?",
+              "layout": "horizontal",
+              "options": [
+                {
+                  "key": "yes",
+                  "label": "Yes",
+                  "value": "yes"
+                },
+                {
+                  "key": "no",
+                  "label": "No",
+                  "value": "no"
+                }
+              ],
+              "required": true
+            },
+            "elementType": "BUTTON_GROUP",
+            "id": "update-setuplike",
+            "key": "updateSetupLike",
+            "validations": [
+              {
+                "message": "Please select an option",
+                "type": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "default": true,
+              "falseLabel": "Disabled",
+              "helpText": "Enable the toggle if you want to update setupLike",
+              "label": "SetupLike",
+              "trueLabel": "Enabled"
+            },
+            "elementType": "TOGGLE",
+            "id": "556161879828",
+            "key": "setupLike",
+            "validations": []
+          },
+          {
+            "config": {
+              "default": true,
+              "falseLabel": "Disabled",
+              "helpText": "please confirm if you want enable the mailbox",
+              "label": "Exchange Mailbox",
+              "trueLabel": "Enabled"
+            },
+            "elementType": "TOGGLE",
+            "id": "1542620644866",
+            "key": "exchangeMailbox",
+            "validations": []
+          }
+        ],
+        "label": "AD Already Exists on User you can only update setup like and request Exchange Mailbox",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-11T20:53:36.555405321Z",
+  "modified": "2025-11-14T12:41:54.406520781Z"
+}

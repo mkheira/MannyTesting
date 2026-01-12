@@ -1,0 +1,1438 @@
+{
+  "description": "Identity Profile associated with the OIC source.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "2379b60e6afa4f5bbfc83f9feed7455f",
+    "name": "Senthil Kumar"
+  },
+  "priority": 10,
+  "authoritativeSource": {
+    "type": "SOURCE",
+    "id": "9f46913b2c9b4da5bc40734abda20886",
+    "name": "CZR-Application-OICWebservice"
+  },
+  "identityRefreshRequired": false,
+  "identityCount": 775,
+  "identityAttributeConfig": {
+    "enabled": true,
+    "attributeTransforms": [
+      {
+        "identityAttributeName": "uid",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PersonNumber",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "email",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Email",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "lastname",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "LastName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "firstname",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "FirstName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "activeAssignments",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ActiveAsgmts",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "activeJobTitle",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ActiveJobTitles",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "activeLocationCode",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ActiveLocCode",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adCompany",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADCompany",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PropertyCode",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adDepartment",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADDepartment",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "DepartmentName",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adDescription",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+            "attributeName": "description",
+            "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adDisplayName",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADDisplayName",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "FirstName",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adExtensionAttribute8",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADExtAtt8",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "WorkerType",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adProvFlagBr",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_ADProvFlagBR",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adProvFlagCnowSetupLike",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_ADPrFlCNOWSetupLike",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "RequestedForPersonalNumber",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adProvFlagCnowSetupLikeWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_ADPrFlCNOWSetupLike2",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "RequestedForPersonalNumber",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "adProvFlagSetupLike",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_ADProvFlgSetupLike",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+                "attributeName": "SetupLikePerson",
+                "sourceId": "bbc044967c3f469dbf054536ddbfafc8"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "allAssignments",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "assignments",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "asgCategoryCode",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "AsgCategoryCode",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "asgCategoryMeaning",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "AsgCategoryMeaning",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentEndDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AsgEndDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentNumber",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "AssignmentNumber",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentStartDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AsgStartDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentStatusMeaning",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "AsgStatusMeaning",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentStatusType",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AssignmentStatusType",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentStatusTypeCode",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AssignmentStatusTypeCode",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentStatusTypeImmediateTerm",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-EditIdentity",
+            "attributeName": "AssignmentStatusType",
+            "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "assignmentTermDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AsgEndDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "businessUnitName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "BusinessUnitName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowEmpJaId",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWEmpJAId",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                "attributeName": "employeeNumber",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowExchangeMailboxRequired",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWExchangeMailReq",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "ExchangeMailboxRequired",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowLegalHold",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWLegalHold",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWLegalHoldRequest",
+                "attributeName": "LegalHoldCalculation",
+                "sourceId": "ea60575b6b214285b7dc9bc1d2b6f40f"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowNetworkAccessRequired",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWNetworkAccReq",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "NetworkAccessRequired",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowNetworkAccessRequiredWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWNetworkAccReq_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "NetworkAccessRequired",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowRequestedby",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_CNOWRequestedBy",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "RequestedBy",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowRequestedbyEmail",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWRequestedByEmail",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "RequestedByEmail",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowRequestedbyEmailWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_RequestedBy_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "RequestedBy",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowRequestedbyWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile  Emp_CNOWReqByEmail_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "RequestedByEmail",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowSetupLikePersonId",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWSetupLikePerId",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "SetupLikePerson",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowSetupLikePersonIdWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Ident Profile _Emp_CNOWSetupLikePerId_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "SetupLikePerson",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowTaskNumber",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_CNOWTaskNumber",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "TaskNumber",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowTaskNumberWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWTaskNumber_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "TaskNumber",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowTaskSysId",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_CNOWTaskSysId",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest",
+                "attributeName": "TaskSysId",
+                "sourceId": "ded5c044d138470684355e6d9c11a549"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cnowTaskSysIdWh",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Emp_CNOWTaskSysId_WH",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-CNOWEmployeeNetworkAccessRequest-WilliamHill",
+                "attributeName": "TaskSysId",
+                "sourceId": "b1f0ca79f2224c2bad0d41372e14e774"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "completeTermination",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "CompleteTermination",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "completeTerminationImmediateTerm",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-EditIdentity",
+            "attributeName": "CompleteTermination",
+            "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "department",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "DepartmentName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "displayName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "FullName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "displayNameAndPersonNumber",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _EC_DisplayAndPersonNum",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "division",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "Division",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "employeeMiddleName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "MiddleName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "employeeName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "FullName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "identificationNumber",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PersonNumber",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "employeeSuffix",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "Suffix",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "employeeType",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "WorkerType",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "employerName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "LegalEmployerName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "exchangeMailboxRequired",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_ExMailReq",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+                "attributeName": "ExchangeMailboxRequired",
+                "sourceId": "bbc044967c3f469dbf054536ddbfafc8"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "excludedLocationFlag",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ExclLocFlag",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "LocationCode",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "harrahsDn",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+            "attributeName": "distinguishedName",
+            "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "hasHarrahsAd",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_HasHarrahsAD",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                "attributeName": "distinguishedName",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "hireDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "EnterpriseHireDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "isHarrahsAdOnLegalHold",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_IsHarADOnLglHld",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                "attributeName": "description",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "isStartDateMoreThan21",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_21Days",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AsgStartDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "jobCode",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PositionCode",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "jobTitle",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PositionName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "legalHoldAdCheck",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADCheck",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                "attributeName": "sAMAccountName",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "cloudLifecycleState",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_LifecycleState",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "AssignmentStatusType",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "locationCode",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "LocationCode",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "locationDescription",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "LocationName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "managementLevelFlag",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_MgntLvlFlag",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ManagementLevel",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "managerDisplayName",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_MgrDisName",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ManagerPersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "managerEmail",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Manager_Email",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ManagerPersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "managerHarrahsDn",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_MgrHarrahsDn",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "manager",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Manager",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ManagerPersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "mappedAdDomain",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_MappedADDomain",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "LocationCode",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "middleName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "MiddleName",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "mlIncrease",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_MLIncrease",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ManagementLevel",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "mlsecure1",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "ManagementLevel",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "multipleAdAccount",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ADMultipleAct",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-ActiveDirectory-Harrahs",
+                "attributeName": "sAMAccountName",
+                "sourceId": "e30d0436a20b45b79517a08f0380b1b1"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "networkAccessRequired",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_NetworkAccReq",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+                "attributeName": "NetworkAccessRequired",
+                "sourceId": "bbc044967c3f469dbf054536ddbfafc8"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "personNumber",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PersonNumber",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "preferredName",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "KnownAs",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "primaryAssignment",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PrimaryAssignment",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "primaryWorkRelationship",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "ToUpper",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PrimaryWorkRelationship",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "processName",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ProcessName",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "projectedStartDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "ProjectedStartDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "propertyCode",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "PropertyCode",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "region",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "Region",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "requestedBy",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_RequestedBy",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+                "attributeName": "RequestedBy",
+                "sourceId": "bbc044967c3f469dbf054536ddbfafc8"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "setupLikePersonId",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile _Employee_SetupLikePerId",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-EmployeeNetworkAccessRequest",
+                "attributeName": "SetupLikePerson",
+                "sourceId": "bbc044967c3f469dbf054536ddbfafc8"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "terminationDate",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_Date_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "TerminationDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "terminationDateImmediateTerm",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-EditIdentity",
+            "attributeName": "TerminationDate",
+            "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "terminationSource",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-EditIdentity",
+            "attributeName": "TerminationSource",
+            "sourceId": "8c0e3f57c1d744ddaf8c1b156c322836"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "terminationdateDatetype",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_ISO8601_Format",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "TerminationDate",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      },
+      {
+        "identityAttributeName": "userstatus",
+        "transformDefinition": {
+          "type": "accountAttribute",
+          "attributes": {
+            "sourceName": "CZR-Application-OICWebservice",
+            "attributeName": "AssignmentStatusType",
+            "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+          }
+        }
+      },
+      {
+        "identityAttributeName": "workerType",
+        "transformDefinition": {
+          "type": "reference",
+          "attributes": {
+            "id": "Caesars_Identity Profile_Employee_WorkerType",
+            "input": {
+              "type": "accountAttribute",
+              "attributes": {
+                "sourceName": "CZR-Application-OICWebservice",
+                "attributeName": "PersonNumber",
+                "sourceId": "9f46913b2c9b4da5bc40734abda20886"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "identityExceptionReportReference": null,
+  "hasTimeBasedAttr": true,
+  "id": "715dd0fedd1a4907aa349f71717d4d27",
+  "name": "Employees",
+  "created": "2025-02-13T04:07:01.017Z",
+  "modified": "2025-12-24T17:26:13.736Z"
+}

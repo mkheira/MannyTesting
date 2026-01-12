@@ -1,0 +1,93 @@
+{
+  "attributes": [
+    {
+      "displayName": "AD Company",
+      "enabled": true,
+      "name": "adCompany",
+      "target": "company"
+    },
+    {
+      "displayName": "att_first_name",
+      "enabled": false,
+      "name": "firstname",
+      "target": "givenName"
+    },
+    {
+      "displayName": "att_last_name",
+      "enabled": false,
+      "name": "lastname",
+      "target": "sn"
+    },
+    {
+      "displayName": "Manager Harrahs DN",
+      "enabled": false,
+      "name": "managerHarrahsDn",
+      "target": "manager"
+    },
+    {
+      "displayName": "Job Title",
+      "enabled": false,
+      "name": "jobTitle",
+      "target": "msExchExtensionAttribute39"
+    },
+    {
+      "displayName": "Job Title",
+      "enabled": false,
+      "name": "jobTitle",
+      "target": "title"
+    },
+    {
+      "displayName": "AD Department",
+      "enabled": false,
+      "name": "adDepartment",
+      "target": "department"
+    },
+    {
+      "displayName": "Employee Middle Name",
+      "enabled": false,
+      "name": "employeeMiddleName",
+      "target": "middleName"
+    },
+    {
+      "displayName": "Employee Suffix",
+      "enabled": false,
+      "name": "employeeSuffix",
+      "target": "generationQualifier"
+    },
+    {
+      "displayName": "Business Unit Name",
+      "enabled": false,
+      "name": "businessUnitName",
+      "target": "extensionAttribute5"
+    },
+    {
+      "displayName": "Region",
+      "enabled": false,
+      "name": "region",
+      "target": "extensionAttribute4"
+    },
+    {
+      "displayName": "MLSecure1",
+      "enabled": false,
+      "name": "mlsecure1",
+      "target": "extensionAttribute9"
+    },
+    {
+      "displayName": "AD Extension Attribute8",
+      "enabled": false,
+      "name": "adExtensionAttribute8",
+      "target": "extensionAttribute8"
+    },
+    {
+      "displayName": "Asg Category Code",
+      "enabled": false,
+      "name": "asgCategoryCode",
+      "target": "extensionAttribute12"
+    }
+  ],
+  "source": {
+    "id": "7de09998939547699404eecea625ad91",
+    "name": "CZR-Application-ActiveDirectory-Harrahs-JAccounts",
+    "type": "SOURCE"
+  }
+}

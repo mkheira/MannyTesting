@@ -1,0 +1,651 @@
+{
+  "id": "6efddd7c-50d9-4e03-bdfe-81c5b277934c",
+  "name": "Contractor attribute update form",
+  "description": "Contractor Network Access Request Form",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [],
+  "formInput": [
+    {
+      "id": "requestedByWorkflow",
+      "type": "STRING",
+      "label": "RequestedByWorkflow",
+      "description": "RequestedByWorkflow"
+    },
+    {
+      "id": "contractorJobTitle",
+      "type": "STRING",
+      "label": "Contractor JobTitle",
+      "description": "Contractor JobTitle"
+    },
+    {
+      "id": "regulatorJobTitle",
+      "type": "STRING",
+      "label": "Regulator JobTitle",
+      "description": "Regulator JobTitle"
+    },
+    {
+      "id": "vendorJobTitle",
+      "type": "STRING",
+      "label": "Vendor JobTitle",
+      "description": "Vendor JobTitle"
+    },
+    {
+      "id": "locationBlvCall",
+      "type": "STRING",
+      "label": "Location BLV_CALL",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "296594569714",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "Contractor",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Employee Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1183386400725",
+                    "key": "employeeType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "aggregationBucketField": "attributes.displayNameAndPersonNumber",
+                          "indices": [
+                            "identities"
+                          ],
+                          "query": "attributes.cloudLifecycleState:active"
+                        },
+                        "dataSourceType": "SEARCH"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "RequestedBy",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "488770355492",
+                    "key": "requestedBy",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Reason for the update.",
+                      "placeholder": "",
+                      "required": false
+                    },
+                    "elementType": "TEXT",
+                    "id": "392923205420",
+                    "key": "reasonForTheUpdate",
+                    "validations": []
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Network",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1187267265550",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "Basic Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    },
+    {
+      "id": "929421288857",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "columnCount": 2,
+              "columns": [
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Person Number",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1109334807383",
+                    "key": "personNumber",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "options": [
+                            {
+                              "label": "Option 1",
+                              "sublabel": "",
+                              "value": "Option 1"
+                            }
+                          ]
+                        },
+                        "dataSourceType": "STATIC"
+                      },
+                      "forceSelect": true,
+                      "helpText": "",
+                      "label": "Position Name",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "484790126846",
+                    "key": "positionName",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "First Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "676504376572",
+                    "key": "FirstName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "dataSource": {
+                        "config": {
+                          "options": [
+                            {
+                              "label": "HBV_HEC",
+                              "sublabel": "",
+                              "value": "HBV_HEC"
+                            },
+                            {
+                              "label": "HBV",
+                              "sublabel": "",
+                              "value": "HBV"
+                            }
+                          ]
+                        },
+                        "dataSourceType": "STATIC"
+                      },
+                      "forceSelect": false,
+                      "helpText": "",
+                      "label": "Location Code",
+                      "maximum": 1,
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "SELECT",
+                    "id": "54594459245",
+                    "key": "location",
+                    "validations": [
+                      {
+                        "validationType": "DATA_SOURCE"
+                      },
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Manager Full Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "423403500554",
+                    "key": "managerFullName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Manager Assignment Number",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1368790485904",
+                    "key": "managerAssignmentNumber",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Assignment Number",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "512200074079",
+                    "key": "assignmentNumber",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Complete Termination",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "406690262235",
+                    "key": "completeTermination",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Last Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "829282727320",
+                    "key": "lastName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Property Code",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1163912895310",
+                    "key": "propertyCode",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ],
+                [
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Primary Assignment",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1283345708746",
+                    "key": "primaryAssignment",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Primary Work Relationship",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1692165101973",
+                    "key": "primaryWorkRelationship",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Assignment Status Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "66636507943",
+                    "key": "assignmentStatusType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Known As",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1031092326591",
+                    "key": "knownAs",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Enterprise Hire Date",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "92210254280",
+                    "key": "enterpriseHireDate",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Worker Type",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "211735360181",
+                    "key": "workerType",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Display Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1719308233286",
+                    "key": "displayName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Department Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "398982660733",
+                    "key": "departmentName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Business Unit Name",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "1407025136125",
+                    "key": "businessUnitName",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  },
+                  {
+                    "config": {
+                      "default": "",
+                      "description": "",
+                      "helpText": "",
+                      "label": "Asg Start Date",
+                      "placeholder": "",
+                      "required": true
+                    },
+                    "elementType": "TEXT",
+                    "id": "321969422312",
+                    "key": "asgStartDate",
+                    "validations": [
+                      {
+                        "validationType": "REQUIRED"
+                      }
+                    ]
+                  }
+                ]
+              ],
+              "description": "",
+              "label": "Column Set",
+              "labelStyle": "h5",
+              "showLabel": false
+            },
+            "elementType": "COLUMN_SET",
+            "id": "1689841731791",
+            "key": "",
+            "validations": []
+          }
+        ],
+        "label": "User Details",
+        "labelStyle": "h3",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "requestedByWorkflow",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "empty"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "1183386400725"
+          }
+        },
+        {
+          "effectType": "DISABLE",
+          "config": {
+            "element": "457886658639"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "false"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "749723619575"
+          }
+        },
+        {
+          "effectType": "HIDE",
+          "config": {
+            "element": "1448711469591"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "ELEMENT",
+          "source": "NetworkAccess",
+          "operator": "EQ",
+          "valueType": "BOOLEAN",
+          "value": "true"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "749723619575"
+          }
+        },
+        {
+          "effectType": "SHOW",
+          "config": {
+            "element": "1448711469591"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-23T18:04:42.606550155Z",
+  "modified": "2025-10-23T18:43:59.986558115Z"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "ddf719cacf5a4563ab0d4f7b997bf8dc",
+  "name": "Teams Record 7 days-AP",
+  "description": "This role is designated for Teams recording. Users can record Teams meetings for up to 7 days. After this period, the Active Directory group will be automatically removed by ISC, and the user will no longer have the ability to record Teams meetings.",
+  "created": "2025-03-19T20:40:52.666898Z",
+  "modified": "2025-12-01T16:57:30.184111Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

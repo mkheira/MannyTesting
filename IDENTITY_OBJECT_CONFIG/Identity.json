@@ -1,0 +1,3324 @@
+{
+  "id": "64f8d8fd5d9440b2ac9a2a458ff26cb8",
+  "name": "Identity",
+  "objectAttributeDetails": [
+    {
+      "displayName": "Authoritative Source",
+      "editMode": "ReadOnly",
+      "name": "cloudAuthoritativeSource",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "String",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Title",
+      "editMode": "ReadOnly",
+      "name": "title",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_email",
+      "editMode": "ReadOnly",
+      "name": "email",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_first_name",
+      "editMode": "ReadOnly",
+      "name": "firstname",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Middle Name",
+      "editMode": "ReadOnly",
+      "name": "middleName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_last_name",
+      "editMode": "ReadOnly",
+      "name": "lastname",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": [
+        {
+          "name": "sn",
+          "provisionAllAccounts": true,
+          "applicationRef": {
+            "type": "SOURCE",
+            "id": "e30d0436a20b45b79517a08f0380b1b1",
+            "name": "CZR-Application-ActiveDirectory-Harrahs"
+          },
+          "ruleRef": null
+        }
+      ]
+    },
+    {
+      "displayName": "Preferred Name",
+      "editMode": "ReadOnly",
+      "name": "preferredName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Initials",
+      "editMode": "ReadOnly",
+      "name": "initials",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_inactive",
+      "editMode": "ReadOnly",
+      "name": "inactive",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "boolean",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_display_name",
+      "editMode": "ReadOnly",
+      "name": "displayName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Personal Phone",
+      "editMode": "ReadOnly",
+      "name": "phone",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Personal Email",
+      "editMode": "ReadOnly",
+      "name": "personalEmail",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 6,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employee Number",
+      "editMode": "ReadOnly",
+      "name": "identificationNumber",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 2,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Organization",
+      "editMode": "ReadOnly",
+      "name": "organization",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Department",
+      "editMode": "ReadOnly",
+      "name": "department",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Cost Center",
+      "editMode": "ReadOnly",
+      "name": "costCenter",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Location",
+      "editMode": "ReadOnly",
+      "name": "location",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Location Code",
+      "editMode": "ReadOnly",
+      "name": "locationCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Work Phone",
+      "editMode": "ReadOnly",
+      "name": "workPhone",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "IdentityNow Username",
+      "editMode": "ReadOnly",
+      "name": "uid",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 3,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Processing State",
+      "editMode": "ReadOnly",
+      "name": "processingState",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 4,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Processing Details",
+      "editMode": "ReadOnly",
+      "name": "processingDetails",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "complex",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "IdentityNow Status",
+      "editMode": "ReadOnly",
+      "name": "cloudStatus",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 5,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "35807a8aa4094c3a873627bd83b8196f",
+            "name": "Cloud Calculate Identity Status"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Internal IdentityNow Status",
+      "editMode": "ReadOnly",
+      "name": "internalCloudStatus",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "3e392b5c66cc480f9db88b92431b7b29",
+            "name": "Cloud Calculate Internal Identity Status"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Lockout State",
+      "editMode": "ReadOnly",
+      "name": "internal.lockoutState",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Last Sync Date",
+      "editMode": "ReadOnly",
+      "name": "lastSyncDate",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "End Date",
+      "editMode": "ReadOnly",
+      "name": "endDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Start Date",
+      "editMode": "ReadOnly",
+      "name": "startDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Street Address",
+      "editMode": "ReadOnly",
+      "name": "streetAddress",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "City",
+      "editMode": "ReadOnly",
+      "name": "city",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "State",
+      "editMode": "ReadOnly",
+      "name": "state",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Postal Code",
+      "editMode": "ReadOnly",
+      "name": "postalCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Country",
+      "editMode": "ReadOnly",
+      "name": "country",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Timezone",
+      "editMode": "ReadOnly",
+      "name": "timezone",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Preferred Language",
+      "editMode": "ReadOnly",
+      "name": "preferredLanguage",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Visible Segments",
+      "editMode": "ReadOnly",
+      "name": "visibleSegments",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": true,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Identity State",
+      "editMode": "ReadOnly",
+      "name": "identityState",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "String",
+      "multi": false,
+      "extendedNumber": 9,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_user_name",
+      "editMode": "ReadOnly",
+      "name": "name",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_detected_roles",
+      "editMode": "ReadOnly",
+      "name": "bundles",
+      "silent": false,
+      "system": true,
+      "groupFactory": true,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_detected_role_summary",
+      "editMode": "ReadOnly",
+      "name": "bundleSummary",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_assigned_roles",
+      "editMode": "ReadOnly",
+      "name": "assignedRoles",
+      "silent": false,
+      "system": true,
+      "groupFactory": true,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_assigned_role_summary",
+      "editMode": "ReadOnly",
+      "name": "assignedRoleSummary",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_exceptions",
+      "editMode": "ReadOnly",
+      "name": "exceptions",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_last_refresh",
+      "editMode": "ReadOnly",
+      "name": "lastRefresh",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_last_login",
+      "editMode": "ReadOnly",
+      "name": "lastLogin",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_capabilities",
+      "editMode": "ReadOnly",
+      "name": "capabilities",
+      "silent": false,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_composite_score",
+      "editMode": "ReadOnly",
+      "name": "scorecard.compositeScore",
+      "silent": true,
+      "system": true,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": null,
+      "attributeTargets": null
+    },
+    {
+      "displayName": "att_manager",
+      "editMode": "ReadOnly",
+      "name": "manager",
+      "silent": false,
+      "system": false,
+      "groupFactory": true,
+      "standard": true,
+      "type": "sailpoint.object.Identity",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "SOURCE",
+            "id": "9f46913b2c9b4da5bc40734abda20886",
+            "name": "CZR-Application-OICWebservice"
+          }
+        },
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "SOURCE",
+            "id": "5bcb54289d5649149b01379de2d98800",
+            "name": "CZR-Application-ContractorFlatFile"
+          }
+        },
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "SOURCE",
+            "id": "d16e292903fc4a41bf46f367cd08b625",
+            "name": "IdentityNow Admins"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Next Processing Date",
+      "editMode": "ReadOnly",
+      "name": "nextProcessing",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "String",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Active Location Code",
+      "editMode": "ReadOnly",
+      "name": "activeLocationCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Active Job Title",
+      "editMode": "ReadOnly",
+      "name": "activeJobTitle",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Asg Category Code",
+      "editMode": "ReadOnly",
+      "name": "asgCategoryCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Asg Category Meaning",
+      "editMode": "ReadOnly",
+      "name": "asgCategoryMeaning",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment End Date",
+      "editMode": "ReadOnly",
+      "name": "assignmentEndDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Start Date",
+      "editMode": "ReadOnly",
+      "name": "assignmentStartDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Number",
+      "editMode": "ReadOnly",
+      "name": "assignmentNumber",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Status Meaning",
+      "editMode": "ReadOnly",
+      "name": "assignmentStatusMeaning",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Status Type",
+      "editMode": "ReadOnly",
+      "name": "assignmentStatusType",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Status Type Code",
+      "editMode": "ReadOnly",
+      "name": "assignmentStatusTypeCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Term Date",
+      "editMode": "ReadOnly",
+      "name": "assignmentTermDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Business Unit Name",
+      "editMode": "ReadOnly",
+      "name": "businessUnitName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Complete Termination",
+      "editMode": "ReadOnly",
+      "name": "completeTermination",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employee Middle Name",
+      "editMode": "ReadOnly",
+      "name": "employeeMiddleName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employee Name",
+      "editMode": "ReadOnly",
+      "name": "employeeName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employee Suffix",
+      "editMode": "ReadOnly",
+      "name": "employeeSuffix",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employee Type",
+      "editMode": "ReadOnly",
+      "name": "employeeType",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Employer Name",
+      "editMode": "ReadOnly",
+      "name": "employerName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Hire Date",
+      "editMode": "ReadOnly",
+      "name": "hireDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Job Code",
+      "editMode": "ReadOnly",
+      "name": "jobCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Job Title",
+      "editMode": "ReadOnly",
+      "name": "jobTitle",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Location Description",
+      "editMode": "ReadOnly",
+      "name": "locationDescription",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Division",
+      "editMode": "ReadOnly",
+      "name": "division",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Person Number",
+      "editMode": "ReadOnly",
+      "name": "personNumber",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Primary Assignment",
+      "editMode": "ReadOnly",
+      "name": "primaryAssignment",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Property Code",
+      "editMode": "ReadOnly",
+      "name": "propertyCode",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Region",
+      "editMode": "ReadOnly",
+      "name": "region",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Termination Date",
+      "editMode": "ReadOnly",
+      "name": "terminationDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Worker Type",
+      "editMode": "ReadOnly",
+      "name": "workerType",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "All Assignments",
+      "editMode": "ReadOnly",
+      "name": "allAssignments",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Projected Start Date",
+      "editMode": "ReadOnly",
+      "name": "projectedStartDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Application Name",
+      "editMode": "ReadOnly",
+      "name": "applicationName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "TerminationDate dateType",
+      "editMode": "ReadOnly",
+      "name": "terminationdateDatetype",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Prov Flag BR",
+      "editMode": "ReadOnly",
+      "name": "adProvFlagBr",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Prov Flag Setup Like",
+      "editMode": "ReadOnly",
+      "name": "adProvFlagSetupLike",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Has Harrahs AD",
+      "editMode": "ReadOnly",
+      "name": "hasHarrahsAd",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Excluded Location Flag",
+      "editMode": "ReadOnly",
+      "name": "excludedLocationFlag",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Management Level Flag",
+      "editMode": "ReadOnly",
+      "name": "managementLevelFlag",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Mapped AD Domain",
+      "editMode": "ReadOnly",
+      "name": "mappedAdDomain",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Is Harrahs AD On Legal Hold",
+      "editMode": "ReadOnly",
+      "name": "isHarrahsAdOnLegalHold",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Setup Like Person Id",
+      "editMode": "ReadOnly",
+      "name": "setupLikePersonId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Requested By",
+      "editMode": "ReadOnly",
+      "name": "requestedBy",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Network Access Required",
+      "editMode": "ReadOnly",
+      "name": "networkAccessRequired",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Exchange Mailbox Required",
+      "editMode": "ReadOnly",
+      "name": "exchangeMailboxRequired",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Department",
+      "editMode": "ReadOnly",
+      "name": "adDepartment",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Company",
+      "editMode": "ReadOnly",
+      "name": "adCompany",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": [
+        {
+          "name": "company",
+          "provisionAllAccounts": true,
+          "applicationRef": {
+            "type": "SOURCE",
+            "id": "7de09998939547699404eecea625ad91",
+            "name": "CZR-Application-ActiveDirectory-Harrahs-JAccounts"
+          },
+          "ruleRef": null
+        }
+      ]
+    },
+    {
+      "displayName": "AD Prov Flag CNOW Setup Like",
+      "editMode": "ReadOnly",
+      "name": "adProvFlagCnowSetupLike",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Setup Like Person Id",
+      "editMode": "ReadOnly",
+      "name": "cnowSetupLikePersonId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Network Access Required",
+      "editMode": "ReadOnly",
+      "name": "cnowNetworkAccessRequired",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Exchange Mailbox Required",
+      "editMode": "ReadOnly",
+      "name": "cnowExchangeMailboxRequired",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Task Number",
+      "editMode": "ReadOnly",
+      "name": "cnowTaskNumber",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Task Sys Id",
+      "editMode": "ReadOnly",
+      "name": "cnowTaskSysId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Harrahs DN",
+      "editMode": "ReadOnly",
+      "name": "harrahsDn",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Manager Display Name",
+      "editMode": "ReadOnly",
+      "name": "managerDisplayName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Manager Email",
+      "editMode": "ReadOnly",
+      "name": "managerEmail",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Manager Harrahs DN",
+      "editMode": "ReadOnly",
+      "name": "managerHarrahsDn",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "display name and person Number",
+      "editMode": "ReadOnly",
+      "name": "displayNameAndPersonNumber",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 10,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Active Assignments",
+      "editMode": "ReadOnly",
+      "name": "activeAssignments",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW RequestedBy",
+      "editMode": "ReadOnly",
+      "name": "cnowRequestedby",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW RequestedBy Email",
+      "editMode": "ReadOnly",
+      "name": "cnowRequestedbyEmail",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "test",
+      "editMode": "ReadOnly",
+      "name": "test",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "MLSecure1",
+      "editMode": "ReadOnly",
+      "name": "mlsecure1",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Display Name",
+      "editMode": "ReadOnly",
+      "name": "adDisplayName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Extension Attribute8",
+      "editMode": "ReadOnly",
+      "name": "adExtensionAttribute8",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Primary Work Relationship",
+      "editMode": "ReadOnly",
+      "name": "primaryWorkRelationship",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Description",
+      "editMode": "ReadOnly",
+      "name": "adDescription",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Process Name",
+      "editMode": "ReadOnly",
+      "name": "processName",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "ML Increase",
+      "editMode": "ReadOnly",
+      "name": "mlIncrease",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Assignment Status Type Immediate Term",
+      "editMode": "ReadOnly",
+      "name": "assignmentStatusTypeImmediateTerm",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Termination Date Immediate Term",
+      "editMode": "ReadOnly",
+      "name": "terminationDateImmediateTerm",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Complete Termination Immediate Term",
+      "editMode": "ReadOnly",
+      "name": "completeTerminationImmediateTerm",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Contractor requested By Email",
+      "editMode": "ReadOnly",
+      "name": "contractorRequestedByEmail",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Is Start Date More Than 21",
+      "editMode": "ReadOnly",
+      "name": "isStartDateMoreThan21",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Multiple AD Account",
+      "editMode": "ReadOnly",
+      "name": "multipleAdAccount",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Legal Hold AD Check",
+      "editMode": "ReadOnly",
+      "name": "legalHoldAdCheck",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Legal Hold",
+      "editMode": "ReadOnly",
+      "name": "cnowLegalHold",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Contractor ID",
+      "editMode": "ReadOnly",
+      "name": "cnowContractorId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Emp JA Id",
+      "editMode": "ReadOnly",
+      "name": "cnowEmpJaId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Termination Source",
+      "editMode": "ReadOnly",
+      "name": "terminationSource",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Emp Type",
+      "editMode": "ReadOnly",
+      "name": "cnowEmpType",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Emp Title",
+      "editMode": "ReadOnly",
+      "name": "cnowEmpTitle",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Emp Location",
+      "editMode": "ReadOnly",
+      "name": "cnowEmpLocation",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Conversion Emp ID",
+      "editMode": "ReadOnly",
+      "name": "cnowConversionEmpId",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "userStatus",
+      "editMode": "ReadOnly",
+      "name": "userstatus",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "HasHarrahsContractorAD",
+      "editMode": "ReadOnly",
+      "name": "hasharrahscontractorad",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Task Number WH",
+      "editMode": "ReadOnly",
+      "name": "cnowTaskNumberWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Task Sys Id WH",
+      "editMode": "ReadOnly",
+      "name": "cnowTaskSysIdWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW RequestedBy WH",
+      "editMode": "ReadOnly",
+      "name": "cnowRequestedbyWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW RequestedBy Email WH",
+      "editMode": "ReadOnly",
+      "name": "cnowRequestedbyEmailWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Setup Like Person Id WH",
+      "editMode": "ReadOnly",
+      "name": "cnowSetupLikePersonIdWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "CNOW Network Access Required WH",
+      "editMode": "ReadOnly",
+      "name": "cnowNetworkAccessRequiredWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "AD Prov Flag CNOW Setup Like WH",
+      "editMode": "ReadOnly",
+      "name": "adProvFlagCnowSetupLikeWh",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "updatedBy",
+      "editMode": "ReadOnly",
+      "name": "updatedby",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Updated Reason",
+      "editMode": "ReadOnly",
+      "name": "updatedReason",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Teat123",
+      "editMode": "ReadOnly",
+      "name": "teat123",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Contractor Termination Date",
+      "editMode": "ReadOnly",
+      "name": "contractorTerminationDate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": [
+        {
+          "name": "accountExpires",
+          "provisionAllAccounts": true,
+          "applicationRef": {
+            "type": "SOURCE",
+            "id": "1a17d4b93c164592be143c63886e6660",
+            "name": "CZR-Application-ActiveDirectory-Harrahs-Contractor"
+          },
+          "ruleRef": null
+        }
+      ]
+    },
+    {
+      "displayName": "contractorTermDate",
+      "editMode": "ReadOnly",
+      "name": "contractortermdate",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "Lifecycle State",
+      "editMode": "UntilFeedValueChanges",
+      "name": "cloudLifecycleState",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": false,
+      "type": "String",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    },
+    {
+      "displayName": "License Status",
+      "editMode": "ReadOnly",
+      "name": "licenseStatus",
+      "silent": false,
+      "system": false,
+      "groupFactory": false,
+      "standard": true,
+      "type": "string",
+      "multi": false,
+      "extendedNumber": 0,
+      "attributeSources": [
+        {
+          "defaultValue": null,
+          "reference": {
+            "type": "RULE",
+            "id": "37a86de9bb2d4d7b913497a9ce816fbd",
+            "name": "Cloud Promote Identity Attribute"
+          }
+        }
+      ],
+      "attributeTargets": null
+    }
+  ]
+}

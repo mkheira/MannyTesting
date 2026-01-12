@@ -1,0 +1,35 @@
+{
+  "id": "27b46fd1e46e4d95a5668648bc4fb336",
+  "name": "Zoom Record 7 days-AP",
+  "description": "This role is designated for Zoom recording. Users can record Zoom meetings for up to 7 days. After this period, the Active Directory group will be automatically removed by ISC, and the user will no longer have the ability to record Zoom meetings.",
+  "created": "2025-03-18T13:55:10.778193Z",
+  "modified": "2025-12-01T17:01:03.379632Z",
+  "enabled": false,
+  "owner": {
+    "type": "IDENTITY",
+    "id": "9880e87611d64a5b9a6c66acd11b7301",
+    "name": "Lingareddy Some"
+  },
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "type": "SOURCE",
+    "name": "CZR-Application-ActiveDirectory-Harrahs"
+  },
+  "entitlements": [],
+  "requestable": false,
+  "accessRequestConfig": {
+    "commentsRequired": null,
+    "denialCommentsRequired": null,
+    "approvalSchemes": [],
+    "reauthorizationRequired": false,
+    "requireEndDate": false,
+    "maxPermittedAccessDuration": null
+  },
+  "revocationRequestConfig": {
+    "approvalSchemes": null
+  },
+  "segments": [],
+  "provisioningCriteria": null,
+  "additionalOwners": null,
+  "segmentRefs": []
+}

@@ -1,0 +1,62 @@
+{
+  "id": "6b87b251-70e3-46a2-98c0-8eee01cfb59a",
+  "name": "Copy of Supply Email Address 3",
+  "description": "An interactive form that allows the user to provide an email address for the user who is assigned as the group manager.",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "01e5dd6aee9945f89dd5544f4f683f74",
+    "name": "Richard Fondrick"
+  },
+  "usedBy": [
+    {
+      "type": "WORKFLOW",
+      "id": "510a8503-8269-405c-9f58-e3cd457970b8",
+      "name": "Richard: Create a New User in Active Directory"
+    }
+  ],
+  "formInput": [
+    {
+      "id": "comment",
+      "type": "STRING",
+      "label": "comment",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "795112953218",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "LEFT",
+        "description": "",
+        "formElements": [
+          {
+            "config": {
+              "default": "",
+              "description": "",
+              "helpText": "Provide the manager's email address.",
+              "label": "{{ $.form.input.comment }}",
+              "placeholder": "",
+              "required": false
+            },
+            "elementType": "EMAIL",
+            "id": "210389602543",
+            "key": "managerEmailAddress",
+            "validations": [
+              {
+                "validationType": "EMAIL"
+              }
+            ]
+          }
+        ],
+        "label": "Email Address",
+        "labelStyle": "h5",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [],
+  "created": "2025-11-19T20:45:56.671758863Z",
+  "modified": "2025-11-19T20:45:56.671758863Z"
+}

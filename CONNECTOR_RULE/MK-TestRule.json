@@ -1,0 +1,44 @@
+{
+  "description": "This rule modifies the Web Services connector request before performing operations like testConnection, aggregation, etc., ensuring the Content-Type header is removed.",
+  "type": "WebServiceBeforeOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": "sailpoint.object.Application"
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information containing headers, body, context URL, method type, response attribute map, and successful response code.",
+        "type": "sailpoint.connector.webservices.EndPoint"
+      },
+      {
+        "name": "oldResponseMap",
+        "description": "Earlier response object.",
+        "type": "java.util.Map"
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object.",
+        "type": "sailpoint.connector.webservices.WebServicesClient"
+      }
+    ],
+    "output": {
+      "name": "EndPoint",
+      "description": "Updated EndPoint Object.",
+      "type": "sailpoint.connector.webservices.EndPoint"
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import java.util.Map;\r\nimport sailpoint.object.Application;\r\nimport sailpoint.connector.webservices.EndPoint;\r\nimport sailpoint.integration.RestClient;\r\n\r\nlog.debug(\"Before Operation Rule - Processing Request: \" + requestEndPoint);\r\n\r\n// Ensure headers exist in the request\r\nMap headers = requestEndPoint.getHeader();\r\nif (headers != null && headers.containsKey(\"Content-Type\")) {\r\n    log.debug(\"Removing Content-Type header from request.\");\r\n    headers.remove(\"Content-Type\");\r\n    requestEndPoint.setHeader(headers);\r\n}\r\n\r\nlog.debug(\"Before Operation Rule - Modified Request: \" + requestEndPoint);\r\n\r\nreturn requestEndPoint;\r\n"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "8bdf80fe0d9c4ec2924928b0eee55c65",
+  "name": "MK-TestRule",
+  "created": "2025-02-08T02:37:45.945Z",
+  "modified": "2025-02-08T02:56:07.289Z"
+}

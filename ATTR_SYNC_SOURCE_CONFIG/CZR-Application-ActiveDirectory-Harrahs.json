@@ -1,0 +1,123 @@
+{
+  "attributes": [
+    {
+      "displayName": "att_first_name",
+      "enabled": true,
+      "name": "firstname",
+      "target": "givenName"
+    },
+    {
+      "displayName": "AD Display Name",
+      "enabled": true,
+      "name": "adDisplayName",
+      "target": "displayName"
+    },
+    {
+      "displayName": "att_last_name",
+      "enabled": true,
+      "name": "lastname",
+      "target": "sn"
+    },
+    {
+      "displayName": "Manager Harrahs DN",
+      "enabled": false,
+      "name": "managerHarrahsDn",
+      "target": "manager"
+    },
+    {
+      "displayName": "Employee Number",
+      "enabled": false,
+      "name": "identificationNumber",
+      "target": "employeeNumber"
+    },
+    {
+      "displayName": "Employee Number",
+      "enabled": false,
+      "name": "identificationNumber",
+      "target": "employeeID"
+    },
+    {
+      "displayName": "Job Title",
+      "enabled": false,
+      "name": "jobTitle",
+      "target": "title"
+    },
+    {
+      "displayName": "AD Company",
+      "enabled": false,
+      "name": "adCompany",
+      "target": "company"
+    },
+    {
+      "displayName": "AD Department",
+      "enabled": false,
+      "name": "adDepartment",
+      "target": "department"
+    },
+    {
+      "displayName": "Employee Middle Name",
+      "enabled": false,
+      "name": "employeeMiddleName",
+      "target": "middleName"
+    },
+    {
+      "displayName": "Employee Suffix",
+      "enabled": false,
+      "name": "employeeSuffix",
+      "target": "generationQualifier"
+    },
+    {
+      "displayName": "Job Title",
+      "enabled": false,
+      "name": "jobTitle",
+      "target": "msExchExtensionAttribute39"
+    },
+    {
+      "displayName": "Business Unit Name",
+      "enabled": false,
+      "name": "businessUnitName",
+      "target": "extensionAttribute5"
+    },
+    {
+      "displayName": "Region",
+      "enabled": false,
+      "name": "region",
+      "target": "extensionAttribute4"
+    },
+    {
+      "displayName": "MLSecure1",
+      "enabled": false,
+      "name": "mlsecure1",
+      "target": "extensionAttribute9"
+    },
+    {
+      "displayName": "AD Extension Attribute8",
+      "enabled": false,
+      "name": "adExtensionAttribute8",
+      "target": "extensionAttribute8"
+    },
+    {
+      "displayName": "Asg Category Code",
+      "enabled": false,
+      "name": "asgCategoryCode",
+      "target": "extensionAttribute12"
+    },
+    {
+      "displayName": "CNOW Legal Hold",
+      "enabled": false,
+      "name": "cnowLegalHold",
+      "target": "msExchExtensionAttribute41"
+    },
+    {
+      "displayName": "Contractor Termination Date",
+      "enabled": false,
+      "name": "contractorTerminationDate",
+      "target": "contractorTerminationDate"
+    }
+  ],
+  "source": {
+    "id": "e30d0436a20b45b79517a08f0380b1b1",
+    "name": "CZR-Application-ActiveDirectory-Harrahs",
+    "type": "SOURCE"
+  }
+}

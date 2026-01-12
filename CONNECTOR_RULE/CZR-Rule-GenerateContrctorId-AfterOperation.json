@@ -1,0 +1,49 @@
+{
+  "description": "This rule is used by the  Web Services connector to update parsed resource object.\n    Create List of Objects  which will later converted to Resource object ",
+  "type": "WebServiceAfterOperationRule",
+  "signature": {
+    "input": [
+      {
+        "name": "application",
+        "description": "The application whose data file is being processed.",
+        "type": null
+      },
+      {
+        "name": "requestEndPoint",
+        "description": "The current request information contain header, body ,response object",
+        "type": null
+      },
+      {
+        "name": "processedResponseObject",
+        "description": "Response Object processed by the Web services connector",
+        "type": null
+      },
+      {
+        "name": "rawResponseObject",
+        "description": "Response Object returned from the end system",
+        "type": null
+      },
+      {
+        "name": "restClient",
+        "description": "REST Client Object",
+        "type": null
+      }
+    ],
+    "output": {
+      "name": "Update Account/Group List",
+      "description": "Update information Map contains parsed list of accounts",
+      "type": null
+    }
+  },
+  "sourceCode": {
+    "version": "1.0",
+    "script": "import java.util.HashMap;\r\nimport java.util.List;\r\nimport java.util.Map;\r\nimport java.util.Map.Entry;\r\nimport java.util.Iterator;\r\nimport connector.common.JsonUtil;\r\nimport sailpoint.connector.webservices.WebServicesClient;\r\n\r\n//We can parse the response(rawResponseObject) to fetch from the respective executed Endpoint operation.\r\nMap updatedMapInfo = new HashMap();\r\nList Finallist = new ArrayList();\r\nMap response = (Map) JsonUtil.toMap(rawResponseObject);\r\nif(response != null) {\r\n\tint lastCreatedContractorId = Integer.valueOf(response.get(\"connectorAttributes\").get(\"lastCreatedContractorId\"));\r\n\tint newContractorId = lastCreatedContractorId+1;\r\n\tMap responseMap = new HashMap();\r\n\tresponseMap.put(\"lastCreatedContractorId\", lastCreatedContractorId);\r\n\tresponseMap.put(\"newContractorId\", newContractorId);\r\n\tresponseMap.put(\"action\", response.get(\"name\"));\r\n\tFinallist.add(responseMap);\r\n\tWebServicesClient client = new WebServicesClient();\r\n\tString url = requestEndPoint.getFullUrl();\r\n\tMap args = new HashMap();\r\n\targs.put(WebServicesClient.ARG_URL, url);\r\n\tclient.configure(args);\r\n\tMap header = new HashMap();\r\n\theader.put(\"Authorization\" , requestEndPoint.getHeader().get(\"Authorization\"));\r\n\theader.put(\"Content-Type\",\"application/json-patch+json\");\r\n\theader.put(\"Accept\",\"application/json\");\r\n\tList<String> allowedStatuses = new ArrayList();\r\n\tallowedStatuses.add(\"2**\");\r\n\t\r\n\tString payload = \"[{\\\"op\\\": \\\"replace\\\",\\\"path\\\": \\\"/connectorAttributes/lastCreatedContractorId\\\",\\\"value\\\": \\\"\" + newContractorId + \"\\\"}]\";\r\n\tString response = client.executePatch(url, payload, header, allowedStatuses);\r\n\t\r\n}\r\nupdatedMapInfo.put(\"data\", Finallist);\r\nreturn updatedMapInfo;"
+  },
+  "attributes": {
+    "sourceVersion": "1.0"
+  },
+  "id": "6451bfffacc54266a7f841ee9a8c4afa",
+  "name": "CZR-Rule-GenerateContrctorId-AfterOperation",
+  "created": "2025-02-24T15:54:58.161Z",
+  "modified": "2025-02-25T06:07:28.969Z"
+}

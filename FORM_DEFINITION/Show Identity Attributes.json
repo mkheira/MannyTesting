@@ -1,0 +1,198 @@
+{
+  "id": "3f158a85-bcff-4c48-941f-17f244490a40",
+  "name": "Show Identity Attributes",
+  "description": "Display Identity Attributes",
+  "owner": {
+    "type": "IDENTITY",
+    "id": "af6723648d294e169f74cf559506a6fb",
+    "name": "Bapanipally, Divakar"
+  },
+  "usedBy": [],
+  "formInput": [
+    {
+      "id": "getIdentityAttributes",
+      "type": "ARRAY",
+      "label": "$.getIdentity.attributes",
+      "description": ""
+    },
+    {
+      "id": "displayName",
+      "type": "STRING",
+      "label": "displayName",
+      "description": ""
+    },
+    {
+      "id": "lastName",
+      "type": "STRING",
+      "label": "lastName",
+      "description": ""
+    },
+    {
+      "id": "firstName",
+      "type": "STRING",
+      "label": "firstName",
+      "description": ""
+    },
+    {
+      "id": "email",
+      "type": "STRING",
+      "label": "email",
+      "description": ""
+    }
+  ],
+  "formElements": [
+    {
+      "id": "1257719208437",
+      "elementType": "SECTION",
+      "config": {
+        "alignment": "CENTER",
+        "formElements": [
+          {
+            "config": {
+              "label": "First Name",
+              "readOnly": true,
+              "required": true,
+              "value": "$.identityData.attributes.givenName"
+            },
+            "elementType": "TEXT",
+            "id": "1507670322671",
+            "key": "firstName",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "label": "Last Name",
+              "readOnly": true,
+              "required": true,
+              "value": "$.identityData.attributes.familyName"
+            },
+            "elementType": "TEXT",
+            "id": "69639030333",
+            "key": "lastName",
+            "validations": [
+              {
+                "validationType": "REQUIRED"
+              }
+            ]
+          },
+          {
+            "config": {
+              "label": "Email",
+              "readOnly": true,
+              "value": "$.identityData.attributes.email"
+            },
+            "elementType": "TEXT",
+            "id": "69639030335",
+            "key": "email"
+          },
+          {
+            "config": {
+              "label": "Display Name",
+              "readOnly": true,
+              "value": "$.identityData.attributes.displayName"
+            },
+            "elementType": "TEXT",
+            "id": "69639030336",
+            "key": "displayName"
+          }
+        ],
+        "label": "Identity Attributes",
+        "labelStyle": "h2",
+        "showLabel": true
+      },
+      "validations": []
+    }
+  ],
+  "formConditions": [
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "email",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "email",
+            "element": "69639030335"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "getIdentityAttributes",
+          "operator": "NOT_EM",
+          "valueType": "STRING_LIST",
+          "value": []
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "firstName",
+            "element": "1507670322671"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "getIdentityAttributes",
+          "operator": "NOT_EM",
+          "valueType": "STRING_LIST",
+          "value": []
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "displayName",
+            "element": "69639030336"
+          }
+        }
+      ]
+    },
+    {
+      "ruleOperator": "AND",
+      "rules": [
+        {
+          "sourceType": "INPUT",
+          "source": "lastName",
+          "operator": "NE",
+          "valueType": "STRING",
+          "value": "null"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "SET_DEFAULT_VALUE",
+          "config": {
+            "defaultValueLabel": "lastName",
+            "element": "69639030333"
+          }
+        }
+      ]
+    }
+  ],
+  "created": "2025-10-26T09:59:59.295550079Z",
+  "modified": "2025-10-27T08:36:27.297820155Z"
+}
